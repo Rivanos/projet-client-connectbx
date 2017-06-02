@@ -1,4 +1,4 @@
-# Explications de la structure MVC du projet #
+# Explications de la structure du projet #
 
 ## Bref descriptif ##
 - ### Controller ###
@@ -32,3 +32,11 @@
    - var maVariable => $maVariable
    - maVariable.maFonction() => $maVariable->maFonction()
    - *string1* + *string2* => *string1* . *string2*
+   
+## Installer Linux Apache MySQL PHP (LAMP)
+### Installation ###
+Dans le terminal, entrez : 
+1. `sudo apt-get update`
+2. `sudo apt-get install apache2 php mysql-server libapache2-mod-php php-mysql`  
+Voilà, LAMP est installé ! Tester : [localhost](http://localhost/)  
+*** La suite arrivera plus tard ***
