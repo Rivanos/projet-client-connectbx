@@ -24,7 +24,7 @@
 
 ## Ce qu'il faut savoir sur le php ##
 ### Déclaration ###
-  Dans TOUS les fichiers php vous devrez mettre les balises >><?php *votre code* ?> si vous voulez écrire en php. Le serveur ne lira pas votre code si il ne se trouve pas entre ces balises.
+  Dans TOUS les fichiers php vous devrez mettre les balises `<?php *votre code* ?>` si vous voulez écrire en php. Le serveur ne lira pas votre code si il ne se trouve pas entre ces balises.
 ### Syntaxe ###
   La syntaxe est fort différente de Javascript ou autres langages, il va falloir vous faire une idée :p  
     
