@@ -44,3 +44,4 @@ Voilà, LAMP est installé ! Tester : [localhost](http://localhost/)
 2. Copier le contenu du fichier 000-default dans `sudo gedit /etc/apache2/sites-available/000-default.conf` 
 3. `sudo ln -s /home/user/Documents/www-dev/public /var/www/html/public`
 4. `sudo ln -s /home/user/Documents/www-dev/private /var/www/html/private`
+5. `sudo rm /var/www/html/index.html`
