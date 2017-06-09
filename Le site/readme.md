@@ -45,5 +45,5 @@ Voilà, LAMP est installé ! Tester : [localhost](http://localhost/)
 3. `sudo ln -s /home/user/Documents/www-dev/public /var/www/html/public`
 4. `sudo ln -s /home/user/Documents/www-dev/private /var/www/html/private`
 5. `sudo rm /var/www/html/index.html`
-6. `sudo chown -R $USER:users /home/user/Documents/www-dev`
+6. `sudo chown -R $USER:user /home/user/Documents/www-dev`
 7. `sudo /etc/init.d/apache2 force-reload`
