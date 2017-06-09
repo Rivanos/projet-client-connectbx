@@ -42,3 +42,5 @@ Voilà, LAMP est installé ! Tester : [localhost](http://localhost/)
 ### Création d'un répertoire de travail ###
 1. `sudo mkdir /home/user/Documents/www-dev/public /home/user/Documents/www-dev/private`
 2. Copier le contenu du fichier 000-default dans `sudo gedit /etc/apache2/sites-available/000-default.conf` 
+3. Créer des liens `sudo ln -s /media/www-dev/public /var/www/html/public`
+`sudo ln -s /media/www-dev/private /var/www/html/private`
