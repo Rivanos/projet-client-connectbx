@@ -8,7 +8,7 @@ define ('VIEWS', 'Views/');
 define ('CONTROLLER', 'Controllers/');
 define ('SESSION_ID', session_id());
 
-// va charger les modèles
+// charge les modèles
 function loadClass($class){
 	require_once ('Models/' . $class . '.class.php');
 }
@@ -21,23 +21,19 @@ $action = (isset($_GET['action'])) ? htmlentities($_GET['action']) : 'default';
 
 // si authentifié => charge le controleur de la page demandée (admin)
 if(isset($_SESSION['authentifie'])){
+	// quelle action ?
 	switch($action){
-			break;
 		case 'admin' : 	
 			require_once (CONTROLLER . 'AdministrationController.php'); // appelle le fichier du controleur
 			$controller = new AdministrationController(); // crée un nouveau controleur du fichier chargé et le stocke dans une variable
-			break;
-		case 'adminAssociation':
-			require_once (CONTROLLER . 'AdminAssociationController.php');
-			$controller = new AdminAssociationController();
 			break;
 		case 'logout' :
 			require_once (CONTROLLER . 'LogoutController.php');
 			$controller = new LogoutController();
 			break;
 		default:
-			require_once (CONTROLLER .'AdministrationController.php');
-			$controller = new AministrationController();
+			require_once (CONTROLLER . 'AdministrationController.php');
+			$controller = new AdministrationController();
 			break;
 	}
 
@@ -55,8 +51,8 @@ if(isset($_SESSION['authentifie'])){
 		case '(le nom que vous avez donné à votre lien dans le header)' :
 			require_once (CONTROLLER . '(le nom de votre fichier controller)');
 			$controller = new (le controleur)();
-			break;	
-	 */default:
+			break;	*/
+	 default:
 			require_once (CONTROLLER .'HomeController.php');
 			$controller = new  HomeController();
 			break;

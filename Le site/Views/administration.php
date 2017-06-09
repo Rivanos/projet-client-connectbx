@@ -10,27 +10,28 @@
 			<th>Adresse</th>
 			<th>Tel</th>
 			<th>Website</th>
-			<th>Modifier</th>
 			<th>Supprimer</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
 		<?php foreach ($tabAssociations as $i=>$association) {?>
 			<tr>
-				<td><?php echo $association->name();?></td>
-				<td><?php echo $association->description();?></td>
-				<td><?php echo $association->address();?></td>
-				<td><?php echo $association->phone();?></td>
-				<td><?php echo $association->website();?></td>
-				<td><input type="checkbox" value="<?php echo $i; ?>"></td>
-				<td><button>[x]</button></td>
+				<td><input type="text" name="assoName" onchange="showEdit(this);" value="<?php echo $association->name();?>"></td>
+				<td><input type="text" name="assoDescri" onchange="showEdit(this);" value="<?php echo $association->description();?>"></td> 
+				<td><input type="text" name="assoAddress" onchange="showEdit(this);" value="<?php echo $association->address();?>"></td>
+				<td><input type="text" name="assoPhone" onchange="showEdit(this);" value="<?php echo $association->phone();?>"></td>
+				<td><input type="text" name="assoWebsite" onchange="showEdit(this);" value="<?php echo $association->website();?>"></td>
+				<td><input type="checkbox" value="<?php echo $i; ?>" id="assoEdit<?php echo $i;?>"></td>
+				<td><?php echo $i; ?></td>
 			</tr>
 		<?php }?>
 	</tbody>
 </table>
 <input type="hidden" name="redirection" value="association">
 <input value="Ajouter" type="submit" name="add">
-<input value="Modifier" type="submit" name="edit">
+<input value="Valider les modifications" type="submit" name="edit">
+<input value="Supprimer" type="submit" name="delete">
 </form>
 
 <?php  ?>
@@ -44,24 +45,22 @@
 			<th>Date</th>
 			<th>Description</th>
 			<th>Image</th>
-			<th>Modifier</th>
 			<th>Supprimer</th>
 		</tr>
 	</thead>
 	<tbody>
 		<?php foreach ($tabEvents as $i=>$event) {?>
 			<tr>
-				<td><?php echo $event->name();?></td>
-				<td><?php echo $event->date();?></td>
-				<td><?php echo $event->description();?></td>
-				<td><?php echo $event->image();?></td>
-				<td><input type="checkbox" value="<?php echo $i; ?>"></td>
-				<td><button>[x]</button></td>
+				<td><input type="text" name="event" onchange="showEdit(this)" value="<?php echo $event->name();?>"></td>
+				<td><input type="text" name="event" onchange="showEdit(this)" value="<?php echo $event->date();?>"></td>
+				<td><input type="text" name="event" onchange="showEdit(this)" value="<?php echo $event->description();?>"></td>
+				<td><input type="text" name="event" onchange="showEdit(this)" value="<?php echo $event->image();?>"></td>
+				<td><input type="checkbox" value="<?php echo $i; ?>" id="eventEdit<?php echo $i;?>"></td>
 			</tr>
 		<?php }?>
 	</tbody>
 </table>
-<input type="hidden" name="redirection" value="event">
 <input value="Ajouter" type="submit" name="add">
-<input value="Modifier" type="submit" name="edit">
+<input value="Valider les modifications" type="submit" name="edit">
+<input value="Supprimer" type="submit" name="delete">
 </form>

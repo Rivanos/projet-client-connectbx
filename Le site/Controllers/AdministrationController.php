@@ -5,15 +5,7 @@ class AdministrationController{
 		
 	}
 	
-	public function run(){
-		
-		if(!empty($_POST['redirection'])){
-			if($_POST['redirection']=="association") {
-				header("Location: index.php?action=adminAssociation");
-			}elseif($_POST['redirection']=="event") {
-				header("Location: index.php?action=adminEvent");	
-			}
-		}		
+	public function run(){	
 		
 		for($i=0 ; $i<9 ; $i++) {
 		
@@ -28,6 +20,11 @@ class AdministrationController{
 		}
 		
 		require_once VIEWS . 'administration.php';
+
+		/*case 'adminAssociation':
+			require_once (CONTROLLER . 'AdminAssociationController.php');
+			$controller = new AdminAssociationController();
+			break;*/
 	}
 	
 }
