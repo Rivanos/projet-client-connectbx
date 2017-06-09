@@ -39,4 +39,6 @@ Dans le terminal, entrez :
 1. `sudo apt-get update`
 2. `sudo apt-get install apache2 php mysql-server libapache2-mod-php php-mysql`  
 Voilà, LAMP est installé ! Tester : [localhost](http://localhost/)  
-*** La suite arrivera plus tard ***
+### Création d'un répertoire de travail ###
+1. `sudo mkdir /media/www-dev/public /media/www-dev/private`
+2. Copier le contenu du fichier 000-default dans `sudo gedit /etc/apache2/sites-available/000-default.conf` 
