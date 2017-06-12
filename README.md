@@ -1,6 +1,6 @@
 # projet-connectbx
 
-Création d'un website en groupe pour une "ASBL" nommé "ConnectBx"
+Création d'un site web en groupe pour une "ASBL" nommé "ConnectBx"
 
 ## Contributeur
 
