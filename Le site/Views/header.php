@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<title>ConnectBX</title>
+		<link rel="stylesheet" type="text/css" href="<?php echo VIEWS;?>css/bootstrap/bootstrap.min.css?">
 		<link rel="stylesheet" type="text/css" href="<?php echo VIEWS;?>css/style.css">
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
