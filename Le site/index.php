@@ -23,7 +23,7 @@ $action = (isset($_GET['action'])) ? htmlentities($_GET['action']) : 'default';
 if(isset($_SESSION['authentifie'])){
 	// quelle action ?
 	switch($action){
-		case 'admin' : 	
+		case 'admin' :
 			require_once (CONTROLLER . 'AdministrationController.php'); // appelle le fichier du controleur
 			$controller = new AdministrationController(); // crée un nouveau controleur du fichier chargé et le stocke dans une variable
 			break;
@@ -38,7 +38,7 @@ if(isset($_SESSION['authentifie'])){
 	}
 
 // sinon (pas authentifié) => charge le controleur de la page demandée (user)
-} else { 
+} else {
 	switch($action){
 		case 'home' :
 			require_once (CONTROLLER . 'HomeController.php');
@@ -47,7 +47,12 @@ if(isset($_SESSION['authentifie'])){
 		case 'admin' :
 			require_once (CONTROLLER . 'LoginController.php');
 			$controller = new LoginController();
-			break;/*
+			break;
+			case 'contact':
+				require_once (CONTROLLER . 'ContactController.php');
+				$controller = new ContactController();
+				break;
+			/*
 		case '(le nom que vous avez donné à votre lien dans le header)' :
 			require_once (CONTROLLER . '(le nom de votre fichier controller)');
 			$controller = new (le controleur)();
