@@ -1,10 +1,13 @@
 # projet-connectbx
-Création d'un site pour connectbx en groupe lors de la formation becode
 
+Création d'un site web en groupe pour une "ASBL" nommé "ConnectBx"
 
-## Blog
+## Contributeur
 
-Worpress? 
-1. http://rivanos.esy.es
-2. http://rivanos.esy.es/wp-login.php?redirect_to=http%3A%2F%2Frivanos.esy.es%2Fwp-admin%2F&reauth=1
-3. https://cpanel.hostinger.fr/
+1. [Thomas Tonneau. Project manager](https://github.com/Thomas-Tonneau)
+2. [Nadia Ben Azouz . Communiction manager](https://github.com/nadiabena)
+3. [Gary Luypaert](https://github.com/GaryLuypaert)
+4. [Victor Lanckriet](https://github.com/lanckrietvictor)
+5. [Gilles Youtou](https://github.com/bbycode)
+6. [Michael Mesmaeker. Github Master](https://github.com/Rivanos)
+
