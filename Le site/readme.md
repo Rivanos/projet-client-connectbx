@@ -47,3 +47,12 @@ Voilà, LAMP est installé ! Tester : [localhost](http://localhost/)
 5. `sudo rm /var/www/html/index.html`
 6. `sudo chown -R $USER:user /home/user/Documents/www-dev`
 7. `sudo /etc/init.d/apache2 force-reload`
+
+## Blog
+
+Worpress? 
+1. http://rivanos.esy.es
+2. http://rivanos.esy.es/wp-login.php?redirect_to=http%3A%2F%2Frivanos.esy.es%2Fwp-admin%2F&reauth=1
+3. https://cpanel.hostinger.fr/
+
+

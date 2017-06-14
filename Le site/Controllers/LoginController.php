@@ -17,7 +17,7 @@ class LoginController{
 		
 		if (empty($_POST)) {
 			# L'utilisateur doit remplir le formulaire
-			$notification='Authentifiez-vous';
+			$notification='Vous êtes sur un espace sécurisé, veuillez vous authentifier';
 		} elseif ((htmlentities($_POST['user'])!='admin' || htmlentities($_POST['password'])!='mdp')) {
 			# L'authentification n'est pas correcte
 			$notification='Vos données d\'authentification ne sont pas correctes.';
