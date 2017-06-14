@@ -48,15 +48,24 @@ if(isset($_SESSION['authentifie'])){
 			require_once (CONTROLLER . 'LoginController.php');
 			$controller = new LoginController();
 			break;
-			case 'contact':
+      case 'contact':
 				require_once (CONTROLLER . 'ContactController.php');
 				$controller = new ContactController();
 				break;
-			/*
-		case '(le nom que vous avez donné à votre lien dans le header)' :
-			require_once (CONTROLLER . '(le nom de votre fichier controller)');
-			$controller = new (le controleur)();
-			break;	*/
+    case 'event' :
+			require_once (CONTROLLER . 'EventController.php');
+			$controller = new EventController();
+			break;	
+    case 'aPropos' :
+			require_once (CONTROLLER . 'aPropos.php');
+			$controller = new LoginController();
+			break;
+          /*
+        case '(le nom que vous avez donné à votre lien dans le header)' :
+          require_once (CONTROLLER . '(le nom de votre fichier controller)');
+          $controller = new (le controleur)();
+          break;	
+          */
 	 default:
 			require_once (CONTROLLER .'HomeController.php');
 			$controller = new  HomeController();
