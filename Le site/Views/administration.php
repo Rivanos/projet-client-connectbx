@@ -1,8 +1,36 @@
 <h2>Bienvenue sur la page d'administration</h2>
 
-<form method="post">
+<!-- Navigation tabs -->
+<ul class="nav nav-tabs">
+	<li class="active"><a data-toggle="tab" href="#users">Utilisateurs</a></li>
+	<li><a data-toggle="tab" href="#associations">Associations</a></li>
+	<li><a data-toggle="tab" href="#events">Événements</a></li>
+</ul>
+
+<!-- contenu onglets -->
+<div class="tab-content">
+	<!-- onglet Utilisateurs -->
+	<div id="users" class="tab-pane fade in active">
+		<form action="">
+			<table>
+				<thead>
+					<tr>
+						
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+	
+	<!-- onglet Associations -->
+	<div id="associations" class="tab-pane fade">
+		<form method="post">
 <table>
-	<caption>Associations</caption>
 	<thead>
 		<tr>
 			<th>Nom</th>
@@ -11,7 +39,6 @@
 			<th>Tel</th>
 			<th>Website</th>
 			<th>Supprimer</th>
-			<th></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -23,7 +50,6 @@
 				<td><input type="text" name="assoPhone" onchange="showEdit(this);" value="<?php echo $association->phone();?>"></td>
 				<td><input type="text" name="assoWebsite" onchange="showEdit(this);" value="<?php echo $association->website();?>"></td>
 				<td><input type="checkbox" value="<?php echo $i; ?>" id="assoEdit<?php echo $i;?>"></td>
-				<td><?php echo $i; ?></td>
 			</tr>
 		<?php }?>
 	</tbody>
@@ -32,13 +58,13 @@
 <input value="Ajouter" type="submit" name="add">
 <input value="Valider les modifications" type="submit" name="edit">
 <input value="Supprimer" type="submit" name="delete">
-</form>
+</form>		
+	</div>
 
-<?php  ?>
-
-<form method="post">
+	<!-- onglet Événements -->
+	<div id="events" class="tab-pane fade">
+		<form method="post">
 <table>
-	<caption>Événements</caption>
 	<thead>
 		<tr>
 			<th>Nom</th>
@@ -64,3 +90,9 @@
 <input value="Valider les modifications" type="submit" name="edit">
 <input value="Supprimer" type="submit" name="delete">
 </form>
+		
+	</div>
+</div>
+
+<?php  ?>
+
