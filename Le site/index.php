@@ -47,11 +47,11 @@ if(isset($_SESSION['authentifie'])){
 		case 'admin' :
 			require_once (CONTROLLER . 'LoginController.php');
 			$controller = new LoginController();
-			break;/*
-		case '(le nom que vous avez donné à votre lien dans le header)' :
-			require_once (CONTROLLER . '(le nom de votre fichier controller)');
-			$controller = new (le controleur)();
-			break;	*/
+			break;
+		case 'event' :
+			require_once (CONTROLLER . 'EventController.php');
+			$controller = new EventController();
+			break;	
 	 default:
 			require_once (CONTROLLER .'HomeController.php');
 			$controller = new  HomeController();

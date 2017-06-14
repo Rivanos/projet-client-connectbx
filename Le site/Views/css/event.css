@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+#my_popup{
+ width: 500px;
+  height: 500px;
+  background-color: #FFDDDD;
+}
+
+/*.ui-dialog-titlebar-close {
+    visibility: hidden;
+}*/
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position:relative;
+    /*bottom: -180px;
+    left: 5px;*/
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+
+.fond {
+  background-image: url(Views/Images/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+div{
+  /*display: inline; */
+}
+.fond button, .fond input {
+}
+.navbar {
+  margin-bottom: 0;
+}
+#navbar a {
+  color: rgb(88, 94, 94);
+  font-size: 20px;
+}
+#navbar a: hover {
+  color: black;
+  opacity: 0.8;
+}
+nav {
+  position: fixed;
+  margin: 0;
+  width: 100%;
+}
+.padding {
+  padding: 0;
+}
+
+
+ul {list-style-type: none;}
+body {font-family: Verdana, sans-serif;}
