@@ -48,7 +48,11 @@ if(isset($_SESSION['authentifie'])){
 			require_once (CONTROLLER . 'LoginController.php');
 			$controller = new LoginController();
 			break;
-			case 'aPropos' :
+      case 'event' :
+			require_once (CONTROLLER . 'EventController.php');
+			$controller = new EventController();
+			break;	
+    case 'aPropos' :
 			require_once (CONTROLLER . 'aPropos.php');
 			$controller = new LoginController();
 			break;/*
