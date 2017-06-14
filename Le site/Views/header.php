@@ -18,6 +18,7 @@
           <li><a href="index.php?action=contact">Contact</a></li>
           <li><a href="index.php?action=event">Evenement</a></li>
           <li><a href="index.php?action=aPropos">A propos</a></li>
+          <li><a href="index.php?action=map">Map</a></li>
 					<!-- Rajouter le lien vers votre page ici -->
 					<!-- ex: <li><a href="index.php?action=(le nom que vous voulez)">(Le contenu de la balise a)</a></li> -->
 					<?php if(!empty($_SESSION['authentifie'])){?>
