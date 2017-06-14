@@ -13,8 +13,9 @@
 				<ul>
 					<li><a href="index.php?action=home">Accueil</a></li>
 					<li><a href="index.php?action=admin">Administration</a></li>
+          <li><a href="index.php?action=event">Evenement</a></li>
+          <li><a href="index.php?action=aPropos">A propos</a></li>
 					<!-- Rajouter le lien vers votre page ici -->
-					<li><a href="index.php?action=event">Evenement</a></li>
 					<!-- ex: <li><a href="index.php?action=(le nom que vous voulez)">(Le contenu de la balise a)</a></li> -->
 					<?php if(!empty($_SESSION['authentifie'])){?>
 					<li><a href="index.php?action=logout">Déconnexion</a></li>
