@@ -10,6 +10,7 @@
 
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="carte-style.css" type="text/css" rel="stylesheet">
+  <script type="text/javascript" src="script.js"></script>
 </head>
 
 <body>
@@ -50,171 +51,173 @@
     </div><!-- /.container-fluid -->
   </nav>
 
-<section id="cartePage">
-  <h2>Carte Interactive</h2>
-  <p>Retrouvez ci-dessous la carte qui contient les associations</p>
+  <section id="cartePage">
+    <h2>Carte Interactive</h2>
+    <p>Retrouvez ci-dessous la carte qui contient les associations</p>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3 menuLeft">
-        <h3>Commune</h3>
-        <div class="checkbox">
-          <label><input type="checkbox" value=""/>Ixelles</label>
-        </div>
-        <div class="checkbox">
-          <label><input type="checkbox" value=""/>Forest</label>
-        </div>
-        <div class="checkbox">
-          <label><input type="checkbox" value=""/>Anderlecht</label>
-        </div>
-        <div class="form-group">
-          <label for="sel1">Liste déroulante :</label>
-          <select class="form-control" id="sel1">
-            <option>Choix</option>
-            <option>Choix</option>
-            <option>Choix</option>
-          </select>
-        </div>
-
-        <h3>Catégories</h3>
-        <div class="checkbox">
-          <label><input type="checkbox" value=""/>Choix</label>
-        </div>
-        <div class="checkbox">
-          <label><input type="checkbox" value=""/>Choix</label>
-        </div>
-        <div class="checkbox">
-          <label><input type="checkbox" value=""/>Choix</label>
-        </div>
-        <div class="form-group">
-          <label for="sel2">Liste déroulante :</label>
-          <select class="form-control" id="sel2">
-            <option>Choix</option>
-            <option>Choix</option>
-            <option>Choix</option>
-          </select>
-        </div>
-
-        <h3>Ambassadeurs</h3>
-        <div class="checkbox">
-          <label><input type="checkbox" value=""/>Choix</label>
-        </div>
-        <div class="checkbox">
-          <label><input type="checkbox" value=""/>Choix</label>
-        </div>
-        <div class="checkbox">
-          <label><input type="checkbox" value=""/>Choix</label>
-        </div>
-        <div class="form-group">
-          <label for="sel3">Liste déroulante :</label>
-          <select class="form-control" id="sel3">
-            <option>A</option>
-            <option>A</option>
-            <option>A</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-md-9 carte">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2520.026737239502!2d4.302956315141694!3d50.83066866777693!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3c6a06fd744fb%3A0x9c7c93fd8ec57018!2sRue+de+Veeweyde+104%2C+1070+Anderlecht!5e0!3m2!1sfr!2sbe!4v1497380674026"
-        width="800" height="598" frameborder="0" style="border:0" allowfullscreen>
-        </iframe>
-      </div>
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="associationBox">
-        <h3 class="titleAssoc">Association dans la zone recherchée</h3>
-          <p class="descriptionAssoc">Association à but non lucratif, nous réparons des droïdes endommagés pour faire des combats
-          toujours plus épics.</p>
-          <p class="adresseAssoc">Rue des Goujons, 152<br />
-          1070 Anderlecht<br />
-          +32 1 455 67 19 42<br />
-          <a href="#">http://www.sitedelassociation.be</a></p>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="associationBox">
-        <h3 class="titleAssoc">Association dans la zone recherchée</h3>
-          <p class="descriptionAssoc">Association à but non lucratif, nous réparons des droïdes endommagés pour faire des combats
-          toujours plus épics.</p>
-          <p class="adresseAssoc">Rue des Goujons, 152<br />
-          1070 Anderlecht<br />
-          +32 1 455 67 19 42<br />
-          <a href="#">http://www.sitedelassociation.be</a></p>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="associationBox">
-        <h3 class="titleAssoc">Association dans la zone recherchée</h3>
-          <p class="descriptionAssoc">Association à but non lucratif, nous réparons des droïdes endommagés pour faire des combats
-          toujours plus épics.</p>
-          <p class="adresseAssoc">Rue des Goujons, 152<br />
-          1070 Anderlecht<br />
-          +32 1 455 67 19 42<br />
-          <a href="#">http://www.sitedelassociation.be</a></p>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="associationBox">
-        <h3 class="titleAssoc">Association dans la zone recherchée</h3>
-          <p class="descriptionAssoc">Association à but non lucratif, nous réparons des droïdes endommagés pour faire des combats
-          toujours plus épics.</p>
-          <p class="adresseAssoc">Rue des Goujons, 152<br />
-          1070 Anderlecht<br />
-          +32 1 455 67 19 42<br />
-          <a href="#">http://www.sitedelassociation.be</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</section>
-
-
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <ul class="socialNetwork">
-          <li class="socialNetworkLI"><a href="3"><img src="img/SocialNetwork/facebook-green.png" class="logoSocialNetwork" alt="logoFacebook" width="35px"/></a>&nbsp;Facebook</li>
-          <li class="socialNetworkLI"><a href="3"><img src="img/SocialNetwork/twitter-green.png" class="logoSocialNetwork" alt="logoTwitter"  width="35px"/></a>&nbsp;Twitter</li>
-          <li class="socialNetworkLI"><a href="3"><img src="img/SocialNetwork/linkedin-green.png" class="logoSocialNetwork" alt="logoLinkedIn"  width="35px"/></a>&nbsp;LinkedIn</li>
-          <li class="socialNetworkLI"><a href="3"><img src="img/SocialNetwork/instagram-green.png" class="logoSocialNetwork" alt="logoInstagram"  width="35px"/></a>&nbsp;Instagram</li>
-        </ul>
-      </div>
-    </div>
+    <div class="container">
       <div class="row">
-        <div class="newsletter">
-            <div id="input-group">
-              <input type="text" class="form-control" placeholder="Votre adresse mail"/>
-              <button type="button" class="btn btn-default" id="btnNewsletter">Inscription</button>
+        <div class="col-md-3 col-sm-3 col-xs-3 menuLeft">
+          <h3>Commune</h3>
+          <div class="checkbox">
+            <label><input type="checkbox" value="Ixelles" id="Ixelles" />Ixelles</label>
           </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="Forest" id="Forest, Brussels"/>Forest</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="Anderlecht" id="Anderlecht"/>Anderlecht</label>
+          </div>
+          <div class="form-group">
+            <label for="sel1">Liste déroulante :</label>
+            <select class="form-control" id="sel1">
+              <option>Choix</option>
+              <option>Choix</option>
+              <option>Choix</option>
+            </select>
+          </div>
+
+          <h3>Catégories</h3>
+          <div class="checkbox">
+            <label><input type="checkbox" value=""/>Choix</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value=""/>Choix</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value=""/>Choix</label>
+          </div>
+          <div class="form-group">
+            <label for="sel2">Liste déroulante :</label>
+            <select class="form-control" id="sel2">
+              <option>Choix</option>
+              <option>Choix</option>
+              <option>Choix</option>
+            </select>
+          </div>
+
+          <h3>Ambassadeurs</h3>
+          <div class="checkbox">
+            <label><input type="checkbox" value=""/>Choix</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value=""/>Choix</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value=""/>Choix</label>
+          </div>
+          <div class="form-group">
+            <label for="sel3">Liste déroulante :</label>
+            <select class="form-control" id="sel3">
+              <option>A</option>
+              <option>A</option>
+              <option>A</option>
+            </select>
+          </div>
+          <input id="submit" type="button" value="Envoyer">
+        </div>
+        <div class="col-md-9 col-sm-9 col-xs-9" id="map">
         </div>
       </div>
-
-  </div>
-  <div class="container-fluid">
-    <div class="row">
-      <div id="copyright">
-        Copyright © <a href="#">BeCode</a> 2017, tous droits réservés
-      </div>
     </div>
-  </div>
 
-</footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="associationBox">
+            <h3 class="titleAssoc">Association dans la zone recherchée</h3>
+            <p class="descriptionAssoc">Association à but non lucratif, nous réparons des droïdes endommagés pour faire des combats
+              toujours plus épics.</p>
+              <p class="adresseAssoc">Rue des Goujons, 152<br />
+                1070 Anderlecht<br />
+                +32 1 455 67 19 42<br />
+                <a href="#">http://www.sitedelassociation.be</a></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="associationBox">
+                <h3 class="titleAssoc">Association dans la zone recherchée</h3>
+                <p class="descriptionAssoc">Association à but non lucratif, nous réparons des droïdes endommagés pour faire des combats
+                  toujours plus épics.</p>
+                  <p class="adresseAssoc">Rue des Goujons, 152<br />
+                    1070 Anderlecht<br />
+                    +32 1 455 67 19 42<br />
+                    <a href="#">http://www.sitedelassociation.be</a></p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="associationBox">
+                    <h3 class="titleAssoc">Association dans la zone recherchée</h3>
+                    <p class="descriptionAssoc">Association à but non lucratif, nous réparons des droïdes endommagés pour faire des combats
+                      toujours plus épics.</p>
+                      <p class="adresseAssoc">Rue des Goujons, 152<br />
+                        1070 Anderlecht<br />
+                        +32 1 455 67 19 42<br />
+                        <a href="#">http://www.sitedelassociation.be</a></p>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="associationBox">
+                        <h3 class="titleAssoc">Association dans la zone recherchée</h3>
+                        <p class="descriptionAssoc">Association à but non lucratif, nous réparons des droïdes endommagés pour faire des combats
+                          toujours plus épics.</p>
+                          <p class="adresseAssoc">Rue des Goujons, 152<br />
+                            1070 Anderlecht<br />
+                            +32 1 455 67 19 42<br />
+                            <a href="#">http://www.sitedelassociation.be</a></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </section>
 
 
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="js/bootstrap.min.js"></script>
-  <!--  <script src="js/jQuery.js"></script> -->
+                  <footer>
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <ul class="socialNetwork">
+                            <li class="socialNetworkLI"><a href="3"><img src="img/SocialNetwork/facebook-green.png" class="logoSocialNetwork" alt="logoFacebook" width="35px"/></a>&nbsp;Facebook</li>
+                            <li class="socialNetworkLI"><a href="3"><img src="img/SocialNetwork/twitter-green.png" class="logoSocialNetwork" alt="logoTwitter"  width="35px"/></a>&nbsp;Twitter</li>
+                            <li class="socialNetworkLI"><a href="3"><img src="img/SocialNetwork/linkedin-green.png" class="logoSocialNetwork" alt="logoLinkedIn"  width="35px"/></a>&nbsp;LinkedIn</li>
+                            <li class="socialNetworkLI"><a href="3"><img src="img/SocialNetwork/instagram-green.png" class="logoSocialNetwork" alt="logoInstagram"  width="35px"/></a>&nbsp;Instagram</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="newsletter">
+                          <div id="input-group">
+                            <input type="text" class="form-control" placeholder="Votre adresse mail"/>
+                            <button type="button" class="btn btn-default" id="btnNewsletter">Inscription</button>
+                          </div>
+                        </div>
+                      </div>
 
-</body>
+                    </div>
+                    <div class="container-fluid">
+                      <div class="row">
+                        <div id="copyright">
+                          Copyright © <a href="#">BeCode</a> 2017, tous droits réservés
+                        </div>
+                      </div>
+                    </div>
 
-</html>
+                  </footer>
+
+
+                  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+                  <!-- Include all compiled plugins (below), or include individual files as needed -->
+                  <script src="js/bootstrap.min.js"></script>
+                  <!--  <script src="js/jQuery.js"></script> -->
+                  <script async defer
+                  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPuNlEkwhQVdbWWZ12PyfUubvQ6ABcClg&callback=initMap">
+                </script>
+                <!-- Google Maps API -->
+
+              </body>
+
+              </html>

@@ -14,7 +14,7 @@
 					<li><a href="index.php?action=home">Accueil</a></li>
 					<li><a href="index.php?action=admin">Administration</a></li>
 					<!-- Rajouter le lien vers votre page ici -->
-					
+					<li><a href="index.php?action=map">Map</a></li>
 					<!-- ex: <li><a href="index.php?action=(le nom que vous voulez)">(Le contenu de la balise a)</a></li> -->
 					<?php if(!empty($_SESSION['authentifie'])){?>
 					<li><a href="index.php?action=logout">Déconnexion</a></li>

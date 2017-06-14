@@ -47,7 +47,13 @@ if(isset($_SESSION['authentifie'])){
 		case 'admin' :
 			require_once (CONTROLLER . 'LoginController.php');
 			$controller = new LoginController();
-			break;/*
+			break;
+
+		case 'map' : 
+			require_once (CONTROLLER . 'MapController.php');
+			$controller = new MapController();
+			break;
+			/*
 		case '(le nom que vous avez donné à votre lien dans le header)' :
 			require_once (CONTROLLER . '(le nom de votre fichier controller)');
 			$controller = new (le controleur)();
