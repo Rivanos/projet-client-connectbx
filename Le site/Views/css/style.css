@@ -23,8 +23,19 @@ body {
   visibility: hidden;
 }
 */
-.jumbotron {
-  background-image: url(img/jumbo.png);
+/* Home Sweet Hom*/
+.fond {
+  background-image: url(Views/Images/jumbotron.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+.padding {
+  padding: 0;
+}
+
+.jumbo-event {
+  background-image: url(Views/Images/jumbo.png);
   background-size: cover;
   height: 90vh;
 }
