@@ -12,8 +12,8 @@
     <script type="text/javascript" src="<?php echo VIEWS;?>js/admin.js"></script>
 		<script type="text/javascript" src="<?php echo VIEWS;?>js/jquery-2.2.4.js"></script>
 		<script type="text/javascript" src="<?php echo VIEWS;?>bootstrap/js/bootstrap.min.js"></script>
-
 	</head>
+  
 	<body>
 		<header>
 			<nav class="navbar navbar-default navbar-fixed-top">

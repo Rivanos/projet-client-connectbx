@@ -26,6 +26,7 @@ body {
 /* Home Sweet Hom*/
 .fond {
   background-image: url(../Images/jumbotron.jpg);
+
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
