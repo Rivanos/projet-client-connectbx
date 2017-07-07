@@ -7,13 +7,13 @@
         <div class="col-md-3 col-sm-3 col-xs-3 menuLeft">
           <h3>Commune</h3>
           <div class="checkbox">
-            <label><input type="checkbox" value="Ixelles" id="Ixelles" />Ixelles</label>
+            <label><input type="checkbox" value="Ixelles" id="commune1"  />Ixelles</label>
           </div>
           <div class="checkbox">
-            <label><input type="checkbox" value="Forest" id="Forest, Brussels"/>Forest</label>
+            <label><input type="checkbox" value="Forest, Brussels" id="commune2"/>Forest</label>
           </div>
           <div class="checkbox">
-            <label><input type="checkbox" value="Anderlecht" id="Anderlecht"/>Anderlecht</label>
+            <label><input type="checkbox" value="Anderlecht" id="commune3"/>Anderlecht</label>
           </div>
           <div class="form-group">
             <label for="sel1">Liste déroulante :</label>
@@ -45,13 +45,13 @@
 
           <h3>Ambassadeurs</h3>
           <div class="checkbox">
-            <label><input type="checkbox" value=""/>Choix</label>
+            <label><input class="submit" type="checkbox" value=""/>Choix</label>
           </div>
           <div class="checkbox">
-            <label><input type="checkbox" value=""/>Choix</label>
+            <label><input class="submit" type="checkbox" value=""/>Choix</label>
           </div>
           <div class="checkbox">
-            <label><input type="checkbox" value=""/>Choix</label>
+            <label><input class="submit" type="checkbox" value=""/>Choix</label>
           </div>
           <div class="form-group">
             <label for="sel3">Liste déroulante :</label>

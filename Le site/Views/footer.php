@@ -29,8 +29,6 @@
 </div>
 
 </footer>
-	<!--<script async defer
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPuNlEkwhQVdbWWZ12PyfUubvQ6ABcClg&callback=initMap">
-	</script>-->
+	<script type="text/javascript" src="<?php echo VIEWS;?>js/script.js"></script>
 	</body>
 </html>
