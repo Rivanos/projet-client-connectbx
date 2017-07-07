@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>ConnectBx</title>
+  <meta charset="utf-8">
+  <meta name="description">
+  <meta name="keywords">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="carte-style.css" type="text/css" rel="stylesheet">
+  <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            <img alt="logo" src="img/logo-01.png" height="30px">
+          </a>
+        </div>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <form class="navbar-form navbar-left" id="searchNavBar">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="#">Accueil</a></li>
+          <li><a href="#">Carte</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Evenements</a></li>
+          <li><a href="#">A propos</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+  <section id="cartePage">
+    <h2>Carte Interactive</h2>
+    <p>Retrouvez ci-dessous la carte qui contient les associations</p>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-3 col-xs-3 menuLeft">
+          <h3>Commune</h3>
+          <div class="checkbox">
+            <label><input type="checkbox" value="Ixelles" id="Ixelles" />Ixelles</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="Forest" id="Forest, Brussels"/>Forest</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="Anderlecht" id="Anderlecht"/>Anderlecht</label>
+          </div>
+          <div class="form-group">
+            <label for="sel1">Liste déroulante :</label>
+            <select class="form-control" id="sel1">
+              <option>Choix</option>
+              <option>Choix</option>
+              <option>Choix</option>
+            </select>
+          </div>
+
+          <h3>Catégories</h3>
+          <div class="checkbox">
+            <label><input type="checkbox" value=""/>Choix</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value=""/>Choix</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value=""/>Choix</label>
+          </div>
+          <div class="form-group">
+            <label for="sel2">Liste déroulante :</label>
+            <select class="form-control" id="sel2">
+              <option>Choix</option>
+              <option>Choix</option>
+              <option>Choix</option>
+            </select>
+          </div>
+
+          <h3>Ambassadeurs</h3>
+          <div class="checkbox">
+            <label><input type="checkbox" value=""/>Choix</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value=""/>Choix</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value=""/>Choix</label>
+          </div>
+          <div class="form-group">
+            <label for="sel3">Liste déroulante :</label>
+            <select class="form-control" id="sel3">
+              <option>A</option>
+              <option>A</option>
+              <option>A</option>
+            </select>
+          </div>
+          <input id="submit" type="button" value="Envoyer">
+        </div>
+        <div class="col-md-9 col-sm-9 col-xs-9" id="map">
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="associationBox">
+            <h3 class="titleAssoc">Association dans la zone recherchée</h3>
+            <p class="descriptionAssoc">Association à but non lucratif, nous réparons des droïdes endommagés pour faire des combats
+              toujours plus épics.</p>
+              <p class="adresseAssoc">Rue des Goujons, 152<br />
+                1070 Anderlecht<br />
+                +32 1 455 67 19 42<br />
+                <a href="#">http://www.sitedelassociation.be</a></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="associationBox">
+                <h3 class="titleAssoc">Association dans la zone recherchée</h3>
+                <p class="descriptionAssoc">Association à but non lucratif, nous réparons des droïdes endommagés pour faire des combats
+                  toujours plus épics.</p>
+                  <p class="adresseAssoc">Rue des Goujons, 152<br />
+                    1070 Anderlecht<br />
+                    +32 1 455 67 19 42<br />
+                    <a href="#">http://www.sitedelassociation.be</a></p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="associationBox">
+                    <h3 class="titleAssoc">Association dans la zone recherchée</h3>
+                    <p class="descriptionAssoc">Association à but non lucratif, nous réparons des droïdes endommagés pour faire des combats
+                      toujours plus épics.</p>
+                      <p class="adresseAssoc">Rue des Goujons, 152<br />
+                        1070 Anderlecht<br />
+                        +32 1 455 67 19 42<br />
+                        <a href="#">http://www.sitedelassociation.be</a></p>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="associationBox">
+                        <h3 class="titleAssoc">Association dans la zone recherchée</h3>
+                        <p class="descriptionAssoc">Association à but non lucratif, nous réparons des droïdes endommagés pour faire des combats
+                          toujours plus épics.</p>
+                          <p class="adresseAssoc">Rue des Goujons, 152<br />
+                            1070 Anderlecht<br />
+                            +32 1 455 67 19 42<br />
+                            <a href="#">http://www.sitedelassociation.be</a></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </section>
+
+
+                  <footer>
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <ul class="socialNetwork">
+                            <li class="socialNetworkLI"><a href="3"><img src="img/SocialNetwork/facebook-green.png" class="logoSocialNetwork" alt="logoFacebook" width="35px"/></a>&nbsp;Facebook</li>
+                            <li class="socialNetworkLI"><a href="3"><img src="img/SocialNetwork/twitter-green.png" class="logoSocialNetwork" alt="logoTwitter"  width="35px"/></a>&nbsp;Twitter</li>
+                            <li class="socialNetworkLI"><a href="3"><img src="img/SocialNetwork/linkedin-green.png" class="logoSocialNetwork" alt="logoLinkedIn"  width="35px"/></a>&nbsp;LinkedIn</li>
+                            <li class="socialNetworkLI"><a href="3"><img src="img/SocialNetwork/instagram-green.png" class="logoSocialNetwork" alt="logoInstagram"  width="35px"/></a>&nbsp;Instagram</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="newsletter">
+                          <div id="input-group">
+                            <input type="text" class="form-control" placeholder="Votre adresse mail"/>
+                            <button type="button" class="btn btn-default" id="btnNewsletter">Inscription</button>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="container-fluid">
+                      <div class="row">
+                        <div id="copyright">
+                          Copyright © <a href="#">BeCode</a> 2017, tous droits réservés
+                        </div>
+                      </div>
+                    </div>
+
+                  </footer>
+
+
+                  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+                  <!-- Include all compiled plugins (below), or include individual files as needed -->
+                  <script src="js/bootstrap.min.js"></script>
+                  <!--  <script src="js/jQuery.js"></script> -->
+                  <script async defer
+                  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPuNlEkwhQVdbWWZ12PyfUubvQ6ABcClg&callback=initMap">
+                </script>
+                <!-- Google Maps API -->
+
+              </body>
+
+              </html>
