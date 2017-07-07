@@ -23,20 +23,8 @@ body {
   visibility: hidden;
 }
 */
-/* Home Sweet Hom*/
-
-.fond {
-  background-image: url(../Images/jumbotron.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
-}
-.padding {
-  padding: 0;
-}
-
-.jumbo-event {
-  background-image: url(Views/Images/jumbo.png);
+.jumbotron {
+  background-image: url(img/jumbo.png);
   background-size: cover;
   height: 90vh;
 }
@@ -52,7 +40,6 @@ footer {
   width: 100%;
   color: #A6ACAF;
   padding-top: 10px;
-
 }
 
 .socialNetwork > li,
@@ -86,10 +73,6 @@ footer {
   margin-right: auto;
 }
 
-#btnNewsletter {
-
-}
-
 #copyright {
   text-align: center;
   margin-top: 10px;
@@ -97,4 +80,23 @@ footer {
   background-color: #569547;
   width: 100%;
   height: 60px;
+}
+
+.menuLeft {
+  border: 1px solid black;
+  text-align: left;
+  background-color: #E9E9E9;
+}
+
+#map {
+  border:1px solid black;
+  width: 100%;
+  height: 500px;
+}
+
+.associationBox {
+  text-align: left;
+  border: 1px solid black;
+  padding: 20px;
+  margin: 10px;
 }

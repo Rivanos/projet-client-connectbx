@@ -1,23 +1,28 @@
 <?php
 class Association{
+	private $_id;
 	private $_name;
 	private $_description;
 	private $_address;
 	private $_phone;
 	private $_website;
 	private $_localisation;
-	private $_categorie;
-	
-	public function __construct($name, $description, $address, $phone, $website, $localisation, $categorie){
+	private $_theme;
+
+	public function __construct($id, $name, $description, $address, $phone, $website, $localisation, $theme){
+		$this->_id = $id;
 		$this->_name = $name;
 		$this->_description = $description;
 		$this->_address = $address;
 		$this->_phone = $phone;
 		$this->_website = $website;
 		$this->_localisation = $localisation;
-		$this->_categorie = $categorie;
+		$this->_theme = $theme;
 	}
-	
+
+	public function id(){
+		return $this->_id;
+	}
 	public function name(){
 		return $this->_name;
 	}
@@ -36,37 +41,40 @@ class Association{
 	public function localisation(){
 		return $this->_localisation;
 	}
-
-	public function categorie(){
-		return $this->_categorie;
+	public function theme(){
+		return $this->_theme;
 	}
-	
-	public function setName($name){
+
+	public function set_id($id){
+		$this->_id=$id;
+	}
+
+	public function set_name($name){
 		$this->_name=$name;
 	}
-	
-	public function setDescription($description){
+
+	public function set_description($description){
 		$this->_description=$description;
 	}
-	
-	public function setAddress($address){
+
+	public function set_address($address){
 		$this->_address=$address;
 	}
-	
-	public function setPhone($phone){
+
+	public function set_phone($phone){
 		$this->_phone=$phone;
 	}
-	
-	public function setWebsite($website){
+
+	public function set_website($website){
 		$this->_website=$website;
 	}
-	
-	public function setLocalisation($localisation){
+
+	public function set_localisation($localisation){
 		$this->_localisation=$localisation;
 	}
-	
-	public function setCategorie($categorie){
-		$this->_categorie=$categorie;
+
+	public function set_theme($theme){
+		$this->_theme=$theme;
 	}
 }
 ?>
