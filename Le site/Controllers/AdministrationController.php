@@ -27,7 +27,7 @@ class AdministrationController{
 				foreach ($_POST['add_lines'] as $value) {
 					$add_table = $_POST['add' . $value];
 					if($table == 'user') Db::getInstance()->insert_user($add_table[0], $add_table[1], $add_table[2], $add_table[3], $add_table[4], $add_table[5]);
-					if($table == 'association') Db::getInstance()->insert_association($add_table[0], $add_table[1], $add_table[2], $add_table[3], $add_table[4], $add_table[5], $add_table[6]);
+					if($table == 'association') Db::getInstance()->insert_association($add_table[0], $add_table[1], $add_table[2], $add_table[3], $add_table[4], $add_table[5], $add_table[6], $add_table[7]);
 					if($table == 'event') Db::getInstance()->insert_event($add_table[0], $add_table[1], $add_table[2], $add_table[3], $add_table[4]);
 				}
 			}
@@ -36,7 +36,7 @@ class AdministrationController{
 				foreach ($_POST['edit_lines'] as $value) {
 					$edit_table = $_POST['edit' . $value];
 					if($table == 'user') Db::getInstance()->update_user($edit_table[0], $edit_table[1], $edit_table[2], $edit_table[3], $edit_table[4], $edit_table[5], $edit_table[6]);
-					if($table == 'association') Db::getInstance()->update_association($edit_table[0], $edit_table[1], $edit_table[2], $edit_table[3], $edit_table[4], $edit_table[5], $edit_table[6], $edit_table[7]);
+					if($table == 'association') Db::getInstance()->update_association($edit_table[0], $edit_table[1], $edit_table[2], $edit_table[3], $edit_table[4], $edit_table[5], $edit_table[6], $edit_table[7], $edit_table[8]);
 					if($table == 'event') Db::getInstance()->update_event($edit_table[0], $edit_table[1], $edit_table[2], $edit_table[3], $edit_table[4], $edit_table[5]);
 				}
 			}

@@ -55,7 +55,4 @@ Worpress?
 2. http://rivanos.esy.es/wp-login.php?redirect_to=http%3A%2F%2Frivanos.esy.es%2Fwp-admin%2F&reauth=1
 3. https://cpanel.hostinger.fr/
 
-4. voir wp-content /themes
-5. voir comment integrer son themes soi-meme (blank, boner, feuille blanche,...)
-
 

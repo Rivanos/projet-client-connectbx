@@ -60,7 +60,8 @@
 						<th>Adresse</th>
 						<th>Tel</th>
 						<th>Website</th>
-						<th>Localisation</th>
+						<th>Latitude</th>
+						<th>Longitude</th>
 						<th>Theme</th>
 						<th>Supprimer</th>
 						<th></th>
@@ -75,7 +76,8 @@
 						<td><input class="form-control" type="text" value="<?= $association->address();?>"></td>
 						<td><input class="form-control" type="text" value="<?= $association->phone();?>"></td>
 						<td><input class="form-control" type="text" value="<?= $association->website();?>"></td>
-						<td><input class="form-control" type="text" value="<?= $association->localisation();?>"></td>
+						<td><input class="form-control" type="text" value="<?= $association->latitude();?>"></td>
+						<td><input class="form-control" type="text" value="<?= $association->longitude();?>"></td>
 						<td><input class="form-control" type="text" value="<?= $association->theme();?>"></td>
 						<td><input type="checkbox" name="delete[]" value="<?= $association->id(); ?>"></td>
 						<td><input type="hidden" value="<?= $i; ?>"></td>
