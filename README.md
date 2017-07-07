@@ -11,3 +11,8 @@ Création d'un site web en groupe pour une "ASBL" nommé "ConnectBx"
 5. [Gilles Youtou](https://github.com/bbycode)
 6. [Michael Mesmaeker. Github Master](https://github.com/Rivanos)
 
+## Test de performance du site
+
+1. lighthouse
+2. blazemeters
+

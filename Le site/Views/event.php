@@ -11,13 +11,13 @@
           </p>
         </div>
         <div style="border:1px solid black" class="col-md-4">
-          <div class="jumbotron"></div>
+          <div class="jumbotron jumbo-event"></div>
           <h1>Nom de l'event II</h1>
           <p>Description de l'event:<br/>Lorem ipsum dolor sit amet,.. <a href="www.google.com"> <button id="boutonId" class="btn btn-link my_popup_open"> Lire +</button> </a>
         </p>
       </div>
       <div style="border:1px solid black" class="col-md-4">
-        <div class="jumbotron"></div>
+        <div class="jumbotron jumbo-event"></div>
         <h1>Nom de l'event III</h1>
         <p>Description de l'event:<br/>Lorem ipsum dolor sit amet,.. <a href="www.google.com"> <button class="btn btn-link my_popup_open"> Lire +</button> </a>
       </p>
