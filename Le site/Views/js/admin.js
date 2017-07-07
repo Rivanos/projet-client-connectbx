@@ -49,7 +49,8 @@ $(document).ready(function () {
 					'<td><input class="form-control" type="text" name="add' + countAdded + '[]" placeholder="Adresse"></td>' +
 					'<td><input class="form-control" type="text" name="add' + countAdded + '[]" placeholder="Téléphone"></td>' +
 					'<td><input class="form-control" type="text" name="add' + countAdded + '[]" placeholder="Website"></td>' +
-					'<td><input class="form-control" type="text" name="add' + countAdded + '[]" placeholder="Localisation"></td>' +
+					'<td><input class="form-control" type="text" name="add' + countAdded + '[]" placeholder="Latitude"></td>' +
+					'<td><input class="form-control" type="text" name="add' + countAdded + '[]" placeholder="Longitude"></td>' +
 					'<td><input class="form-control" type="text" name="add' + countAdded + '[]" placeholder="Theme"></td>' +
 				'</tr>'
 			]

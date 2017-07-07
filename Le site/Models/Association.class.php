@@ -6,17 +6,19 @@ class Association{
 	private $_address;
 	private $_phone;
 	private $_website;
-	private $_localisation;
+	private $_latitude;
+	private $_longitude;
 	private $_theme;
 
-	public function __construct($id, $name, $description, $address, $phone, $website, $localisation, $theme){
+	public function __construct($id, $name, $description, $address, $phone, $website, $latitude, $longitude, $theme){
 		$this->_id = $id;
 		$this->_name = $name;
 		$this->_description = $description;
 		$this->_address = $address;
 		$this->_phone = $phone;
 		$this->_website = $website;
-		$this->_localisation = $localisation;
+		$this->_latitude = $latitude;
+		$this->_longitude = $longitude;
 		$this->_theme = $theme;
 	}
 
@@ -38,8 +40,11 @@ class Association{
 	public function website(){
 		return $this->_website;
 	}
-	public function localisation(){
-		return $this->_localisation;
+	public function latitude(){
+		return $this->_latitude;
+	}
+	public function longitude(){
+		return $this->_longitude;
 	}
 	public function theme(){
 		return $this->_theme;
@@ -69,8 +74,12 @@ class Association{
 		$this->_website=$website;
 	}
 
-	public function set_localisation($localisation){
-		$this->_localisation=$localisation;
+	public function set_latitude($latitude){
+		$this->_latitude=$latitude;
+	}
+
+	public function set_longitude($longitude){
+		$this->_longitude=$longitude;
 	}
 
 	public function set_theme($theme){
