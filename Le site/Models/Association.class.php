@@ -53,35 +53,27 @@ class Association{
 	public function set_id($id){
 		$this->_id=$id;
 	}
-
 	public function set_name($name){
 		$this->_name=$name;
 	}
-
 	public function set_description($description){
 		$this->_description=$description;
 	}
-
 	public function set_address($address){
 		$this->_address=$address;
 	}
-
 	public function set_phone($phone){
 		$this->_phone=$phone;
 	}
-
 	public function set_website($website){
 		$this->_website=$website;
 	}
-
 	public function set_latitude($latitude){
 		$this->_latitude=$latitude;
 	}
-
 	public function set_longitude($longitude){
 		$this->_longitude=$longitude;
 	}
-
 	public function set_theme($theme){
 		$this->_theme=$theme;
 	}

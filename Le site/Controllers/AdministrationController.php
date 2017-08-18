@@ -7,6 +7,9 @@ class AdministrationController{
 
 	public function run(){
 
+		// Met à jour les dates
+		$date_min = strftime("%G-%m-%d", strtotime("-120 years"));
+		$date_max = strftime("%G-%m-%d", strtotime("-12 years"));
 
 		// Affiche toutes les valeurs de POST
 		if(!empty($_POST)){
@@ -15,6 +18,7 @@ class AdministrationController{
 		echo "</pre>";
 		}
 
+		$table = 'initial';
 
 		// NOTE: Updates the db if submitted
 		if(isset($_POST['edit_submit'])){
@@ -23,7 +27,7 @@ class AdministrationController{
 			$table = $_POST['table'];
 
 			// NOTE: Inserts elements in db
-			if (isset($_POST['add_lines'])&&isset($_POST['add1'])) {
+			if (isset($_POST['add_lines'])&&isset($_POST['add0'])) {
 				foreach ($_POST['add_lines'] as $value) {
 					$add_table = $_POST['add' . $value];
 					if($table == 'user') Db::getInstance()->insert_user($add_table[0], $add_table[1], $add_table[2], $add_table[3], $add_table[4], $add_table[5]);
@@ -42,7 +46,7 @@ class AdministrationController{
 			}
 		}
 		// NOTE: Deletes elements in db
-		if(isset($_POST['delete_submit'])){
+		if(isset($_POST['delete_submit']) && isset($_POST['delete'])){
 			// NOTE: Gets the current table
 			$table = $_POST['table'];
 

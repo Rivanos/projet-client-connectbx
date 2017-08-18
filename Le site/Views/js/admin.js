@@ -6,15 +6,18 @@ $(document).ready(function () {
 	var countAdded = 0;
 
 	$("td>.form-control").change(function () {
-		$(this).parent().addClass("has-warning");
-		var elem = $(this).parent().parent().children(0).children();
-		elem.attr("name", "edit" + elem.last().val() + "[]");
-		elem.last().attr("name", "edit_lines[]");
+		var patt = new RegExp($(this).attr("pattern"));
+		var isPattOk = patt.test($(this).val());
+		console.log(patt + " " + $(this).val() + " " + isPattOk);
+		if(isPattOk){
+			var elem = $(this).parent().parent().children(0).children();
+			elem.attr("name", "edit" + elem.last().val() + "[]");
+			elem.last().attr("name", "edit_lines[]");	
+			$(this).parent().attr("class", "has-success");
+		} else {
+			$(this).parent().attr("class", "has-error");	
+		}
 	});
-
-	/*$("td>.form-control").outfocus(function(){
-
-	});*/
 
 	// Check if passwords are the same : confirmation
 	/*$('.check-password').outfocus(function(){
@@ -26,13 +29,13 @@ $(document).ready(function () {
 			[
 				'<tr class="add-user">' +
 					'<td><input class="form-control" type="hidden" name="add_lines[]" value=' + countAdded + '></td>' +
-					'<td><input class="form-control" type="text" name="add' + countAdded + '[]" placeholder="Nom"></td>' +
-					'<td><input class="form-control" type="text" name="add' + countAdded + '[]" placeholder="Prénom"></td>' +
-					'<td><input class="form-control" type="date" name="add' + countAdded + '[]"></td>' +
-					'<td><input class="form-control" type="email" name="add' + countAdded + '[]" placeholder="E-mail"></td>' +
-					'<td><input class="form-control" type="text" name="add' + countAdded + '[]" placeholder="Login"></td>' +
-					'<td><input class="form-control" type="password" name="add' + countAdded + '[]" placeholder="Mot de passe"></td>' +
-					'<td><input class="form-control" type="password" name="add' + countAdded + '[]" class="check-password" placeholder="Confirmer mot de passe"></td>' +
+					'<td><input class="form-control" type="text" name="add' + countAdded + '[]" placeholder="Nom" maxlength="50" required></td>' +
+					'<td><input class="form-control" type="text" name="add' + countAdded + '[]" placeholder="Prénom" maxlength="50" required></td>' +
+					'<td><input class="form-control" type="date" name="add' + countAdded + '[]" required></td>' +
+					'<td><input class="form-control" type="email" name="add' + countAdded + '[]" placeholder="E-mail" maxlength="50" required></td>' +
+					'<td><input class="form-control" type="text" name="add' + countAdded + '[]" placeholder="Login" maxlength="50" required></td>' +
+					'<td><input class="form-control" type="password" name="add' + countAdded + '[]" placeholder="Mot de passe" maxlength="50" pattern="[a-z0-9A-Z._%+-\\s]{6,50}" title="" required></td>' +
+					'<td><input class="form-control" type="password" name="add' + countAdded + '[]" class="check-password" placeholder="Confirmer mot de passe" maxlength="50" required></td>' +
 				'</tr>'
 			]
 		);
@@ -71,6 +74,8 @@ $(document).ready(function () {
 				'</tr>'
 			]
 		);
+		countAdded++;
 	});
-	countAdded++;
+
+
 });

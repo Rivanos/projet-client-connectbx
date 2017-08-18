@@ -48,7 +48,7 @@ if(isset($_SESSION['authentifie'])){
 			require_once (CONTROLLER . 'LoginController.php');
 			$controller = new LoginController();
 			break;
-     case 'map' : 
+     case 'map' :
 			require_once (CONTROLLER . 'MapController.php');
 			$controller = new MapController();
 			break;
@@ -59,10 +59,10 @@ if(isset($_SESSION['authentifie'])){
     case 'event' :
 			require_once (CONTROLLER . 'EventController.php');
 			$controller = new EventController();
-			break;	
+			break;
     case 'aPropos' :
-			require_once (CONTROLLER . 'aPropos.php');
-			$controller = new LoginController();
+			require_once (CONTROLLER . 'aProposController.php');
+			$controller = new aProposController();
 			break;
       /*
 		case '(le nom que vous avez donné à votre lien dans le header)' :

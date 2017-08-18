@@ -15,7 +15,7 @@ class LoginController{
 
 		$notification="";
 
-		if (empty($_POST)) {
+		if (empty($_POST['login'])) {
 			# L'utilisateur doit remplir le formulaire
 			$notification='Vous êtes sur un espace sécurisé, veuillez vous authentifier';
 		} elseif (!Db::getInstance()->validate_user($_POST['login'], $_POST['password'])) {
