@@ -10,8 +10,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script type="text/javascript" src="<?php echo VIEWS;?>js/jquery-2.2.4.js"></script>
 		<script type="text/javascript" src="<?php echo VIEWS;?>bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="<?php echo VIEWS;?>js/script.js"></script>
 		<script type="text/javascript" src="<?php echo VIEWS;?>js/admin.js"></script>
-		
+
 	</head>
 	<body>
 		<header>
