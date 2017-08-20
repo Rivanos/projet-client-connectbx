@@ -1,56 +1,64 @@
 <div id ="container">
   <div class="row">
-    <div class="col-md-2 col-md-offset-2">
+    <div class="col-md-2 col-md-offset-2 " id="sectionTitle">
       <h2>CONTACT</h2>
     </div>
   </div>
   <div class="row">
     <div class="col-md-2 col-md-offset-2">
-      <span>ConnectBX</span>
-      <h6>o</h6>
+      <span id="assosName">ConnectBX</span>
+      <h6 class="emptySpace">o</h6>
     </div>
-    <div class="col-md-5">
-      <p>Dans l'attente de répondre à votre message</p>
+    <div class="col-md-6 col-md-offset-1">
+      <p id="contactWelcomeMsg">Dans l'attente de répondre à votre message</p>
     </div>
   </div>
   <div class="row">
     <div class="col-md-2 col-md-offset-2">
-      <p>152, rue des Goujons</p>
-      <p>1070 Anderlecht</p>
-      <p> o</p>
-      <p>
-        Tel: +3211000000
+      <p class="contactpInfoStyle">152, rue des Goujons
         <br>
-        Fax: +3211000001
+        1070 Anderlecht
       </p>
-      <p>o</p>
-      <p>Email:<span>info@connectbx.com</span></p>
-      <ul class="socialNetwork">
-			<li class="socialNetworkLI"><a href="3"><img src="<?php echo VIEWS;?>Images/SocialNetwork/facebook-grey.png" class="logoSocialNetwork" alt="logoFacebook" width="26px"/></a></li>
-			<li class="socialNetworkLI"><a href="3"><img src="<?php echo VIEWS;?>Images/SocialNetwork/twitter-grey.png" class="logoSocialNetwork" alt="logoTwitter"  width="26px"/></a></li>
-			<li class="socialNetworkLI"><a href="3"><img src="<?php echo VIEWS;?>Images/SocialNetwork/linkedin-grey.png" class="logoSocialNetwork" alt="logoLinkedIn"  width="26px"/></a></li>
-			<li class="socialNetworkLI"><a href="3"><img src="<?php echo VIEWS;?>Images/SocialNetwork/google+-grey.png" class="logoSocialNetwork" alt="logoGoogle+"  width="26px"/></a></li>
+      <p class="emptySpace"> o</p>
+      <p class="contactpInfoStyle">
+        Tel: +321-100-0000
+        <!--br>
+        Fax: +321-100-0001-->
+      </p>
+      <p class="emptySpace">o</p>
+      <p class="contactpInfoStyle">Email:&nbsp;<span id="assosEmail">info@connectbx.com</span></p>
+      <ul class="socialNetworkContactBody">
+			<li class="socialNetworkContactBodyLi"><a href="https://www.facebook.com/connectbx"><img src="<?php echo VIEWS;?>Images/SocialNetwork/facebook-gray.png"  alt="logoFacebook"/></a></li>
+			<li class="socialNetworkContactBodyLi"><a href="3"><img src="<?php echo VIEWS;?>Images/SocialNetwork/twitter-gray.png"  alt="logoTwitter" /></a></li>
+			<li class="socialNetworkContactBodyLi"><a href="3"><img src="<?php echo VIEWS;?>Images/SocialNetwork/linkedin-gray.png"  alt="logoLinkedIn"/></a></li>
+			<li class="socialNetworkContactBodyLi"><a href="3"><img src="<?php echo VIEWS;?>Images/SocialNetwork/google-gray.png"  alt="logoGoogle+"/></a></li>
 			</ul>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 col-md-offset-1">
       <form>
-    <div class="form-group">
-      <input type="text" class="form-control" placeholder="Nom" name="Nom" value="">
+    <div class="arroundInput">
+      <input type="text" class="insideInput" placeholder="Nom, Prénom" name="Nom"
+      pattern="[a-zA-Z0-9]+\,+[a-zA-Z0-9]" value="">
     </div>
-    <div class="form-group">
-      <input type="text" class="form-control" placeholder="Email" name="email" value="">
+    <div class="arroundInput">
+      <input
+      type="text" class="insideInput"
+      placeholder="Email" name="email"
+      pattern="[a-z0-9+.%_-]+@[a-z0-9+.%_-]+\.[a-z{2,3}$]"
+      title="Votre adresse mail doit etre sous la forme : johndoe@site.domain" 
+      value="">
     </div>
-    <div class="form-group">
-      <input type="text" class="form-control" placeholder="Sujet" name="sujet" value="">
+    <div class="arroundInput">
+      <input type="text" class="insideInput" placeholder="Sujet" name="sujet" value="">
     </div>
-    <div class="form-group">
-      <textarea class="form-control" name="Message" id="comments" rows="5">
+    <div class="arroundInput">
+      <textarea class="insideInput" name="message" placeholder="Message" id="comments" rows="5">
       </textarea>
     </div>
-    <div class="form-group">
-      <button type="submit" name="envoyer" class="btn">Envoyer</button>
+    <div class="arroundInput" id="btnPosition">
+      <button type="submit" name="envoyer" class="btnStyle">Envoyer</button>
     </div>
   </form>
     </div>
-  </div>
 </div>
+<p class="emptySpaceEnd"></p>
