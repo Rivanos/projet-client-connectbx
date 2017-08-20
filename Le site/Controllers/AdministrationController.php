@@ -67,6 +67,9 @@ class AdministrationController{
 
 
 		require_once VIEWS . 'administration.php';
+		require_once VIEWS . 'admin_users.php';
+		require_once VIEWS . 'admin_associations.php';
+		require_once VIEWS . 'admin_events.php';
 
 	}
 
