@@ -36,9 +36,13 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <form class="navbar-form navbar-left" id="searchNavBar">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" id="recherche" class="form-control" placeholder="Rechercher l'association..." autocomplete="off">
+						<?php
+
+							include 'searchview.php';
+
+						 ?>
           </div>
-          <button type="submit" class="btn btn-default">Submit</button>
         </form>
         <ul class="nav navbar-nav navbar-right">
 					<li><a href="index.php?action=home">Accueil</a></li>

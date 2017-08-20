@@ -98,6 +98,18 @@ class Db {
 		$qp->bindValue(':theme', $theme);
 		$qp->execute();
 	}
+	// NOTE: SELECT ALL ASSOC_NAME FROM ASSOC (Zone de recherche navbar)
+	public function select_all_assoc__name($keyword){
+		$query = 'SELECT assoc_name FROM associations WHERE assoc_name LIKE '.$this->_db->quote($keyword.'%').'LIMIT 0,5';
+		$result = $this->_db->query($query);
+		$tab = array();
+		if($result->rowcount()!=0){
+			while ($row = $result->fetch()) {
+				$tab[] = ($row->assoc_name);
+			}
+		}
+		return $tab;
+	}
 
 	// NOTE: SELECT ALL ASSOCIATIONS
 	public function select_all_associations(){
@@ -157,12 +169,12 @@ class Db {
 		$tab = array();
 		if($result->rowcount()!=0){
 			while($row = $result->fetch()){
-				$tab[] = new Event($row->event_id, $row->event_name, $row->event_date, $row->event_descri, $row->event_image, $row->event_priority, 
+				$tab[] = new Event($row->event_id, $row->event_name, $row->event_date, $row->event_descri, $row->event_image, $row->event_priority,
 					$row->event_address);
 			}
 		}
 		return $tab;
-	}	
+	}
 
 	// NOTE: Select all events in present + in future
 	public function select_all_events_to_come(){
@@ -171,7 +183,7 @@ class Db {
 		$tab = array();
 		if($result->rowcount()!=0){
 			while($row = $result->fetch()){
-				$tab[] = new Event($row->event_id, $row->event_name, $row->event_date, $row->event_descri, $row->event_image, $row->event_priority, 
+				$tab[] = new Event($row->event_id, $row->event_name, $row->event_date, $row->event_descri, $row->event_image, $row->event_priority,
 					$row->event_address);
 			}
 		}
