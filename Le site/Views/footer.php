@@ -29,6 +29,5 @@
 </div>
 
 </footer>
-	<script type="text/javascript" src="<?php echo VIEWS;?>js/script.js"></script>
-	</body>
+</body>
 </html>
