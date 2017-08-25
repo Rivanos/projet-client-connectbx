@@ -73,8 +73,8 @@ class Db {
 	}
 
 	// UPDATE USER
-	public function update_user($id, $name, $first_name, $birthdate, $email, $login, $pwd){
-		$query = 'UPDATE users SET user_name=' . $this->_db->quote($name) . ', user_firstname=' . $this->_db->quote($first_name) . ', user_birthdate=' . $this->_db->quote($birthdate) . ', user_email=' . $this->_db->quote($email) . ', user_login=' . $this->_db->quote($login) . ', user_pwd=' . $this->_db->quote(sha1($pwd)) . ' WHERE user_id=' . $this->_db->quote($id);
+	public function update_user($id, $name, $first_name, $birthdate, $email, $login){
+		$query = 'UPDATE users SET user_name=' . $this->_db->quote($name) . ', user_firstname=' . $this->_db->quote($first_name) . ', user_birthdate=' . $this->_db->quote($birthdate) . ', user_email=' . $this->_db->quote($email) . ', user_login=' . $this->_db->quote($login) . ' WHERE user_id=' . $this->_db->quote($id);
 		$this->_db->prepare($query)->execute();
 	}
 
@@ -85,30 +85,17 @@ class Db {
 	}
 
 	// NOTE: INSERT ASSOCIATION
-	public function insert_association($name, $description, $address, $phone, $website, $latitude, $longitude, $theme){
-		$query='INSERT INTO associations(`assoc_name`, `assoc_descri`, `assoc_address`, `assoc_phone`, `assoc_website`, `assoc_latitude`, `assoc_longitude`, `assoc_theme`) VALUES (:name, :description, :address, :phone, :website, :latitude, :longitude, :theme)';
+	public function insert_association($name, $description, $address, $phone, $website, $localisation, $theme){
+		$query='INSERT INTO associations(`assoc_name`, `assoc_descri`, `assoc_address`, `assoc_phone`, `assoc_website`, `assoc_local`, `assoc_theme`) VALUES (:name, :description, :address, :phone, :website, :localisation, :theme)';
 		$qp = $this->_db->prepare($query);
 		$qp->bindValue(':name', $name);
 		$qp->bindValue(':description', $description);
 		$qp->bindValue(':address', $address);
 		$qp->bindValue(':phone', $phone);
 		$qp->bindValue(':website', $website);
-		$qp->bindValue(':latitude', $latitude);
-		$qp->bindValue(':longitude', $longitude);
+		$qp->bindValue(':localisation', $localisation);
 		$qp->bindValue(':theme', $theme);
 		$qp->execute();
-	}
-	// NOTE: SELECT ALL ASSOC_NAME FROM ASSOC (Zone de recherche navbar)
-	public function select_all_assoc__name($keyword){
-		$query = 'SELECT assoc_name FROM associations WHERE assoc_name LIKE '.$this->_db->quote($keyword.'%').'LIMIT 0,5';
-		$result = $this->_db->query($query);
-		$tab = array();
-		if($result->rowcount()!=0){
-			while ($row = $result->fetch()) {
-				$tab[] = ($row->assoc_name);
-			}
-		}
-		return $tab;
 	}
 
 	// NOTE: SELECT ALL ASSOCIATIONS
@@ -118,15 +105,15 @@ class Db {
 		$tab = array();
 		if($result->rowcount()!=0){
 			while ($row = $result->fetch()){
-				$tab[] = new Association($row->assoc_id, $row->assoc_name, $row->assoc_descri, $row->assoc_address, $row->assoc_phone, $row->assoc_website, $row->assoc_latitude, $row->assoc_longitude, $row->assoc_theme);
+				$tab[] = new Association($row->assoc_id, $row->assoc_name, $row->assoc_descri, $row->assoc_address, $row->assoc_phone, $row->assoc_website, $row->assoc_local, $row->assoc_theme);
 			}
 		}
 		return $tab;
 	}
 
 	// NOTE: UPDATE ASSOCIATION
-	public function update_association($id, $name, $description, $address, $phone, $website, $latitude, $longitude, $theme){
-		$query = 'UPDATE associations SET assoc_name=' . $this->_db->quote($name) . ', assoc_descri=' . $this->_db->quote($description) . ', assoc_address=' . $this->_db->quote($address) . ', assoc_phone=' . $this->_db->quote($phone) . ', assoc_website=' . $this->_db->quote($website) . ', assoc_latitude=' . $this->_db->quote($latitude) .', assoc_longitude=' . $this->_db->quote( $longitude) . ', assoc_theme=' . $this->_db->quote($theme) . ' WHERE assoc_id=' . $this->_db->quote($id);
+	public function update_association($id, $name, $description, $address, $phone, $website, $localisation, $theme){
+		$query = 'UPDATE associations SET assoc_name=' . $this->_db->quote($name) . ', assoc_descri=' . $this->_db->quote($description) . ', assoc_address=' . $this->_db->quote($address) . ', assoc_phone=' . $this->_db->quote($phone) . ', assoc_website=' . $this->_db->quote($website) . ', assoc_local=' . $this->_db->quote($localisation) . ', assoc_theme=' . $this->_db->quote($theme) . ' WHERE assoc_id=' . $this->_db->quote($id);
 		$this->_db->prepare($query)->execute();
 	}
 
@@ -137,15 +124,14 @@ class Db {
 	}
 
 	// NOTE: INSERT EVENT
-	public function insert_event($name, $event_date, $description, $image, $priority, $address){
-		$query = 'INSERT INTO events(`event_name`, `event_date`, `event_descri`, `event_image`, `event_priority`, `event_address`) VALUES (:name, :event_date, :description, :image, :priority, :event_address)';
+	public function insert_event($name, $event_date, $description, $image, $nEvent){
+		$query = 'INSERT INTO events(`event_name`, `event_date`, `event_descri`, `event_image`, `event_nEvent`) VALUES (:name, :event_date, :description, :image, :nEvent)';
 		$qp = $this->_db->prepare($query);
 		$qp->bindValue(':name', $name);
 		$qp->bindValue(':event_date', $event_date);
 		$qp->bindValue(':description', $description);
 		$qp->bindValue(':image', $image);
-		$qp->bindValue(':priority', $priority);
-		$qp->bindValue(':event_address', $address);
+		$qp->bindValue(':nEvent', $nEvent);
 		$qp->execute();
 	}
 
@@ -156,7 +142,8 @@ class Db {
 		$tab = array();
 		if($result->rowcount()!=0){
 			while($row = $result->fetch()){
-				$tab[] = new Event($row->event_id, $row->event_name, $row->event_date, $row->event_descri, $row->event_image, $row->event_priority, $row->event_address);
+				$tab[] = new Event($row->event_id, $row->event_name, $row->event_date, $row->event_descri, $row->event_image, $row->event_nEvent,
+					$row->event_address);
 			}
 		}
 		return $tab;
@@ -167,12 +154,14 @@ class Db {
 		$query = 'SELECT * FROM events WHERE event_date < NOW()';
 		$result = $this->_db->query($query);
 		$tab = array();
+
 		if($result->rowcount()!=0){
 			while($row = $result->fetch()){
-				$tab[] = new Event($row->event_id, $row->event_name, $row->event_date, $row->event_descri, $row->event_image, $row->event_priority,
+				$tab[] = new Event($row->event_id, $row->event_name, $row->event_date, $row->event_descri, $row->event_image, $row->event_nEvent, 
 					$row->event_address);
 			}
 		}
+
 		return $tab;
 	}
 
@@ -181,66 +170,31 @@ class Db {
 		$query = 'SELECT * FROM events WHERE event_date > NOW()';
 		$result = $this->_db->query($query);
 		$tab = array();
+
 		if($result->rowcount()!=0){
 			while($row = $result->fetch()){
-				$tab[] = new Event($row->event_id, $row->event_name, $row->event_date, $row->event_descri, $row->event_image, $row->event_priority,
+				$tab[] = new Event($row->event_id, $row->event_name, $row->event_date, $row->event_descri, $row->event_image, $row->event_nEvent, 
 					$row->event_address);
 			}
 		}
+
 		return $tab;
 	}
 
 	// NOTE: SELECT PRIMARY EVENTS
 	public function select_primary_events(){
-		$query = 'SELECT * FROM events WHERE event_priority=1';
-		$result = $this->_db->query($query);
-		$tab = array();
-		if($result->rowcount()!=0){
-			while($row = $result->fetch()){
-				$tab[] = new Event($row->event_id, $row->event_name, $row->event_date, $row->event_descri, $row->event_image, $row->event_priority, $row->event_address);
-			}
-		}
-		return $tab;
 	}
 
 	// NOTE: UPDATE EVENT
-	public function update_event($id, $name, $date, $description, $image, $priority, $address){
-		$query = 'UPDATE events SET event_name=' . $this->_db->quote($name) . ', event_date=' . $this->_db->quote($date) . ', event_descri=' . $this->_db->quote($description) . ', event_image=' . $this->_db->quote($image) . ', event_priority=' . $this->_db->quote($priority) . ', event_address=' . $this->_db->quote($address) . ' WHERE event_id=' . $this->_db->quote($id);
+	public function update_event($id, $name, $date, $description, $image, $nEvent){
+		$query = 'UPDATE events SET event_name=' . $this->_db->quote($name) . ', event_date=' . $this->_db->quote($date) . ', event_descri=' . $this->_db->quote($description) . ', event_image=' . $this->_db->quote($image) . ', event_nEvent=' . $this->_db->quote($nEvent) . ' WHERE event_id=' . $this->_db->quote($id);
 		$this->_db->prepare($query)->execute();
+
 	}
 
 	// NOTE: DELETE EVENT
 	public function delete_event($id){
 		$query = 'DELETE FROM events WHERE event_id=' . $this->_db->quote($id);
-		$this->_db->prepare($query)->execute();
-	}
-
-	// NOTE: INSERT ADDRESS
-	public function insert_address($street, $number, $town, $post_code, $post_box){
-		$query = 'INSERT INTO address(address_street, address_number, address_town, address_post_code, address_post_box) VALUES (:street, :numb, :town, :postcode, :postbox)';
-		$qp = $this->_db->prepare($query);
-		$qp->bindValue(':street', $street);
-		$qp->bindValue(':numb', $number);
-		$qp->bindValue(':town', $town);
-		$qp->bindValue(':postcode', $post_code);
-		$qp->bindValue(':postbox', $post_box);
-		$qp->execute();
-	}
-
-	public function select_address($id){
-		$query = 'SELECT * FROM address WHERE address_id=' . $this->_db->quote($id);
-		$result = $this->_db->query($query);
-		$row = $result->fetch();
-		return new Address($row->address_id, $row->address_street, $row->address_number, $row->address_town, $row->address_post_code, $row->address_post_box);
-	}
-
-	public function update_address($id, $street, $number, $town, $post_code, $post_box){
-		$query = 'UPDATE address SET address_street=' . $this->_db->quote() . ', address_number=' . $this->_db->quote() . ', address_town=' . $this->_db->quote() . ', address_post_code=' . $this->_db->quote() . ', address_post_box=' . $this->_db->quote() . ' WHERE address_id=' . $this->_db->quote($id);
-		$this->_db->prepare()->execute();
-	}
-
-	public function delete_address($id){
-		$query = 'DELETE FROM address WHERE address_id=' . $this->_db->quote($id);
 		$this->_db->prepare($query)->execute();
 	}
 
