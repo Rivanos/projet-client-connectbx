@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Ven 18 Août 2017 à 16:12
+-- Généré le :  Ven 25 Août 2017 à 10:34
 -- Version du serveur :  5.7.19-0ubuntu0.16.04.1
 -- Version de PHP :  7.0.18-0ubuntu0.16.04.1
 
@@ -30,7 +30,7 @@ CREATE TABLE `address` (
   `address_id` int(11) NOT NULL,
   `address_street` varchar(50) NOT NULL,
   `address_number` int(11) NOT NULL,
-  `address_town` varchar(50) NOT NULL,
+  `address_id_town` smallint(2) NOT NULL,
   `address_post_code` int(4) NOT NULL,
   `address_post_box` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -45,7 +45,7 @@ CREATE TABLE `associations` (
   `assoc_id` int(10) UNSIGNED NOT NULL,
   `assoc_name` varchar(30) NOT NULL,
   `assoc_descri` text NOT NULL,
-  `assoc_address` varchar(200) NOT NULL,
+  `assoc_address` int(10) NOT NULL,
   `assoc_town` varchar(20) NOT NULL,
   `assoc_phone` int(11) NOT NULL,
   `assoc_website` varchar(255) NOT NULL,
@@ -59,7 +59,7 @@ CREATE TABLE `associations` (
 --
 
 INSERT INTO `associations` (`assoc_id`, `assoc_name`, `assoc_descri`, `assoc_address`, `assoc_town`, `assoc_phone`, `assoc_website`, `assoc_latitude`, `assoc_longitude`, `assoc_theme`) VALUES
-(2, 'ConnectBxdsfsd', 'Plateforme pour les jeunes', 'Rue des Goujons 152', 'Anderlecht', 32444444, 'connectbx.be', 87987887, 7687668, 'bonnequestion');
+(2, 'ConnectBxdsfsd', 'Plateforme pour les jeunes', 152, 'Anderlecht', 32444444, 'connectbx.be', 87987887, 7687668, 'bonnequestion');
 
 -- --------------------------------------------------------
 
@@ -74,7 +74,7 @@ CREATE TABLE `events` (
   `event_descri` text NOT NULL,
   `event_image` varchar(255) NOT NULL,
   `event_priority` tinyint(1) NOT NULL,
-  `event_address` varchar(75) NOT NULL
+  `event_address` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -82,10 +82,46 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`event_id`, `event_name`, `event_date`, `event_descri`, `event_image`, `event_priority`, `event_address`) VALUES
-(1, 'Jeunesse', '2017-03-03', 'la description de l\'evenement', 'image.png', 0, 'rue des goujons 33'),
-(2, 'Fin de site web', '2017-05-02', 'la description de l\'evenement', 'image1.png', 1, 'rue des goujons 33'),
-(3, 'Lancement de site web', '2017-09-03', 'la description de l\'evenement', 'imag2e.png', 1, 'rue des goujons 33'),
-(4, 'Celebrations de site', '2017-11-03', 'la description de l\'evenement', 'image3.png', 1, 'rue des goujons 33');
+(1, 'Jeunesse', '2017-03-03', 'la description de l\'evenement', 'image.png', 0, 1),
+(2, 'Fin de site web', '2017-05-02', 'la description de l\'evenement', 'image1.png', 1, 2),
+(3, 'Lancement de site web', '2017-09-03', 'la description de l\'evenement', 'imag2e.png', 1, 3),
+(4, 'Celebrations de site', '2017-11-03', 'la description de l\'evenement', 'image3.png', 1, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `town`
+--
+
+CREATE TABLE `town` (
+  `town_id` smallint(2) NOT NULL,
+  `town_name` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `town`
+--
+
+INSERT INTO `town` (`town_id`, `town_name`) VALUES
+(20, 'Anderlecht'),
+(21, 'Bruxelles'),
+(22, 'Etterbeek'),
+(23, 'Jette'),
+(24, 'Evere'),
+(25, 'Ganshoren'),
+(26, 'Ixelles'),
+(27, 'Koekelberg'),
+(28, 'Auderghem'),
+(29, 'Schaerbeek'),
+(30, 'Berchem-Sainte-Agathe'),
+(31, 'Saint-Gilles'),
+(32, 'Molenbeek-Saint-Jean'),
+(33, 'Saint-Josse-ten-Noode'),
+(34, 'Woluwe-Saint-Lambert'),
+(35, 'Woluwe-Saint-Pierre'),
+(36, 'Uccle'),
+(37, 'Forest'),
+(38, 'Watermael-Boitsfort');
 
 -- --------------------------------------------------------
 
@@ -139,6 +175,12 @@ ALTER TABLE `events`
   ADD PRIMARY KEY (`event_id`);
 
 --
+-- Index pour la table `town`
+--
+ALTER TABLE `town`
+  ADD PRIMARY KEY (`town_id`);
+
+--
 -- Index pour la table `users`
 --
 ALTER TABLE `users`
@@ -164,10 +206,15 @@ ALTER TABLE `associations`
 ALTER TABLE `events`
   MODIFY `event_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
+-- AUTO_INCREMENT pour la table `town`
+--
+ALTER TABLE `town`
+  MODIFY `town_id` smallint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+--
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `user_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
