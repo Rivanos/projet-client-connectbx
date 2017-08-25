@@ -10,8 +10,17 @@ class EventController{
 			ICI vient le code php à exécuter avant d'ouvrir la page, 
 			chargement de données, conditions, boucles, ...
 		*/
+
+
+	    $tableauEvenements = Db::getInstance()->select_all_events();
+
+		$tableauEvenementsPassed = Db::getInstance()->select_all_events_passed();
+		$tableauEvenementsToComed = Db::getInstance()->select_all_events_to_come();
+
+
 		require_once VIEWS . 'event.php'; // affiche la vue (votre page html)
 	}
-	
+
 }
 ?>
+

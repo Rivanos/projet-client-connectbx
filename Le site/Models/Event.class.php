@@ -6,22 +6,24 @@ class Event{
 	private $_date;
 	private $_description;
 	private $_image;
-	private $_priority;
+	private $_nEvent;
+
 	private $_address;
 
-	public function __construct($id, $name, $date, $description, $image, $priority, $address){
+	public function __construct($id, $name, $date, $description, $image, $nEvent, $address){
 		$this->_id=$id;
 		$this->_name=$name;
 		$this->_date=$date;
 		$this->_description=$description;
 		$this->_image=$image;
-		$this->_priority=$priority;
+		$this->_nEvent=$nEvent;
+
 		$this->_address=$address;
 	}
 
-public function id(){
-	return $this->_id;
-}
+	public function id(){
+		return $this->_id;
+	}
 
 	public function name(){
 		return $this->_name;
@@ -39,13 +41,16 @@ public function id(){
 		return $this->_image;
 	}
 
-	public function priority(){
-		return $this->_priority;
+	public function nEvent(){
+		return $this->_nEvent;
 	}
 
+	//getter address
 	public function address(){
 		return $this->_address;
 	}
+	
+
 	// ajout setters plus tard
 
 }
