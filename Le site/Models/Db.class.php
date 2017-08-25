@@ -9,7 +9,7 @@ class Db {
 	// constructeur
 	private function __construct(){
 		try{
-			$this->_db = new PDO('mysql:host=localhost;dbname=connectbx;charset=utf8', 'root', 'user');
+			$this->_db = new PDO('mysql:host=localhost;dbname=connectbx;charset=utf8', 'root', 'root');
 			$this->_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			$this->_db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 		} catch(PDOException $e) {
@@ -124,14 +124,14 @@ class Db {
 	}
 
 	// NOTE: INSERT EVENT
-	public function insert_event($name, $event_date, $description, $image, $nEvent){
-		$query = 'INSERT INTO events(`event_name`, `event_date`, `event_descri`, `event_image`, `event_nEvent`) VALUES (:name, :event_date, :description, :image, :nEvent)';
+	public function insert_event($name, $event_date, $description, $image, $priority){
+		$query = 'INSERT INTO events(`event_name`, `event_date`, `event_descri`, `event_image`, `event_priority`) VALUES (:name, :event_date, :description, :image, :priority)';
 		$qp = $this->_db->prepare($query);
 		$qp->bindValue(':name', $name);
 		$qp->bindValue(':event_date', $event_date);
 		$qp->bindValue(':description', $description);
 		$qp->bindValue(':image', $image);
-		$qp->bindValue(':nEvent', $nEvent);
+		$qp->bindValue(':priority', $priority);
 		$qp->execute();
 	}
 
@@ -142,7 +142,7 @@ class Db {
 		$tab = array();
 		if($result->rowcount()!=0){
 			while($row = $result->fetch()){
-				$tab[] = new Event($row->event_id, $row->event_name, $row->event_date, $row->event_descri, $row->event_image, $row->event_nEvent,
+				$tab[] = new Event($row->event_id, $row->event_name, $row->event_date, $row->event_descri, $row->event_image, $row->event_priority,
 					$row->event_address);
 			}
 		}
@@ -157,7 +157,7 @@ class Db {
 
 		if($result->rowcount()!=0){
 			while($row = $result->fetch()){
-				$tab[] = new Event($row->event_id, $row->event_name, $row->event_date, $row->event_descri, $row->event_image, $row->event_nEvent, 
+				$tab[] = new Event($row->event_id, $row->event_name, $row->event_date, $row->event_descri, $row->event_image, $row->event_priority, 			
 					$row->event_address);
 			}
 		}
@@ -173,7 +173,7 @@ class Db {
 
 		if($result->rowcount()!=0){
 			while($row = $result->fetch()){
-				$tab[] = new Event($row->event_id, $row->event_name, $row->event_date, $row->event_descri, $row->event_image, $row->event_nEvent, 
+				$tab[] = new Event($row->event_id, $row->event_name, $row->event_date, $row->event_descri, $row->event_image, $row->event_priority, 
 					$row->event_address);
 			}
 		}
@@ -186,8 +186,8 @@ class Db {
 	}
 
 	// NOTE: UPDATE EVENT
-	public function update_event($id, $name, $date, $description, $image, $nEvent){
-		$query = 'UPDATE events SET event_name=' . $this->_db->quote($name) . ', event_date=' . $this->_db->quote($date) . ', event_descri=' . $this->_db->quote($description) . ', event_image=' . $this->_db->quote($image) . ', event_nEvent=' . $this->_db->quote($nEvent) . ' WHERE event_id=' . $this->_db->quote($id);
+	public function update_event($id, $name, $date, $description, $image, $priority){
+		$query = 'UPDATE events SET event_name=' . $this->_db->quote($name) . ', event_date=' . $this->_db->quote($date) . ', event_descri=' . $this->_db->quote($description) . ', event_image=' . $this->_db->quote($image) . ', event_priority=' . $this->_db->quote($priority) . ' WHERE event_id=' . $this->_db->quote($id);
 		$this->_db->prepare($query)->execute();
 
 	}
@@ -196,6 +196,19 @@ class Db {
 	public function delete_event($id){
 		$query = 'DELETE FROM events WHERE event_id=' . $this->_db->quote($id);
 		$this->_db->prepare($query)->execute();
+	}
+
+	// SELECT ALL ASSOC_NAME FROM ASSOC (Zone de recherche navbar)
+	public function select_all_assoc__name($keyword){
+		$query = 'SELECT assoc_name FROM associations WHERE assoc_name LIKE '.$this->_db->quote($keyword.'%').'LIMIT 0,5';
+		$result = $this->_db->query($query);
+		$tab = array();
+		if($result->rowcount()!=0){
+			while ($row = $result->fetch()) {
+				$tab[] = ($row->assoc_name);
+			}
+		}
+		return $tab;
 	}
 
 }
