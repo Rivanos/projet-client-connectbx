@@ -9,7 +9,7 @@ class Db {
 	// constructeur
 	private function __construct(){
 		try{
-			$this->_db = new PDO('mysql:host=localhost;dbname=connectbx;charset=utf8', 'root', 'user');
+			$this->_db = new PDO('mysql:host=localhost;dbname=connectbx;charset=utf8', 'root', 'root');
 			$this->_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			$this->_db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 		} catch(PDOException $e) {
@@ -157,7 +157,7 @@ class Db {
 
 		if($result->rowcount()!=0){
 			while($row = $result->fetch()){
-				$tab[] = new Event($row->event_id, $row->event_name, $row->event_date, $row->event_descri, $row->event_image, $row->event_priority, 
+				$tab[] = new Event($row->event_id, $row->event_name, $row->event_date, $row->event_descri, $row->event_image, $row->event_priority, 			
 					$row->event_address);
 			}
 		}
@@ -196,6 +196,19 @@ class Db {
 	public function delete_event($id){
 		$query = 'DELETE FROM events WHERE event_id=' . $this->_db->quote($id);
 		$this->_db->prepare($query)->execute();
+	}
+
+	// SELECT ALL ASSOC_NAME FROM ASSOC (Zone de recherche navbar)
+	public function select_all_assoc__name($keyword){
+		$query = 'SELECT assoc_name FROM associations WHERE assoc_name LIKE '.$this->_db->quote($keyword.'%').'LIMIT 0,5';
+		$result = $this->_db->query($query);
+		$tab = array();
+		if($result->rowcount()!=0){
+			while ($row = $result->fetch()) {
+				$tab[] = ($row->assoc_name);
+			}
+		}
+		return $tab;
 	}
 
 }
