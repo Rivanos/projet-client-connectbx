@@ -6,17 +6,17 @@ class Event{
 	private $_date;
 	private $_description;
 	private $_image;
-	private $_nEvent;
+	private $_priority;
 
 	private $_address;
 
-	public function __construct($id, $name, $date, $description, $image, $nEvent, $address){
+	public function __construct($id, $name, $date, $description, $image, $priority, $address){
 		$this->_id=$id;
 		$this->_name=$name;
 		$this->_date=$date;
 		$this->_description=$description;
 		$this->_image=$image;
-		$this->_nEvent=$nEvent;
+		$this->_priority=$priority;
 
 		$this->_address=$address;
 	}
@@ -41,8 +41,8 @@ class Event{
 		return $this->_image;
 	}
 
-	public function nEvent(){
-		return $this->_nEvent;
+	public function priority(){
+		return $this->_priority;
 	}
 
 	//getter address
