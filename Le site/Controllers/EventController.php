@@ -17,6 +17,8 @@ class EventController{
 		$tableauEvenementsPassed = Db::getInstance()->select_all_events_passed();
 		$tableauEvenementsToComed = Db::getInstance()->select_all_events_to_come();
 
+		//$address_event = Db::getInstance()->select_address_event($id);
+
 
 		require_once VIEWS . 'event.php'; // affiche la vue (votre page html)
 	}
