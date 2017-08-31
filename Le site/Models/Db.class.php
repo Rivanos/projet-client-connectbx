@@ -238,6 +238,32 @@ class Db {
 		return $tab;
 	}
 
+	// SELECT ALL COMMUNE FROM TOWN
+	public function select_all_commune(){
+		$query = 'SELECT * FROM town';
+		$result = $this->_db->query($query);
+		$tab = array();
+			if ($result->rowcount() != 0) {
+				while ($row = $result->fetch()) {
+					$tab[] = ($row->town_name);
+				}
+			}
+			return $tab;
+	}
+
+	// SELECT ALL COMMUNE FROM TOWN
+	public function select_all_theme(){
+		$query = 'SELECT * FROM associations';
+		$result = $this->_db->query($query);
+		$tab = array();
+			if ($result->rowcount() != 0) {
+				while ($row = $result->fetch()) {
+					$tab[] = ($row->assoc_theme);
+				}
+			}
+			return $tab;
+	}
+  
 	private function where_table($content_table, $table_column){
 		if(count($content_table) == 0) return '';
 		$where = '(';

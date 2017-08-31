@@ -31,7 +31,7 @@
           <span class="icon-bar"></span>
         </button>
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="index.php?action=home">
             <img alt="logo" src="<?php echo VIEWS;?>Images/logo-01.png" height="30px">
           </a>
         </div>
