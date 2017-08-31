@@ -1,4 +1,5 @@
-<div id ="container">
+<div id ="container" class="content">
+<div class="content-inside">
   <div class="row">
     <div class="col-md-2 col-md-offset-2 " id="sectionTitle">
       <h2>CONTACT</h2>
@@ -60,5 +61,7 @@
     </div>
   </form>
     </div>
+</div>
+</div>
 </div>
 <p class="emptySpaceEnd"></p>
