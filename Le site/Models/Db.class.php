@@ -9,7 +9,7 @@ class Db {
 	// constructeur
 	private function __construct(){
 		try{
-			$this->_db = new PDO('mysql:host=localhost;dbname=connectbx;charset=utf8', 'root', 'user');
+			$this->_db = new PDO('mysql:host=localhost;dbname=connectbx;charset=utf8', 'root', 'root');
 			$this->_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			$this->_db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 		} catch(PDOException $e) {
@@ -164,6 +164,18 @@ class Db {
 		}
 		return $tab;
 	}
+	// SELECT ALL ASSOC_NAME FROM ASSOC (Zone de recherche navbar)
+	public function select_all_assoc__name($keyword){
+		$query = 'SELECT assoc_name FROM associations WHERE assoc_name LIKE '.$this->_db->quote($keyword.'%').'LIMIT 0,5';
+		$result = $this->_db->query($query);
+		$tab = array();
+		if($result->rowcount()!=0){
+			while ($row = $result->fetch()) {
+				$tab[] = ($row->assoc_name);
+			}
+		}
+		return $tab;
+	}
 
 	// NOTE: Select all events in present + in future
 	public function select_all_events_to_come(){
@@ -222,13 +234,13 @@ class Db {
 
 	// NOTE: SELECT ASSOCIATION AND ADDRESS WITH CHECKED
 	public function search_assoc_by_towns_themes($tab_towns, $tab_themes){
-		$where_town = where_table($tab_towns, 't.town_name'); // clause 
+		$where_town = where_table($tab_towns, 't.town_name'); // clause
 		$where_theme = where_table($tab_themes, 'ass.assoc_theme');
 		$juncture = 'ass.assoc_address=ad.address_id AND ad.address_post_code=t.town_post_code';
 		$query = '	SELECT ass.*, ad.*, t.* FROM associations ass, adress ad, towns t
 						WHERE ' . $juncture . ' AND ' . $where_town . ' AND ' . $where_theme;
 		$result = $this->_db->prepare($query)->execute();
-		$tab = array(); 
+		$tab = array();
 		if($result->rowcount()!=0){
 			while($row = $result->fetch()){
 				$address = select_address_with_id($result->assoc_address);
@@ -263,7 +275,7 @@ class Db {
 			}
 			return $tab;
 	}
-  
+
 	private function where_table($content_table, $table_column){
 		if(count($content_table) == 0) return '';
 		$where = '(';
@@ -277,12 +289,12 @@ class Db {
 		return $where . ')';
 	}
 
+
 	private function select_town_with_post_code($post_code){
 		$query = 'SELECT * FROM towns WHERE town_post_code=' . $post_code;
 		$result = $this->_db->query($query)->fetch();
 		return new Town($result->town_name, $result->town_post_code);
 	}
-
 }
 
 ?>
