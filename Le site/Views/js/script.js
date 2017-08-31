@@ -28,10 +28,11 @@ function initMap() {
     
 
     window.onload = geocodeAddress(geocoder, map);
-      
+
     
 
-    document.getElementById('submit').addEventListener('click', function() {
+    document.getElementById('submit').addEventListener('click', function(event) {
+        event.preventDefault();
         geocodeAddress(geocoder, map);
     });
 }
@@ -41,11 +42,7 @@ function initMap() {
 
 function geocodeAddress(geocoder, resultsMap) {
 
-
-
-    var myArray = [];
-    var add = 1;
-    var commune = "commune" + add;
+    window.alert("it worked");
 
     while (add <= 3) {
         var commune = "commune" + add;
@@ -62,7 +59,6 @@ function geocodeAddress(geocoder, resultsMap) {
         add++;
     }
 
-    console.log(search);
     myArray.push(search);
 
     console.log(myArray);
