@@ -1,37 +1,38 @@
 <div class="jumbotron fond text-center">
-  <h1>La Porte principale des jeunes
+  <h1 class="slogan">La Porte principale des jeunes
 vers le monde associatif.</h1>
-  <select class="commune" name="commune">
-    <option class="disable" value="">Commune</option>
-    <option value="">Anderlecht</option>
-    <option value="">Bruxelles</option>
-    <option value="">Etterbeek</option>
-    <option value="">Jette</option>
-    <option value="">Evere</option>
-    <option value="">Ganshoren</option>
-    <option value="">Ixelles</option>
-    <option value="">Koekelberg</option>
-    <option value="">Auderghem</option>
-    <option value="">Schaerbeek</option>
-    <option value="">Berchem-Sainte-Agathe</option>
-    <option value="">Saint-Gilles</option>
-    <option value="">Molenbeek-end-Saint-Jean</option>
-    <option value="">Saint-Josse-ten-Noode</option>
-    <option value="">Woluwe-Saint-Lambert</option>
-    <option value="">Woluwe-Saint-Pierre</option>
-    <option value="">Uccle</option>
-    <option value="">Forest</option>
-    <option value="">Watermael-Boitsfort</option>
-  </select>
-  <select class="themes" name="themes">
-    <option class="disable" value="">Thématique</option>
-    <option value="">Lorem</option>
-    <option value="">Ipsum</option>
-    <option value="">Lorem</option>
-    <option value="">Ipsum</option>
-    <option value="">Lorem</option>
-  </select>
-  <button type="submit" name="button">Rechercher <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+  <form class="recherche_on_map_of_assoc" action="index.php?action=map" method="get">
+    <select class="custom-dropdown__select custom-dropdown__select--white commune">
+      <option disable>Choisissez votre Commune</option>
+      <?php
+
+      $tableau_commune = array();
+        require_once 'Models/Db.class.php';
+          $tableau_commune = Db::getInstance()->select_all_commune();
+
+        foreach ($tableau_commune as $key => $value) {
+          echo  "<option value=''>".$value."</option>";
+      }
+
+      ?>
+    </select>
+    <select class="custom-dropdown__select custom-dropdown__select--white theme">
+      <option disable>Choisissez votre Themes</option>
+
+      <?php
+
+      $tableau_theme = array();
+        require_once 'Models/Db.class.php';
+          $tableau_theme = Db::getInstance()->select_all_theme();
+
+        foreach ($tableau_theme as $key => $value) {
+          echo  "<option value=''>".$value."</option>";
+      }
+
+      ?>
+    </select>
+    <input class="custom-dropdown__select custom-dropdown__select--white" type="submit" name="button" value="Rechercher" />
+  </form>
 </div>
 <div class="container text-center">
   <div class="col-md-8 col-md-offset-2">

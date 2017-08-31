@@ -157,7 +157,7 @@ class Db {
 
 		if($result->rowcount()!=0){
 			while($row = $result->fetch()){
-				$tab[] = new Event($row->event_id, $row->event_name, $row->event_date, $row->event_descri, $row->event_image, $row->event_priority, 			
+				$tab[] = new Event($row->event_id, $row->event_name, $row->event_date, $row->event_descri, $row->event_image, $row->event_priority,
 					$row->event_address);
 			}
 		}
@@ -173,7 +173,7 @@ class Db {
 
 		if($result->rowcount()!=0){
 			while($row = $result->fetch()){
-				$tab[] = new Event($row->event_id, $row->event_name, $row->event_date, $row->event_descri, $row->event_image, $row->event_priority, 
+				$tab[] = new Event($row->event_id, $row->event_name, $row->event_date, $row->event_descri, $row->event_image, $row->event_priority,
 					$row->event_address);
 			}
 		}
@@ -211,6 +211,31 @@ class Db {
 		return $tab;
 	}
 
+	// SELECT ALL COMMUNE FROM TOWN
+	public function select_all_commune(){
+		$query = 'SELECT * FROM town';
+		$result = $this->_db->query($query);
+		$tab = array();
+			if ($result->rowcount() != 0) {
+				while ($row = $result->fetch()) {
+					$tab[] = ($row->town_name);
+				}
+			}
+			return $tab;
+	}
+
+	// SELECT ALL COMMUNE FROM TOWN
+	public function select_all_theme(){
+		$query = 'SELECT * FROM associations';
+		$result = $this->_db->query($query);
+		$tab = array();
+			if ($result->rowcount() != 0) {
+				while ($row = $result->fetch()) {
+					$tab[] = ($row->assoc_theme);
+				}
+			}
+			return $tab;
+	}
 }
 
 ?>
