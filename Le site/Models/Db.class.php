@@ -200,8 +200,6 @@ class Db {
 	}
 
 
-
-
 	// NOTE: Select event's address. Passed the event's id in parameter
 	public function select_address_event($id){
 		$query = 'SELECT address_street FROM address, events WHERE events.event_address = address.address_id AND events.event_id ='.$this->_db->quote($id);
@@ -211,13 +209,6 @@ class Db {
 
 		//return $address;
 	}
-
-	// NOTE: Select all towns 
-	/*public function select_town($id){
-		
-
-
-	} */
 
 	// NOTE: SELECT PRIMARY EVENTS
 	public function select_primary_events(){
