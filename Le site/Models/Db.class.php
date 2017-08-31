@@ -9,7 +9,7 @@ class Db {
 	// constructeur
 	private function __construct(){
 		try{
-			$this->_db = new PDO('mysql:host=localhost;dbname=connectbx;charset=utf8', 'root', 'user');
+			$this->_db = new PDO('mysql:host=localhost;dbname=connectbx;charset=utf8', 'root', 'root');
 			$this->_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			$this->_db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 		} catch(PDOException $e) {
@@ -227,7 +227,7 @@ class Db {
 		$query = '	SELECT ass.*, ad.*, t.* FROM associations ass, adress ad, towns t
 						WHERE ' . $juncture . ' AND ' . $where_town . ' AND ' . $where_theme;
 		$result = $this->_db->prepare($query)->execute();
-		$tab = array(); 
+		$tab = array();
 		if($result->rowcount()!=0){
 			while($row = $result->fetch()){
 				$town = new Town($result->town_name, $result->town_post_code);
@@ -263,7 +263,7 @@ class Db {
 			}
 			return $tab;
 	}
-  
+
 	private function where_table($content_table, $table_column){
 		if(count($content_table) == 0) return '';
 		$where = '(';
@@ -278,7 +278,7 @@ class Db {
 	}
 
 	/* SELECT ASSOCIATION.*, ADDRESS.*
-		FROM ASSOCIATION, ADRESSE, COMMUNE 
+		FROM ASSOCIATION, ADRESSE, COMMUNE
 		WHERE (COMMUNE = 'VALEUR CHECKBOX' OR COMMUNE = 'VALEUR CHECKBOX' OR ENZ...) AND (THEME = 'VALEUR CHECKBOX' OR THEME = 'VALEUR CHECKBOX' OR ETC...) AND ASSOCIATION.ADDR_ID = ADDRESS.ID AND ADDRESS.TOWN_post_code = TOWN.ID
 
 
