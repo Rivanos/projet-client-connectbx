@@ -30,7 +30,7 @@ class Address {
 		return $this->_post_box;
 	}
 	public function to_string(){
-		return $this->_street . ' ' . $this->_number . ', ' . $this->_town;
+		return $this->_street . ' ' . $this->_number . ', ' . $this->_town->post_code() . ' ' . $this->_town->name();
 	}
 }
  ?>
