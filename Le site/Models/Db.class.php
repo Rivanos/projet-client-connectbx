@@ -179,7 +179,7 @@ class Db {
 
 	// NOTE: Select all events in present + in future
 	public function select_all_events_to_come(){
-		$query = 'SELECT * FROM events WHERE event_date > NOW()';
+		$query = 'SELECT * FROM events WHERE event_date >= NOW()';
 		$result = $this->_db->query($query);
 		$tab = array();
 		if($result->rowcount()!=0){
@@ -190,6 +190,34 @@ class Db {
 		}
 		return $tab;
 	}
+
+	// NOTE: Select an address 
+	private function select_address_by_id($id){
+		$query = 'SELECT * FROM address WHERE  event_address='.$this->$id;
+		$result = $this->_db->query($query);
+
+		return $result;
+	}
+
+
+
+
+	// NOTE: Select event's address. Passed the event's id in parameter
+	public function select_address_event($id){
+		$query = 'SELECT address_street FROM address, events WHERE events.event_address = address.address_id AND events.event_id ='.$this->_db->quote($id);
+		$result = $this->_db->query($query);
+
+		//$address = new Address
+
+		//return $address;
+	}
+
+	// NOTE: Select all towns 
+	/*public function select_town($id){
+		
+
+
+	} */
 
 	// NOTE: SELECT PRIMARY EVENTS
 	public function select_primary_events(){
