@@ -3,13 +3,35 @@
 <div class="content-inside">
   <h2>Carte Interactive</h2>
   <p>Retrouvez ci-dessous la carte qui contient les associations</p>
+  <div id="test">
+            <?php 
+            if(isset($_GET["search"])) {
+              echo $_GET["search"];
+            }
+
+            ?>
+          </div>
 
   <div class="container">
     <div class="row">
       <div class="col-md-3 col-sm-3 col-xs-3 menuLeft">
-        <form action="map.php" method="post">
-          <h3>Commune</h3>
-          <div class="checkbox">
+        <h3>Commune</h3>
+        <form action="index.php?action=map" method="post">
+          <div id="commune_list">
+            <?php
+
+            $tableau_commune = Db::getInstance()->select_all_commune();
+            $i=0;
+            foreach ($tableau_commune as $key => $value) {
+              $i++;
+              echo  "<input type='checkbox' name='check' value='".$value."' id='commune".$i."'> ".$value."<br>";
+            }
+
+            ?>
+          </div>
+          
+        </form>
+          <!--<div class="checkbox">
             <label><input type="checkbox" name="commune"value="Ixelles" id="commune1"  />Ixelles</label>
           </div>
           <div class="checkbox">
@@ -19,23 +41,8 @@
             <label><input type="checkbox" name="commune"value="Anderlecht" id="commune3"/>Anderlecht</label>
             <br>
 
-            <div id="test">
-            <?php 
-            if(isset($_GET["search"])) {
-              echo $_GET["search"];
-            }
-
-            ?>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="sel1">Liste déroulante :</label>
-            <select class="form-control" id="sel1">
-              <option>Choix</option>
-              <option>Choix</option>
-              <option>Choix</option>
-            </select>
-          </div>
+            
+          </div>-->
 
           <h3>Catégories</h3>
           <div class="checkbox">
@@ -47,39 +54,12 @@
           <div class="checkbox">
             <label><input type="checkbox" value=""/>Choix</label>
           </div>
-          <div class="form-group">
-            <label for="sel2">Liste déroulante :</label>
-            <select class="form-control" id="sel2">
-              <option>Choix</option>
-              <option>Choix</option>
-              <option>Choix</option>
-            </select>
-          </div>
-
-          <h3>Ambassadeurs</h3>
-          <div class="checkbox">
-            <label><input class="submit" type="checkbox" value=""/>Choix</label>
-          </div>
-          <div class="checkbox">
-            <label><input class="submit" type="checkbox" value=""/>Choix</label>
-          </div>
-          <div class="checkbox">
-            <label><input class="submit" type="checkbox" value=""/>Choix</label>
-          </div>
-          <div class="form-group">
-            <label for="sel3">Liste déroulante :</label>
-            <select class="form-control" id="sel3">
-              <option>A</option>
-              <option>A</option>
-              <option>A</option>
-            </select>
-          </div>
-          <input id="submit" type="button" value="Envoyer">
+          <input type="submit" id="submit" value="Envoyer">
         </div>
-        <div class="col-md-9 col-sm-9 col-xs-9" id="map">
-        </div>
+      </form>
+      <div class="col-md-9 col-sm-9 col-xs-9" id="map">
       </div>
-    </form>
+    </div>
   </div>
 
   <div class="container">

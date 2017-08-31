@@ -259,6 +259,11 @@ input:invalid {
   color: #1E8449;
 }
 
+#commune_list {
+  height: 200px;
+  overflow: scroll;
+}
+
 /* A PROPOS */
 
 #box-first-article {
