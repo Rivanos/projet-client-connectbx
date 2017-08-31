@@ -22,7 +22,7 @@
 						<td><input class="form-control" type="text" value="<?= substr($event->date(), 0, 10); ?>"></td>
 						<td>
 							<div class="input-group">
-								<input class="form-control" type="text" value="<?= $event->address()->to_string(); ?>" readonly>
+								<input class="form-control" type="text" value="<?= $event->address(); ?>" readonly>
 								<span class="input-group-btn"><button class="btn btn-default" type="button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button></span>
 							</div></td>
 						<td><input class="form-control" type="text" value="<?= $event->description();?>"></td>
