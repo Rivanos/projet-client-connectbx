@@ -10,10 +10,6 @@ function getUrlVars() { //simulate $_GET in js
 
 var search = getUrlVars()["search"]; //define $_GET
 
-if (typeof search == "undefined") {
-  search = 0;
-}
-
 
 function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -42,7 +38,9 @@ function initMap() {
 
 function geocodeAddress(geocoder, resultsMap) {
 
-    window.alert("it worked");
+    /*var selected_towns = [];
+    var add = 1;
+    var commune = "commune" + add;
 
     while (add <= 3) {
         var commune = "commune" + add;
@@ -57,29 +55,54 @@ function geocodeAddress(geocoder, resultsMap) {
         }
 
         add++;
+    }*/
+
+    var check = document.forms[1];
+    var selected_towns = [];
+    var i;
+    for (i=0; i < check.length; i++) {
+        if (check[i].checked) {
+            selected_towns.push(check[i].value);
+        }
+        /*else {
+            var index = myArray.indexOf(check[i].value);
+            myArray.splice(index, 1);
+        }*/
     }
 
-    myArray.push(search);
+    selected_towns.push(search);
 
-    console.log(myArray);
+    console.log(selected_towns);
 
-    var iteration = 0;
 
-    while (iteration < myArray.length) {
+    if (selected_towns.length > 1) {
 
-        geocoder.geocode({
-            'address': myArray[iteration]
-        }, function(results, status) {
-            if (status === 'OK') {
-                resultsMap.setCenter(results[0].geometry.location);
-                var marker = new google.maps.Marker({
-                    map: resultsMap,
-                    position: results[0].geometry.location
-                });
-            } else {
-                alert('Geocode was not successful for the following reason: ' + status);
+        var iteration = 0;
+
+        $.post({
+            data: {towns:selected_towns},
+            url: "Views/ajax/search_assoc_by_towns_themes.php",
+            success: function (associations) {
+                $("#test").html(associations);
             }
-        });
-        iteration++;
+        })
+
+        while (iteration < selected_towns.length) {
+
+            geocoder.geocode({
+                'address': selected_towns[iteration]
+            }, function(results, status) {
+                if (status === 'OK') {
+                    resultsMap.setCenter(results[0].geometry.location);
+                    var marker = new google.maps.Marker({
+                        map: resultsMap,
+                        position: results[0].geometry.location
+                    });
+                } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+            iteration++;
+        }
     }
 }

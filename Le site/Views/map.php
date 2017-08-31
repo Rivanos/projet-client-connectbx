@@ -1,25 +1,7 @@
 <section id="cartePage">
   <h2>Carte Interactive</h2>
   <p>Retrouvez ci-dessous la carte qui contient les associations</p>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3 col-sm-3 col-xs-3 menuLeft">
-        <form action="index.php?action=map" method="post">
-          <h3>Commune</h3>
-          <div id="commune_list">
-            <?php
-
-            $tableau_commune = Db::getInstance()->select_all_commune();
-            $i=0;
-            foreach ($tableau_commune as $key => $value) {
-              $i++;
-              echo  "<div class='checkbox'><label><input type='checkbox' name='check' id='commune".$i."'> ".$value."</label></div>";
-            }
-
-            ?>
-          </div>
-          <div id="test">
+  <div id="test">
             <?php 
             if(isset($_GET["search"])) {
               echo $_GET["search"];
@@ -27,6 +9,26 @@
 
             ?>
           </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-sm-3 col-xs-3 menuLeft">
+        <h3>Commune</h3>
+        <form action="index.php?action=map" method="post">
+          <div id="commune_list">
+            <?php
+
+            $tableau_commune = Db::getInstance()->select_all_commune();
+            $i=0;
+            foreach ($tableau_commune as $key => $value) {
+              $i++;
+              echo  "<input type='checkbox' name='check' value='".$value."' id='commune".$i."'> ".$value."<br>";
+            }
+
+            ?>
+          </div>
+          
+        </form>
           <!--<div class="checkbox">
             <label><input type="checkbox" name="commune"value="Ixelles" id="commune1"  />Ixelles</label>
           </div>

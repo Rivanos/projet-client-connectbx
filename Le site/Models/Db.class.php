@@ -262,16 +262,17 @@ class Db {
 
 	// NOTE: SELECT ASSOCIATION AND ADDRESS WITH CHECKED
 	public function search_assoc_by_towns_themes($tab_towns, $tab_themes){
-		$where_town = where_table($tab_towns, 't.town_name'); // clause
-		$where_theme = where_table($tab_themes, 'ass.assoc_theme');
+		$where_town = Db::getInstance()->where_table($tab_towns, 't.town_name'); // clause
+		$where_theme = Db::getInstance()->where_table($tab_themes, 'ass.assoc_theme');
 		$juncture = 'ass.assoc_address=ad.address_id AND ad.address_post_code=t.town_post_code';
-		$query = '	SELECT ass.*, ad.*, t.* FROM associations ass, adress ad, towns t
-						WHERE ' . $juncture . ' AND ' . $where_town . ' AND ' . $where_theme;
-		$result = $this->_db->prepare($query)->execute();
+		$query = '	SELECT ass.*, ad.*, t.* FROM associations ass, address ad, towns t
+						WHERE ' . $juncture . ' AND ' . $where_town /*. ' AND ' . $where_theme*/;
+		$result = $this->_db->query($query);
+		print_r($result->assoc_id);
 		$tab = array();
 		if($result->rowcount()!=0){
 			while($row = $result->fetch()){
-				$address = select_address_with_id($result->assoc_address);
+				$address = Db::getInstance()->select_address_with_id($result->ass.assoc_address);
 				$tab[] = new Association($result->assoc_id, $result->assoc_name, $result->assoc_descri, $address, $result->assoc_phone, $result->assoc_website, $result->assoc_latitude, $result->assoc_longitude, $result->assoc_theme);
 			}
 		}

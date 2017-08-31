@@ -11,7 +11,7 @@ vers le monde associatif.</h1>
           $tableau_commune = Db::getInstance()->select_all_commune();
 
         foreach ($tableau_commune as $key => $value) {
-          echo  "<option value=''>".$value."</option>";
+          echo  "<option value='".$value."'>".$value."</option>";
       }
 
       ?>
