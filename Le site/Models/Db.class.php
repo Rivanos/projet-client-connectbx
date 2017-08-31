@@ -212,13 +212,6 @@ class Db {
 		//return $address;
 	}
 
-	// NOTE: Select all towns 
-	/*public function select_town($id){
-		
-
-
-	} */
-
 	// NOTE: SELECT PRIMARY EVENTS
 	public function select_primary_events(){
 	}
