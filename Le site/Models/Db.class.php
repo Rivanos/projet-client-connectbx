@@ -273,7 +273,7 @@ class Db {
 
 	// SELECT ALL COMMUNE FROM TOWN
 	public function select_all_commune(){
-		$query = 'SELECT * FROM town';
+		$query = 'SELECT * FROM towns';
 		$result = $this->_db->query($query);
 		$tab = array();
 			if ($result->rowcount() != 0) {
