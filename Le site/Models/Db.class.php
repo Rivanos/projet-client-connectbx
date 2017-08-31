@@ -106,7 +106,8 @@ class Db {
 		$tab = array();
 		if($result->rowcount()!=0){
 			while ($row = $result->fetch()){
-				$tab[] = new Association($row->assoc_id, $row->assoc_name, $row->assoc_descri, $row->assoc_address, $row->assoc_phone, $row->assoc_website, $row->assoc_latitude, $row->assoc_longitude, $row->assoc_theme);
+				$address = Db::getInstance()->select_address_with_id($row->assoc_address);
+				$tab[] = new Association($row->assoc_id, $row->assoc_name, $row->assoc_descri, $address, $row->assoc_phone, $row->assoc_website, $row->assoc_latitude, $row->assoc_longitude, $row->assoc_theme);
 			}
 		}
 		return $tab;
@@ -143,8 +144,8 @@ class Db {
 		$tab = array();
 		if($result->rowcount()!=0){
 			while($row = $result->fetch()){
-				$tab[] = new Event($row->event_id, $row->event_name, $row->event_date, $row->event_descri, $row->event_image, $row->event_priority,
-					$row->event_address);
+				$address = Db::getInstance()->select_address_with_id($row->event_address);
+				$tab[] = new Event($row->event_id, $row->event_name, $row->event_date, $row->event_descri, $row->event_image, $row->event_priority, $address);
 			}
 		}
 		return $tab;
@@ -155,13 +156,12 @@ class Db {
 		$query = 'SELECT * FROM events WHERE event_date < NOW()';
 		$result = $this->_db->query($query);
 		$tab = array();
-
 		if($result->rowcount()!=0){
 			while($row = $result->fetch()){
-				$tab[] = new Event($row->event_id, $row->event_name, $row->event_date, $row->event_descri, $row->event_image, $row->event_priority, $row->event_address);
+				$address = Db::getInstance()->select_address_with_id($row->event_address);
+				$tab[] = new Event($row->event_id, $row->event_name, $row->event_date, $row->event_descri, $row->event_image, $row->event_priority, $address);
 			}
 		}
-
 		return $tab;
 	}
 
@@ -170,10 +170,10 @@ class Db {
 		$query = 'SELECT * FROM events WHERE event_date > NOW()';
 		$result = $this->_db->query($query);
 		$tab = array();
-
 		if($result->rowcount()!=0){
 			while($row = $result->fetch()){
-				$tab[] = new Event($row->event_id, $row->event_name, $row->event_date, $row->event_descri, $row->event_image, $row->event_priority, $row->event_address);
+				$address = Db::getInstance()->select_address_with_id($row->event_address);
+				$tab[] = new Event($row->event_id, $row->event_name, $row->event_date, $row->event_descri, $row->event_image, $row->event_priority, $address);
 			}
 		}
 		return $tab;
@@ -207,7 +207,7 @@ class Db {
 		$qp->execute();
 	}
 
-	// NOTE: SELECT ADDRESS
+	// NOTE: SELECT ADDRESS ==> besoin ou pas ?
 	private function select_all_address(){
 
 	}
@@ -215,13 +215,14 @@ class Db {
 	// NOTE: SELECT AN ADDRESS WITH AN ID
 	private function select_address_with_id($id){
 		$query = 'SELECT * FROM address WHERE address_id=' . $id;
-		$result = $this->_db->prepare($query)->execute()->fetch();
-		return new Address($result->address_id, $result->address_street, $result->address_number, $result->address_post_code, $result->address_post_box);
+		$result = $this->_db->query($query)->fetch();
+		$address = Db::getInstance()->select_town_with_post_code($result->address_post_code);
+		return new Address($result->address_id, $result->address_street, $result->address_number, $address, $result->address_post_box);
 	}
 
 	// NOTE: SELECT ASSOCIATION AND ADDRESS WITH CHECKED
 	public function search_assoc_by_towns_themes($tab_towns, $tab_themes){
-		$where_town = where_table($tab_towns, 't.town_name');
+		$where_town = where_table($tab_towns, 't.town_name'); // clause 
 		$where_theme = where_table($tab_themes, 'ass.assoc_theme');
 		$juncture = 'ass.assoc_address=ad.address_id AND ad.address_post_code=t.town_post_code';
 		$query = '	SELECT ass.*, ad.*, t.* FROM associations ass, adress ad, towns t
@@ -230,8 +231,7 @@ class Db {
 		$tab = array(); 
 		if($result->rowcount()!=0){
 			while($row = $result->fetch()){
-				$town = new Town($result->town_name, $result->town_post_code);
-				$address = new Address($result->address_id, $result->address_street, $result->address_number, $town, $result->address_post_box);
+				$address = select_address_with_id($result->assoc_address);
 				$tab[] = new Association($result->assoc_id, $result->assoc_name, $result->assoc_descri, $address, $result->assoc_phone, $result->assoc_website, $result->assoc_latitude, $result->assoc_longitude, $result->assoc_theme);
 			}
 		}
@@ -245,19 +245,18 @@ class Db {
 			if($index == 0){
 				$where .= $table_column . '=' . $this->_db->quote($value);
 			} else {
-				$where .= ' OR '$table_column . '=' . $this->_db->quote($value);
+				$where .= ' OR ' . $table_column . '=' . $this->_db->quote($value);
 			}
 		}
 		return $where . ')';
 	}
 
-	/* SELECT ASSOCIATION.*, ADDRESS.*
-		FROM ASSOCIATION, ADRESSE, COMMUNE 
-		WHERE (COMMUNE = 'VALEUR CHECKBOX' OR COMMUNE = 'VALEUR CHECKBOX' OR ENZ...) AND (THEME = 'VALEUR CHECKBOX' OR THEME = 'VALEUR CHECKBOX' OR ETC...) AND ASSOCIATION.ADDR_ID = ADDRESS.ID AND ADDRESS.TOWN_post_code = TOWN.ID
+	private function select_town_with_post_code($post_code){
+		$query = 'SELECT * FROM towns WHERE town_post_code=' . $post_code;
+		$result = $this->_db->query($query)->fetch();
+		return new Town($result->town_name, $result->town_post_code);
+	}
 
-
-
-	*/
 }
 
 ?>

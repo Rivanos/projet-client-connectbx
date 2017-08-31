@@ -22,7 +22,7 @@
 					<td><input type="hidden" value="<?= $association->id();?>"></td>
 					<td><input class="form-control" type="text" value="<?= $association->name();?>" maxlength="50"></td>
 					<td><input class="form-control" type="text" value="<?= $association->description();?>" maxlength="1000"></td>
-					<td><input class="form-control" type="text" value="<?= $association->address();?>" maxlength="50"></td>
+					<td><input class="form-control" type="text" value="<?= $association->address()->to_string();?>" maxlength="50"></td>
 					<td><input class="form-control" type="text" value="<?= $association->phone();?>"></td>
 					<td><input class="form-control" type="text" value="<?= $association->website();?>" maxlength="50"></td>
 					<td><input class="form-control" type="text" value="<?= $association->latitude();?>"></td>
