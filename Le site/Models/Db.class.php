@@ -245,7 +245,7 @@ class Db {
 			if($index == 0){
 				$where .= $table_column . '=' . $this->_db->quote($value);
 			} else {
-				$where .= ' OR '$table_column . '=' . $this->_db->quote($value);
+				$where .= ' OR ' . $table_column . '=' . $this->_db->quote($value);
 			}
 		}
 		return $where . ')';
