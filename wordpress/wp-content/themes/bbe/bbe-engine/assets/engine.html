@@ -1,0 +1,1262 @@
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom bbe-bottom-nav animated bounce" role="navigation">
+    <div class="container-fluid">
+        <div class="row bbe-bottom-nav-first-row">
+            <div class="col-md-4  col-sm-3 col-xs-5" >
+                <div id="bbe-branding"> <a href="https://www.dopewp.com/" target="_blank" class="bbe-allowed-link"><span class="bbe-logo"> </span></a> bbe</div> &nbsp;
+																<button id="bbe-kill-tools" class="btn btn-xs hidden">kill tools</button> <button id="bbe-add-editing-tools" class="btn btn-xs hidden">enable tools</button> <span id="bbe-viewport-indication" class="label label-success"> </span> &nbsp;
+																<!-- <button id="bbe-show-advanced-features" class="btn btn-xs hidden-xs hidden-sm btn-warning ">Advanced...</button> -->
+
+																<button class='btn btn-primary btn-xs bbe-show-readymade-templates hidden-xs hidden-sm' ><span class='glyphicon glyphicon-floppy-disk' aria-hidden='true'></span>&nbsp;Templates</button>
+																<button id="bbe-show-html" class="btn btn-xs btn-default hidden-xs hidden-sm  "><span class="glyphicon glyphicon-pencil"></span>&nbsp;HTML</button>
+																<button id="bbe-edit-page-css" class="btn btn-xs btn-default hidden-xs hidden-sm hidden-md"><span class="glyphicon glyphicon-pencil"></span>&nbsp;CSS</button>
+
+												</div>
+            <!-- / col -->
+            <div class="col-md-4 col-sm-6 palette-col text-center hidden-xs "> <span class='hidden-md'>Add New Container:</span> <button class="bbe-create-container btn btn-sm btn-primary "> <i class="fa fa-plus"></i>  Standard Width</button> <button class="bbe-create-container-fluid btn btn-sm btn-primary "><i class="fa fa-plus"  ></i> Full Width</button> </div>
+            <!-- / col -->
+            <div class="col-md-4 col-sm-3 col-xs-7 text-right ">
+                <form method='POST' id='bbe-the-form' > <input type='hidden' name='bbe-magic-html' value='' />
+																				<input type='hidden' name='bbe-magic-css' value='' />
+																				<input type='hidden' name='bbe-go-saving' value='1'>
+																				<input type='hidden' name='bbe-saving-id'>
+																				<button type='submit' class='btn btn-danger btn-sm bbe-cancel-saving-layout '><span class='glyphicon glyphicon-remove-circle' aria-hidden='true'></span> Cancel</button>
+																				<button type='submit' class='btn btn-success hidden-sm btn-sm bbe-save-layout-button bbe-hidden-before-domchange  animated slideInLeft' name='bbe-save-and-stop-editing'><span class='glyphicon glyphicon-floppy-disk' aria-hidden='true'></span> Save & Exit</button>
+																				<button type='submit' class='btn btn-warning btn-sm bbe-save-layout-button bbe-hidden-before-domchange  animated slideInRight' name='bbe-save-layout-button'><span class='glyphicon glyphicon-floppy-disk' aria-hidden='true'></span> Save <span class="hidden-xs hidden-sm hidden-md">& Continue</span></button>
+																				<!-- <button type='submit' class='btn btn-warning btn-xs  bbe-advanced-features  ' name='bbe-save-as-template' value='1'><span class='glyphicon glyphicon-floppy-disk' aria-hidden='true'></span> Save New T</button> -->
+																				<input type='button' class='hidden btn btn-danger' id='bbe-reorder-stop' value='Confirm Reorder'>
+
+																</form>
+                <div id='bbe-saving-result'></div>
+            </div>
+            <!-- / col -->
+        </div>
+        <!-- / row -->
+        <div class="row bbe-edit-container-nav bbe-display-none">
+            <div class="col-xs-12 text-center"><button class="btn btn-xs btn-info bbe-close-edit-container-properties"><span class="glyphicon glyphicon-menu-down"></span> Close</button></div>
+            <div class="col-sm-2">
+                <h6>Width</h6>
+                <div class="radio"><label><input type="radio" name="optionsRadiosContainerFluidFixed" id="optionsRadiosContainerFixed" value="fixed" checked> Fixed Width Container</label></div>
+                <div class="radio"><label><input type="radio" name="optionsRadiosContainerFluidFixed" id="optionsRadiosContainerFluid" value="fluid"> Fluid Width Container</label></div>
+            </div>
+            <div class="col-sm-2">
+                <h6>Height</h6>
+                <div class="radio"><label><input type="radio" name="optionsRadiosContainerFullHeight" id="optionsRadiosContainerFullHeightNo" value="no" checked> Normal (fit inner content)</label></div>
+                <div class="radio"><label><input type="radio" name="optionsRadiosContainerFullHeight" id="optionsRadiosContainerFullHeightYes" value="yes"> Full Screen (fit to screen height)</label></div>
+            </div>
+            <div class="col-sm-2">
+                <h6 data-toggle="tooltip" data-placement="top" title="Margin Bottom: the Space between the container and the next one">Margin Bottom</h6>
+                <div class="radio"><label><input type="radio" name="optionsRadiosContainerMargin" id="optionsRadiosContainerMargin0" value="" checked> None</label></div>
+                <div class="radio"><label><input type="radio" name="optionsRadiosContainerMargin" id="optionsRadiosContainerMargin1" value="bbe-mbsingle"> Single</label></div>
+                <div class="radio"><label><input type="radio" name="optionsRadiosContainerMargin" id="optionsRadiosContainerMargin2" value="bbe-mbdouble"> Double</label></div>
+            </div>
+            <div class="col-sm-2">
+                <h6 data-toggle="tooltip" data-placement="top" title="Vertical Padding: the Vertical Space between the container and it's inner content">Vertical Padding</h6>
+                <div class="radio"><label><input type="radio" name="optionsRadiosContainerPadding"  id="optionsRadiosContainerPadding0" value="" checked> None</label></div>
+                <div class="radio"><label><input type="radio" name="optionsRadiosContainerPadding"  id="optionsRadiosContainerPadding1" value="bbe-psingle"> Single</label></div>
+                <div class="radio"><label><input type="radio" name="optionsRadiosContainerPadding"  id="optionsRadiosContainerPadding2" value="bbe-pdouble"> Double</label></div>
+            </div>
+            <div class="col-sm-2">
+                <h6>Background pattern</h6>
+                <div class="radio">
+                    <NO_label><input type="number" name="ContainerBgPattern" id="ContainerBgPattern" value="0" min="0" max="71"> </NO_label>
+                </div>
+                <h6>Background color</h6>
+                <div class="bbe-color-picker-wrap">
+                    <NO_label><input type="color" name="bbe-container-wrap-background" id="bbe-container-wrap-background" value="#ffffff"> <span class="reset-color-inputfield-wrap glyphicon glyphicon-remove"></span> Wrap Background</NO_label>
+                </div>
+                <div class="bbe-color-picker-wrap">
+                    <NO_label><input type="color" name="bbe-container-background" id="bbe-container-background" value="#ffffff"> <span class="reset-color-inputfield-bg glyphicon glyphicon-remove"></span> Container (Inner) Background</NO_label>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <h6>Background Image</h6><img id="bbe-container-background-image-demo"  >
+                <button class="btn btn-xs btn-info" id="bbe-trigger-container-background-editing"><span class="glyphicon glyphicon-pencil"></span> Edit Bg</button>
+																<div class="radio"><label><input type="radio" name="optionsRadiosContainerBackgroundAttachment"  id="optionsRadiosContainerBackgroundScroll" value="" checked> Scroll</label></div>
+                <div class="radio"><label><input type="radio" name="optionsRadiosContainerBackgroundAttachment"  id="optionsRadiosContainerBackgroundFixed" value="bbe-bafixed"> Fixed</label></div>
+            </div>
+        </div>
+        <!-- / row -->
+    </div>
+    <!-- / cont -->
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- CONTEXTUAL WINDOW TEMPLATES STUDIO -->
+
+<div class="bbe-contextual-window" id="bbe-contextual-window-templates">
+
+		<a href="#" class="bbe-contextual-close bbe-contextual-close-top" id="bbe-contextual-window-templates-close"> <span class="glyphicon glyphicon-remove"></span> </a> </a>
+
+		<span class="bbe-logo"> </span>
+		<h4>Templates <span class="text-muted">Studio</span> </h4>
+
+		<hr>
+
+
+		<div id="bbe-remote-templates-wrap"  >
+			<div id="bbe-templates-search-by-kind">
+				<!-- ooh-->
+				<ul id="ul-search-templates-by-kind" class="nav nav-tabs nav-justified"><li  data-id="29" data-slug="basic" role="presentation"> <a title="" href="#"> <span class="glyphicon glyphicon-pawn"></span> Basic Templates </a>   </li><li  class="bbe-ee-hidden"  data-id="33" data-slug="experimental" role="presentation"> <a title="" href="#"> <span class="glyphicon glyphicon glyphicon-flash" aria-hidden="true"></span> Experimental </a>   </li><li  data-id="21" data-slug="premium" role="presentation"> <a title="" href="#"> <span class="glyphicon glyphicon-home"></span> Premium Templates </a>   </li></ul>
+				<!-- yea -->
+			</div>
+			<div id="bbe-remote-templates-detail-space"></div>
+			<div id="bbe-remote-templates-search-results"></div>
+		</div> 	<!-- close bbe-remote-templates-wrap -->
+
+
+ <div class="bbe-window-resizer"></div>
+
+</div> <!-- close bbe-contextual-window -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div id="bbe-original-components" class="hidden"></div> -->
+<!-- To hold unfiltered components html -->
+
+
+
+
+
+
+<!-- SPLASH MODAL WINDOW LOGIN -->
+<div id="bbe-modal-backdrop"></div>
+<div class="bbe-modal-splash" id="bbe-modal-splash-login">
+				<a href="#" class="bbe-modal-splash-close  bbe-contextual-close-top" id="bbe-contextual-window-components-close"> <span class="glyphicon glyphicon-remove"></span> </a> </a>
+				<span class="bbe-logo"> </span>
+				<h4>Cloud <span class="text-muted">Access</span> </h4>
+				<hr>
+				<p class="text-center">
+					This feature is exclusive to PRO Members.<br><br>
+					<a href="https://www.dopewp.com/upgrade/?utm_source=components&utm_medium=button&utm_campaign=BBE%20Free%20Theme" target="_blank" class="bbe-upgrade-link btn btn-md  text-uppercase btn-warning "> <span class="glyphicon  glyphicon-plane"></span> &nbsp; Upgrade to PRO </a>
+					<br><br><br><small>Already a PRO member? <br> Please login clicking the button below.</small> <br><br>
+					<a id='bbe-open-login-popup' class='btn btn-md   text-uppercase btn-success'><span class="glyphicon glyphicon-user"></span> &nbsp; Pro Member Login</a>
+				</p>
+
+</div> <!-- close bbe-modal-splash -->
+
+
+
+
+
+
+<!-- CONTEXTUAL WINDOW COMPONENTS STUDIO -->
+
+<div class="bbe-contextual-window " id="bbe-contextual-window-components">
+
+				<div class="bbe-contextual-window-top-dragbar"></div>
+				<a href="#" class="bbe-contextual-close bbe-contextual-close-top" id="bbe-contextual-window-components-close"> <span class="glyphicon glyphicon-remove"></span> </a>
+
+				<span class="bbe-logo"> </span>
+				<h4>Components <span class="text-muted">Studio</span> </h4>
+				<form class="form-inline" id="bbe-placeholders-theming-form">
+					<div class="form-group" >
+						<label>  Theme</label>
+						<select class="form-control" name="placeholders_theme">
+							<option value="architecture">architecture</option>
+							<option value="business">business</option>
+							<option value="car">car</option>
+							<option value="church">church</option>
+							<option value="edu">education</option>
+							<option value="fashion">fashion</option>
+							<option value="food">food</option>
+							<option value="fitness">gym & fitness</option>
+							<option value="hotel">hotel</option>
+							<option value="music">music</option>
+							<option value="nature">nature</option>
+							<option value="people">people</option>
+							<option value="wedding">wedding</option>
+						</select>
+					</div>
+				</form>
+
+
+
+				<hr>
+
+				<div id="bbe-remote-search-by-type">
+					<!-- ding -->
+					
+					<ul id="ul-search-components-by-type" ><li  data-id="18" data-slug="advanced-elements" ><a title="" href="#"> <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Advanced Elements </a>   </li><li  data-id="10" data-slug="basic-elements" ><a title="
+Simple elements to compose your page " href="#"> <span class="glyphicon glyphicon-align-left"></span> Basic Elements </a>   </li><li  data-id="17" data-slug="buttons" ><a title="" href="#"> <span class="glyphicon glyphicon-text-background" aria-hidden="true"></span> Buttons </a>   </li><li  data-id="14" data-slug="carousels" ><a title=" Also called sliders :) " href="#"> <span class="glyphicon glyphicon-transfer" aria-hidden="true"></span> Carousels </a>   </li><li  data-id="16" data-slug="cool-headings" ><a title=" " href="#"> <span class="glyphicon glyphicon-fire" aria-hidden="true"></span> Cool Headings </a>   </li><li  class="bbe-ee-hidden"  data-id="24" data-slug="experimental" ><a title=" " href="#"> <span class="glyphicon glyphicon glyphicon-flash" aria-hidden="true"></span> Experimental </a>   </li><li  data-id="13" data-slug="gallery" ><a title="" href="#"> <span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Image Galleries </a>   </li><li  data-id="8" data-slug="main-sections" ><a title="" href="#"> <span class="glyphicon glyphicon-modal-window" aria-hidden="true"></span> Main Sections </a>   </li><li  data-id="20" data-slug="maps" ><a title="" href="#"> <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Maps </a>   </li><li  data-id="9" data-slug="social" ><a title="" href="#"> <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Social </a>   </li><li  data-id="19" data-slug="videos" ><a title=" Embed Youtube, Vimeo, DailyMotion etc.." href="#"> <span class="glyphicon glyphicon-film" aria-hidden="true"></span> Videos </a>   </li><li  data-id="38" data-slug="dynamic" ><a title=" Display content, widgets, shortcodes..." href="#"> <span class="glyphicon glyphicon-th" aria-hidden="true"></span> WP Dynamic </a>   </li><li class="bbe-show-search-by-name hidden"> <a href="#"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search by Name </a></li>
+					</ul>
+
+					<!-- dong -->
+
+				</div> <!-- /remote-search-by-type -->
+
+				<form class="form-horizontal" hidden  id="bbe-form-search-component-by-name">
+								<div class="form-group">
+												<label class="col-sm-4 control-label">Search</label>
+												<div class="col-sm-8">
+																<input type="text"  class="form-control" name="search_components_by_name" value="" placeholder="Search Components by Name..." >
+												</div>
+								</div>
+								<hr>
+				</form>
+
+
+				<div id="bbe-components-listing">
+
+												<div id="bbe-remote-components-wrap">
+																<div id="bbe-remote-components-detail-space"></div>
+																<div id="bbe-remote-components-search-results"> <p style="margin-bottom:40vh"></p> </div>
+												</div> <!-- close bbe-remote-components-wrap -->
+
+
+				</div> <!-- /bbe-components-listing -->
+
+				<div class="bbe-contextual-window-resize-handle"  >
+					<span class="glyphicon glyphicon-resize-horizontal"></span>
+				</div>
+
+</div> <!-- close bbe-contextual-window -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal Insert Row and Divide into Columns -->
+<div class="modal fade" id="bbe-insert-rowcols-modal" tabindex="-1" role="dialog" aria-labelledby="bbe-insert-rowcols-modalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title"> Insert Row and Divide into Columns</h4>
+			</div>
+			<div class="bbe-modal-body modal-body">
+
+				<div class="panel" id="bbe-panel-build-rows">
+					<h2 class="text-center"> Equal width  </h2>
+					<div class="row text-center">
+						<div class="col-xs-3">
+							<h3>1 Column</h3>
+							<button data-rows="12" class="bbe-insert-row-and-cols-from-modal btn btn-success btn-sm"><span class="glyphicon glyphicon-import"></span> INSERT</button>
+						</div>
+						<div class="col-xs-3">
+							<h3>2 Columns</h3>
+							<button data-rows="6-6" class="bbe-insert-row-and-cols-from-modal btn btn-success btn-sm"><span class="glyphicon glyphicon-import"></span> INSERT</button>
+						</div>
+						<div class="col-xs-3">
+							<h3>3 Columns</h3>
+							<button data-rows="4-4-4" class="bbe-insert-row-and-cols-from-modal btn btn-success btn-sm"><span class="glyphicon glyphicon-import"></span> INSERT</button>
+						</div>
+						<div class="col-xs-3">
+							<h3>4 Columns</h3>
+							<button data-rows="3-3-3-3" class="bbe-insert-row-and-cols-from-modal btn btn-success btn-sm"><span class="glyphicon glyphicon-import"></span> INSERT</button>
+						</div>
+					</div><!-- close row -->
+					<br />
+					<h2 class="text-center"> Different width : 2 Columns </h2>
+					<div class="row text-center">
+						<div class="col-xs-3">
+							<h3>2-10</h3>
+							<button data-rows="2-10" class="bbe-insert-row-and-cols-from-modal btn btn-success btn-sm"><span class="glyphicon glyphicon-import"></span> INSERT</button>
+						</div>
+						<div class="col-xs-3">
+							<h3>3-9</h3>
+							<button data-rows="3-9" class="bbe-insert-row-and-cols-from-modal btn btn-success btn-sm"><span class="glyphicon glyphicon-import"></span> INSERT</button>
+						</div>
+						<div class="col-xs-3">
+							<h3>4-8</h3>
+							<button data-rows="4-8" class="bbe-insert-row-and-cols-from-modal btn btn-success btn-sm"><span class="glyphicon glyphicon-import"></span> INSERT</button>
+						</div>
+						<div class="col-xs-3">
+							<h3>5-7</h3>
+							<button data-rows="5-7" class="bbe-insert-row-and-cols-from-modal btn btn-success btn-sm"><span class="glyphicon glyphicon-import"></span> INSERT</button>
+						</div>
+					</div> <!-- /row -->
+					<div class="row text-center">
+						<div class="col-xs-3">
+							<h3>10-2</h3>
+							<button data-rows="10-2" class="bbe-insert-row-and-cols-from-modal btn btn-success btn-sm"><span class="glyphicon glyphicon-import"></span> INSERT</button>
+						</div>
+						<div class="col-xs-3">
+							<h3>9-3</h3>
+							<button data-rows="9-3" class="bbe-insert-row-and-cols-from-modal btn btn-success btn-sm"><span class="glyphicon glyphicon-import"></span> INSERT</button>
+						</div>
+						<div class="col-xs-3">
+							<h3>8-4</h3>
+							<button data-rows="8-4" class="bbe-insert-row-and-cols-from-modal btn btn-success btn-sm"><span class="glyphicon glyphicon-import"></span> INSERT</button>
+						</div>
+						<div class="col-xs-3">
+							<h3>7-5</h3>
+							<button data-rows="7-5" class="bbe-insert-row-and-cols-from-modal btn btn-success btn-sm"><span class="glyphicon glyphicon-import"></span> INSERT</button>
+						</div>
+					</div> <!-- /row -->
+					<br />
+					<h2 class="text-center"> Different width : 3 Columns </h2>
+					<div class="row text-center">
+						<div class="col-xs-3">
+							<h3>6-3-3</h3>
+							<button data-rows="6-3-3" class="bbe-insert-row-and-cols-from-modal btn btn-success btn-sm"><span class="glyphicon glyphicon-import"></span> INSERT</button>
+						</div>
+						<div class="col-xs-3">
+							<h3>3-3-6</h3>
+							<button data-rows="3-3-6" class="bbe-insert-row-and-cols-from-modal btn btn-success btn-sm"><span class="glyphicon glyphicon-import"></span> INSERT</button>
+						</div>
+						<div class="col-xs-3">
+							<h3>3-6-3</h3>
+							<button data-rows="3-6-3" class="bbe-insert-row-and-cols-from-modal btn btn-success btn-sm"><span class="glyphicon glyphicon-import"></span> INSERT</button>
+						</div>
+						<div class="col-xs-3">
+							<h3>3-4-5</h3>
+							<button data-rows="3-4-5" class="bbe-insert-row-and-cols-from-modal btn btn-success btn-sm"><span class="glyphicon glyphicon-import"></span> INSERT</button>
+						</div>
+					</div>
+				</div><!-- close panel -->
+
+
+			</div> <!-- close modal body -->
+			<div class="modal-footer">         </div>
+		</div>
+	</div>
+</div>
+<!-- CLOSE Modal Insert Row and Divide into Columns -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- CONTEXTUAL WINDOW ICON EDITOR -->
+
+<div class="bbe-contextual-window" id="bbe-contextual-window-icons">
+
+
+				<h4>Icon <span class="text-muted">Properties</span></h4>
+				<hr>
+				<form class="form-horizontal">
+
+								<div class="form-group bbe-ee-hidden">
+											<label class="col-sm-2 control-label">Size (pixels)</label>
+											<div class="col-sm-10">
+															<input type="range" min="1" max="400"   class="form-control" name="icon-size-px" value="">
+											</div>
+								</div>
+
+								<div class="form-group">
+												<label class="col-sm-2 control-label">Size</label>
+												<div class="col-sm-4">
+																<select class="form-control" name="icon-size">
+																				<option value=""></option>
+																				<option value="xs">XS</option>
+																				<option value="sm">SM</option>
+																				<option value="md">MD</option>
+																				<option value="lg">LG</option>
+																				<option value="xl">XL</option>
+																</select>
+												</div>
+
+												<label class="col-sm-4 control-label">Color</label>
+												<div class="col-sm-2">
+																<input type="color" name="icon-color" >
+												</div>
+								</div>
+
+								<hr>
+								<div class="form-group">
+											<label class="col-sm-2 control-label">Search</label>
+											<div class="col-sm-10">
+															<input type="text"  class="form-control" name="search" value="" placeholder="Enter search Keyword..." >
+											</div>
+								</div>
+
+								<div id="bbe-icons-listing"></div>
+
+				</form>
+
+</div> <!-- close bbe-contextual-window -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- CONTEXTUAL WINDOW PROGRESS BAR -->
+
+<div class="bbe-contextual-window" id="bbe-contextual-window-progress-bar">
+
+
+				<h4>Progress Bar <span class="text-muted">Properties</span></h4>
+				<hr>
+				<form class="form-horizontal">
+
+								<div class="form-group">
+											<label class="col-sm-4 control-label">Value</label>
+											<div class="col-sm-8">
+															<input type="number" min="0" max="100" class="form-control" name="value" value=""  style="max-width: 70px;display:inline-block"> <div style="display:inline-block"> %</div>
+											</div>
+								</div>
+
+								<div class="form-group">
+												<label class="col-sm-4 control-label">Colour</label>
+												<div class="col-sm-8">
+																<select class="form-control" name="color_classes">
+																				<option value="progress-bar-default">progress-bar-default</option><!-- <option value="progress-bar-primary">progress-bar-primary</option> --> <option value="progress-bar-success">progress-bar-success</option><option value="progress-bar-info">progress-bar-info</option><option value="progress-bar-warning">progress-bar-warning</option><option value="progress-bar-danger">progress-bar-danger</option>
+																</select>
+												</div>
+								</div>
+
+								<div class="form-group">
+												<label class="col-sm-4 control-label">Striped</label>
+												<div class="col-sm-8">
+																<div class="checkbox">
+																				<label> 	<input type="checkbox" value="" name="striped"> Enable </label>
+																</div>
+												</div>
+								</div>
+
+								<div class="form-group">
+												<label class="col-sm-4 control-label">Animation</label>
+												<div class="col-sm-8">
+																<div class="checkbox">
+																				<label> 	<input type="checkbox" value="" name="animation"> Enable	</label>
+																</div>
+												</div>
+								</div>
+
+
+				</form>
+
+</div> <!-- close bbe-contextual-window -->
+
+
+
+
+
+
+
+
+
+<div class="bbe-contextual-window" id="bbe-contextual-window-alert" >
+
+				<h4>Alert Background</h4>
+				<hr>
+				<form class="form-horizontal bbe-change-panel-bootstrap-class-form"  >
+								<div class="radio"><label><input type="radio" name="class" value="alert-default"> <div class="bootstrap-color default">Default</div></label>
+								</div>
+								<!-- <div class="radio"><label><input type="radio" name="class" value="alert-primary"> <div class="bootstrap-color primary">Primary</div></label>
+								</div>
+								-->
+								<div class="radio"><label><input type="radio" name="class" value="alert-success"> <div class="bootstrap-color success">Success</div></label>
+								</div>
+								<div class="radio"><label><input type="radio" name="class" value="alert-info" checked="checked"> <div class="bootstrap-color info">Info</div></label>
+								</div>
+								<div class="radio"><label><input type="radio" name="class" value="alert-warning"> <div class="bootstrap-color warning">Warning</div></label>
+								</div>
+								<div class="radio"><label><input type="radio" name="class" value="alert-danger"> <div class="bootstrap-color danger">Danger</div></label>
+								</div>
+
+				</form>
+
+</div> <!-- end contextual window -->
+
+
+
+
+
+
+
+<div class="bbe-contextual-window" id="bbe-contextual-window-panel" >
+
+				<h4>Panel Heading </h4>
+				<hr>
+				<form class="form-horizontal bbe-change-panel-bootstrap-class-form"  >
+								<div class="radio"><label><input type="radio" name="class" value="panel-default"> <div class="bootstrap-color default">Default</div></label>
+								</div>
+								<div class="radio"><label><input type="radio" name="class" value="panel-primary"> <div class="bootstrap-color primary">Primary</div></label>
+								</div>
+								<div class="radio"><label><input type="radio" name="class" value="panel-success"> <div class="bootstrap-color success">Success</div></label>
+								</div>
+								<div class="radio"><label><input type="radio" name="class" value="panel-info" checked="checked"> <div class="bootstrap-color info">Info</div></label>
+								</div>
+								<div class="radio"><label><input type="radio" name="class" value="panel-warning"> <div class="bootstrap-color warning">Warning</div></label>
+								</div>
+								<div class="radio"><label><input type="radio" name="class" value="panel-danger"> <div class="bootstrap-color danger">Danger</div></label>
+								</div>
+
+				</form>
+
+</div> <!-- end contextual window -->
+
+
+
+
+
+
+<div class="bbe-contextual-window" id="bbe-contextual-window-collapsible" >
+
+				<h4>Collapsible Headings </h4>
+				<hr>
+				<form class="form-horizontal bbe-change-collapsible-bootstrap-class-form"  >
+								<div class="radio"><label><input type="radio" name="class" value="panel-default"> <div class="bootstrap-color default">Default</div></label>
+								</div>
+								<div class="radio"><label><input type="radio" name="class" value="panel-primary"> <div class="bootstrap-color primary">Primary</div></label>
+								</div>
+								<div class="radio"><label><input type="radio" name="class" value="panel-success"> <div class="bootstrap-color success">Success</div></label>
+								</div>
+								<div class="radio"><label><input type="radio" name="class" value="panel-info" checked="checked"> <div class="bootstrap-color info">Info</div></label>
+								</div>
+								<div class="radio"><label><input type="radio" name="class" value="panel-warning"> <div class="bootstrap-color warning">Warning</div></label>
+								</div>
+								<div class="radio"><label><input type="radio" name="class" value="panel-danger"> <div class="bootstrap-color danger">Danger</div></label>
+								</div>
+
+				</form>
+
+</div> <!-- end contextual window -->
+
+
+
+
+
+
+
+<div class="bbe-contextual-window" id="bbe-contextual-window-gmapembed" >
+
+				<h4>Map <span class="text-muted">Properties</span></h4>
+				<hr>
+				<form class="form-horizontal">
+
+								<div class="form-group">
+											<label class="col-sm-4 control-label">Address</label>
+											<div class="col-sm-8">
+															<input type="text"   class="form-control" name="address" value="">
+											</div>
+								</div>
+
+								<div class="form-group">
+												<label class="col-sm-4 control-label">Zoom</label>
+															<div class="col-sm-8">
+															<input type="range" min="1" max="20"   class="form-control" name="zoom" value="">
+											</div>
+								</div>
+
+
+								<div class="form-group">
+												<label class="col-sm-4 control-label">Aspect Ratio</label>
+												<div class="col-sm-8">
+																<div class="radio">
+																				<label><input type="radio" name="aspect-ratio" value="embed-responsive-16by9"> <div class="bootstrap-color warning">16:9</div></label>
+																</div>
+																<div class="radio">
+																				<label><input type="radio" name="aspect-ratio" value="embed-responsive-4by3"> <div class="bootstrap-color danger">4:3</div></label>
+																</div>
+												</div>
+								</div>
+
+
+
+				</form>
+
+</div> <!-- end contextual window -->
+
+
+
+
+
+
+
+
+
+
+
+<div class="bbe-contextual-window" id="bbe-contextual-window-videobg" >
+
+				<h4>Video Background</h4>
+				<hr>
+				<form>
+
+								<div class="form-group">
+												<label class="control-label">MP4 URL</label>
+											 <input type="text"   class="form-control" name="mp4_url" value="">
+
+											<p class="text-right"><small>Where can I <a href="http://www.dopewp.com/video-resources/" target="_blank">grab some video inspiration</a>? </small></p>
+								</div>
+
+				</form>
+
+</div> <!-- end contextual window -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="bbe-contextual-window" id="bbe-contextual-window-links" >
+
+				<h4>Link <span class="text-muted">Properties</span></h4>
+				<hr>
+
+				<form class="form-horizontal bbe-change-link-url-form" data-link-edit-id="xVauJ">
+								<div class="form-group">
+										<label class="col-sm-2 control-label"> URL </label>
+										<div class="col-sm-10">
+									<input type="text" class="form-control" name="url" value="#">
+										</div>
+								</div>
+								<div class="form-group">
+										<label class="col-sm-2 control-label">Anchor HTML</label>
+										<div class="col-sm-10">
+									<input type="text" class="form-control" name="anchor" value="Default">
+										</div>
+								</div>
+
+								<div class="form-group">
+												<label class="col-sm-2 control-label">Colour</label>
+												<div class="col-sm-10">
+																				<select class="form-control" name="color_classes">
+																								<option value="btn-default">btn-default</option> <option value="btn-primary">btn-primary</option>  <option value="btn-success">btn-success</option><option value="btn-info">btn-info</option><option value="btn-warning">btn-warning</option><option value="btn-danger">btn-danger</option>
+																								<option value="">None</option>
+																				</select>
+												</div>
+								</div>
+								<div class="form-group">
+												<label class="col-sm-2 control-label">Size</label>
+												<div class="col-sm-10">
+																				<select class="form-control" name="size">
+																								<option value="btn-xs">btn-xs</option> <option value="btn-sm">btn-sm</option>  <option value="btn-md">btn-md</option><option value="btn-lg">btn-lg</option>
+																								<option value="">Default</option>
+																				</select>
+												</div>
+								</div>
+								<div class="form-group">
+											<div class="col-sm-offset-2 col-sm-10">
+												<a  class="btn btn-danger btn-xs " id="bbe-delete-link-button"> Delete Link</a>
+											</div>
+								</div>
+				</form>
+
+</div> <!-- end contextual window -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="bbe-contextual-window" id="bbe-contextual-window-svg" >
+
+				<h4>SVG Object <span class="text-muted">Properties</span></h4>
+				<hr>
+
+
+				<form>
+					<div class="form-group">
+						<label class=" control-label">SVG File URL</label>
+
+							<input type="url" class="form-control" name="url" value="" data-attribute="data">
+
+
+					</div>
+
+
+					<div class="form-group">
+						<label class=" control-label">OpenClipArt Search</label>
+
+							<input type="text" class="form-control" name="bbe_search_for_svg_clipart" value="">
+							 <small>Please do not hotlink files, copy the file to your server</small>
+
+
+					</div>
+
+					<div id="bbe_search_for_svg_clipart_results">
+
+					</div>
+
+</form>
+
+</div> <!-- end contextual window -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="bbe-contextual-window" id="bbe-contextual-window-responsive-embed" >
+
+				<h4>Responsive Embed <span class="text-muted">Universal</span></h4>
+				<hr>
+				<form method='POST' id='bbe-contextual-embed-form' >
+
+								<div class="form-group">
+
+												<label>Full Page URL </label>
+												<input type="text"   class="form-control" name="url" value="" placeholder="Paste here the full URL from Youtube / SoundCloud">
+
+								</div>
+
+
+								<div class="form-group">
+
+												 <small><a target="_blank" class="pull-right" href="https://codex.wordpress.org/Embeds#Okay.2C_So_What_Sites_Can_I_Embed_From.3F">What sites can I embed from ?</a></small>
+												<div class="clearfix"></div>
+												<!--
+												<label >Aspect Ratio: &nbsp; </label>
+												<label class="radio-inline"><input type="radio" name="aspect-ratio" value="embed-responsive-16by9"> <div class="bootstrap-color warning">16:9</div></label>
+												<label class="radio-inline"><input type="radio" name="aspect-ratio" value="embed-responsive-4by3"> <div class="bootstrap-color danger">4:3</div></label>
+												-->
+
+								</div>
+
+
+				</form>
+
+</div> <!-- end contextual window -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="bbe-contextual-window" id="bbe-contextual-window-image" >
+
+				<h4>Image <span class="text-muted">Properties</span>
+					<span class="bbe-contextual-top-buttons">
+						<a class="bbe-show-wpadmin-search   btn btn-sm btn-default href="#">  <i class="fa fa-wordpress"  ></i> Upload / Local Library</a>
+						<a class="bbe-show-unsplash-search   btn btn-sm btn-default href="#">  <i class="fa fa-camera"  ></i> UnSplash</a>
+					</span>
+				</h4>
+
+
+
+				<hr>
+				<form class="form-horizontal">
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Image URL</label>
+						<div class="col-sm-10">
+							<input type="text"   class="form-control" name="url" value="" placeholder="Enter Image URL">
+						</div>
+					</div>
+
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label">ALT Text</label>
+						<div class="col-sm-10">
+							<input type="text"   class="form-control" name="alt" value="" placeholder="Enter a description of the image">
+						</div>
+					</div>
+
+				</form>
+
+
+
+				<div class="bbe-unsplash-search-wrap hidden" >
+
+					<form>
+						<hr>
+						<div class="form-group" >
+							<label>UnSplash Image Search </label>
+							<input type="text"   class="form-control" name="unsplash-search-by-keyword" value="" placeholder="Enter search Keyword..." >
+						</div>
+
+					</form>
+
+					<div class="bbe-unsplash-search-results"></div>
+				</div>	<!-- end unsplash wrap -->
+
+				<div class="bbe-wpadmin-imagesearch-wrap hidden">
+
+				</div>
+
+
+</div> <!-- end contextual window -->
+
+
+
+
+
+
+
+
+
+
+<div class="bbe-contextual-window" id="bbe-contextual-window-backgroundimage" >
+
+				<h4>Background Image <span class="text-muted">Properties</span>
+
+					<span class="bbe-contextual-top-buttons">
+						<a class="bbe-show-wpadmin-search   btn btn-sm btn-default href="#">  <i class="fa fa-wordpress"  ></i> Upload / Local Library</a>
+						<a class="bbe-show-unsplash-search   btn btn-sm btn-default href="#">  <i class="fa fa-camera"  ></i> UnSplash</a>
+					</span>
+
+				</h4>
+				<hr>
+				<form>
+
+								<div class="form-group">
+
+												<label>Image URL </label>
+												<input type="text"   class="form-control" name="url" value="" placeholder="Enter Image URL">
+								</div>
+
+
+
+				</form>
+
+
+				<div class="bbe-unsplash-search-wrap" >
+
+								<form>
+												<div class="form-group" >
+
+																<label>UnSplash Image Search </label>
+																<input type="text"   class="form-control" name="unsplash-search-by-keyword" value="" placeholder="Enter search Keyword..." >
+
+												</div>
+
+								</form>
+
+								<div class="bbe-unsplash-search-results"></div>
+				</div>	<!-- end unsplash wrap -->
+
+				<div class="bbe-wpadmin-imagesearch-wrap" class="hidden">
+
+				</div>
+
+
+</div> <!-- end contextual window -->
+
+
+
+
+<div class="bbe-contextual-window" id="bbe-contextual-window-shortcode" >
+
+	<h4>Shortcode <span class="text-muted">Editor</span> 	</h4>
+
+	<form>
+		 <div class="form-group">
+			 
+			  <div class="col-sm-12">
+				  <input type="text" length="150" name="shortcode" >
+			  </div>
+		</div>
+	
+	</form>
+
+
+</div> <!-- end contextual window -->
+	
+
+
+
+
+<div class="bbe-contextual-window" id="bbe-contextual-window-posts-loop" >
+
+	<h4>Posts Loop <span class="text-muted">Properties</span> 	</h4>
+
+	<form class="row">
+		
+		<div class="col-md-6">
+			<h2>Query Options</h2>
+			
+			
+			
+			<div class="form-group">
+				  <label class="col-sm-6 control-label">Number of Items </label>
+				  <div class="col-sm-6">
+					  <input type="number" min="1" max="999" class="form-control" name="posts_per_page" value="10">
+				  </div>
+			</div>
+			
+			<div class="form-group">
+				  <label class="col-sm-6 control-label">Post Type </label>
+				  <div class="col-sm-6">
+					  <input type="text"  class="form-control" name="post_type" value="post" placeholder="post">
+				  </div>
+			</div>
+			
+			<div class="form-group">
+				  <label class="col-sm-6 control-label">Author   </label>
+				  <div class="col-sm-6">
+					  <input type="text"  class="form-control" name="author" value="" placeholder="Author ID">
+				  </div>
+			</div>
+					
+			
+			<div class="form-group">
+				  <label class="col-sm-6 control-label">Category </label>
+				  <div class="col-sm-6 bbe-bastard-input-wrap">
+					
+					  <input type="text"  class="form-control" name="category" value="" placeholder="1,2,3" >
+					   
+					  <select class="form-control hidden" id="bbe-cats-select">  </select>
+					  
+				  </div>
+			</div>
+			
+			<div class="form-group">
+				  <label class="col-sm-6 control-label">Include </label>
+				  <div class="col-sm-6">
+					  <input type="text" class="form-control" name="include" value="" placeholder="1,2,3">
+				  </div>
+			</div>
+			
+			<div class="form-group">
+				  <label class="col-sm-6 control-label">Exclude </label>
+				  <div class="col-sm-6">
+					  <input type="text"  class="form-control" name="exclude" value="" placeholder="1,2,3">
+				  </div>
+			</div>
+			 
+			<div class="form-group">
+				  <label class="col-sm-6 control-label">Post Parent </label>
+				  <div class="col-sm-6">
+					  <input type="text"  class="form-control" name="post_parent" value="" placeholder="1">
+				  </div>
+			</div>
+			
+			<div class="form-group">
+				  <label class="col-sm-6 control-label">Custom Field Key </label>
+				  <div class="col-sm-6">
+					  <input type="text" class="form-control" name="meta_key" value="" placeholder="Custom Field Key">
+				  </div>
+			</div>
+			
+			<div class="form-group">
+				  <label class="col-sm-6 control-label">Custom Field Value </label>
+				  <div class="col-sm-6">
+					  <input type="text"  class="form-control" name="meta_value" value="" placeholder="Custom Field Value">
+				  </div>
+			</div>
+	
+	
+			<div class="form-group">
+				  <label class="col-sm-6 control-label">Taxonomy </label>
+				  <div class="col-sm-6">
+					  <input type="text"  class="form-control" name="tax_query" value=""   placeholder="post_tag=1">
+				  </div>
+			</div>
+	
+	
+			<div class="form-group">
+				  <label class="col-sm-6 control-label">Order By </label>
+				  <div class="col-sm-6">
+					   
+					  <select class="form-control" name="orderby">
+							  <option value="date" selected="selected">Date</option>
+							  <option value="modified">Last modified date</option>
+							  <option value="ID">ID</option>
+							  <option value="author">Author</option>
+							  <option value="title">Title</option>
+							  <option value="menu_order">Menu Order</option>
+							  <option value="comment_count">Comment Count</option>
+							  <option value="rand">Random</option>
+							 
+	
+					  </select>
+					  
+				  </div>
+			</div>
+			
+					<div class="form-group">
+				  <label class="col-sm-6 control-label">Sort Order </label>
+				  <div class="col-sm-6">
+					   
+					  <select class="form-control" name="order">
+							  <option value="desc">Descending</option>
+							  <option value="asc">Ascending</option>
+	
+					  </select>
+					  
+				  </div>
+			</div>
+		
+		</div> <!-- close left column -->
+		<div class="col-md-6">
+			
+			<h2>Output Options</h2>
+			<div class="form-group">
+				<label class="col-sm-6 control-label">Layout</label>
+				<div class="col-sm-6">
+					
+					<select class="form-control" name="output_callback">
+							<option value="bbe_postlist_default_callback" selected="selected">Default (Vertical)</option>
+							<option value="bbe_postlist_horizontal_callback">Horizontal</option>
+							<option value="bbe_postlist_carousel_callback">Carousel</option>
+							<option value="bbe_postlist_custom_callback">Custom</option>
+	
+					</select>
+					
+				</div>
+			</div>
+			
+			<!-- output_number_of_columns -->
+			<div class="form-group">
+				<label class="col-sm-6 control-label">Number of Columns  </label>
+				<div class="col-sm-6">
+					
+					<select class="form-control" name="output_number_of_columns">
+							<option value="2">2</option>
+							<option value="3" selected="selected" >3</option>
+							<option value="4">4</option>
+							<option value="6">6</option> 
+	
+					</select>
+					
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-sm-6 control-label">Hide Elements</label>
+				<div class="col-sm-6">
+					
+					<input type="text" class="form-control" name="output_hide_elements" rows="3" placeholder="Title, Author, Datetime, FeaturedImage, Excerpt, Category, Comments">	
+				</div>
+			</div>
+			
+			<!-- output_excerpt_length -->
+			<div class="form-group">
+				<label class="col-sm-6 control-label">Excerpt Words </label>
+				<div class="col-sm-6">
+					
+					<input type="number" class="form-control" name="output_excerpt_length" min="1" max="999" value="45">	
+				</div>
+			</div>
+			
+			<!-- output_excerpt_length -->
+			<div class="form-group">
+				<label class="col-sm-6 control-label">..More Anchor </label>
+				<div class="col-sm-6">
+					
+					<input type="text" class="form-control" name="output_excerpt_text" value="&hellip; Read more">	
+				</div>
+			</div>
+			
+			
+			<!-- output_heading_tag -->
+			<div class="form-group">
+				<label class="col-sm-6 control-label">Headings Tag</label>
+				<div class="col-sm-6">
+					
+					<select class="form-control" name="output_heading_tag">
+							<option value="h1">H1</option>
+							<option value="h2" selected="selected" >H2</option>
+							<option value="h3">H3</option>
+							<option value="h4">H4</option>
+							<option value="h5">H5</option>
+							<option value="h6">H6</option>
+	
+					</select>
+					
+				</div>
+			</div>
+			
+			
+			<h2>Featured Image</h2>
+			<div class="form-group">
+				<label class="col-sm-6 control-label"> Position</label>
+				<div class="col-sm-6">
+						
+						<select class="form-control" name="output_featured_image_before">
+								<option value="" selected="selected">After Title</option>
+								<option value="1">Before Title</option>
+	
+						</select>
+						
+				</div>
+			</div>
+			
+		
+		
+			<div class="form-group">
+				<label class="col-sm-6 control-label">  Format</label>
+				<div class="col-sm-6">
+					
+					<select class="form-control" name="output_featured_image_format">
+							<option value="thumbnail" selected="selected" >thumbnail</option>
+							<option value="medium">Medium</option>
+							<option value="large">Large</option>
+							<option value="full">Full</option>
+						 
+	
+					</select>
+					
+				</div>
+			</div>
+			
+			
+			<div class="form-group">
+				<label class="col-sm-6 control-label"> Class</label>
+				<div class="col-sm-6">
+					
+					<input type="text" class="form-control" name="output_featured_image_class" value="attachment-thumbnail img-responsive alignleft"> 
+					
+				</div>
+			</div>
+		
+		
+		</div> <!-- close right column -->
+		
+	
+	
+	</form>
+
+
+</div> <!-- end contextual window -->
+
+
+
+
+<div class="bbe-contextual-window" id="bbe-contextual-window-widgetsarea" >
+
+	<h4>Widgeted Area <span class="text-muted">Editor</span> 	</h4>
+
+	<form>
+		 <div class="form-group">
+			 
+			  <div class="col-sm-12 bbe-bastard-input-wrap">
+					
+					  <input type="text"  class="form-control" name="id" value="" placeholder="Widgeted Area ID" >
+					   
+					  <select class="form-control hidden" >
+						<option value="bbe-widgetarea-1">bbe-widgetarea-1</option>
+						<option value="bbe-widgetarea-2">bbe-widgetarea-2</option>
+						<option value="bbe-widgetarea-3">bbe-widgetarea-3</option>
+						<option value="bbe-widgetarea-4">bbe-widgetarea-4</option>
+						<option value="bbe-widgetarea-5">bbe-widgetarea-5</option>
+					  </select>
+					  
+				  </div>
+		</div>
+	
+	</form>
+
+
+</div> <!-- end contextual window -->
+	
+
+

@@ -1,0 +1,228 @@
+
+/* HEADER */
+nav#main-nav {
+  margin-bottom: 20px;
+  background-color: #2DAF37;
+  border: #91D73C;
+}
+nav#main-nav .navbar-brand>img {
+    display: inline-block;
+	  margin-top: -15px; /* this removes the top padding when using an image instead of a textual logo */
+}
+
+
+
+#top-textlogo {display: inline-block}
+.whiteColorText {
+  color: white;
+}
+.navbar-default .navbar-nav > li > a {
+  color: white;
+}
+
+
+/* MAIN CONTENT */
+
+#content article {
+  margin-bottom: 40px
+}
+#content header {
+  margin: 20px 0
+}
+#content section {
+  margin-bottom: 20px
+}
+#content footer {
+  padding-bottom: 20px
+}
+
+
+/* Max content widths for images in articles  */
+.size-auto,
+.size-full,
+.size-large,
+.size-medium,
+.size-thumbnail,
+.attachment-post-thumbnail
+{
+	max-width: 100%;
+	height: auto
+}
+
+#content img { /* prevent crazily large images */
+	max-width: 100%;
+	height: auto;
+}
+
+
+#content article .wp-caption {
+	max-width: 100%;
+}
+
+
+/* POST & BASIC PAGE IMAGE CLASSES */
+
+.alignleft {float: left;display: block;margin-right: 20px;}
+.alignright {float: right;display: block;margin-left: 20px;}
+.alignnone, .alignleft-removed, .alignright-removed { clear: both;display: block;margin-bottom: 10px}
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px
+}
+
+.attachment-post-thumbnail {margin-bottom: 10px;}
+
+p.wp-caption-text {font-size: 90%; font-style: italic;margin-bottom: 3px;}
+
+
+/* CATEGORY & TAXONOMY ARCHIVES: LEAVE SOME SPACE AFTER THE DESCRIPTION AND CLEAR FLOATS */
+.taxonomy-description::after {clear: both;display:block;width: 100%;height: 10px;}
+
+
+/* Sidebar */
+
+.sidebar {
+  margin-top: 20px
+}
+.sidebar section {
+  margin-bottom: 40px
+}
+.sidebar ul,
+.sidebar ol {
+  list-style-type: none;
+  padding: 0
+}
+.sidebar li {
+  margin: 10px 0
+}
+
+/* HIDE FORM PLACEHOLDERS ON FOCUS */
+
+input:focus::-webkit-input-placeholder { color: transparent; }
+input:focus:-moz-placeholder { color: transparent; } /* FF 4-18 */
+input:focus::-moz-placeholder { color: transparent; } /* FF 19+ */
+textarea:focus::-webkit-input-placeholder { color: transparent; }
+textarea:focus:-moz-placeholder { color: transparent; } /* FF 4-18 */
+textarea:focus::-moz-placeholder { color: transparent; } /* FF 19+ */
+
+/* COMMENTS */
+
+#respond {
+  margin-top: 40px
+}
+ol.commentlist {
+	counter-reset: li; /* Initiate a counter */
+	padding: 0
+}
+ol.commentlist ul {
+  padding: 0
+}
+ol.commentlist > li {
+	position: relative;
+	margin: 0 0 20px 0;
+	list-style: none /* Disable the normal item numbering */
+}
+ol.commentlist > li:before {
+  content: "Thread " counter(li); /* Use the counter as content */
+  counter-increment: li; /* Increment the counter by 1 */
+  position:absolute;
+  top: 0;
+  right: 0;
+  border-bottom: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  border-bottom-left-radius: 4px;
+  padding: 5px 20px 5px 10px;
+  color: #999
+}
+ol.commentlist li ol,
+ol.commentlist li ul {
+  list-style-type: none;
+  margin: 0
+}
+
+.commentlist li li {
+  background: #f8f8f8;
+}
+.commentlist li li li {
+  background: #fff
+}
+.commentlist li li li li {
+  background: #f8f8f8
+}
+.commentlist li li li li li li {
+  background: #fff
+}
+.commentlist li {
+  padding: 20px
+}
+.commentlist ul li {
+  margin-top: 20px;
+  margin-bottom: 0
+}
+.reply p {
+  margin: 0
+}
+
+
+#form-group-email-address {background: lime;display: none}
+
+/* SITE FOOTER */
+
+.site-footer {
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+
+.site-footer ul,
+.site-footer ol {
+  list-style-type: none;
+  padding: 0;
+}
+.site-footer li {
+  margin: 10px 0;
+}
+.site-sub-footer p {
+  text-align: center;
+  font-size:90%;
+}
+
+.site-footer p {
+  text-align: center
+}
+
+
+/* PASSWORD PROTECTED PAGES / POSTS: PASSWORD FORM */
+.bbe-container-wrap-passwordform {background: #efefef; padding: 20vh 0}
+
+/* responsive embeds for IMGurl and similar ones where aspect ratio-based detection fails */
+
+.embed-responsive-alt {max-width: 100%; }
+.embed-responsive-alt > * {max-width: 100%;}
+
+/* QUICK HACK FOR MAGAZINE-STYLE ARCHIVES */
+/* body.archive .attachment-post-thumbnail {width: 300px;height: auto;float: left;margin-right: 10px} */
+
+
+/* QUICK HACK FOR RIGHT-AND-LEFT THUMBNAILS ON ARCHIVES */
+/*
+body.archive #content article:nth-child(odd) .attachment-post-thumbnail {width: 300px;height: auto;float: left;margin-right: 10px}
+body.archive #content article:nth-child(even) .attachment-post-thumbnail {width: 300px;height: auto;float: right;margin-right: 10px}
+*/
+
+/* ALLOW FOR LEVEL 3 DEPTH IN MAIN NAV MENU - JUST ON DESKTOP */
+ul.dropdown-menu li > ul.dropdown-menu{left: 100%;top: 0;}
+ul.dropdown-menu li:hover > ul.dropdown-menu, ul.dropdown-menu li:focus > ul.dropdown-menu{display: block}
+
+
+/* bbe-category-comments */
+.bbe-single-category-comments {margin-bottom: 30px}
+.bbe-single-category-comments:empty {margin-bottom: 0}
+
+
+/* archives v2 */
+#content[data-template-var='v2'] header {margin-top: 0}
+#content[data-template-var='v2'] header h2 {margin-top: 0}
+
+/*footer*/
