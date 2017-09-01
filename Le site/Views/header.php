@@ -8,6 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo VIEWS;?>css/style.css">
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" type="image/jpg" href="<?php echo VIEWS;?>Images/favicon.jpg" />
 		<script type="text/javascript" src="<?php echo VIEWS;?>js/jquery-2.2.4.js"></script>
 		<script type="text/javascript" src="<?php echo VIEWS;?>bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="<?php echo VIEWS;?>js/script.js"></script>
@@ -41,12 +42,15 @@
         <form class="navbar-form navbar-left" id="searchNavBar">
           <div class="form-group">
             <input type="text" id="recherche" class="form-control" placeholder="Rechercher l'association..." autocomplete="off">
+					</div>
+					<div class="resultat" id="resultat">
+
 						<?php
 
 							include 'searchview.php';
 
 						 ?>
-          </div>
+					 </div>
         </form>
         <ul class="nav navbar-nav navbar-right">
 					<li><a href="index.php?action=home">Accueil</a></li>

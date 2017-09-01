@@ -45,11 +45,18 @@ body {
     color: #FFF;
     background-color: #91D73C;
 }
-/*
-#searchNavBar {
-  visibility: hidden;
+/*css search nav*/
+.resultat {
+	position: absolute;
+	background: #2DAF37;
+	border-radius: 10px 10px 10px 10px;
+	width: 228px;
+	padding: 10px 10px;
 }
-*/
+.result {
+	color: white;
+	text-decoration: none;
+}
 /* Home Sweet Hom*/
 
 .fond {

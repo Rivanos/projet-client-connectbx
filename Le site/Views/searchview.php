@@ -1,4 +1,3 @@
-<div class="resultat" id="resultat">
   <?php
   $tableauxRecherche = array();
     if (isset($_GET["motclé"])) {
@@ -8,4 +7,3 @@
     foreach ($tableauxRecherche as $key => $value) {
       echo  "<a class='result' target='_blank' href='../Le site/index.php?action=map&search=$value'><p class='resultp'>$value</p></a>";
   } ?>
-</div>
