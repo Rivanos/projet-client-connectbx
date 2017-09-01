@@ -1,4 +1,6 @@
 <section id="cartePage">
+<div class="content">
+<div class="content-inside">
   <h2>Carte Interactive</h2>
   <p>Retrouvez ci-dessous la carte qui contient les associations</p>
   <div id="test">
@@ -110,5 +112,6 @@
                       </div>
                     </div>
                   </div>
-
+</div>
+</div>
                 </section>
