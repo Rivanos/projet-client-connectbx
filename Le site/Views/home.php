@@ -1,7 +1,7 @@
 <div class="jumbotron fond text-center">
   <div class="container">
   <span id="title-jumbotron">La Porte principale des jeunes
-vers le monde associatif.</span></div>
+vers le monde associatif</span></div>
   <select class="commune" name="commune">
     <option class="disable" value="">Commune</option>
     <option value="">Anderlecht</option>
@@ -43,20 +43,20 @@ vers le monde associatif.</span></div>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
       </div>
       <div class="panel-body">
-        <button type="button" class="btn btn-primary btn-lg" name="carte" id="big-btn-map">Accéder à la carte</button>
+        <a href="index.php?action=map"><button type="button" class="btn btn-default btn-lg" name="carte" id="big-btn-map">Accéder à la carte</button></a>
       </div>
     </div>
   </div>
 </div>
 <div class="container text-center container-event">
   <h1>Events</h1>
-  <div class="col-md-4 col-md-offset-1 event">
+  <div class="col-md-3 col-md-offset-1 event">
     <img src="#" >
     <h1>Event1</h1>
     <p>Description de L'events:<br/>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
       consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
   </div>
-  <div class="col-md-4 col-md-offset-2 event2">
+  <div class="col-md-3 col-md-offset-2 event">
     <img src="#" >
     <h1>Event2</h1>
     <p>Description de L'events:<br/>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
