@@ -76,32 +76,52 @@ function geocodeAddress(geocoder, resultsMap) {
 
     if (selected_towns.length > 1) {
 
-        var iteration = 0;
-
         $.post({
             data: {towns:selected_towns},
             url: "Views/ajax/search_assoc_by_towns_themes.php",
             success: function (associations) {
-                $("#test").html(associations);
+                //$("#test").html(associations);
             }
-        })
+        });
 
-        while (iteration < selected_towns.length) {
 
-            geocoder.geocode({
-                'address': selected_towns[iteration]
-            }, function(results, status) {
-                if (status === 'OK') {
-                    resultsMap.setCenter(results[0].geometry.location);
-                    var marker = new google.maps.Marker({
-                        map: resultsMap,
-                        position: results[0].geometry.location
-                    });
-                } else {
-                    alert('Geocode was not successful for the following reason: ' + status);
-                }
-            });
-            iteration++;
-        }
+        $(document).ajaxSuccess(function (event, xhr, settings) {
+            if(settings.url == "Views/ajax/search_assoc_by_towns_themes.php") {
+                $.getJSON("Views/ajax/associations.json", function (output) {
+                    console.log(output);
+                    var iteration = 0;
+                    while (iteration < output["address"].length) {
+                        var string = output["name"][iteration];
+                        var infowindow = new google.maps.InfoWindow({
+                            content: output["name"][iteration]
+                        });
+
+                        geocoder.geocode({
+                            'address': output["address"][iteration]
+                        }, 
+                        function(results, status) {
+                            console.log(results[0]);
+                            if (status === 'OK') {
+                                resultsMap.setCenter(results[0].geometry.location);
+                                var marker = new google.maps.Marker({
+                                    map: resultsMap,
+                                    position: results[0].geometry.location,
+                                    title: string,
+                                });
+                                marker.addListener('mouseover', function () {
+                                    infowindow.open(map, marker);
+                                });
+                                marker.addListener('mouseout', function () {
+                                    infowindow.close(map, marker);
+                                });
+                            } else {
+                                alert('Geocode was not successful for the following reason: ' + status);
+                            }
+                        });
+                        iteration++;
+                    }
+                })
+            }
+        });        
     }
 }
