@@ -22,7 +22,7 @@
             $i=0;
             foreach ($tableau_commune as $key => $value) {
               $i++;
-              echo  "<input type='checkbox' name='check' value='".$value."' id='commune".$i."'> ".$value."<br>";
+              echo  "<div class='checkbox'><label><input type='checkbox' name='check' value='".$value."' id='commune".$i."'> ".$value."</label></div>";
             }
 
             ?>
