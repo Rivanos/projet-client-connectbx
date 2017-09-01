@@ -40,7 +40,7 @@
 
                         echo $date." - "?>
 
-                </strong><?=$value->address()?></p>
+                </strong><?=$value->address()->to_string()?></p>
                 <p><strong><p>Description de l'événement:</strong><br/><br/><?= substr($value->description(),0, 140)."...";?><br/></p>
                 <!-- <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">Lire plus</button>-->
                 <a style="text-align:center" name="lien" data-toggle="modal" href="#<?php echo $tableauEvenementsToComed[$key]->id()?>">Lire plus</a>

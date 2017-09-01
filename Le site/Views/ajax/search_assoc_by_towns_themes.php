@@ -1,10 +1,15 @@
 <?php 
 
-require_once "../../Models/Db.class.php";
+// charge les modèles
+function loadClass($class){
+	require_once ('../../Models/' . $class . '.class.php');
+}
+spl_autoload_register('loadClass');
 $tab_selected_associations = Db::getInstance()->search_assoc_by_towns_themes($_POST["towns"], array());
 
-	var_dump($tab_selected_associations);
-
+echo '<pre>';
+print_r($tab_selected_associations);
+echo '</pre>'
 
 
 

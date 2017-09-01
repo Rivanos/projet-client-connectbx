@@ -33,8 +33,8 @@ vers le monde associatif.</span></div>
 
       ?>
     </select>
-    <input class="custom-dropdown__select custom-dropdown__select--white" type="submit" name="button" value="Rechercher" />
-  <button type="submit" name="button">Rechercher <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>  
+      <span class=""><i class="glyphicon glyphicon-ok" aria-hidden="true"></i></span>
+      <input class="custom-dropdown__select custom-dropdown__select--white " type="submit" name="button" value="Rechercher" />  
 </form>
 </div>
 <div class="content">
