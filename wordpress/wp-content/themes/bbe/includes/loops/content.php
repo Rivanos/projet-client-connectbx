@@ -28,12 +28,12 @@ and modify it the way you like it.
             <?php if (!is_single()): ?><a href="<?php the_permalink(); ?>"><?php endif ?>
             <?php if (bbe_option_is_true('archives_featuredimage')) the_post_thumbnail(); ?>
             <?php if (!is_single()): ?></a><?php endif ?>
-            <?php if(!bbe_option_is_true('archives_use_excerpt' ) or  bbe_post_is_using_bbe_template(get_the_ID())) the_excerpt(); else the_content( __( '&hellip; ' . __('COntinuer à lire', 'bbe' ) . ' <i class="glyphicon glyphicon-arrow-right"></i>', 'bbe' ) ); ?>
+            <?php if(!bbe_option_is_true('archives_use_excerpt' ) or  bbe_post_is_using_bbe_template(get_the_ID())) the_excerpt(); else the_content( __( '&hellip; ' . __('Continuer à lire', 'bbe' ) . ' <i class="glyphicon glyphicon-arrow-right"></i>', 'bbe' ) ); ?>
         </section>
         <footer>
             <p class="text-muted">
                 <?php if (bbe_option_is_true('archives_meta_category')): ?><i class="glyphicon glyphicon-folder-open"></i>&nbsp; <?php _e('Catégorie', 'bbe'); ?>: <?php the_category(', ') ?><br/><?php endif ?>
-                <?php if (bbe_option_is_true('archives_meta_comments')): ?><i class="glyphicon glyphicon-comment"></i>&nbsp; <?php _e('Commentaires', 'bbe'); ?>: <?php comments_popup_link(__('Aucune', 'bbe'), '1', '%', 'comments-link', 'Comments off'); ?><?php endif ?>
+                <?php if (bbe_option_is_true('archives_meta_comments')): ?><i class="glyphicon glyphicon-comment"></i>&nbsp; <?php _e('Commentaires', 'bbe'); ?>: <?php comments_popup_link(__('Aucun', 'bbe'), '1', '%', 'comments-link', 'Comments off'); ?><?php endif ?>
             </p>
         </footer>
     </article>

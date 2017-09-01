@@ -16,7 +16,7 @@ if (have_comments()) : ?>
 
 <h3><?php _e('Feedback', 'bbe'); ?></h3>
 <p class="text-muted" style="margin-bottom: 20px;">
- <i class="glyphicon glyphicon-comment"></i>&nbsp; <?php _e('Commentaires', 'bbe');  ?>: <?php comments_number(__('Aucune', 'bbe'), '1', '%'); ?>
+ <i class="glyphicon glyphicon-comment"></i>&nbsp; <?php _e('Commentaires', 'bbe');  ?>: <?php comments_number(__('Aucun', 'bbe'), '1', '%'); ?>
 </p>
 
 <ol class="commentlist">
@@ -70,7 +70,7 @@ if (have_comments()) : ?>
       <label for="comment"><?php _e('Votre commentaire', 'bbe'); ?></label>
       <textarea name="comment" class="form-control" id="comment" placeholder="<?php _e('Votre commentaire', 'bbe'); ?>" rows="8" aria-required="true" required="true" ></textarea>
     </div>
-    <p><input name="submit" class="btn btn-default" type="submit" id="submit" value="<?php _e('Commentaire envoyé', 'bbe'); ?>"></p>
+    <p><input name="submit" class="btn btn-default" type="submit" id="submit" value="<?php _e('Envoyer', 'bbe'); ?>"></p>
     <?php comment_id_fields(); ?>
     <?php do_action('comment_form', $post->ID); ?>
   </form>

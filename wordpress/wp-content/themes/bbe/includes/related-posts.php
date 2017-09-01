@@ -4,7 +4,7 @@ $post_categories = get_the_category(get_the_ID());
 
 if ($post_categories):
     ?>
-    <h3 class="bbe-related-title">Related Posts</h3>
+    <h3 class="bbe-related-title">Articles Reliés</h3>
     <?php
     $category_ids = array();
     foreach($post_categories as $individual_category) $category_ids[] = $individual_category->term_id;
@@ -45,8 +45,7 @@ if ($post_categories):
         endforeach;
         ?></div> <!-- /row -->
         </div> <!-- /related -->
-        <?php 
+        <?php
         }
 
 endif; //end if categories
-

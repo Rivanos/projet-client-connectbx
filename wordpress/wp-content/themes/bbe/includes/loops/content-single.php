@@ -21,7 +21,7 @@ The Single Posts Loop
 
             <p class="text-muted bbe-single-category-comments">
                 <?php if (bbe_option_is_true('singlepost_meta_category')): ?><i class="glyphicon glyphicon-folder-open"></i>&nbsp; <?php _e('Rangé sous', 'bbe'); ?>: <?php the_category(', ') ?><br/><?php endif ?>
-                <?php if (bbe_option_is_true('singlepost_meta_comments')): ?><i class="glyphicon glyphicon-comment"></i>&nbsp; <?php _e('Commentaires', 'bbe'); ?>: <?php comments_popup_link(__('Aucune', 'bbe'), '1', '%', 'comments-link', 'Comments off'); ?><?php endif ?>
+                <?php if (bbe_option_is_true('singlepost_meta_comments')): ?><i class="glyphicon glyphicon-comment"></i>&nbsp; <?php _e('Commentaires', 'bbe'); ?>: <?php comments_popup_link(__('Aucun', 'bbe'), '1', '%', 'comments-link', 'Comments off'); ?><?php endif ?>
             </p>
 
         </header>

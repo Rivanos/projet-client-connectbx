@@ -1,35 +1,31 @@
-<footer>
-	<div class="container">
+<div id="bbe-footer-wrap">
+  <footer class="container site-footer">
+	<hr/>
+	<?php $footer_columns_schema = get_theme_mod('footer_columns_schema', '4-8');
+		if($footer_columns_schema!="0" && (!is_numeric($post->ID) or get_post_meta($post->ID,'bbe_hide_footer',TRUE)!=1)):
+		?>
 		<div class="row">
-			<div class="col-md-12">
-			<ul class="socialNetwork">
-			<li class="socialNetworkLI"><a href="#"><img src="<?php echo VIEWS;?>Images/SocialNetwork/facebook-green.png" class="logoSocialNetwork" alt="logoFacebook" width="35px"/></a>&nbsp;Facebook</li>
-			<li class="socialNetworkLI"><a href="#"><img src="<?php echo VIEWS;?>Images/SocialNetwork/twitter-green.png" class="logoSocialNetwork" alt="logoTwitter"  width="35px"/></a>&nbsp;Twitter</li>
-			<li class="socialNetworkLI"><a href="#"><img src="<?php echo VIEWS;?>Images/SocialNetwork/instagram-green.png" class="logoSocialNetwork" alt="logoInstagram"  width="35px"/></a>&nbsp;Instagram</li>
-			</ul>
-		</div>
-	</div>
-<div class="row">
-	<div class="newsletter">
-		<div class="form-group">
-		<form class="form-inline">
-			<input type="text" class="form-control" placeholder="Votre adresse mail" id="inputNewsletter" />
-			<button type="button" class="btn btn-default" id="btnNewsletter">Inscription</button>
-			</form>
-		</div>
-	</div>
-</div>
+			<?php
+			$number_of_footer_columns=substr_count($footer_columns_schema,'-')+1;
+			$array_column_sizes=explode('-',$footer_columns_schema);
+			for ($count=1; $count<=$number_of_footer_columns; $count++):
+				?>
+				<div id="footer-column-<?php echo $count ?>" class="footer-column col-md-<?php echo $array_column_sizes[$count-1] ?>">
+					<?php dynamic_sidebar('footer-'.$count);   ?>
+				</div><!-- /footer-column  -->
+				<?php
+			endfor;
+			?>
+		</div> <!-- /row -->
+		<hr/>
+	<?php endif ?>
 
-</div>
-<div class="container-fluid">
 	<div class="row">
-		<div id="copyright">
-				Copyright © <a href="#">BeCode</a> 2017, tous droits réservés
-		</div>
+	  <div class="col-lg-12 site-sub-footer"> <?php wp_footer_colophon() ?>  </div>
 	</div>
-</div>
+  </footer>
+</div> <!-- /bbe-footer-wrap -->
 
-</footer>
-	<script type="text/javascript" src="<?php echo VIEWS;?>js/script.js"></script>
-	</body>
+<?php wp_footer(); ?>
+</body>
 </html>

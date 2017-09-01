@@ -21,7 +21,7 @@
             <footer>
                 <p class="text-muted">
                     <?php if (bbe_option_is_true('archives_meta_category')): ?><i class="glyphicon glyphicon-folder-open"></i>&nbsp; <?php _e('Catégorie', 'bbe'); ?>: <?php the_category(', ') ?><br/><?php endif ?>
-                    <?php if (bbe_option_is_true('archives_meta_comments')): ?><i class="glyphicon glyphicon-comment"></i>&nbsp; <?php _e('Commentaires', 'bbe'); ?>: <?php comments_popup_link(__('Aucune', 'bbe'), '1', '%', 'comments-link', 'Comments off'); ?><?php endif ?>
+                    <?php if (bbe_option_is_true('archives_meta_comments')): ?><i class="glyphicon glyphicon-comment"></i>&nbsp; <?php _e('Commentaires', 'bbe'); ?>: <?php comments_popup_link(__('Aucun', 'bbe'), '1', '%', 'comments-link', 'Comments off'); ?><?php endif ?>
                 </p>
             </footer>
         </div> <!-- /col -->

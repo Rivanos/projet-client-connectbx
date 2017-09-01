@@ -16,10 +16,17 @@ nav#main-nav .navbar-brand>img {
 .whiteColorText {
   color: white;
 }
-.navbar-default .navbar-nav > li > a {
+.navbar-default .navbar-nav > li > a, .footer-widget-title {
   color: white;
 }
+.sidebar-widget-title{
+  color: black;
+}
+/* h2 article*/
 
+h2 a, h4 a, h2, a {
+color: #2DAF37;
+}
 
 /* MAIN CONTENT */
 
@@ -226,3 +233,27 @@ ul.dropdown-menu li:hover > ul.dropdown-menu, ul.dropdown-menu li:focus > ul.dro
 #content[data-template-var='v2'] header h2 {margin-top: 0}
 
 /*footer*/
+
+#bbe-footer-wrap{
+  background-color: #272727
+}
+.site-sub-footer p{
+  color:white;
+}
+#footer-column-2{
+  display: flex;
+  justify-content: space-between;
+}
+.image {
+
+  float: left;
+  padding-left: 5px;
+}
+
+/* CSS page 404*/
+
+.alert-warning {
+  color: #91D73C;
+  background-color: 	#EFEFDE;
+  border-color: #2DAF37;
+}
