@@ -21,7 +21,7 @@
 /* CORPS DU SITE */
 
 html {
-	height: 100%;
+  height: 100%;
 }
 
 body {
@@ -259,11 +259,6 @@ input:invalid {
   color: #1E8449;
 }
 
-#commune_list {
-  height: 200px;
-  overflow: scroll;
-}
-
 /* A PROPOS */
 
 #box-first-article {
@@ -412,7 +407,3 @@ footer {
   height: 40px;
   color: #FFF;
 }
-
-
-
-

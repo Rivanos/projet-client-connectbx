@@ -56,7 +56,6 @@ function geocodeAddress(geocoder, resultsMap) {
 
         add++;
     }*/
-
     var check = document.forms[1];
     var selected_towns = [];
     var i;
