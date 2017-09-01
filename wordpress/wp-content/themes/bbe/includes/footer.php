@@ -25,7 +25,8 @@
 	</div>
   </footer>
 </div> <!-- /bbe-footer-wrap -->
-
+<script type="text/javascript" src="../Le site/Views/js/jquery-2.2.4.js"></script>
+<script type="text/javascript" src="../Le site/Views/js/search-wp.js"></script>
 <?php wp_footer(); ?>
 </body>
 </html>

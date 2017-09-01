@@ -24,7 +24,7 @@ nav#main-nav .navbar-brand>img {
 }
 /* h2 article*/
 
-h2 a, h4 a, h2, a {
+h2 a, h4 a, h2, a, h1 {
 color: #2DAF37;
 }
 
@@ -252,7 +252,7 @@ ul.dropdown-menu li:hover > ul.dropdown-menu, ul.dropdown-menu li:focus > ul.dro
 /* CSS des dates et des auteurs des articles*/
 
 em {
-  font-size: 
+  font-size:
 }
 /* CSS page 404*/
 
@@ -260,4 +260,33 @@ em {
   color: #91D73C;
   background-color: 	#EFEFDE;
   border-color: #2DAF37;
+}
+/*css button on the side bar fix the padding*/
+.btn-group-lg > .btn, .btn-lg{
+  padding: 0px 10px;
+}
+.btn-info{
+  color: white;
+  background-color: #2DAF37;
+  border-color: #91D73C;
+}
+.btn-info:hover{
+  color: white;
+  background-color: #4ff900;
+  border-color: #91D73C;
+}
+/* css bt dans le header*/
+.btn-foin{
+  color: white ;
+  background-color: #91D73C;
+  border-color: #91D73C;
+}
+.btn-foin:hover{
+  color: #91D73C;
+  background-color: white;
+  border-color: white;
+}
+/* css pour retirer le padding sur le form-group*/
+.navbar-form, .navbar-collapse{
+  padding: 0;
 }

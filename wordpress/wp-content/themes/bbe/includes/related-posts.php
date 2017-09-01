@@ -3,9 +3,6 @@
 $post_categories = get_the_category(get_the_ID());
 
 if ($post_categories):
-    ?>
-    <h3 class="bbe-related-title">Articles Reliés</h3>
-    <?php
     $category_ids = array();
     foreach($post_categories as $individual_category) $category_ids[] = $individual_category->term_id;
     //PRINT_R($category_ids);
@@ -17,6 +14,11 @@ if ($post_categories):
     'caller_get_posts'=>1
     );
     $related_posts=get_posts($args);
+    if (!empty($related_posts)) {
+      ?>
+      <h3 class="bbe-related-title">Related Posts</h3>
+      <?php
+    }
     if( $related_posts ) {
         ?><div id="bbe-related-posts">
         <div class="row">
