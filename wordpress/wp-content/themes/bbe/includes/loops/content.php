@@ -17,12 +17,12 @@ and modify it the way you like it.
     <article role="article" id="post-<?php the_ID()?>" <?php post_class(); ?>>
         <header>
             <h2><a href="<?php the_permalink(); ?>"><?php the_title()?></a></h2>
-            <h4>
+            <h5>
               <em>
                 <?php if (bbe_option_is_true('archives_author')): ?><span class="text-muted author"><?php _e('Par', 'bbe'); echo " "; the_author() ?><?php if (bbe_option_is_true('archives_author') && bbe_option_is_true('archives_meta_date')) echo ","?></span><?php endif ?>
                 <?php if (bbe_option_is_true('archives_meta_date')): ?><time  class="text-muted" datetime="<?php the_time('d-m-Y')?>"><?php the_time('jS F Y') ?></time><?php endif ?>
               </em>
-            </h4>
+            </h5>
         </header>
         <section>
             <?php if (!is_single()): ?><a href="<?php the_permalink(); ?>"><?php endif ?>
