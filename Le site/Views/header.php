@@ -43,7 +43,7 @@
           <div class="form-group">
             <input type="text" id="recherche" class="form-control" placeholder="Rechercher l'association..." autocomplete="off">
 					</div>
-					<div id="resultat" class"resultat">
+					<div class="resultat" id="resultat">
 
 						<?php
 

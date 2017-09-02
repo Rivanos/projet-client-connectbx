@@ -9,7 +9,9 @@ nav#main-nav .navbar-brand>img {
     display: inline-block;
 	  margin-top: -15px; /* this removes the top padding when using an image instead of a textual logo */
 }
-
+.navbar-right {
+  margin-left: 15px;
+}
 
 
 #top-textlogo {display: inline-block}
