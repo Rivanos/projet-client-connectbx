@@ -46,6 +46,9 @@ body {
     background-color: #91D73C;
 }
 /*css search nav*/
+p{
+	margin: 0;
+}
 .resultat {
 	position: absolute;
 	background: #2DAF37;
@@ -53,9 +56,22 @@ body {
 	width: 228px;
 	padding: 10px 10px;
 }
+.result:hover, .result:focus {
+	color: white;
+	text-decoration: none;
+	background-color: #91D73C;
+}
+.resultp:hover{
+	color: #2DAF37;
+	background-color: white;
+}
 .result {
 	color: white;
 	text-decoration: none;
+}
+.resultp {
+	border-bottom: 1px white solid;
+	padding: 5px 5px;
 }
 /* Home Sweet Hom*/
 
