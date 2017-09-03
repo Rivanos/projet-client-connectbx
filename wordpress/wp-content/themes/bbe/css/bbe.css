@@ -29,7 +29,7 @@ nav#main-nav .navbar-brand>img {
 h2 a, h4 a, h2, a, h1 {
 color: #2DAF37;
 }
-
+/* CSS */
 /* MAIN CONTENT */
 
 #content article {
@@ -89,7 +89,31 @@ p.wp-caption-text {font-size: 90%; font-style: italic;margin-bottom: 3px;}
 /* CATEGORY & TAXONOMY ARCHIVES: LEAVE SOME SPACE AFTER THE DESCRIPTION AND CLEAR FLOATS */
 .taxonomy-description::after {clear: both;display:block;width: 100%;height: 10px;}
 
-
+/* sidebarsearch*/
+.resultat {
+	position: absolute;
+	background: #2DAF37;
+	border-radius: 10px 10px 10px 10px;
+	width: 228px;
+	padding: 10px 10px;
+}
+.result:hover, .result:focus {
+	color: white;
+	text-decoration: none;
+	background-color: #91D73C;
+}
+.resultp:hover{
+	color: #2DAF37;
+	background-color: white;
+}
+.result {
+	color: white;
+	text-decoration: none;
+}
+.resultp {
+	border-bottom: 1px white solid;
+	padding: 5px 5px;
+}
 /* Sidebar */
 
 .sidebar {

@@ -10,8 +10,17 @@ $(document).ready(function(){
           data : key,
           success : function(server_response){
             $("#resultat").html(server_response).show();
+            $("#resultat").addClass("resultat");
+
       }
     });
       }
   });
+
+  $("#recherche").focusout(function(){
+    $("#resultat").empty();
+    $("#resultat").removeClass('resultat');
+
+  });
+
 });
