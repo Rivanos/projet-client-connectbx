@@ -51,6 +51,7 @@
         <ul class="nav navbar-nav navbar-right">
 					<li><a href="index.php?action=home">Accueil</a></li>
 					<li><a href="index.php?action=admin">Administration</a></li>
+					<li><a href="http://localhost/public/projet-client-connectbx/wordpress/">Blog</a></li>
           <li><a href="index.php?action=contact">Contact</a></li>
           <li><a href="index.php?action=event">Evenement</a></li>
           <li><a href="index.php?action=aPropos">A propos</a></li>
