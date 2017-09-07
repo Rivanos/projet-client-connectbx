@@ -9,7 +9,7 @@ class Db {
 	// constructeur
 	private function __construct(){
 		try{
-			$this->_db = new PDO('mysql:host=localhost;dbname=connectbx;charset=utf8', 'root', 'user');
+			$this->_db = new PDO('mysql:host=localhost;dbname=connectbx;charset=utf8', 'root', 'root');
 			$this->_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			$this->_db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 		} catch(PDOException $e) {
@@ -164,6 +164,26 @@ class Db {
 		}
 		return $tab;
 	}
+
+	// NOTE: Select only 3 events with the priority egal to 1
+	public function select_priority_events(){
+		$query = 'SELECT *
+				  FROM events
+				  WHERE event_priority = 1
+				  AND event_date >= NOW()
+				  ORDER BY event_date
+				  LIMIT 3';
+		$result = $this->_db->query($query);
+		$tab = array();
+		if($result->rowcount()!=0){
+			while($row = $result->fetch()){
+				$address = Db::getInstance()->select_address_with_id($row->event_address);
+				$tab[] = new Event($row->event_id, $row->event_name, $row->event_date, $row->event_descri, $row->event_image, $row->event_priority, $address);
+			}
+		}
+		return $tab;
+	}
+
 	// SELECT ALL ASSOC_NAME FROM ASSOC (Zone de recherche navbar)
 	public function select_all_assoc__name($keyword){
 		$query = 'SELECT assoc_name FROM associations WHERE assoc_name LIKE '.$this->_db->quote($keyword.'%').'LIMIT 0,5';
@@ -191,7 +211,7 @@ class Db {
 		return $tab;
 	}
 
-	// NOTE: Select an address 
+	// NOTE: Select an address
 	private function select_address_by_id($id){
 		$query = 'SELECT * FROM address WHERE  event_address='.$this->$id;
 		$result = $this->_db->query($query);
@@ -201,17 +221,18 @@ class Db {
 
 
 	// NOTE: Select event's address. Passed the event's id in parameter
-	public function select_address_event($id){
+	/*public function select_address_event($id){
 		$query = 'SELECT address_street FROM address, events WHERE events.event_address = address.address_id AND events.event_id ='.$this->_db->quote($id);
 		$result = $this->_db->query($query);
 
 		//$address = new Address
 
 		//return $address;
-	}
+	}*/
 
 	// NOTE: SELECT PRIMARY EVENTS
 	public function select_primary_events(){
+
 	}
 
 	// NOTE: UPDATE EVENT

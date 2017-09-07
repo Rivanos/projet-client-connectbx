@@ -7,4 +7,5 @@ $(document).ready(function() {
 
 	$("#title-jumbotron").hide().fadeIn(3000);
 
+
 });

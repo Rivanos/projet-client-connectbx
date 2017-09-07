@@ -46,26 +46,58 @@ vers le monde associatif.</span></div>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
       </div>
       <div class="panel-body">
-        <button type="button" class="btn btn-primary btn-lg" name="carte" id="big-btn-map">Accéder à la carte</button>
+        <a href="index.php?action=map"><button type="button" class="btn btn-default btn-lg" name="carte" id="big-btn-map">Accéder à la carte</button></a>
       </div>
     </div>
   </div>
 </div>
+
+
 <div class="container text-center container-event">
   <h1>Events</h1>
-  <div class="col-md-4 col-md-offset-1 event">
-    <img src="#" >
-    <h1>Event1</h1>
-    <p>Description de L'events:<br/>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  </div>
-  <div class="col-md-4 col-md-offset-2 event2">
-    <img src="#" >
-    <h1>Event2</h1>
-    <p>Description de L'events:<br/>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  </div>
-</div>
+  <div class="row">
+
+  <?php
+    $nombreDEvenementPrioritaires = sizeof($tableauEvenementsPrioritaire);
+
+    switch ($nombreDEvenementPrioritaires) {
+      case 0: ?>
+        <p>Actuellement, il n'y a pas d'événements prioritaires!</p> 
+    <?php
+      break;
+      case 1:
+        foreach ($tableauEvenementsPrioritaire as $key => $value){  
+    ?>
+          <div class="col-xs-3 col-md-3 offset-md-1 thumbnail event-box event">
+            <h1> <?=$value->name()?> </h1>
+            <img src="<?= $value->image(); ?>" class="img-events" height="42px" width="42px"/>
+            <p><br/> <?= substr($value->description(),0, 140)."...";?> </p>
+          </div>   
+    <?php }
+      break;
+      case 2:
+        foreach ($tableauEvenementsPrioritaire as $key => $value){  
+    ?>
+          <div class="col-xs-4  offset-md-4 col-md-4 thumbnail event-box event">
+            <h1> <?=$value->name()?> </h1>
+            <img src="<?= $value->image(); ?>" class="img-events" height="42px" width="42px"/>
+            <p><br/> <?= substr($value->description(),0, 140)."...";?> </p>
+          </div>   
+    <?php }
+        break;
+      case 3:
+        foreach ($tableauEvenementsPrioritaire as $key => $value){
+    ?>
+          <div class="col-xs-3 col-md-3 offset-md-1 thumbnail event-box event">
+            <h1> <?=$value->name()?> </h1>
+            <img src="<?= $value->image(); ?>" class="img-events" height="42px" width="42px"/>
+            <p><br/> <?= substr($value->description(),0, 140)."...";?> </p>
+          </div>
+    <?php } ?>
+        </div> <!-- Fin div row -->
+        </div> <!-- Fin container -->
+        <?php break;
+    }?> <!-- Fin case -->
 <div class="container ambassadeurs">
   <div class="col-md-8 col-md-offset-2 padding-top">
     <h1>Ambassadeurs</h1>
@@ -73,5 +105,6 @@ vers le monde associatif.</span></div>
       plateformes et divers moyens.</p>
   </div>
 </div>
+
 </div>
 </div>
