@@ -25,7 +25,7 @@
             foreach ($tableauEvenementsToComed as $key => $value){
             $clef = $key;
           ?>
-              <div class="col-md-3 offset-md-1 thumbnail event-box">
+              <div class="col-xs-3 col-md-3 offset-md-1 thumbnail event-box">
                 <img src="<?= $value->image(); ?>" class="img-events" height="42px" width="42px"/>
                 <h3> <?=$value->name()?> </h3>
                 <p><strong><?php 
@@ -38,9 +38,9 @@
 
                         $date = $jour."/".$mois."/".$annee;
 
-                        echo $date." - "?>
+                         echo $date." - "?>
 
-                </strong><?=$value->address()?></p>
+                </strong><?=$value->address()->to_string()?></p>
                 <p><strong><p>Description de l'événement:</strong><br/><br/><?= substr($value->description(),0, 140)."...";?><br/></p>
                 <!-- <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">Lire plus</button>-->
                 <a style="text-align:center" name="lien" data-toggle="modal" href="#<?php echo $tableauEvenementsToComed[$key]->id()?>">Lire plus</a>
@@ -99,7 +99,7 @@
                     $clef = $key;
                   ?>
 
-                  <div class="col-md-3 thumbnail event-box">
+                  <div class="col-xs-3 col-md-3 thumbnail event-box"> <!-- col-xs-3 col-lg-6  -->
                   <img src=<?= $value->image() ?> class="img-events" height="42" width="42"/>   <!-- $value->image() -->
 
                   <h1> <?=$value->name()?> </h1>
@@ -114,8 +114,6 @@
 
                         $date = $jour."/".$mois."/".$annee;
                         
-                        //echo $date." - ".$value->address(); 
-
                         echo $date;
                          //echo "ici ".Db::getInstance()->select_address_event($key);
                         ?>

@@ -10,6 +10,10 @@ class HomeController{ // le nom de votre controller
 			ICI vient le code php à exécuter avant d'ouvrir la page, 
 			chargement de données, conditions, boucles, ...
 		*/
+
+
+		$tableauEvenementsPrioritaire = Db::getInstance()->select_priority_events();
+
 		require_once VIEWS . 'home.php'; // affiche la vue (votre page html)
 	}
 	
