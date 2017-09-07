@@ -65,12 +65,12 @@ RewriteEngine On
 
 2/ Entre les balises ifModule, on définit les régles de réécriture suivantes:
 
-RewriteRule ^home$ index.php?action=home [L]
-RewriteRule ^admin$ index.php?action=admin [L]
-RewriteRule ^contact$ index.php?action=contact [L]
-RewriteRule ^event$ index.php?action=event [L]
-RewriteRule ^aPropos$ index.php?action=aPropos [L]
-RewriteRule ^map$ index.php?action=map [L]
+RewriteRule ^home$ index.php?action=home [L] <br>
+RewriteRule ^admin$ index.php?action=admin [L] <br>
+RewriteRule ^contact$ index.php?action=contact [L] <br>
+RewriteRule ^event$ index.php?action=event [L] <br>
+RewriteRule ^aPropos$ index.php?action=aPropos [L] <br>
+RewriteRule ^map$ index.php?action=map [L] <br>
 
 3/ Le traitement de l'erreur 404:
 ErrorDocument 404 erreur404.php   (Si l'erreur 404 est détecté alors on est redirigé vers une page qu'on créée)
