@@ -40,8 +40,7 @@
 
                         echo $date." - "?>
 
-                </strong><?=$value->address()->to_string();?></p>
-               
+                </strong><?=$value->address()->to_string()?></p>
                 <p><strong><p>Description de l'événement:</strong><br/><br/><?= substr($value->description(),0, 140)."...";?><br/></p>
                 <!-- <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">Lire plus</button>-->
                 <a style="text-align:center" name="lien" data-toggle="modal" href="#<?php echo $tableauEvenementsToComed[$key]->id()?>">Lire plus</a>
@@ -57,7 +56,7 @@
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal">&times;</button>
                       <h4 class="modal-title"><?php echo $tableauEvenementsToComed[$key]->name() ?></h4> <!-- <?php //echo $tableauEvenements[$key]["event_name"]?> -->
-                    </div>
+                    </div>  
                     <div class="modal-body">
                       <img src="<?= $tableauEvenementsToComed[$key]->image(); ?>" style="background-color:silver;" width="550px" height="300px"><br/><br/>
                       <p><u><strong>Description de l'event:</strong></u><br/><br/> <?php echo $tableauEvenementsToComed[$key]->description() ?> </p>
@@ -113,16 +112,14 @@
                         $mois = $date[1];
                         $jour = $date[2];
 
-                        $date = $jour."/".$mois."/".$annee." - ";
+                        $date = $jour."/".$mois."/".$annee;
                         
                         //echo $date." - ".$value->address(); 
 
                         echo $date;
                          //echo "ici ".Db::getInstance()->select_address_event($key);
-                        echo $value->address()->to_string() ;
-
                         ?>
-                  </strong></p>
+                  </strong><?php echo $value->address()->to_string() ;?></p>
                   <p><strong>Description de l'événement:</strong><br/><br/>
                     <?= substr($value->description(),0, 140)."...";?>
 

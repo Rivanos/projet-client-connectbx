@@ -200,8 +200,6 @@ class Db {
 	}
 
 
-
-
 	// NOTE: Select event's address. Passed the event's id in parameter
 	public function select_address_event($id){
 		$query = 'SELECT address_street FROM address, events WHERE events.event_address = address.address_id AND events.event_id ='.$this->_db->quote($id);
@@ -254,17 +252,18 @@ class Db {
 
 	// NOTE: SELECT ASSOCIATION AND ADDRESS WITH CHECKED
 	public function search_assoc_by_towns_themes($tab_towns, $tab_themes){
-		$where_town = where_table($tab_towns, 't.town_name'); // clause
-		$where_theme = where_table($tab_themes, 'ass.assoc_theme');
+		$where_town = Db::getInstance()->where_table($tab_towns, 't.town_name'); // clause
+		$where_theme = Db::getInstance()->where_table($tab_themes, 'ass.assoc_theme');
 		$juncture = 'ass.assoc_address=ad.address_id AND ad.address_post_code=t.town_post_code';
-		$query = '	SELECT ass.*, ad.*, t.* FROM associations ass, adress ad, towns t
-						WHERE ' . $juncture . ' AND ' . $where_town . ' AND ' . $where_theme;
-		$result = $this->_db->prepare($query)->execute();
+		$query = '	SELECT DISTINCT ass.*, ad.*, t.* FROM associations ass, address ad, towns t
+						WHERE ' . $juncture . ' AND ' . $where_town /*. ' AND ' . $where_theme*/;
+		$result = $this->_db->query($query);
 		$tab = array();
 		if($result->rowcount()!=0){
 			while($row = $result->fetch()){
-				$address = select_address_with_id($result->assoc_address);
-				$tab[] = new Association($result->assoc_id, $result->assoc_name, $result->assoc_descri, $address, $result->assoc_phone, $result->assoc_website, $result->assoc_latitude, $result->assoc_longitude, $result->assoc_theme);
+				print_r($row->assoc_address);
+				$address = Db::getInstance()->select_address_with_id($row->assoc_address);
+				$tab[] = new Association($row->assoc_id, $row->assoc_name, $row->assoc_descri, $address, $row->assoc_phone, $row->assoc_website, $row->assoc_latitude, $row->assoc_longitude, $row->assoc_theme);
 			}
 		}
 		return $tab;
@@ -310,7 +309,7 @@ class Db {
 	}
 
 
-	private function select_town_with_post_code($post_code){
+	public function select_town_with_post_code($post_code){
 		$query = 'SELECT * FROM towns WHERE town_post_code=' . $post_code;
 		$result = $this->_db->query($query)->fetch();
 		return new Town($result->town_name, $result->town_post_code);
