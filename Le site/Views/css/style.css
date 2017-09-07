@@ -66,10 +66,41 @@ body {
     color: #FFF;
     background-color: #91D73C;
 }
+/*css search nav*/
+p{
+	margin: 0;
+}
+.resultat {
+	position: absolute;
+	background: #2DAF37;
+	border-radius: 10px 10px 10px 10px;
+	width: 228px;
+	padding: 10px 10px;
+}
+.result:hover, .result:focus {
+	color: white;
+	text-decoration: none;
+	background-color: #91D73C;
+}
+.resultp:hover{
+	color: #2DAF37;
+	background-color: white;
+}
+.result {
+	color: white;
+	text-decoration: none;
+}
+.resultp {
+	border-bottom: 1px white solid;
+	padding: 5px 5px;
+}
+/* Home Sweet Hom*/
+
 
 #logo-navbar {
   margin-top: -8px;
 }
+
 
 .fond {
   background-image: url(../Images/jumbotron.jpg);
@@ -425,3 +456,4 @@ footer {
   height: 40px;
   color: #FFF;
 }
+
