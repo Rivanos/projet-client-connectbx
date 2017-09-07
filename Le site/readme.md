@@ -75,6 +75,8 @@ RewriteRule ^map$ index.php?action=map [L] <br>
 3/ Le traitement de l'erreur 404:
 ErrorDocument 404 erreur404.php   (Si l'erreur 404 est détecté alors on est redirigé vers une page qu'on créée)
 
+Jusque là, il s'agit des redirections des pages statiques qui sont faites.
+La redirection des pages dynamiques est en cours..
 
 ## Blog
 
