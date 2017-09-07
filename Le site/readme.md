@@ -57,7 +57,7 @@ Puis, redémarrer le serveur pour s'assurer que le module est bien activé:
 sudo /etc/init.d/apache2 restart
 
 
-# Contenu du fichier .htaccess: #
+#### Contenu du fichier .htaccess: ####
 1/ Le code suivant s'assure que le module sera activé:
 <ifModule mod_rewrite.c>
 RewriteEngine On
