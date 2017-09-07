@@ -48,6 +48,34 @@ Voilà, LAMP est installé ! Tester : [localhost](http://localhost/)
 6. `sudo chown -R $USER:user /home/user/Documents/www-dev`
 7. `sudo /etc/init.d/apache2 force-reload`
 
+### Module Rewrite URL ###
+Pour tenir compte du rewriting url, vous devez ajouter le module rewrite via la commande:
+sudo a2enmod rewrite
+placés dans le dossier:  /etc/apache2/mods-available/
+
+Puis, redémarrer le serveur pour s'assurer que le module est bien activé:
+sudo /etc/init.d/apache2 restart
+
+
+# Contenu du fichier .htaccess: #
+1/ Le code suivant s'assure que le module sera activé:
+<ifModule mod_rewrite.c>
+RewriteEngine On
+</ifModule>
+
+2/ Entre les balises ifModule, on définit les régles de réécriture suivantes:
+
+RewriteRule ^home$ index.php?action=home [L]
+RewriteRule ^admin$ index.php?action=admin [L]
+RewriteRule ^contact$ index.php?action=contact [L]
+RewriteRule ^event$ index.php?action=event [L]
+RewriteRule ^aPropos$ index.php?action=aPropos [L]
+RewriteRule ^map$ index.php?action=map [L]
+
+3/ Le traitement de l'erreur 404:
+ErrorDocument 404 erreur404.php   (Si l'erreur 404 est détecté alors on est redirigé vers une page qu'on créée)
+
+
 ## Blog
 
 Worpress? 
