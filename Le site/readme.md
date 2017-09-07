@@ -61,7 +61,7 @@ sudo /etc/init.d/apache2 restart
 1/ Le code suivant s'assure que le module sera activé:
 <ifModule mod_rewrite.c>
 RewriteEngine On
-</ifModule>
+'<''/'ifModule'>'
 
 2/ Entre les balises ifModule, on définit les régles de réécriture suivantes:
 
