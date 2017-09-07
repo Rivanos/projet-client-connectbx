@@ -37,10 +37,15 @@
 	<script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
 	<script src="Views/js/animate.js"></script>
 	<script>
-	window.sr = ScrollReveal({duration: 1500});
-	sr.reveal(".event2");
-	sr.reveal(".event");
-	sr.reveal(".ambassadeurs");
+	var config = {
+		easing : 'ease',
+		duration : '800',
+		scale : 0
+	};
+
+	window.sr = ScrollReveal();
+	sr.reveal(".event2", config,300);
+	sr.reveal(".event", config, 500);
 	</script>
 	</body>
 </html>

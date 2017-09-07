@@ -49,13 +49,23 @@
           </div>
         </form>
         <ul class="nav navbar-nav navbar-right">
-					<li><a href="/public/projet-client-connectbx/Le%20site/home">Accueil</a></li> <!-- index.php?action=home -->
-					<li><a href="/public/projet-client-connectbx/Le%20site/admin">Administration</a></li> <!-- index.php?action=admin -->
-          <li><a href="/public/projet-client-connectbx/Le%20site/contact">Contact</a></li> <!-- index.php?action=contact -->
+					<li><a href="/public/projet-client-connectbx/Le%20site/home">Accueil</a></li>
+          <!-- index.php?action=home -->
+          <li><a href="/public/projet-client-connectbx/Le%20site/map">Map</a></li>
+          <!-- index.php?action=map -->
           <li><a href="/public/projet-client-connectbx/Le%20site/event">Evenement</a></li>
-          <li><a href="/public/projet-client-connectbx/Le%20site/aPropos">A propos</a></li> <!-- index.php?action=aPropos -->
-          <li><a href="/public/projet-client-connectbx/Le%20site/map">Map</a></li> <!-- index.php?action=map -->
-					<!-- Rajouter le lien vers votre page ici -->
+          <!-- index.php?action=event -->
+          <li><a href="/public/projet-client-connectbx/Le%20site/activities">Organisation</a></li>
+          <!-- index.php?action=activities -->
+          <li><a href="/public/projet-client-connectbx/Le%20site/aPropos">A propos</a></li>
+          <!-- index.php?action=aPropos -->
+          <li><a href="/public/projet-client-connectbx/Le%20site/contact">Contact</a></li>
+          <!-- index.php?action=contact -->
+					<li><a href="/public/projet-client-connectbx/Le%20site/admin">Administration</a></li> 
+          <!-- index.php?action=admin -->
+          
+          <!-- Rajouter le lien vers votre page ici -->
+    
 					<!-- ex: <li><a href="index.php?action=(le nom que vous voulez)">(Le contenu de la balise a)</a></li> -->
 					<?php if(!empty($_SESSION['authentifie'])){?>
 					<li><a href="/public/projet-client-connectbx/Le%20site/home">Déconnexion</a></li>

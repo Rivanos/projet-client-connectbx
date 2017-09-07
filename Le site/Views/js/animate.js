@@ -5,7 +5,7 @@ $(document).ready(function() {
 	$('.fond').css('background-position', 'center ' + imgPos);
 	});
 
-	$("#title-jumbotron").hide().fadeIn(3000);
+	// $("#title-jumbotron").hide().fadeIn(3000);
 
 
 });

@@ -55,3 +55,6 @@ Alias /private "/home/user/Documents/www-dev/private"
 
 # vim: syntax=apache ts=4 sw=4 sts=4 sr noet
 
+<ifModule mod_rewrite.c>
+RewriteEngine On
+</ifModule>
