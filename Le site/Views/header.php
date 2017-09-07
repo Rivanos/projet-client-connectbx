@@ -41,12 +41,15 @@
         <form class="navbar-form navbar-left" id="searchNavBar">
           <div class="form-group">
             <input type="text" id="recherche" class="form-control" placeholder="Rechercher l'association..." autocomplete="off">
+          </div>
+						<div id="resultat">
+
 						<?php
 
 							include 'searchview.php';
 
 						 ?>
-          </div>
+                        </div>
         </form>
         <ul class="nav navbar-nav navbar-right">
 					<li><a href="/public/projet-client-connectbx/Le%20site/home">Accueil</a></li> <!-- index.php?action=home -->
