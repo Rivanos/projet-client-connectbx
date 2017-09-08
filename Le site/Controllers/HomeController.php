@@ -10,7 +10,11 @@ class HomeController{ // le nom de votre controller
 			ICI vient le code php à exécuter avant d'ouvrir la page, 
 			chargement de données, conditions, boucles, ...
 		*/
+      $tab_towns = Db::getInstance()->select_all_towns();		
+      $tab_themes = Db::getInstance()->select_all_themes();	
+		
 		require_once VIEWS . 'home.php'; // affiche la vue (votre page html)
+	
 	}
 	
 }

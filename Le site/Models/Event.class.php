@@ -17,7 +17,6 @@ class Event{
 		$this->_description=$description;
 		$this->_image=$image;
 		$this->_priority=$priority;
-
 		$this->_address=$address;
 	}
 

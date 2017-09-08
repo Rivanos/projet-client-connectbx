@@ -10,7 +10,7 @@
 		private $_login;
 		private $_pwd;
 
-		public function __construct($id, $name, $first_name, $birthdate, $email, $login, $pwd){
+		public function __construct($id='', $name='', $first_name='', $birthdate='', $email='', $login='', $pwd=''){
 			$this->_id = $id;
 			$this->_name = $name;
 			$this->_first_name = $first_name;
