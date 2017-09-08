@@ -24,6 +24,7 @@
             $i=0;
             foreach ($tab_towns as $town) {
               $i++;
+
               echo  "<div class='checkbox'><label><input type='checkbox' name='check' value='".$town->name()."' id='commune".$i."'> ".$town->name()."</label></div>";
             }
 
