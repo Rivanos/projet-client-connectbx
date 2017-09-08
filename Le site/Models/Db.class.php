@@ -195,6 +195,7 @@ class Db {
 	public function update_event($id, $name, $date, $description, $image, $priority, $address){
 		$query = 'UPDATE events SET event_name=' . $this->_db->quote($name) . ', event_date=' . $this->_db->quote($date) . ', event_descri=' . $this->_db->quote($description) . ', event_image=' . $this->_db->quote($image) . ', event_priority=' . $this->_db->quote($priority) . ', event_address=' . $address . ' WHERE event_id=' . $id;
 		$this->_db->prepare($query)->execute();
+	}
 
 	// NOTE: Select only 3 events with the priority egal to 1
 	public function select_priority_events(){
