@@ -1,0 +1,19 @@
+<ifModule mod_rewrite.c>
+RewriteEngine On
+# Lorsque l'on tape dans la barre d'adresse http://localhost/public/projet-client-connectbx/Le%20site/event c'est la page http://localhost/public/projet-client-connectbx/Le%20site/index.php?action=event qui s'affiche
+# [L]=[last] signifie que si cette règle s'applique on n'en cherche pas d'autre
+
+
+
+RewriteRule ^home$ index.php?action=home [L]
+RewriteRule ^admin$ index.php?action=admin [L]
+RewriteRule ^contact$ index.php?action=contact [L]
+RewriteRule ^event$ index.php?action=event [L]
+RewriteRule ^aPropos$ index.php?action=aPropos [L]
+RewriteRule ^map$ index.php?action=map [L]
+
+# L'erreur 404 signifie que le fichier auquel le visiteur a tenté d'accéder n'existe pas.
+ErrorDocument 404 erreur404.php
+
+
+</ifModule>

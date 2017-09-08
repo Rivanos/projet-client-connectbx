@@ -1,0 +1,453 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: bbe to ru_RU\n"
+"POT-Creation-Date: 2017-03-12 19:56+0100\n"
+"PO-Revision-Date: 2017-03-12 20:01+0100\n"
+"Last-Translator: \n"
+"Language-Team: spoofi <spoofi.lab@gmail.com>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.12\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;esc_attr__;esc_attr_e;esc_html__;"
+"esc_html_e\n"
+"X-Poedit-SearchPath-0: ../.\n"
+
+#: .././404.php:9
+msgid "Error"
+msgstr "Errore"
+
+#: .././404.php:10
+msgid "The page you were looking for does not exist."
+msgstr "La pagina che stai cercando non esiste."
+
+#: .././bbe-engine/index.php:316
+msgid "BBE Frontend Editor"
+msgstr ""
+
+#: .././extras/bbe-forms-engine/contactform_backend.php:50
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Non disponi dei privilegi necessari per accedere a questa pagina."
+
+#: .././functions/feedback.php:28
+msgid "at"
+msgstr "alle"
+
+#: .././functions/feedback.php:30
+msgid "Your comment is awaiting moderation."
+msgstr "Il tuo commento sarà presto moderato."
+
+#: .././functions/feedback.php:41
+msgid "Edit"
+msgstr "Modifica"
+
+#: .././functions/search.php:5 .././functions/search.php:6
+msgid "Search"
+msgstr "Cerca"
+
+#: .././functions/setup.php:16
+msgid "Read more"
+msgstr "Continua..."
+
+#: .././functions/setup.php:75 .././includes/loops/content-v2.php:33
+#: .././includes/loops/content-v3.php:34 .././includes/loops/content-v4.php:35
+#: .././includes/loops/content.php:44
+msgid "Previous Page"
+msgstr "Pagina Precedente"
+
+#: .././functions/setup.php:76 .././includes/loops/content-v2.php:34
+#: .././includes/loops/content-v3.php:35 .././includes/loops/content-v4.php:36
+#: .././includes/loops/content.php:45
+msgid "Next Page"
+msgstr "Pagina Successiva"
+
+#: .././functions/setup.php:103
+msgid "Main menu (left)"
+msgstr ""
+
+#: .././functions/setup.php:104
+msgid "Main menu (right)"
+msgstr ""
+
+#: .././functions/shortcodes.php:162 .././functions/shortcodes.php:254
+#: .././functions/shortcodes.php:353 .././functions/shortcodes.php:413
+#: .././includes/loops/content-single.php:17
+#: .././includes/loops/content-v2.php:10 .././includes/loops/content-v3.php:9
+#: .././includes/loops/content-v4.php:13 .././includes/loops/content.php:22
+msgid "By"
+msgstr "di"
+
+#: .././functions/shortcodes.php:187 .././functions/shortcodes.php:279
+#: .././functions/shortcodes.php:424 .././includes/loops/content-v2.php:23
+#: .././includes/loops/content-v3.php:20 .././includes/loops/content-v4.php:26
+#: .././includes/loops/content.php:35
+msgid "Category"
+msgstr "Categoria"
+
+#: .././functions/shortcodes.php:191 .././functions/shortcodes.php:283
+#: .././functions/shortcodes.php:425 .././includes/loops/comments.php:19
+#: .././includes/loops/content-single.php:24
+#: .././includes/loops/content-v2.php:24 .././includes/loops/content-v3.php:21
+#: .././includes/loops/content-v4.php:27 .././includes/loops/content.php:36
+msgid "Comments"
+msgstr "Commenti"
+
+#: .././functions/shortcodes.php:191 .././functions/shortcodes.php:283
+#: .././functions/shortcodes.php:425 .././includes/loops/comments.php:19
+#: .././includes/loops/content-single.php:24
+#: .././includes/loops/content-v2.php:24 .././includes/loops/content-v3.php:21
+#: .././includes/loops/content-v4.php:27 .././includes/loops/content.php:36
+msgid "None"
+msgstr "Nessuno"
+
+#: .././functions/theme-customizer.php:119
+msgid "Background Image Size"
+msgstr ""
+
+#: .././functions/theme-customizer.php:125
+msgid "Cover"
+msgstr ""
+
+#: .././functions/theme-customizer.php:126
+msgid "Contain"
+msgstr ""
+
+#: .././functions/theme-customizer.php:127
+msgid "Inherit"
+msgstr ""
+
+#: .././functions/theme-customizer.php:166
+msgid "Links Color"
+msgstr ""
+
+#: .././functions/theme-customizer.php:183
+msgid "Hover Links Color"
+msgstr ""
+
+#: .././functions/theme-customizer.php:203
+msgid "Footer Wrap Background Color"
+msgstr ""
+
+#: .././functions/theme-customizer.php:219
+msgid "Header Color in Android Chrome"
+msgstr ""
+
+#: .././functions/theme-customizer.php:236
+msgid "Tagline Visibility"
+msgstr ""
+
+#: .././functions/theme-customizer.php:251
+msgid "Logo"
+msgstr ""
+
+#: .././functions/theme-customizer.php:259
+msgid "Main Navigation Bar"
+msgstr ""
+
+#: .././functions/theme-customizer.php:272
+msgid "Navbar Position"
+msgstr ""
+
+#: .././functions/theme-customizer.php:294
+msgid "Color Scheme"
+msgstr ""
+
+#: .././functions/theme-customizer.php:315
+msgid "Navbar Search Form"
+msgstr ""
+
+#: .././functions/theme-customizer.php:332
+msgid "Styling"
+msgstr ""
+
+#: .././functions/theme-customizer.php:344
+msgid "Bootstrap Theme"
+msgstr ""
+
+#: .././functions/theme-customizer.php:383
+msgid "Extra CSS URL (optional)"
+msgstr ""
+
+#: .././functions/theme-customizer.php:402
+msgid "Font Combination"
+msgstr ""
+
+#: .././functions/theme-customizer.php:403
+msgid ""
+"Check out  <a target=\"_blank\" href=\"http://fontpair.co/\">FontPair</a> "
+"for more   inspiration."
+msgstr ""
+
+#: .././functions/theme-customizer.php:466
+msgid " Headings Font "
+msgstr ""
+
+#: .././functions/theme-customizer.php:467
+#: .././functions/theme-customizer.php:487
+msgid ""
+"Browse the official <a target=\"_blank\" href=\"https://fonts.google.com/"
+"\">Google Fonts</a> page "
+msgstr ""
+
+#: .././functions/theme-customizer.php:486
+msgid " Body Font "
+msgstr ""
+
+#: .././functions/theme-customizer.php:502
+msgid "Footer"
+msgstr ""
+
+#: .././functions/theme-customizer.php:517
+msgid "Footer Columns Schema"
+msgstr ""
+
+#: .././functions/theme-customizer.php:547
+msgid "Footer Text"
+msgstr ""
+
+#: .././functions/theme-customizer.php:563
+msgid "Footer Wrap Background Image URL"
+msgstr ""
+
+#: .././functions/theme-customizer.php:576
+msgid "Theme Extras"
+msgstr ""
+
+#: .././functions/theme-customizer.php:589
+msgid "Automatic Lightbox for Posts and standard Pages"
+msgstr ""
+
+#: .././functions/theme-customizer.php:609
+msgid "Animate.css library"
+msgstr ""
+
+#: .././functions/theme-customizer.php:629
+msgid "fontawesome.css library"
+msgstr ""
+
+#: .././functions/theme-customizer.php:649
+msgid "modernizer.js library"
+msgstr ""
+
+#: .././functions/theme-customizer.php:671
+msgid "BBE Forms Engine"
+msgstr ""
+
+#: .././functions/theme-customizer.php:693
+msgid "Analytics Tracking Code (printed in page header - only for Non-admins)"
+msgstr ""
+
+#: .././functions/theme-customizer.php:706
+msgid "Single Post Template"
+msgstr ""
+
+#: .././functions/theme-customizer.php:723
+#: .././functions/theme-customizer.php:892
+msgid "Author"
+msgstr ""
+
+#: .././functions/theme-customizer.php:745
+#: .././functions/theme-customizer.php:914
+msgid "Date"
+msgstr ""
+
+#: .././functions/theme-customizer.php:767
+#: .././functions/theme-customizer.php:936
+msgid "Meta: Category"
+msgstr ""
+
+#: .././functions/theme-customizer.php:788
+#: .././functions/theme-customizer.php:957
+msgid "Meta: Comments"
+msgstr ""
+
+#: .././functions/theme-customizer.php:809
+#: .././functions/theme-customizer.php:978
+msgid "Meta: Featured Image"
+msgstr ""
+
+#: .././functions/theme-customizer.php:832
+msgid "Related Posts (by Category)"
+msgstr ""
+
+#: .././functions/theme-customizer.php:853
+msgid "Archive Templates"
+msgstr ""
+
+#: .././functions/theme-customizer.php:868
+msgid "Template"
+msgstr ""
+
+#: .././functions/theme-customizer.php:1000
+msgid "Article: Content or Excerpt"
+msgstr ""
+
+#: .././functions/widgeted-areas.php:7
+msgid "Main Sidebar"
+msgstr ""
+
+#: .././functions/widgeted-areas.php:9
+msgid "The main sidebar widget area"
+msgstr ""
+
+#: .././functions/widgeted-areas.php:23
+msgid "Footer "
+msgstr ""
+
+#: .././functions/widgeted-areas.php:38
+msgid "BBE Widgets Area"
+msgstr ""
+
+#: .././includes/loops/comments.php:8
+msgid "This post is password protected. Enter the password to view comments."
+msgstr ""
+"Questo post è protetto da password. Inserire la password per visualizzare i "
+"commenti."
+
+#: .././includes/loops/comments.php:17
+msgid "Feedback"
+msgstr "Commenti"
+
+#: .././includes/loops/comments.php:34
+msgid "Be the first to write a comment."
+msgstr "Dicci cosa ne pensi per primo."
+
+#: .././includes/loops/comments.php:36
+msgid "Comments are closed for this post."
+msgstr "Commenti disattivati per questo post."
+
+#: .././includes/loops/comments.php:43
+msgid "Your feedback"
+msgstr "Commenti"
+
+#: .././includes/loops/comments.php:43
+#, php-format
+msgid "Responses to %s"
+msgstr "Risposte a %s"
+
+#: .././includes/loops/comments.php:46
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "Devi essere <a href=\"%s\">loggato </a> per poter commentare."
+
+#: .././includes/loops/comments.php:51
+msgid "Logged in as"
+msgstr "Sei loggato come"
+
+#: .././includes/loops/comments.php:52
+msgid "Log out of this account"
+msgstr "Esci da questo account"
+
+#: .././includes/loops/comments.php:52
+msgid "Log out"
+msgstr "Esci"
+
+#: .././includes/loops/comments.php:56 .././includes/loops/comments.php:57
+msgid "Your name"
+msgstr "Il tuo nome"
+
+#: .././includes/loops/comments.php:56
+msgid "(required)"
+msgstr "(obbligatorio)"
+
+#: .././includes/loops/comments.php:60 .././includes/loops/comments.php:61
+msgid "Your email address"
+msgstr "Indirizzo Email"
+
+#: .././includes/loops/comments.php:60
+msgid "(required, but will not be published)"
+msgstr "(obbligatorio, ma non sarà pubblicato)"
+
+#: .././includes/loops/comments.php:64 .././includes/loops/comments.php:65
+msgid "Your email address again"
+msgstr "Il tuo indirizzo di email, di nuovo"
+
+#: .././includes/loops/comments.php:68
+msgid "Your website"
+msgstr "Il tuo sito"
+
+#: .././includes/loops/comments.php:68
+msgid "if you have one (not required)"
+msgstr "se ne hai uno (non  obbligatorio)"
+
+#: .././includes/loops/comments.php:69
+msgid "Your website url"
+msgstr "URL del tuo sito"
+
+#: .././includes/loops/comments.php:73 .././includes/loops/comments.php:74
+msgid "Your comment"
+msgstr "Il tuo commento"
+
+#: .././includes/loops/comments.php:76
+msgid "Submit comment"
+msgstr "Invia commento"
+
+#: .././includes/loops/content-search.php:17
+msgid "Sorry, your search yielded no results."
+msgstr "Spiacente, la ricerca non ha portato risultati."
+
+#: .././includes/loops/content-single.php:23
+msgid "Filed under"
+msgstr "Categoria:"
+
+#: .././includes/loops/content-v2.php:19 .././includes/loops/content-v3.php:16
+#: .././includes/loops/content-v4.php:22 .././includes/loops/content.php:31
+msgid "Continue reading"
+msgstr "Continua..."
+
+#: .././includes/loops/content-v2.php:19 .././includes/loops/content-v3.php:16
+#: .././includes/loops/content-v4.php:22 .././includes/loops/content.php:31
+msgid "&hellip; "
+msgstr "&hellip; "
+
+#: .././search.php:8
+msgid "Search Results for"
+msgstr "Risultati della ricerca di"
+
+#~ msgid "<i class=\"glyphicon glyphicon-chevron-left\"></i> Newer"
+#~ msgstr "<i class=\"glyphicon glyphicon-chevron-left\"></i> Successivi"
+
+#~ msgid "Older <i class=\"glyphicon glyphicon-chevron-right\"></i>"
+#~ msgstr "Precedenti <i class=\"glyphicon glyphicon-chevron-right\"></i>"
+
+#~ msgid "Sidebar"
+#~ msgstr "Sidebar"
+
+#~ msgid "The sidebar widget area"
+#~ msgstr "The sidebar widget area"
+
+#~ msgid "The footer widget area"
+#~ msgstr "The footer widget area"
+
+#~ msgid "Previous"
+#~ msgstr "Precedente"
+
+#~ msgid "Next"
+#~ msgstr "Successivo"
+
+#~ msgid "Blog Category"
+#~ msgstr "Categoria Blog"
+
+#~ msgid "Older"
+#~ msgstr "Precedenti"
+
+#~ msgid "Newer"
+#~ msgstr "Successivi"
+
+#~ msgid "Main menu (below site title)"
+#~ msgstr "Menu principale (sotto il titolo del sito)"
+
+#~ msgid "View your shopping cart"
+#~ msgstr "Visualizza Carrello"
+
+#~ msgid "Start shopping"
+#~ msgstr "Inizia gli acquisti"
+
+#~ msgid "%d item"
+#~ msgid_plural "%d items"
+#~ msgstr[0] "%d elemento"
+#~ msgstr[1] "%d elementi"

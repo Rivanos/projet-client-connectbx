@@ -7,7 +7,7 @@
 #input-newsletter {
   width: 200px;
   float: left;
-  margin-left: 30px;
+  margin-left: 45px;
 }
 
 #btn-newsletter {
@@ -16,7 +16,17 @@
   float: left;
 }
 
+#footer {
+  background-color: #272727;
+  height: 200px;
+  width: 100%;
+  color: #17202a;
+  padding-top: 10px;
+  margin-top: -50px;
 }
+}
+
+
 
 /* CORPS DU SITE */
 
@@ -88,6 +98,7 @@ body {
 #title-jumbotron {
   font-size: 45px;
   font-style: italic;
+  /*color: #FFF;*/
 }
 
 section {
@@ -99,6 +110,7 @@ section {
 
 #big-btn-map {
   border-radius: 50px;
+  background-color: #4CC254;
 }
 
 /* CONTACT */
@@ -232,7 +244,7 @@ input:invalid {
   color: transparent;
 }
 
-/* MAP */ 
+/* MAP */
 
 .menuLeft {
   border: 1px solid black;
@@ -433,4 +445,30 @@ footer {
   width: 100%;
   height: 40px;
   color: #FFF;
+}
+/*css search nav*/
+
+.resultat {
+	position: absolute;
+	background: #2DAF37;
+	border-radius: 10px 10px 10px 10px;
+	width: 228px;
+	padding: 10px 10px;
+}
+.result:hover, .result:focus {
+	color: white;
+	text-decoration: none;
+	background-color: #91D73C;
+}
+.resultp:hover{
+	color: #2DAF37;
+	background-color: white;
+}
+.result {
+	color: white;
+	text-decoration: none;
+}
+.resultp {
+	border-bottom: 1px white solid;
+	padding: 5px 5px;
 }
