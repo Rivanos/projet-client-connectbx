@@ -46,10 +46,13 @@ body {
 }
 
 .content-inside {
-  padding: 20px;
+  padding: 0px;
   padding-bottom: 50px;
 }
-
+.navbar{
+  height: 50px;
+  margin-bottom: 0;
+}
 .navbar-default {
   background-color: #2DAF37;
   border: #91D73C;
@@ -76,7 +79,7 @@ body {
 /*  background-position: center;*/
   background-repeat: no-repeat;
   background-size: cover;
-  height: 90vh;
+  height: calc(100vh - 50px);
   padding-top: 150px;
 }
 
@@ -101,13 +104,17 @@ body {
   /*color: #FFF;*/
 }
 
-section {
+#cartePage {
   text-align: center;
-  margin-top: 20px;
 }
 
 /* HOME */
+/* home select search*/
+.select-home{
+  margin-top: calc(100vh - 86vh);
+  padding: 10px 80px;
 
+}
 #big-btn-map {
   border-radius: 50px;
   background-color: #4CC254;
@@ -221,7 +228,15 @@ ul.socialNetworkContactBody img {
 textarea.insideInput {
   height: auto;
 }
-
+.contenu {
+  height: calc(100vh - 250px);
+}
+#recherche{
+  border-color: green;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(45, 175, 55, .6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(45, 175, 55, .6);
+}
 .insideInput:focus {
   border-color: #2daf37;
   outline: 0;
@@ -245,17 +260,73 @@ input:invalid {
 }
 
 /* MAP */
+/*Map affichage des associations (resultat div)*/
+.affichage_resultat_recherche {
+  height: calc(100vh - 50px);
+  z-index: 998;
+  position: absolute;
+  width: 25%;
+  text-align: left;
+  background-color: white;
+  height: calc(100vh - 50px);
+}
+.resultat_map{
+  border-bottom: 3px solid #e6e6e6;
+  padding-bottom: 100px;
+}
+.open{
+  left:0;
+}
+.close{
+  right:100%;
+}
+.glyphicon{
+  float: left;
+}
+.affichage_association {
+  overflow: auto;
+  height: 100vh;
+  border-bottom: 2px solid #e6e6e6;
+}
+.nom_association{
+  color: #2daf37;
+}
+.description {
+  font-size: 16px;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 5px 8px #2daf37;
+  padding : 10px 10px;
+  margin-bottom: 30px;
+}
+.adresse,  .commune, .website {
+  float: left;
+}
+.adresse {
+  padding-right: 10px
+}
+.numero_phone{
+  float: right;
+}
+.zone_affichage_association_revealed{
+  position: absolute;
+  margin-top: 10px;
+  padding : 0 10px;
+  left: 100%;
+}
+/*fin affichage_resultat_recherche*/
 
 .menuLeft {
-  border: 1px solid black;
+  height: 100vh;
+  z-index: 997;
+  position: absolute;
   text-align: left;
-  background-color: #E9E9E9;
+  background-color: #abdfaf;
+  padding-top: 30px;
 }
 
 #map {
-  border:1px solid black;
-  width: 74%;
-  height: 95vh;
+  width: 100%;
+  height: 100vh;
 }
 
 .associationBox {
@@ -272,8 +343,11 @@ input:invalid {
 }
 
 #commune_list {
-  height: 200px;
-  overflow: scroll;
+  height: calc(35vh - 50px);
+  overflow: auto;
+}
+.category {
+  padding-top: 10px;
 }
 
 /* A PROPOS */

@@ -12,9 +12,9 @@
 <div class="row">
 	<div class="newsletter">
 		<div class="form-group">
-		<form class="form-inline">
-			<input type="text" class="form-control" placeholder="Votre adresse mail" id="input-newsletter" />
-			<button type="button" class="btn btn-default" id="btn-newsletter">Inscription</button>
+			<form class="form-inline">
+				<input type="text" class="form-control" placeholder="Votre adresse mail" id="input-newsletter" />
+				<button type="button" class="btn btn-default" id="btn-newsletter">Inscription</button>
 			</form>
 		</div>
 	</div>
@@ -31,6 +31,9 @@
 
 </footer>
 	<script type="text/javascript" src="<?php echo VIEWS;?>js/script.js"></script>
+	<script type="text/javascript" src="<?php echo VIEWS;?>js/affichage_map.js">
+
+	</script>
 	<script src="https://unpkg.com/jquery-aniview@1.0.1/dist/jquery.aniview.js"
 	integrity="sha384-zDA6q/t525x7f6KD/OaOe24vCxSPU3eraILc2NU+ZA7ISsc3ExQbj8PB56FRMq6H"
 	crossorigin="anonymous"></script>

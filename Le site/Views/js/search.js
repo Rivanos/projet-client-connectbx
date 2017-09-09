@@ -18,8 +18,8 @@ $(document).ready(function(){
   });
 
   $("#recherche").focusout(function(){
+    setTimeout(function(){
     $("#resultat").empty();
-    $("#resultat").removeClass('resultat');
-
+    $("#resultat").removeClass('resultat'); }, 100);
   });
 });
