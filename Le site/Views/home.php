@@ -8,14 +8,9 @@
           <option class="disable">Choisissez votre Commune</option>
           <?php
 
-          $tableau_commune = array();
-          require_once 'Models/Db.class.php';
-          $tableau_commune = Db::getInstance()->select_all_commune();
-
-          foreach ($tableau_commune as $key => $value) {
-            echo  "<option value='".$value."'>".$value."</option>";
-          }
-
+      foreach ($tab_towns as $town) {
+        echo  "<option value='".$town->post_code()."'>".$town->name()."</option>";
+      }
           ?>
         </select>
         <select class="custom-dropdown__select custom-dropdown__select--white select-home">
@@ -23,13 +18,11 @@
 
           <?php
 
-          $tableau_theme = array();
-          require_once 'Models/Db.class.php';
-          $tableau_theme = Db::getInstance()->select_all_theme();
 
-          foreach ($tableau_theme as $key => $value) {
-            echo  "<option value=''>".$value."</option>";
-          }
+        foreach ($tab_themes as $key => $value) {
+          echo  "<option value=''>".$value."</option>";
+      }
+
 
           ?>
         </select>

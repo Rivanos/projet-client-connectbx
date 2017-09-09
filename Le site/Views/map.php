@@ -11,7 +11,6 @@
           $tableau_association = Db::getInstance()->select_all_associations();
 
           foreach ($tableau_association as $key => $association) { ?>
-
             <div class="resultat_map">
               <h1 class="nom_association"><?= $association->name(); ?></h1>
               <p class="description"><?= $association->description(); ?></p>
@@ -19,8 +18,9 @@
               <p class="numero_phone"><?= $association->phone(); ?></p>
               <p class="adresse"><?= $association->address()->to_string(); ?></p>
             </div>
-
+          
             <?php } ?>
+          
           </div>
         </div>
         <div class="menuLeft" >

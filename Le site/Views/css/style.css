@@ -428,6 +428,28 @@ input:invalid {
   text-align: left;
 }
 
+/*  ADMIN  */
+
+
+.input-group[class*=col-]{
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.delete{
+  position: relative;
+  display: inline-block;
+  top: -29px;
+  float: right;
+  margin-right: 10px;
+  color: red;
+}
+
+.delete:hover{
+  color: black;
+}
+
+
 /* FOOTER */
 
 footer {

@@ -53,8 +53,7 @@
       <input type="text" class="insideInput" placeholder="Sujet" name="sujet" value="">
     </div>
     <div class="arroundInput">
-      <textarea class="insideInput" name="message" placeholder="Message" id="comments" rows="5">
-      </textarea>
+      <textarea class="insideInput" name="message" placeholder="Message" id="comments" rows="5"></textarea>
     </div>
     <div class="arroundInput" id="btnPosition">
       <button type="submit" name="envoyer" class="btnStyle">Envoyer</button>

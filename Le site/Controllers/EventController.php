@@ -11,8 +11,8 @@ class EventController{
 			chargement de données, conditions, boucles, ...
 		*/
 
-	    $tableauEvenements = Db::getInstance()->select_all_events();
 
+		$tableauEvenements = Db::getInstance()->select_all_events();
 		$tableauEvenementsPassed = Db::getInstance()->select_all_events_passed();
 		$tableauEvenementsToComed = Db::getInstance()->select_all_events_to_come();
 
