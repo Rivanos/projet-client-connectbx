@@ -4,18 +4,10 @@
     <title>ConnectBX</title>
     <link rel="stylesheet" type="text/css" href="<?php echo VIEWS;?>bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo VIEWS;?>css/style.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo VIEWS;?>css/select.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="<?php echo VIEWS;?>js/jquery-2.2.4.js"></script>
-    <script type="text/javascript" src="<?php echo VIEWS;?>js/select.js"></script>
-    <script type="text/javascript" src="<?php echo VIEWS;?>bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="<?php echo VIEWS;?>js/script.js"></script>
-    <script type="text/javascript" src="<?php echo VIEWS;?>js/admin.js"></script>
-    <script type="text/javascript" src="<?php echo VIEWS;?>js/search.js"></script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPuNlEkwhQVdbWWZ12PyfUubvQ6ABcClg&callback=initMap">
-    </script>
+    
+
 
 </head>
 <body>

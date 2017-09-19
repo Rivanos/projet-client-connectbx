@@ -30,10 +30,16 @@
 </div>
 
 </footer>
+<script type="text/javascript" src="<?php echo VIEWS;?>js/jquery-2.2.4.js"></script>
+<script type="text/javascript" src="<?php echo VIEWS;?>bootstrap/js/bootstrap.min.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPuNlEkwhQVdbWWZ12PyfUubvQ6ABcClg&callback=initMap">
+</script>
+<script type="text/javascript" src="<?php echo VIEWS;?>js/admin.js"></script>
+<script type="text/javascript" src="<?php echo VIEWS;?>js/search.js"></script>
 	<script type="text/javascript" src="<?php echo VIEWS;?>js/script.js"></script>
 	<script type="text/javascript" src="<?php echo VIEWS;?>js/affichage_map.js">
-
-	</script>
+	</script>	
+  <script type="text/javascript" src="<?php echo VIEWS;?>js/header-animate.js"></script>
 	<script src="https://unpkg.com/jquery-aniview@1.0.1/dist/jquery.aniview.js"
 	integrity="sha384-zDA6q/t525x7f6KD/OaOe24vCxSPU3eraILc2NU+ZA7ISsc3ExQbj8PB56FRMq6H"
 	crossorigin="anonymous"></script>

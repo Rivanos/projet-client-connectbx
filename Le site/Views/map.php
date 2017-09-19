@@ -1,4 +1,7 @@
 <section id="cartePage">
+  <div id="test">
+
+  </div>
   <div class="content">
     <div class="content-inside">
       <div id='association' class="affichage_resultat_recherche close">
@@ -7,8 +10,10 @@
             <span id="arrow" class="glyphicon glyphicon-arrow-right"></span>
           </button>
           <?php
-
-          $tableau_association = Db::getInstance()->select_all_associations();
+          echo "test";
+          $tableau_association = array();
+          //$tableau_association = Db::getInstance()->select_all_associations();
+          print_r($tableau_association);
 
           foreach ($tableau_association as $key => $association) { ?>
             <div class="resultat_map">
@@ -18,9 +23,9 @@
               <p class="numero_phone"><?= $association->phone(); ?></p>
               <p class="adresse"><?= $association->address()->to_string(); ?></p>
             </div>
-          
+
             <?php } ?>
-          
+
           </div>
         </div>
         <div class="menuLeft" >
@@ -29,11 +34,11 @@
             <div id="commune_list">
               <?php
 
-              $tableau_commune = Db::getInstance()->select_all_commune();
+              $tableau_commune = Db::getInstance()->select_all_towns();
               $i=0;
               foreach ($tableau_commune as $key => $value) {
                 $i++;
-                echo  "<input type='checkbox' name='check' value='".$value."' id='commune".$i."'> ".$value."<br>";
+                echo  "<label><input type='checkbox' name='communeCheckbox[]' value='".$value->post_code()."' id='commune".$i."'> ".$value->name()."</label><br>";
               }
 
               ?>
@@ -41,7 +46,7 @@
             <h3 class='category'>Catégories</h3>
             <div id="category_list">
               <?php
-              $tableau_theme = Db::getInstance()->select_all_theme();
+              $tableau_theme = Db::getInstance()->select_all_themes();
               $i=0;
               foreach ($tableau_theme as $key => $value) {
                 $i++;
@@ -57,4 +62,3 @@
       </div>
     </div>
   </section>
-  <script type="text/javascript" src="<?php echo VIEWS;?>js/header-animate.js"></script>
