@@ -4,13 +4,13 @@
 				<input type="hidden" name="id" value="<?= $association_to_edit->id() ?>">
 				<input type="hidden" name="address_id" value="<?= $association_to_edit->address()->id() ?>">
 				<div class="form-group">
-					<label class="control-label col-md-3" for="name">Nom :</label>
+					<label class="control-label col-md-3" for="name">Nom<?php echo $operation == 'add' ? '*' : '' ?> :</label>
 					<div class="col-md-8">
-						<input type="text" class="form-control" id="name" name="name" placeholder="Nom" value="<?= $association_to_edit->name() ?>">
+						<input type="text" class="form-control" id="name" name="name" placeholder="Nom" value="<?= $association_to_edit->name() ?>" required>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-md-3" for="address">Adresse :</label>
+					<label class="control-label col-md-3" for="address">Adresse<?php echo $operation == 'add' ? '*' : '' ?> :</label>
 					<div class="col-md-8">
 						<div class="input-group">
 							<input type="text" class="form-control" id="address" placeholder="Adresse" value="<?php echo $association_to_edit->id() == '' ? '' : $association_to_edit->address()->to_string(); ?>" readonly>
@@ -52,13 +52,13 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-md-3" for="latitude">Latitude :</label>
+								<label class="control-label col-md-3" for="latitude">Latitude<?php echo $operation == 'add' ? '*' : '' ?> :</label>
 								<div class="col-md-8">
-									<input type="text" class="form-control" id="latitude" name="latitude" placeholder="Latitude" value="<?= $association_to_edit->latitude() ?>" readonly>
+									<input type="text" class="form-control" id="latitude" name="latitude" placeholder="Latitude" value="<?= $association_to_edit->latitude() ?>" readonly required>
 								</div>
-								<label class="control-label col-md-3" for="longitude">Longitude :</label>
+								<label class="control-label col-md-3" for="longitude">Longitude<?php echo $operation == 'add' ? '*' : '' ?> :</label>
 								<div class="col-md-8">
-									<input type="text" class="form-control" id="longitude" name="longitude" placeholder="Longitude" value="<?= $association_to_edit->longitude() ?>" readonly>
+									<input type="text" class="form-control" id="longitude" name="longitude" placeholder="Longitude" value="<?= $association_to_edit->longitude() ?>" readonly required>
 								</div>
 								<button type="button" class="form-control" id="getCoordinates">Calculer</button>
 							</div>
@@ -84,9 +84,15 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-md-3" for="theme">Catégorie :</label>
+					<label class="control-label col-md-3" for="theme">Catégorie<?php echo $operation == 'add' ? '*' : '' ?> :</label>
 					<div class="col-md-8">
-						<input type="text" class="form-control" id="theme" name="theme" placeholder="Catégorie" value="<?= $association_to_edit->theme() ?>">
+						<input type="hidden" id="real-theme" name="theme" value="<?= $association_to_edit->theme() ?>">
+						<input list="themes" class="form-control" placeholder="Catégorie" value="<?= $association_to_edit->theme() ?>" required>
+						<datalist id="themes">
+							<?php foreach ($themes as $theme) { ?>
+								<option value="<?= $theme ?>"><?= $theme ?></option>
+							<?php } ?>
+						</datalist>
 					</div>
 				</div>
 				<div class="form-group">

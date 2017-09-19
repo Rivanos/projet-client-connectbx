@@ -79,9 +79,15 @@ class Db {
 		return $tab;
 	}
 
-	// UPDATE USER
+	// UPDATE USER without pwd
 	public function update_user($id, $name, $first_name, $birthdate, $email, $login){
 		$query = 'UPDATE users SET user_name=' . $this->_db->quote($name) . ', user_firstname=' . $this->_db->quote($first_name) . ', user_birthdate=' . $this->_db->quote($birthdate) . ', user_email=' . $this->_db->quote($email) . ', user_login=' . $this->_db->quote($login) . ' WHERE user_id=' . $this->_db->quote($id);
+		$this->_db->prepare($query)->execute();
+	}
+
+	// UPDATE USER with pwd
+	public function update_user_with_pwd($id, $name, $first_name, $birthdate, $email, $login, $pwd){
+		$query = 'UPDATE users SET user_name=' . $this->_db->quote($name) . ', user_firstname=' . $this->_db->quote($first_name) . ', user_birthdate=' . $this->_db->quote($birthdate) . ', user_email=' . $this->_db->quote($email) . ', user_login=' . $this->_db->quote($login) . ', user_pwd=' . $this->_db->quote(sha1($pwd)) . ' WHERE user_id=' . $this->_db->quote($id);
 		$this->_db->prepare($query)->execute();
 	}
 
@@ -141,8 +147,21 @@ class Db {
 		$this->_db->prepare($query)->execute();
 	}
 
-	// NOTE: INSERT EVENT
-	public function insert_event($name, $event_date, $description, $image, $priority){
+	// NOTE: INSERT EVENT without image
+	public function insert_event($name, $event_date, $description, $priority){
+		$address = $this->_db->lastInsertId();
+		$query = 'INSERT INTO events(`event_name`, `event_date`, `event_descri`, `event_priority`, `event_address`) VALUES (:name, :event_date, :description, :priority, :address)';
+		$qp = $this->_db->prepare($query);
+		$qp->bindValue(':name', $name);
+		$qp->bindValue(':event_date', $event_date);
+		$qp->bindValue(':description', $description);
+		$qp->bindValue(':priority', $priority);
+		$qp->bindValue(':address', $address);
+		$qp->execute();
+	}
+
+	// NOTE: INSERT EVENT with image
+	public function insert_event_with_image($name, $event_date, $description, $image, $priority){
 		$address = $this->_db->lastInsertId();
 		$query = 'INSERT INTO events(`event_name`, `event_date`, `event_descri`, `event_image`, `event_priority`, `event_address`) VALUES (:name, :event_date, :description, :image, :priority, :address)';
 		$qp = $this->_db->prepare($query);
@@ -192,7 +211,13 @@ class Db {
 	}
 
 	// NOTE: UPDATE EVENT
-	public function update_event($id, $name, $date, $description, $image, $priority, $address){
+	public function update_event($id, $name, $date, $description, $priority, $address){
+		$query = 'UPDATE events SET event_name=' . $this->_db->quote($name) . ', event_date=' . $this->_db->quote($date) . ', event_descri=' . $this->_db->quote($description) . ', event_priority=' . $this->_db->quote($priority) . ', event_address=' . $address . ' WHERE event_id=' . $id;
+		$this->_db->prepare($query)->execute();
+	}
+
+	// NOTE: UPDATE EVENT 
+	public function update_event_with_image($id, $name, $date, $description, $image, $priority, $address){
 		$query = 'UPDATE events SET event_name=' . $this->_db->quote($name) . ', event_date=' . $this->_db->quote($date) . ', event_descri=' . $this->_db->quote($description) . ', event_image=' . $this->_db->quote($image) . ', event_priority=' . $this->_db->quote($priority) . ', event_address=' . $address . ' WHERE event_id=' . $id;
 		$this->_db->prepare($query)->execute();
 	}

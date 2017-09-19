@@ -6,91 +6,83 @@ $(document).ready(function () {
 	if($("#administration").length > 0){
 
 		// Checks the pattern of input and adds class 
-		$(".form-control").change(function () {
+		$("body").on("input", ".form-control", function () {
 			var patt = new RegExp($(this).attr("pattern"));
 			var isPattOk = patt.test($(this).val());
-			console.log(patt + " " + $(this).val() + " " + isPattOk);
+
+			if($(this).attr("required") && $(this).val().length === 0) isPattOk = false; 
+
+			var allClass = $(this).parent().attr("class");
+			oldClass = allClass.split(" ");
+
 			if(isPattOk){
-				$(this).parent().addClass("has-success");
+				$(this).parent().attr("class", oldClass[0] + " has-success");
 			} else {
-				$(this).parent().addClass("has-error");
+				$(this).parent().attr("class", oldClass[0] + " has-error");
 			}
 		});
 
 		// Check if passwords are the same : confirmation
-		/*$('.check-password').outfocus(function(){
-			var initial_password = $(this).parent().prev().children(0);
-		});*/
-
-		$('#add-user').click(function () {
-			$.post("Controllers/AjaxControllers/AddUserController.php", function (data) {
-				$('#admin_form').html(data);
-			});
+		$("body").on("input", "#pwd-confirm", function(){
+			var allClass = $(this).parent().attr("class");
+			oldClass = allClass.split(" ");
+			if($("#pwd").val() === $("#pwd-confirm").val()){
+				$(this).parent().attr("class", oldClass[0] + " has-success");
+			} else {
+				$(this).parent().attr("class", oldClass[0] + " has-warning");
+			}
 		});
 
-		$('#add-association').click(function () {
-			$.post("Controllers/AjaxControllers/AddAssociationController.php", function (data) {
-				$('#admin_form').html(data);
-			});
+		$("body").on("input", "#real-theme ~ input", function () {
+			$('#real-theme').val($('#real-theme ~ input').val());
 		});
 
-		$('#add-event').click(function () {
-			$.post("Controllers/AjaxControllers/AddEventController.php", function (data) {
-				$('#admin_form').html(data);
-			});
+		$('.add').click(function () {
+			var entity = $(this).attr('id');
+			entity = entity[0].toUpperCase() + entity.substring(1);
+			addEntity(entity);
 		});
 
-		$('.edit-user').click(function (event) {
-			var id = $(this).attr('id');
-			$.post("Controllers/AjaxControllers/EditUserController.php", { id : id }, function (data) {
-				$('#admin_form').html(data);
-			});
+		$('.edit').click(function () {
+			var idClicked = $(this).attr('id');
+			var parameters = idClicked.split('-');
+			var entity = parameters[0][0].toUpperCase() + parameters[0].substring(1);
+			var id = parameters[1];
+			editEntity(entity, id);
 		});
 
-		$('.edit-association').click(function (event) {
-			var id = $(this).attr('id');
-			$.post("Controllers/AjaxControllers/EditAssociationController.php", { id : id }, function (data) {
-				$('#admin_form').html(data);
-			});
-		});
-
-		$('.edit-event').click(function (event) {
-			var id = $(this).attr('id');
-			$.post("Controllers/AjaxControllers/EditEventController.php", { id : id }, function (data) {
-				$('#admin_form').html(data);
-			});
-		});
-
-		$('.delete-user').click(function () {
+		$('.delete').click(function (event) {
 			event.stopPropagation();
-			var id = $(this).parent().attr('id');
-			$.post("Controllers/AjaxControllers/DeleteUserController.php", { id : id });
+			var idClicked = $(this).parent().attr('id');
+			var parameters = idClicked.split('-');
+			var entity = parameters[0][0].toUpperCase() + parameters[0].substring(1);
+			var id = parameters[1];
+			deleteEntity(entity, id);
 		});
 
-		$('.delete-association').click(function () {
-			event.stopPropagation();
-			var id = $(this).parent().attr('id');
-			$.post("Controllers/AjaxControllers/DeleteAssociationController.php", { id : id });
-		});
+		function addEntity(entity) {
+			$.post("Controllers/AjaxControllers/Add" + entity + "Controller.php", { ajax : true }, function (data) {
+				$('#admin_form').html(data);
+			});
+		}
 
-		$('.delete-event').click(function () {
-			event.stopPropagation();
-			var id = $(this).parent().attr('id');
-			$.post("Controllers/AjaxControllers/DeleteEventController.php", { id : id });
-		});
+		function editEntity(entity, id){
+			$.post("Controllers/AjaxControllers/Edit" + entity + "Controller.php", { id : id, ajax : true }, function (data) {
+				$('#admin_form').html(data);
+			});	
+		}
+
+		function deleteEntity(entity, id){
+			$.post("Controllers/AjaxControllers/Delete" + entity + "Controller.php", { id : id });
+		}
+
 
 		// GEOCODE
 		var geocoder;
 		var map;
 		function initialize () {
 			geocoder = new google.maps.Geocoder();
-			// var latlng = new google.maps.LatLng(-34.397, 150.644);
-		 //   var mapOptions = {
-		 //     zoom: 8,
-		 //     center: latlng
-		 //   }
-		 //   map = new google.maps.Map(document.getElementById('map'), mapOptions);
-		 return geocoder;
+			return geocoder;
 		}
 
 		$("body").on("click", "#getCoordinates", function () {
