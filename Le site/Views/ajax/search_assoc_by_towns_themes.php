@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // charge les modèles
 function loadClass($class){
@@ -10,11 +10,15 @@ $tab_selected_associations = Db::getInstance()->search_assoc_by_towns_themes($_P
 $file = file_get_contents("associations.json");
 $json = json_decode($file, true);
 
-$json["address"] = [];
+$json["coordinates"] = [];
 $json["name"] = [];
 
+echo "<pre>";
+print_r ($tab_selected_associations);
+echo "</pre>";
+
 foreach ($tab_selected_associations as $i => $association) {
-	array_push($json["address"], $association->address()->to_string());
+	array_push($json["coordinates"], array("latitude"=>$association->latitude(), "longitude"=>$association->longitude()));
 	array_push($json["name"], $association->name());
 }
 

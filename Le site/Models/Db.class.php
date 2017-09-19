@@ -9,7 +9,7 @@ class Db {
 	// constructeur
 	private function __construct(){
 		try{
-			$this->_db = new PDO('mysql:host=localhost;dbname=connectbx;charset=utf8', 'root', 'root');
+			$this->_db = new PDO('mysql:host=localhost;dbname=connectbx;charset=utf8', 'root', 'user');
 			$this->_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			$this->_db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 		} catch(PDOException $e) {
@@ -312,7 +312,7 @@ class Db {
 
 	// NOTE: SELECT ASSOCIATION AND ADDRESS WITH CHECKED
 	public function search_assoc_by_towns_themes($tab_towns, $tab_themes){
-		$where_town = Db::getInstance()->where_table($tab_towns, 't.town_name'); // clause
+		$where_town = Db::getInstance()->where_table($tab_towns, 't.town_post_code'); // clause
 		$where_theme = Db::getInstance()->where_table($tab_themes, 'ass.assoc_theme');
 		$juncture = 'ass.assoc_address=ad.address_id AND ad.address_post_code=t.town_post_code';
 		$query = '	SELECT DISTINCT ass.*, ad.*, t.* FROM associations ass, address ad, towns t
