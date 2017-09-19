@@ -357,24 +357,33 @@ input:invalid {
 /*  ADMIN  */
 
 
-.input-group[class*=col-]{
+#administration .input-group[class*=col-]{
   padding-right: 15px;
   padding-left: 15px;
 }
 
-.delete{
-  position: relative;
-  display: inline-block;
-  top: -29px;
-  float: right;
-  margin-right: 10px;
+#administration .delete{
   color: red;
+  background-color: transparent;
+  cursor: pointer;
 }
 
-.delete:hover{
+#administration .delete:hover{
   color: black;
 }
 
+#administration #priority{
+  width: auto;
+  margin: 0;
+}
+
+#administration .list-group-item{
+  cursor: pointer;
+}
+
+#administration .list-group-item:hover{
+  background-color: #eee;
+}
 
 /* FOOTER */
 

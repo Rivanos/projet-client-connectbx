@@ -26,6 +26,9 @@ class LoginController{
 			# Une variable de session $_SESSION['authenticated'] 	est créée
 			$_SESSION['authentifie'] = 'autorise';
 			$_SESSION['login'] = $_POST['login'];
+			if($_SESSION['login'] == "admin"){
+				$_SESSION['admin'] = true;
+ 			}
 			# Redirection HTTP pour demander la page admin
 			header("Location: index.php?action=admin");
 			die();
