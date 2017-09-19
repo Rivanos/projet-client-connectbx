@@ -337,7 +337,7 @@ class Db {
 
 	// NOTE: SELECT ASSOCIATION AND ADDRESS WITH CHECKED
 	public function search_assoc_by_towns_themes($tab_towns, $tab_themes){
-		$where_town = Db::getInstance()->where_table($tab_towns, 't.town_name'); // clause
+		$where_town = Db::getInstance()->where_table($tab_towns, 't.town_post_code'); // clause
 		$where_theme = Db::getInstance()->where_table($tab_themes, 'ass.assoc_theme');
 		$juncture = 'ass.assoc_address=ad.address_id AND ad.address_post_code=t.town_post_code';
 		$query = '	SELECT DISTINCT ass.*, ad.*, t.* FROM associations ass, address ad, towns t

@@ -11,7 +11,12 @@ nav#main-nav .navbar-brand>img {
 }
 
 
-
+#searchform {
+  padding-left: 30px;
+}
+#recherche:focus, #s:focus {
+  border-color:#198c19;
+}
 #top-textlogo {display: inline-block}
 .whiteColorText {
   color: white;
