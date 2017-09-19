@@ -350,6 +350,12 @@ input:invalid {
   padding-top: 10px;
 }
 
+/*infowindow*/
+.gm-style .gm-style-iw {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
 /* A PROPOS */
 
 #box-first-article {
