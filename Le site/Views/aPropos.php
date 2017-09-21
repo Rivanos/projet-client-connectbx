@@ -16,7 +16,7 @@
           raisons pour, au moins, essayer. Un tas d’associations existent qui pourraient parfaitement
           vous convenir,.. il suffit simplement de les trouver.</p>
           <div class="aPropos-btn-box">
-           <a href="index.php?action=map"><button type="button" class="btn btn-default btn-lg" name="carte" id="btn-map-aPropos">Accéder à la carte</button></a>
+           <a href="index.php?action=map"><button type="button" class="btn btn-default btn-lg" name="carte" id="big-btn-map">Accéder à la carte</button></a>
          </div>
       </div>
     </div>
@@ -27,7 +27,7 @@
   <h2 class="title-first-article">Le commencement d’un monde plein de possibilités.</h2>
 
   <div class="box-first-article">
-  
+
     <div class="box-title-aPropos">
       <p class="title-article-aPropos">Entretiens ta flamme, pas ta flemme.</p>
     </div>

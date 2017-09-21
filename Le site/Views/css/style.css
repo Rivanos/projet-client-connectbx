@@ -71,7 +71,7 @@ body {
 }
 
 .content-inside {
-  padding: 0px;
+  padding: 0;
   padding-bottom: 50px;
 }
 .header_animate{
@@ -110,7 +110,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: calc(100vh + 50px);
+  height: calc(100vh - 50px);
   padding-top: 150px;
 }
 
@@ -174,7 +174,7 @@ body {
   color: #494949;
 }
 
-div#sectionTitle h2 {
+#sectionTitle h2 {
   font-family: Helvetica, helvetica-w01-light, helvetica-w02-light, sans-serif;
   font-size: 4rem;
   margin-top: 10rem;
@@ -277,7 +277,6 @@ textarea.insideInput {
 
 #recherche{
   border-color: green;
-  outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(45, 175, 55, .6);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(45, 175, 55, .6);
 }
@@ -288,10 +287,10 @@ textarea.insideInput {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(45, 175, 55, .6);
 }
 
-input:invalid {
+/*input:invalid {
   border-color: red;
   outline: 0;
-}
+}*/
 
 #btnPosition {
   float: right;
@@ -326,8 +325,6 @@ input:invalid {
   box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.3);
   border-bottom: 3px solid #e6e6e6;
   padding-bottom: 60px;
-}
-.close{
 }
 .glyphicon{
   float: left;
@@ -440,6 +437,7 @@ input:invalid {
 /* Scrollbar map commune et theme*/
 #commune_list::-webkit-scrollbar-track, #category_list::-webkit-scrollbar-track, #affichage_association::-webkit-scrollbar-track
 {
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 	background-color: rgba(0,0,0, 0.4);;
 }
@@ -571,7 +569,7 @@ input:invalid {
   color: black;
 }
 
-#administration #priority{
+#administration, #priority{
   width: auto;
   margin: 0;
 }
@@ -633,7 +631,7 @@ footer {
 }
 
 #input-newsletter {
-  border-radius: 4px 0px 0px 4px;
+  border-radius: 4px 0 0 4px;
 }
 
 #btn-newsletter {
@@ -675,7 +673,7 @@ footer {
 .subscribe-newsletter {
   font-size: 22px;
   font-weight: bold;
-
+}
 .resume-center-box {
   text-align: left;
   color: #707B7C;
@@ -808,14 +806,22 @@ footer {
 /* design affiche association*/
 
 .shape{
-  border-style: solid; border-width: 0 70px 40px 0; float:right; height: 0px; width: 0px;
+  border-style: solid;
+  border-width: 0 70px 40px 0;
+  float:right;
+  height: 0px;
+  width: 0px;
   -ms-transform:rotate(360deg); /* IE 9 */
   -o-transform: rotate(360deg);  /* Opera 10.5 */
   -webkit-transform:rotate(360deg); /* Safari and Chrome */
   transform:rotate(360deg);
 }
 .offer{
-  background:#fff; border:1px solid #ddd; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); margin: 15px 0; overflow:hidden;
+  background:#fff;
+  border:1px solid #ddd;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  margin: 15px 0;
+  overflow:hidden;
 }
 .offer:hover {
   -webkit-transform: scale(1.01);

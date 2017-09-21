@@ -9,9 +9,11 @@
     <div class="content-inside">
       <div id='association' class="affichage_resultat_recherche">
         <div id='affichage_association' class="container-fluid affichage_association">
-          <button class="btn-filtre" data-toggle="collapse" data-target="#filtre">
-            <span id="arrow" class="glyphicon glyphicon-search"></span>Filtre
-          </button>
+          <div class="container">
+            <button class="btn-filtre" data-toggle="collapse" data-target="#filtre">
+              <span id="arrow" class="glyphicon glyphicon-search"></span>Filtre
+            </button>
+          </div>
 
           <div id="filtre" class="collapse">
             <div class="menuLeft" >
@@ -31,7 +33,7 @@
                     <input type='checkbox' name='communeCheckbox' value='<?= $town->post_code()?>' id='commune".$i."' <?php if(!empty($_GET['town']) && $town->post_code()==$_GET["town"]){ echo "checked";} ?>> <?=$town->name()?>
                   </label>
                 </div>
-                <?php 
+                <?php
                   }
                   ?>
                 </div>
