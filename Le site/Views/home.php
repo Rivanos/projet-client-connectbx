@@ -1,33 +1,36 @@
 <div id="jumbotron" class="jumbotron fond text-center">
 
   <div class="container">
-    <span id="title-jumbotron">La Porte principale des jeunes
+    <span class="title-jumbotron">La Porte principale des jeunes
       vers le monde associatif.</span></div>
       <form class="recherche_on_map_of_assoc" action="index.php?action=map" method="get">
+        
         <select class="custom-dropdown__select custom-dropdown__select--white select-home">
+
           <option class="disable">Choisissez votre Commune</option>
           <?php
-
-      foreach ($tab_towns as $town) {
-        echo  "<option value='".$town->post_code()."'>".$town->name()."</option>";
-      }
+            foreach ($tab_towns as $town) {
+            echo  "<option value='".$town->post_code()."'>".$town->name()."</option>";
+            }
           ?>
         </select>
+
         <select class="custom-dropdown__select custom-dropdown__select--white select-home">
           <option class="disable">Choisissez votre Thème</option>
 
           <?php
 
-
-        foreach ($tab_themes as $key => $value) {
-          echo  "<option value=''>".$value."</option>";
-      }
-
+            foreach ($tab_themes as $key => $value) {
+            echo  "<option value=''>".$value."</option>";
+            }
 
           ?>
         </select>
-        <input class="custom-dropdown__select custom-dropdown__select--white select-home" type="submit" name="button" value="Rechercher" />
+
+        <input class="custom-dropdown__select custom-dropdown__select--white select-home" type="submit" name="button" value="Rechercher" style="border-radius: 10px;background-color: #72D779" />
+
       </form>
+      
     </div>
     <div class="content">
       <div class="content-inside">
@@ -98,3 +101,4 @@
     }?> <!-- Fin case -->
               </div>
             </div>
+</div>

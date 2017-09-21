@@ -58,6 +58,11 @@ body {
   background-color: #fdfefe;
 }
 
+/*.sectionTitle {
+  margin-top: 10rem;
+  margin-bottom: 2.5rem;
+}*/
+
 .content {
   min-height: 100%;
 }
@@ -115,7 +120,7 @@ body {
   height: 90vh;
 }
 
-#title-jumbotron {
+.title-jumbotron {
   font-size: 45px;
   font-style: italic;
   /*color: #FFF;*/
@@ -124,6 +129,7 @@ body {
 section {
 /*  text-align: center;
 */  margin-top: 20px;
+}
 
 #cartePage {
   text-align: center;
@@ -134,11 +140,25 @@ section {
 .select-home{
   margin-top: calc(100vh - 86vh);
   padding: 10px 80px;
-
 }
+
 #big-btn-map {
-  border-radius: 50px;
+  border-radius: 10px;
   background-color: #4CC254;
+  width: 300px;
+  height: 60px;
+  font-size: 28px;
+  color: #FFF;
+}
+
+#big-btn-map:hover {
+  border-radius: 10px;
+  background-color: #4CC254;
+  width: 300px;
+  height: 60px;
+  font-size: 28px;
+  color: #000;
+  box-shadow: 5px 5px 5px #7CE283;
 }
 
 /* CONTACT */
@@ -173,12 +193,11 @@ div#sectionTitle h2 {
 }
 
 #contactWelcomeMsg {
-  font-family: helvetiva, helvetica-w01-light, helvetica-w02-light, sans-serif;
+  font-family: helvetica, helvetica-w01-light, helvetica-w02-light, sans-serif;
   font-size: 1.5rem;
   font-weight: lighter;
   margin-top: .7rem;
   color: #494949;
-  ;
 }
 
 span#assosEmail {
@@ -249,9 +268,7 @@ ul.socialNetworkContactBody img {
 textarea.insideInput {
   height: auto;
 }
-.contenu {
-  height: calc(100vh - 250px);
-}
+
 #recherche{
   border-color: green;
   outline: 0;
@@ -358,6 +375,12 @@ input:invalid {
 .title-page {
   margin-bottom: 30px;
   color: #1E8449;
+  margin-top: 10rem;
+}
+
+.under-title-page {
+  margin-bottom: 30px;
+  color: #1E8449;
 }
 
 #commune_list {
@@ -376,9 +399,11 @@ input:invalid {
 
 /* A PROPOS */
 
+.title-first-article {
+  text-align: center;
+}
+
 .box-first-article {
-  /*margin-top: 70px;*/
-/*  position: relative;*/
   width: 900px;
   margin-right: auto;
   margin-left: auto;
@@ -388,10 +413,17 @@ input:invalid {
   font-size: 20px;
 }
 
+.aPropos-btn-box {
+  text-align: center;
+}
+
+#btn-map-aPropos {
+  border-radius: 50px;
+  background-color: #4CC254;
+/*  text-shadow: 1px 1px 1px #E9E9E9;
+*/}
+
 .resume-aPropos {
-  /*width: 800px;
-  margin-left: auto;
-  margin-right: auto;*/
   text-align: left;
   color: #707B7C;
 }
@@ -498,6 +530,10 @@ footer {
   text-align: center;
 }
 
+.socialNetworkLI > a {
+  color: #FFF;
+}
+
 .socialNetworkLI {
   display: inline-block;
   padding-right: 30px;
@@ -509,7 +545,6 @@ footer {
   list-style: none;
   line-height: 25px;
   text-decoration: none;
-  color: #A6ACAF;
 }
 
 .logoSocialNetwork {
@@ -559,20 +594,43 @@ footer {
   width: 1000px;
   margin-left: auto;
   margin-right: auto;
+}
+
+
 
 /* ACTIVITES */
 
-.subscribe-newsletter {
-  font-size: 16px;
+.subscribe-newsletter-box {
+  text-align: center;
 }
+
+.subscribe-newsletter {
+  font-size: 22px;
+  font-weight: bold;
 
 .resume-center-box {
   text-align: left;
   color: #707B7C;
 }
+
+
+
 /*  VUE MOBILE A PROPOS */
 
 @media screen and (max-width: 480px) {
+
+  /* HOME */
+
+.title-jumbotron {
+  font-size: 25px;
+  border:1px solid red;
+  font-style: italic;
+}
+
+.select-home{
+  margin-top: calc(100vh - 95vh);
+  padding: 5px 50px;
+}
 
   /* A PROPOS */
 
@@ -593,7 +651,7 @@ footer {
 .box-title-aPropos {
   width: 335px;
   height: 40px;
-  text-align: left;
+  text-align: center;
   padding: 0px;
   background-color: initial;/*#F3F3F3*/
   margin-left: -80px;
@@ -630,6 +688,20 @@ footer {
   color: #17202a;
   padding-top: 10px;
   margin-top: -50px;
+}
+
+.copyright {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 10px;
+  background-color: #2DAF37;
+  width: 100%;
+  height: 40px;
+  color: #FFF;
+}
+
+.nameSN {
+  display: none;
 }
 
 }
