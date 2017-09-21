@@ -1,4 +1,4 @@
-<div id ="container" class="contenu">
+<div id ="container-fluid" class="contenu">
 <div class="content-inside">
   <div class="row">
     <div class="col-md-2 col-md-offset-2 " id="sectionTitle">

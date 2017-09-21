@@ -1,65 +1,73 @@
 <section id="cartePage">
-  <div id="test">
-
-  </div>
   <div class="content">
     <div class="content-inside">
-      <div id='association' class="affichage_resultat_recherche close">
-        <div class="container-fluid affichage_association">
-          <button id="revealed" class="zone_affichage_association_revealed" >
-            <span id="arrow" class="glyphicon glyphicon-arrow-right"></span>
+      <div id='association' class="affichage_resultat_recherche">
+        <div id='affichage_association' class="container-fluid affichage_association">
+          <button class="btn-filtre" data-toggle="collapse" data-target="#filtre">
+            <span id="arrow" class="glyphicon glyphicon-search"></span>Filtre
           </button>
-          <?php
-          $tableau_association = array();
-          $tableau_association = Db::getInstance()->select_all_associations();
 
-          foreach ($tableau_association as $key => $association) { ?>
-            <div class="resultat_map">
-              <h1 class="nom_association"><?= $association->name(); ?></h1>
-              <p class="description"><?= $association->description(); ?></p>
-              <a href="becode.org"><p class="website"><?= $association->website(); ?></p></a>
-              <p class="numero_phone"><?= $association->phone(); ?></p>
-              <p class="adresse"><?= $association->address()->to_string(); ?></p>
+          <div id="filtre" class="collapse">
+            <div class="menuLeft" >
+              <form id="recherche_on_map" action="index.php?action=map" method="post">
+                <div id="commune_list" class="scrollbar col-md-6">
+                  <h3>Communes</h3>
+                  <?php
+                  $tab_towns = Db::getInstance()->select_all_towns();
+
+                  $i=0;
+                  foreach ($tab_towns as $town) {
+                    $i++;
+
+                    echo  "<div class='checkbox'><label><input type='checkbox' name='check' value='".$town->name()."' id='commune".$i."'> ".$town->name()."</label></div>";
+
+                  }
+                  ?>
+                </div>
+                <div id="category_list" class="col-md-6">
+                  <h3 class='category'>Catégories</h3>
+                  <?php
+
+                  $tab_themes = Db::getInstance()->select_all_themes();
+                  $i = 0;
+                  foreach ($tab_themes as $key => $theme) {
+
+                    $i++;
+                    echo  "<div class='checkbox'><label><input type='checkbox' name='check' value='".$theme."' id='commune".$i."'> ".$theme."</label></div>";
+                  }
+                  ?>
+                </div>
+                <!-- <input type="submit" id="submit" value="Rechercher"> -->
+                <button type="submit" name="envoyer" class="btnStyle">Rechercher</button>              </form>
+              </div>
+            </div>
+            <?php
+            $tableau_association = array();
+            $tableau_association = Db::getInstance()->select_all_associations();
+
+            foreach ($tableau_association as $key => $association) { ?>
+                <a class="website" href="<?= $association->website(); ?>">
+                  <div class="offer offer-danger">
+                    <div class="shape">
+                      <div class="shape-text">
+                        <span class="glyphicon glyphicon glyphicon-eye-open"></span>
+                      </div>
+                    </div>
+                    <div class="offer-content">
+                      <h1 class="nom_association"><?= $association->name(); ?></h1>
+                      <p class="description"><?= $association->description(); ?></p>
+                      <p class="numero_phone"><?= $association->phone(); ?></p>
+                      <p class="adresse"><?= $association->address()->to_string(); ?></p>
+                    </div>
+                  </div>
+                </a>
+
+                <?php } ?>
+
+              </div>
             </div>
 
-            <?php } ?>
-
+            <div id="map" class="hidden-sm-down"></div>
           </div>
         </div>
-        <div class="menuLeft" >
-          <h3>Communes</h3>
-          <form action="index.php?action=map" method="post">
-            <div id="commune_list">
-              <?php
-  $tab_towns = Db::getInstance()->select_all_towns();
-
-              $i=0;
-              foreach ($tab_towns as $town) {
-                $i++;
-
-                echo  "<div class='checkbox'><label><input type='checkbox' name='check' value='".$town->name()."' id='commune".$i."'> ".$town->name()."</label></div>";
-
-              }
-              ?>
-            </div>
-            <h3 class='category'>Catégories</h3>
-            <div id="category_list">
-              <?php
-
-              $tab_themes = Db::getInstance()->select_all_themes();
-              $i = 0;
-              foreach ($tab_themes as $key => $theme) {
-
-                $i++;
-                echo  "<div class='checkbox'><label><input type='checkbox' name='check' value='".$theme."' id='commune".$i."'> ".$theme."</label></div>";
-              }
-              ?>
-            </div>
-            <input type="submit" id="submit" value="Rechercher">
-          </div>
-        </form>
-        <div id="map">
-        </div>
-      </div>
-    </div>
-  </section>
+      </section>
