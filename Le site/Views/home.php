@@ -82,7 +82,7 @@
     ?>
           <div class="col-xs-4  offset-md-4 col-md-4 thumbnail event-box event">
             <h3> <?=$value->name()?> </h3>
-            <img src="<?= $value->image(); ?>" class="img-events" height="42px" width="42px"/>
+            <img src="<?= $value->image(); ?>" class="img-events"/>
             <p><br/> <?= substr($value->description(),0, 140)."...";?> </p>
           </div>
     <?php }
@@ -92,7 +92,7 @@
     ?>
           <div class="col-xs-3 col-md-3 offset-md-1 thumbnail event-box event">
             <h3> <?=$value->name()?> </h3>
-            <img src="<?= $value->image(); ?>" class="img-events" height="42px" width="42px"/>
+            <img src="<?= $value->image(); ?>" class="img-events"/>
             <p><br/> <?= substr($value->description(),0, 140)."...";?> </p>
           </div>
     <?php } ?>

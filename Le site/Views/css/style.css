@@ -1,5 +1,5 @@
 /*  VUE MOBILE A PROPOS */
-@media screen and (max-width: 1365px) {
+@media screen and (max-width: 650px) {
   #map {
     display:none;
   }
@@ -63,7 +63,7 @@ body {
 }
 
 #frame {
-  margin-top: -50px;
+  margin-top: 50px;
 }
 
 .content {
@@ -304,6 +304,10 @@ input:invalid {
 }
 
 /* MAP */
+#cartePage{
+  margin-top: -100px;
+}
+
 /*Map affichage des associations (resultat div)*/
 .affichage_resultat_recherche {
   height: calc(100vh + 50px);

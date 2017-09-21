@@ -9,10 +9,10 @@ class LoginController{
 	public function run(){
 		
 
-		// if (!empty($_SESSION['logged']) && $_SESSION['logged']) {
-		// 	header("Location: index.php?action=home"); # redirection HTTP vers l'action login
-		// 	die();
-		// }
+		if (!empty($_SESSION['logged']) && $_SESSION['logged']) {
+			header("Location: index.php?action=home"); # redirection HTTP vers l'action login
+			die();
+		}
 
 		$notification="";
 		if (empty($_POST['login'])) {

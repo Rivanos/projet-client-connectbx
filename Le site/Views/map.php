@@ -1,8 +1,6 @@
 <section id="cartePage">
 
-  <div id="test">
-    <!-- Here comes the ajax request -->
-  </div>
+
   <!-- if query from home => gets the response in input -->
   <?php if(isset($_GET['search']) || isset($_POST['town']) || isset($_POST['theme'])){ ?>
     <input type="hidden" id="json" value="<?=$json?>">
@@ -46,12 +44,12 @@
                   foreach ($tab_themes as $key => $theme) {
 
                     $i++;
-                    echo  "<div class='checkbox'><label><input type='checkbox' name='check' value='".$theme."' id='commune".$i."'> ".$theme."</label></div>";
+                    echo  "<div class='checkbox'><label><input type='checkbox' name='themesCheckbox' value='".$theme."' id='commune".$i."'> ".$theme."</label></div>";
                   }
                   ?>
                 </div>
                 <!-- <input type="submit" id="submit" value="Rechercher"> -->
-                <button type="submit" name="envoyer" class="btnStyle">Rechercher</button>              </form>
+                <button type="submit" name="envoyer" id="submitMap" class="btnStyle">Rechercher</button>              </form>
               </div>
 
             </div>
