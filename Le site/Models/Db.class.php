@@ -90,7 +90,7 @@ class Db {
 		$qp->bindValue(':email', $email);
 		$qp->bindValue(':login', $login);
 		$qp->bindValue(':password', sha1($password));
-		$qp->execute();
+		return $qp->execute();
 	}
 
 	// SELECT USER WITH ID
@@ -116,19 +116,19 @@ class Db {
 	// UPDATE USER without pwd
 	public function update_user($id, $name, $first_name, $birthdate, $email, $login){
 		$query = 'UPDATE users SET user_name=' . $this->_db->quote($name) . ', user_firstname=' . $this->_db->quote($first_name) . ', user_birthdate=' . $this->_db->quote($birthdate) . ', user_email=' . $this->_db->quote($email) . ', user_login=' . $this->_db->quote($login) . ' WHERE user_id=' . $this->_db->quote($id);
-		$this->_db->prepare($query)->execute();
+		return $this->_db->prepare($query)->execute();
 	}
 
 	// UPDATE USER with pwd
 	public function update_user_with_pwd($id, $name, $first_name, $birthdate, $email, $login, $pwd){
 		$query = 'UPDATE users SET user_name=' . $this->_db->quote($name) . ', user_firstname=' . $this->_db->quote($first_name) . ', user_birthdate=' . $this->_db->quote($birthdate) . ', user_email=' . $this->_db->quote($email) . ', user_login=' . $this->_db->quote($login) . ', user_pwd=' . $this->_db->quote(sha1($pwd)) . ' WHERE user_id=' . $this->_db->quote($id);
-		$this->_db->prepare($query)->execute();
+		return $this->_db->prepare($query)->execute();
 	}
 
 	// DELETE USER
 	public function delete_user($id){
 		$query = 'DELETE FROM users WHERE user_id=' . $id;
-		$this->_db->prepare($query)->execute();
+		return $this->_db->prepare($query)->execute();
 	}
 
 	// NOTE: INSERT ASSOCIATION
@@ -144,7 +144,7 @@ class Db {
 		$qp->bindValue(':latitude', $latitude);
 		$qp->bindValue(':longitude', $longitude);
 		$qp->bindValue(':theme', $theme);
-		$qp->execute();
+		return $qp->execute();
 	}
 
 	// NOTE: SELECT ASSOCIATION WITH ID
@@ -172,13 +172,13 @@ class Db {
 	// NOTE: UPDATE ASSOCIATION
 	public function update_association($id, $name, $description, $address, $phone, $website, $latitude, $longitude, $theme){
 		$query = 'UPDATE associations SET assoc_name=' . $this->_db->quote($name) . ', assoc_descri=' . $this->_db->quote($description) . ', assoc_address=' . $this->_db->quote($address) . ', assoc_phone=' . $this->_db->quote($phone) . ', assoc_website=' . $this->_db->quote($website) . ', assoc_latitude=' . $this->_db->quote($latitude) . ', assoc_longitude=' . $this->_db->quote($longitude) . ', assoc_theme=' . $this->_db->quote($theme) . ' WHERE assoc_id=' . $this->_db->quote($id);
-		$this->_db->prepare($query)->execute();
+		return $this->_db->prepare($query)->execute();
 	}
 
 	// NOTE: DELETE ASSOCIATION
 	public function delete_association($id){
 		$query = 'DELETE FROM associations WHERE assoc_id=' . $this->_db->quote($id);
-		$this->_db->prepare($query)->execute();
+		return $this->_db->prepare($query)->execute();
 	}
 
 	// NOTE: INSERT EVENT without image
@@ -191,7 +191,7 @@ class Db {
 		$qp->bindValue(':description', $description);
 		$qp->bindValue(':priority', $priority);
 		$qp->bindValue(':address', $address);
-		$qp->execute();
+		return $qp->execute();
 	}
 
 	// NOTE: INSERT EVENT with image
@@ -205,7 +205,7 @@ class Db {
 		$qp->bindValue(':image', $image);
 		$qp->bindValue(':priority', $priority);
 		$qp->bindValue(':address', $address);
-		$qp->execute();
+		return $qp->execute();
 	}
 
 	// NOTE: SELECT EVENT WITH ID
@@ -247,13 +247,13 @@ class Db {
 	// NOTE: UPDATE EVENT
 	public function update_event($id, $name, $date, $description, $priority, $address){
 		$query = 'UPDATE events SET event_name=' . $this->_db->quote($name) . ', event_date=' . $this->_db->quote($date) . ', event_descri=' . $this->_db->quote($description) . ', event_priority=' . $this->_db->quote($priority) . ', event_address=' . $address . ' WHERE event_id=' . $id;
-		$this->_db->prepare($query)->execute();
+		return $this->_db->prepare($query)->execute();
 	}
 
 	// NOTE: UPDATE EVENT
 	public function update_event_with_image($id, $name, $date, $description, $image, $priority, $address){
 		$query = 'UPDATE events SET event_name=' . $this->_db->quote($name) . ', event_date=' . $this->_db->quote($date) . ', event_descri=' . $this->_db->quote($description) . ', event_image=' . $this->_db->quote($image) . ', event_priority=' . $this->_db->quote($priority) . ', event_address=' . $address . ' WHERE event_id=' . $id;
-		$this->_db->prepare($query)->execute();
+		return $this->_db->prepare($query)->execute();
 	}
 
 	// NOTE: Select only 3 events with the priority egal to 1
@@ -331,7 +331,7 @@ class Db {
 	// NOTE: DELETE EVENT
 	public function delete_event($id){
 		$query = 'DELETE FROM events WHERE event_id=' . $this->_db->quote($id);
-		$this->_db->prepare($query)->execute();
+		return $this->_db->prepare($query)->execute();
 	}
 
 	// NOTE: INSERT ADDRESS
@@ -342,7 +342,7 @@ class Db {
 		$qp->bindValue(':numb', $number);
 		$qp->bindValue(':post_code', $post_code);
 		$qp->bindValue(':post_box', $post_box, PDO::PARAM_INT);
-		$qp->execute();
+		return $qp->execute();
 	}
 
 	// NOTE: SELECT ADDRESS ==> besoin ou pas ?
@@ -366,7 +366,7 @@ class Db {
 		$qp->bindValue(':numb', $number);
 		$qp->bindValue(':post_code', $post_code);
 		$qp->bindValue(':post_box', $post_box, PDO::PARAM_INT);
-		$qp->execute();
+		return $qp->execute();
 	}
 
 	// NOTE: SELECT ASSOCIATION AND ADDRESS WITH CHECKED
