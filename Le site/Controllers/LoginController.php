@@ -7,14 +7,14 @@ class LoginController{
 	}
 
 	public function run(){
-		# Si un distrait écrit ?action=login en étant déjà authentifié
-		if (!empty($_SESSION['authentifie'])) {
-			header("Location: index.php?action=home"); # redirection HTTP vers l'action login
-			die();
-		}
+		
+
+		// if (!empty($_SESSION['logged']) && $_SESSION['logged']) {
+		// 	header("Location: index.php?action=home"); # redirection HTTP vers l'action login
+		// 	die();
+		// }
 
 		$notification="";
-
 		if (empty($_POST['login'])) {
 			# L'utilisateur doit remplir le formulaire
 			$notification='Vous êtes sur un espace sécurisé, veuillez vous authentifier';
@@ -24,7 +24,7 @@ class LoginController{
 		} else {
 			# L'utilisateur est bien authentifié
 			# Une variable de session $_SESSION['authenticated'] 	est créée
-			$_SESSION['authentifie'] = 'autorise';
+			$_SESSION['logged'] = true;
 			$_SESSION['login'] = $_POST['login'];
 			if($_SESSION['login'] == "admin"){
 				$_SESSION['admin'] = true;

@@ -8,8 +8,8 @@ function getUrlVars() { //simulate $_GET in js
 
 
 
-var townHome = getUrlVars()["town"]; //define $_GET
-var themesHome = getUrlVars()["themes"];
+//var townHome = getUrlVars()["town"]; //define $_GET
+//var themesHome = getUrlVars()["themes"];
 
 var markers = [];
 
@@ -25,24 +25,28 @@ function initMap() {
     //var geocoder = new google.maps.Geocoder();
 
     if($("#json").length > 0){
-      var json = JSON.parse($("#json").html());
-      var string = json[0]["name"];
-      var infowindow = new google.maps.InfoWindow({
-          content: string
-      });
-      var markerSearch = new google.maps.Marker({
-          map: map,
-          position: {lat: parseFloat(json[0]["latitude"]), lng:  parseFloat(json[0]["longitude"])},
-          //title: string,
-          infowindow: infowindow,
-      });
-      markers.push(markerSearch);
-      markerSearch.addListener('mouseover', function () {
-          this.infowindow.open(map, this);
-      });
-      markerSearch.addListener('mouseout', function () {
-          this.infowindow.close(map, this);
-      });
+      console.log($("#json").val());
+      var json = JSON.parse($("#json").val());
+      json.forEach( function(association) {
+        var string = association["name"];
+        var infowindow = new google.maps.InfoWindow({
+            content: string
+        });
+        var marker = new google.maps.Marker({
+            map: map,
+            position: {lat: parseFloat(association["latitude"]), lng:  parseFloat(association["longitude"])},
+            //title: string,
+            infowindow: infowindow,
+        });
+        markers.push(marker);
+        marker.addListener('mouseover', function () {
+            this.infowindow.open(map, this);
+        });
+        marker.addListener('mouseout', function () {
+            this.infowindow.close(map, this);
+        });
+        });
+      
       //addMarker(map);
     }
 
@@ -79,8 +83,8 @@ function addMarker(map){
 
   //console.log(selected_themes);
 
-  selected_towns.push(townHome);
-  selected_themes.push(themesHome);
+  //selected_towns.push(townHome);
+  //selected_themes.push(themesHome);
 
   //document.cookie = "associations=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=../ajax/;";
   //var testAssociations;
