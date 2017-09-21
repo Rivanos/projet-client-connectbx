@@ -326,8 +326,9 @@ textarea.insideInput {
   border-bottom: 3px solid #e6e6e6;
   padding-bottom: 60px;
 }
-.glyphicon{
+.glyphicon-search{
   float: left;
+  top: 5px;
 }
 .affichage_association {
   overflow: auto;

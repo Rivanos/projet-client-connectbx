@@ -9,7 +9,7 @@
     <div class="content-inside">
       <div id='association' class="affichage_resultat_recherche">
         <div id='affichage_association' class="container-fluid affichage_association">
-          <div class="container">
+          <div class="container-fluid">
             <button class="btn-filtre" data-toggle="collapse" data-target="#filtre">
               <span id="arrow" class="glyphicon glyphicon-search"></span>Filtre
             </button>
