@@ -16,10 +16,8 @@
 <body>
   <header id="header">
     <nav id="menu-nav" class="navbar navbar-default navbar-fixed-top
-    <?php if (isset($_GET['action'])) {
-            if ($_GET['action'] === 'map') {
+    <?php if (isset($_GET['action']) && $_GET['action'] === 'map') {
               echo "header_animate";
-            }
           } ?>
           ">
       <div class="container-fluid">

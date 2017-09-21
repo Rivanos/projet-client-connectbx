@@ -1,4 +1,4 @@
-<div class="content">
+<div class="content" style="margin: 100px;">
 	<div class="content-inside">
 		<p><?php echo $notification;?></p>
 		<form method="post" action="admin">
