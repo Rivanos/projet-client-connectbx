@@ -15,7 +15,13 @@
 </head>
 <body>
   <header id="header">
-    <nav id="menu-nav" class="navbar navbar-default navbar-fixed-top">
+    <nav id="menu-nav" class="navbar navbar-default navbar-fixed-top
+    <?php if (isset($_GET['action'])) {
+            if ($_GET['action'] === 'map') {
+              echo "header_animate";
+            }
+          } ?>
+          ">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -37,13 +43,11 @@
             <div class="form-group">
               <input type="text" id="recherche" class="form-control" placeholder="Rechercher l'association..." autocomplete="off">
             </div>
-            <div id="resultat">
               <?php
 
               include 'searchview.php';
 
               ?>
-            </div>
           </form>
           <ul class="nav navbar-nav navbar-right">
 
@@ -71,3 +75,4 @@
         </div><!-- /.container-fluid -->
       </nav>
     </header>
+    <div id="frame">

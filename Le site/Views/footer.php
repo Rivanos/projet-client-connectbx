@@ -1,3 +1,4 @@
+</div>
 <footer>
 	<div class="container">
 		<div class="row">
@@ -8,32 +9,32 @@
 				<li class="socialNetworkLI"><a href="#"><img src="<?php echo VIEWS;?>Images/SocialNetwork/instagram-green.png" class="logoSocialNetwork" alt="logoInstagram"  width="35"/></a>&nbsp;<a href="#"><span class="nameSN">Instagram</span></li></a>
 			</ul>
 		</div>
-	</div>
-<div class="row">
-	<div class="newsletter">
-		<div class="form-group">
-			<form class="form-inline">
-				<input type="text" class="form-control" placeholder="Votre adresse mail" id="input-newsletter" />
-				<button type="button" class="btn btn-default" id="btn-newsletter">Inscription</button>
-			</form>
+		<div class="row">
+			<div class="newsletter">
+				<div class="form-group">
+					<form class="form-inline" action="newletters.php">
+						<input type="text" class="form-control" placeholder="Votre adresse mail" id="input-newsletter" />
+						<button type="button" class="btn btn-default" id="btn-newsletter">Inscription</button>
+					</form>
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
 
-</div>
-<div class="container-fluid">
-	<div class="row">
-		<div class="copyright">
+	</div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="copyright">
 				Copyright © <a href="#">BeCode</a> 2017, tous droits réservés
+			</div>
 		</div>
 	</div>
-</div>
 
 </footer>
 <script type="text/javascript" src="<?php echo VIEWS;?>js/jquery-2.2.4.js"></script>
 <script type="text/javascript" src="<?php echo VIEWS;?>bootstrap/js/bootstrap.min.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPuNlEkwhQVdbWWZ12PyfUubvQ6ABcClg&callback=initMap"></script>
 <script type="text/javascript" src="<?php echo VIEWS;?>js/search.js"></script>
+
 <?php if(isset($_SESSION['logged']) && $_SESSION['logged']){ ?>
 <script type="text/javascript" src="<?php echo VIEWS;?>js/admin.js"></script>
 <?php } else { ?>
@@ -58,6 +59,7 @@
 	window.sr = ScrollReveal();
 	sr.reveal(".event2", config,300);
 	sr.reveal(".event", config, 500);
+
 </script>
 </body>
 </html>

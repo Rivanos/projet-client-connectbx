@@ -3,6 +3,7 @@
   <div class="container">
     <span class="title-jumbotron">La Porte principale des jeunes
       vers le monde associatif.</span></div>
+
       <form class="recherche_on_map_of_assoc" action="map" method="post">
         <select class="custom-dropdown__select custom-dropdown__select--white select-home" name="town">
           <option class="disable" disabled selected>Choisissez votre Commune</option>
@@ -15,6 +16,7 @@
 
         <select class="custom-dropdown__select custom-dropdown__select--white select-home" name="theme">
           <option class="disable" disabled selected>Choisissez votre Thème</option>
+
 
           <?php
 

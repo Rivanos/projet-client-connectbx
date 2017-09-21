@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <div class="content">
     <div class="content-inside">
       <div class="row">

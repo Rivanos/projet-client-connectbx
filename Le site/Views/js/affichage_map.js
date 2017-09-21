@@ -1,4 +1,5 @@
-$('#revealed').click(function(){
+
+$('body').on("click", "#revealed", function(){
   $("#association").toggleClass('close');
     if ($('#arrow').attr('class') == 'glyphicon glyphicon-arrow-right') {
       $('#arrow').removeClass('glyphicon-arrow-right');
