@@ -19,7 +19,7 @@ class Db {
 	private $_password = 'Connect152';
 	private $_host='connectbzcadmin.mysql.db';
 
-	private $_SERVER; 
+	private $_SERVER;
 
 	// constructeur
 	private function __construct(){
@@ -250,7 +250,7 @@ class Db {
 		$this->_db->prepare($query)->execute();
 	}
 
-	// NOTE: UPDATE EVENT 
+	// NOTE: UPDATE EVENT
 	public function update_event_with_image($id, $name, $date, $description, $image, $priority, $address){
 		$query = 'UPDATE events SET event_name=' . $this->_db->quote($name) . ', event_date=' . $this->_db->quote($date) . ', event_descri=' . $this->_db->quote($description) . ', event_image=' . $this->_db->quote($image) . ', event_priority=' . $this->_db->quote($priority) . ', event_address=' . $address . ' WHERE event_id=' . $id;
 		$this->_db->prepare($query)->execute();
@@ -277,12 +277,12 @@ class Db {
 
 	// SELECT ALL ASSOC_NAME FROM ASSOC (Zone de recherche navbar)
 	public function select_all_assoc__name($keyword){
-		$query = 'SELECT assoc_name FROM associations WHERE assoc_name LIKE '.$this->_db->quote($keyword.'%').'LIMIT 0,5';
+		$query = 'SELECT assoc_id, assoc_name FROM associations WHERE assoc_name LIKE '.$this->_db->quote($keyword.'%').'LIMIT 0,5';
 		$result = $this->_db->query($query);
 		$tab = array();
 		if($result->rowcount()!=0){
 			while ($row = $result->fetch()) {
-				$tab[] = ($row->assoc_name);
+				$tab[] = $row;
 			}
 		}
 		return $tab;
@@ -375,12 +375,11 @@ class Db {
 		$where_theme = Db::getInstance()->where_table($tab_themes, 'ass.assoc_theme');
 		$juncture = 'ass.assoc_address=ad.address_id AND ad.address_post_code=t.town_post_code';
 		$query = '	SELECT DISTINCT ass.*, ad.*, t.* FROM associations ass, address ad, towns t
-						WHERE ' . $juncture . ' AND ' . $where_town /*. ' AND ' . $where_theme*/;
+						WHERE ' . $juncture . $where_theme . $where_town  ;
 		$result = $this->_db->query($query);
 		$tab = array();
 		if($result->rowcount()!=0){
 			while($row = $result->fetch()){
-				print_r($row->assoc_address);
 				$address = Db::getInstance()->select_address_with_id($row->assoc_address);
 				$tab[] = new Association($row->assoc_id, $row->assoc_name, $row->assoc_descri, $address, $row->assoc_phone, $row->assoc_website, $row->assoc_latitude, $row->assoc_longitude, $row->assoc_theme);
 			}
@@ -403,7 +402,7 @@ class Db {
 
 	// SELECT ALL COMMUNE FROM TOWN
 	public function select_all_themes(){
-		$query = 'SELECT assoc_theme FROM associations';
+		$query = 'SELECT DISTINCT assoc_theme FROM associations';
 		$result = $this->_db->query($query);
 		$tab = array();
 		if ($result->rowcount() != 0) {
@@ -416,7 +415,7 @@ class Db {
 
 	private function where_table($content_table, $table_column){
 		if(count($content_table) == 0) return '';
-		$where = '(';
+		$where = ' AND (';
 		foreach ($content_table as $index => $value) {
 			if($index == 0){
 				$where .= $table_column . '=' . $this->_db->quote($value);

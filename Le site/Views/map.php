@@ -1,7 +1,14 @@
 <section id="cartePage">
   <div id="test">
+      <?php
 
+      //print_r($_GET);
+
+       ?>
   </div>
+  <?php if(isset($_GET['search'])){ ?>
+  <div id="json"><?=$json?></div>
+<?php } ?>
   <div class="content">
     <div class="content-inside">
       <div id='association' class="affichage_resultat_recherche close">
@@ -10,10 +17,8 @@
             <span id="arrow" class="glyphicon glyphicon-arrow-right"></span>
           </button>
           <?php
-          echo "test";
           $tableau_association = array();
-          //$tableau_association = Db::getInstance()->select_all_associations();
-          print_r($tableau_association);
+          $tableau_association = Db::getInstance()->select_all_associations();
 
           foreach ($tableau_association as $key => $association) { ?>
             <div class="resultat_map">
@@ -38,10 +43,15 @@
               $i=0;
               foreach ($tab_towns as $town) {
                 $i++;
-
-                echo  "<div class='checkbox'><label><input type='checkbox' name='check' value='".$town->name()."' id='commune".$i."'> ".$town->name()."</label></div>";
-
+                ?>
+                <div class='checkbox'>
+                  <label>
+                    <input type='checkbox' name='communeCheckbox' value='<?= $town->post_code()?>' id='commune".$i."' <?php if(!empty($_GET['town']) && $town->post_code()==$_GET["town"]){ echo "checked";} ?>> <?=$town->name()?>
+                  </label>
+                </div>
+                <?php
               }
+
               ?>
             </div>
             <h3 class='category'>Catégories</h3>
@@ -53,11 +63,11 @@
               foreach ($tab_themes as $key => $theme) {
 
                 $i++;
-                echo  "<div class='checkbox'><label><input type='checkbox' name='check' value='".$theme."' id='commune".$i."'> ".$theme."</label></div>";
+                echo  "<div class='checkbox'><label><input type='checkbox' name='themesCheckbox' value='".$theme."' id='commune".$i."'> ".$theme."</label></div>";
               }
               ?>
             </div>
-            <input type="submit" id="submit" value="Rechercher">
+            <input type="submit" id="submitMap" value="Rechercher">
           </div>
         </form>
         <div id="map">
