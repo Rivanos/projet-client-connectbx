@@ -26,8 +26,6 @@
 }
 }
 
-
-
 /* CORPS DU SITE */
 
 html {
@@ -103,6 +101,10 @@ body {
   font-style: italic;
   /*color: #FFF;*/
 }
+
+section {
+/*  text-align: center;
+*/  margin-top: 20px;
 
 #cartePage {
   text-align: center;
@@ -358,7 +360,7 @@ input:invalid {
 
 /* A PROPOS */
 
-#box-first-article {
+.box-first-article {
   /*margin-top: 70px;*/
 /*  position: relative;*/
   width: 900px;
@@ -366,11 +368,11 @@ input:invalid {
   margin-left: auto;
 }
 
-#title-article-aPropos {
+.title-article-aPropos {
   font-size: 20px;
 }
 
-#resume-aPropos {
+.resume-aPropos {
   /*width: 800px;
   margin-left: auto;
   margin-right: auto;*/
@@ -378,7 +380,7 @@ input:invalid {
   color: #707B7C;
 }
 
-#box-title-aPropos {
+.box-title-aPropos {
   background-color: #F3F3F3;
   width: 600px;
   height: 125px;
@@ -390,7 +392,7 @@ input:invalid {
   padding: 10px 10px 10px 25px;
 }
 
-#article-aPropos {
+.article-aPropos {
   text-align: left;
   width: 700px;
   margin-left: auto;
@@ -526,7 +528,7 @@ footer {
   border-color: #2DAF37;
 }
 
-#copyright {
+.copyright {
   text-align: center;
   margin-top: 20px;
   padding-top: 10px;
@@ -535,6 +537,82 @@ footer {
   height: 40px;
   color: #FFF;
 }
+
+
+/* ACTIVITES */
+
+.subscribe-newsletter {
+  font-size: 16px;
+}
+
+.resume-center-box {
+  text-align: left;
+  color: #707B7C;
+}
+/*  VUE MOBILE A PROPOS */
+
+@media screen and (max-width: 480px) {
+
+  /* A PROPOS */
+
+.box-first-article {
+  width: auto;
+
+}
+
+.title-article-aPropos {
+  font-size: 20px;
+}
+
+.resume-aPropos {
+  text-align: left;
+  color: #707B7C;
+}
+
+.box-title-aPropos {
+  width: 335px;
+  height: 40px;
+  text-align: left;
+  padding: 0px;
+  background-color: initial;/*#F3F3F3*/
+  margin-left: -80px;
+  margin-bottom: 30px;
+}
+
+.article-aPropos {
+  text-align: left;
+  width: auto;
+  background-color: initial;/*#E8E0EF*/
+  position: initial;
+
+}
+
+
+/* FOOTER */
+
+#input-newsletter {
+  width: 200px;
+  float: left;
+  margin-left: 45px;
+}
+
+#btn-newsletter {
+  border-radius: 0px 4px 4px 0px;
+  margin-left: -5px;
+  float: left;
+}
+
+footer {
+  background-color: #272727;
+  height: 200px;
+  width: 100%;
+  color: #17202a;
+  padding-top: 10px;
+  margin-top: -50px;
+}
+
+}
+  
 /*css search nav*/
 
 .resultat {

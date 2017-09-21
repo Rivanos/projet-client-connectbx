@@ -4,6 +4,7 @@ $(document).ready(function() {
 		var imgPos = -scrollTop / 2 + 'px';
 		$('.fond').css('background-position', 'center ' + imgPos);
 	});
+	// $("#title-jumbotron").hide().fadeIn(3000);
 	/*header caché home*/
 	$('#jumbotron').hover(function() {
 		$('.fond').css('height', '100vh')
@@ -15,3 +16,4 @@ $(document).ready(function() {
 		$('#menu-nav').css('top', '0px')
 	});
 });
+

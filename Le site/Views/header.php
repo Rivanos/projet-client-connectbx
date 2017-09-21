@@ -43,17 +43,26 @@
                         </div>
         </form>
         <ul class="nav navbar-nav navbar-right">
-					<li><a href="home">Accueil</a></li> <!-- index.php?action=home -->
-					<li><a href="admin">Administration</a></li> <!-- index.php?action=admin -->
-          <li><a href="contact">Contact</a></li> <!-- index.php?action=contact -->
+
+					<li><a href="home">Accueil</a></li>
+          <!-- index.php?action=home -->
+          <li><a href="map">Map</a></li>
+          <!-- index.php?action=map -->
           <li><a href="event">Evenement</a></li>
-          <li><a href="aPropos">A propos</a></li> <!-- index.php?action=aPropos -->
-          <li><a href="map">Map</a></li> <!-- index.php?action=map -->
-					<!-- Rajouter le lien vers votre page ici -->
-					<!-- ex: <li><a href="index.php?action=(le nom que vous voulez)">(Le contenu de la balise a)</a></li> -->
+          <!-- index.php?action=event -->
+          <li><a href="activities">Organisation</a></li>
+          <!-- index.php?action=activities -->
+          <li><a href="aPropos">A propos</a></li>
+          <!-- index.php?action=aPropos -->
+          <li><a href="contact">Contact</a></li>
+          <!-- index.php?action=contact -->
+					<li><a href="admin">Administration</a></li> 
+          <!-- index.php?action=admin -->          
+ 
 					<?php if(!empty($_SESSION['authentifie'])){?>
 					<li><a href="logout">Déconnexion</a></li>
 					<?php }?>
+                  
 				</ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

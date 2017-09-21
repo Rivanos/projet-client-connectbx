@@ -35,14 +35,15 @@
 
 
 
-  <h2 id="title-first-article">Le commencement d’un monde plein de possibilités.</h2>
+  <h2 class="title-first-article">Le commencement d’un monde plein de possibilités.</h2>
 
-  <div id="box-first-article">
-    <div id="box-title-aPropos">
-      <p id="title-article-aPropos">Entretiens ta flamme, pas ta flemme.</p>
+  <div class="box-first-article">
+  
+    <div class="box-title-aPropos">
+      <p class="title-article-aPropos">Entretiens ta flamme, pas ta flemme.</p>
     </div>
 
-    <div id="article-aPropos">
+    <div class="article-aPropos">
 
     <p>Dans ce monde, en tant que jeune, l’on nous conseil souvent d‘être qui on est vraiment, de
       trouver notre passion et en faire notre métier. Mais ces conseils m’ont souvent troublé, car

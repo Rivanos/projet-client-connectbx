@@ -1,4 +1,5 @@
-
+<div class="content">
+<div class="content-inside">
 <div class="container-fluid">
   <br/><br/><br/>
   <ul class="nav nav-tabs">
@@ -9,10 +10,10 @@
   <div class="tab-content">
     <div id="aVenir" class="tab-pane fade in active">
 
-      <div class="container-fluid text-center">
+      <div class="container-fluid">
 
       <br/><br/><br/>
-      <div class="container-fluid">
+      <div class="container container-events">
         <div class="row" id="row-events">
 <!--       <div style="width:340px; height:200px" class="jumbotron"></div> -->
 
@@ -150,10 +151,11 @@
 
               <?php } ?> <!-- Fermeture du foreach -->
 
-                  </p>
+                  
+            </div>
             </div>
         </div>
         </div>
-    </div>
+    </div><!-- Fermeture du content-inside -->
 
-</div>
+</div><!-- Fermeture du content -->
