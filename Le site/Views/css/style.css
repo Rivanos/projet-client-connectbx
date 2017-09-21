@@ -274,9 +274,6 @@ input:invalid {
   border-bottom: 3px solid #e6e6e6;
   padding-bottom: 100px;
 }
-.open{
-  left:0;
-}
 .close{
   right:100%;
 }

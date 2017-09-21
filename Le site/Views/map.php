@@ -18,9 +18,9 @@
               <p class="numero_phone"><?= $association->phone(); ?></p>
               <p class="adresse"><?= $association->address()->to_string(); ?></p>
             </div>
-          
+
             <?php } ?>
-          
+
           </div>
         </div>
         <div class="menuLeft" >
@@ -28,24 +28,22 @@
           <form action="index.php?action=map" method="post">
             <div id="commune_list">
               <?php
-
-              $tableau_commune = Db::getInstance()->select_all_commune();
+              $tab_towns = Db::getInstance()->select_all_towns();
               $i=0;
-              foreach ($tableau_commune as $key => $value) {
+              foreach ($tab_towns as $town) {
                 $i++;
-                echo  "<input type='checkbox' name='check' value='".$value."' id='commune".$i."'> ".$value."<br>";
+                echo  "<div class='checkbox'><label><input type='checkbox' name='check' value='".$town->name()."' id='commune".$i."'> ".$town->name()."</label></div>";
               }
-
               ?>
             </div>
             <h3 class='category'>Catégories</h3>
             <div id="category_list">
               <?php
-              $tableau_theme = Db::getInstance()->select_all_theme();
-              $i=0;
-              foreach ($tableau_theme as $key => $value) {
+              $tab_themes = Db::getInstance()->select_all_themes();
+              $i = 0;
+              foreach ($tab_themes as $key => $theme) {
                 $i++;
-                echo  "<input type='checkbox' name='check' value='".$value."' id='category".$i."'> ".$value."<br>";
+                echo  "<div class='checkbox'><label><input type='checkbox' name='check' value='".$theme."' id='commune".$i."'> ".$theme."</label></div>";
               }
               ?>
             </div>
