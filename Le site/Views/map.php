@@ -10,10 +10,8 @@
             <span id="arrow" class="glyphicon glyphicon-arrow-right"></span>
           </button>
           <?php
-          echo "test";
           $tableau_association = array();
-          //$tableau_association = Db::getInstance()->select_all_associations();
-          print_r($tableau_association);
+          $tableau_association = Db::getInstance()->select_all_associations();
 
           foreach ($tableau_association as $key => $association) { ?>
             <div class="resultat_map">

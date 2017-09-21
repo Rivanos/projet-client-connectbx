@@ -23,7 +23,7 @@
 </div>
 <div class="container-fluid">
 	<div class="row">
-		<div id="copyright">
+		<div class="copyright">
 				Copyright © <a href="#">BeCode</a> 2017, tous droits réservés
 		</div>
 	</div>
@@ -38,7 +38,7 @@
 <script type="text/javascript" src="<?php echo VIEWS;?>js/search.js"></script>
 	<script type="text/javascript" src="<?php echo VIEWS;?>js/script.js"></script>
 	<script type="text/javascript" src="<?php echo VIEWS;?>js/affichage_map.js">
-	</script>	
+	</script>
   <script type="text/javascript" src="<?php echo VIEWS;?>js/header-animate.js"></script>
 	<script src="https://unpkg.com/jquery-aniview@1.0.1/dist/jquery.aniview.js"
 	integrity="sha384-zDA6q/t525x7f6KD/OaOe24vCxSPU3eraILc2NU+ZA7ISsc3ExQbj8PB56FRMq6H"
