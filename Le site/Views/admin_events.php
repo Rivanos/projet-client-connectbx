@@ -1,4 +1,96 @@
-	<div id="events" class="tab-pane fade <?php if($table == 'event'){ ?>in active<?php }?>">
+<h4>Événement</h4>
+<form class="form-horizontal" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="table" value="<?= $table ?>">
+	<input type="hidden" name="id" value="<?= $event_to_edit->id() ?>">
+	<input type="hidden" name="address_id" value="<?= $event_to_edit->address()->id() ?>">
+	<div class="form-group">
+		<label class="control-label col-md-3" for="name">Nom<?php echo $operation == 'add' ? '*' : '' ?> :</label>
+		<div class="col-md-8">
+			<input type="text" class="form-control" id="name" name="name" placeholder="Nom" value="<?= $event_to_edit->name() ?>"<?= $required ?>>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-md-3" for="date">Date* :</label>
+		<div class="col-md-3">
+			<input type="date" class="form-control" id="date" name="date" placeholder="Date (aaaa-mm-jj)" value="<?= $event_to_edit->date() ?>"<?= $required ?>>
+		</div>
+		<label class="control-label col-md-2" for="time">Heure* :</label>
+		<div class="col-md-3">
+			<input type="time" class="form-control" id="time" name="time" placeholder="Heure (hh:mm:ss)" value="<?= $event_to_edit->time() ?>"<?= $required ?>>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-md-3" for="address">Adresse* :</label>
+		<div class="col-md-8">	
+			<div class="input-group">
+				<input type="text" class="form-control" id="address" placeholder="Adresse" value="<?php echo $event_to_edit->id() == '' ? '' : $event_to_edit->address()->to_string(); ?>" readonly<?= $required ?>>
+				<div class="input-group-btn">
+					<button class="btn" type="button" data-toggle="collapse" data-target="#event-address">
+						<i class="glyphicon glyphicon-edit"></i>
+					</button>
+				</div>
+			</div>
+			<!-- Collapsable address of event -->
+			<div class="collapse" id="event-address">
+				<div class="form-group">
+					<label class="control-label col-md-3" for="street">Rue :</label>
+					<div class="col-md-8">
+						<input type="text" class="form-control" id="street" name="street" placeholder="Rue" value="<?= $event_to_edit->address()->street() ?>">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-3" for="number">Numéro :</label>
+					<div class="col-md-8">
+						<input type="text" class="form-control" id="number" name="number" placeholder="Numéro" value="<?= $event_to_edit->address()->number() ?>">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-3" for="town">Commune :</label>
+					<div class="col-md-8">
+						<select name="town" id="town" class="form-control">
+							<option value="<?= $event_to_edit->address()->town()->post_code() ?>"><?= $event_to_edit->address()->town()->name() ?></option>
+							<?php foreach($towns as $town){ ?>
+								<option value="<?= $town->post_code() ?>"><?= $town->name() ?></option>
+							<?php } ?>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-3" for="post-box">Boite postale :</label>
+					<div class="col-md-8">
+						<input type="text" class="form-control" id="post-box" name="post_box" placeholder="Boite postale" value="<?= $event_to_edit->address()->post_box() ?>">
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="form-group">
+		<label class="control-label col-md-3" for="description">Description :</label>
+		<div class="col-md-8">
+			<textarea class="form-control" id="description" name="description" rows="4" placeholder="Description"><?= $event_to_edit->description() ?></textarea>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-md-3" for="image">Image :</label>
+		<div class="col-md-8">
+			<input type="file" class="form-control" id="image" name="image" placeholder="Image">  <!-- value="<?= $event_to_edit->image() ?>" -->
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-md-3" for="priority">Mettre en avant :</label>
+		<div class="col-md-8">
+			<input type="checkbox" class="form-control" id="priority" name="priority" value="<?= $event_to_edit->priority() ?>"<?php echo $event_to_edit ? ' checked' : ''; ?>>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-md-offset-3 col-md-8">
+			<button type="submit" class="btn btn-default" name="submit" value="<?= $operation ?>"><?= $add_or_edit ?></button>
+		</div>
+	</div>
+</form>	
+
+
+	<!-- <div id="events" class="tab-pane fade <?php /* if($table == 'event'){ ?>in active<?php }?>">
 		<form method="post" class="form-group">
 			<table id="table-event">
 				<thead>
@@ -15,7 +107,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<?php foreach ($tab_events as $i=>$event) {?>
+					<?php /*foreach ($tab_events as $i=>$event) {?>
 					<tr>
 						<td><input type="hidden" value="<?= $event->id();?>"></td>
 						<td><input class="form-control" type="text" value="<?= $event->name();?>"></td>
@@ -31,7 +123,7 @@
 						<td><input type="checkbox" name="delete[]" value="<?= $event->id();?>"></td>
 						<td><input type="hidden" value="<?= $i; ?>"></td>
 					</tr>
-					<?php }?>
+					<?php }*/?>
 				</tbody>
 			</table>
 			<input type="hidden" name="table" value="event">
@@ -43,3 +135,6 @@
 
 	</div>
 </div>
+		</div>
+	</div>
+</div> -->

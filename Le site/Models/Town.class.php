@@ -7,7 +7,7 @@ class Town {
 	public function __construct($name, $post_code){
 		$this->_name = $name;
 		$this->_post_code = $post_code;
-	}	
+	}
 
 	public function name(){
 		return $this->_name;

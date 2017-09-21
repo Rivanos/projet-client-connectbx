@@ -1,60 +1,192 @@
 <?php
 class AdministrationController{
-
 	public function __construct(){
-
 	}
-
 	public function run(){
-
 		// Met à jour les dates
-		$date_min = strftime("%G-%m-%d", strtotime("-120 years"));
-		$date_max = strftime("%G-%m-%d", strtotime("-12 years"));
-
-		// Affiche toutes les valeurs de POST
-		if(!empty($_POST)){
-			echo "<pre>";
-		print_r($_POST);
-		echo "</pre>";
-		}
-
 		$table = 'initial';
+		$success = '';
+		$error = '';
+		$id = -1;
+		$admin = isset($_SESSION['admin']) && $_SESSION['admin'] ? true : false;
+		$towns = Db::getInstance()->select_all_towns();
+		
 
-		// NOTE: Updates the db if submitted
-		if(isset($_POST['edit_submit'])){
 
-			// NOTE: Gets the current table
-			$table = $_POST['table'];
 
-			// NOTE: Inserts elements in db
-			if (isset($_POST['add_lines'])&&isset($_POST['add0'])) {
-				foreach ($_POST['add_lines'] as $value) {
-					$add_table = $_POST['add' . $value];
-					if($table == 'user') Db::getInstance()->insert_user($add_table[0], $add_table[1], $add_table[2], $add_table[3], $add_table[4], $add_table[5]);
-					if($table == 'association') Db::getInstance()->insert_association($add_table[0], $add_table[1], $add_table[2], $add_table[3], $add_table[4], $add_table[5], $add_table[6], $add_table[7]);
-					if($table == 'event') Db::getInstance()->insert_event($add_table[0], $add_table[1], $add_table[2], $add_table[3], $add_table[4]);
+		// A FAIRE :
+		// quand edit -> affiche l'entité modifiée x
+		// gérer les mdp (confirmation et edit) x
+		// required latitude/longitude x
+		// gérer les adresses x
+		// gérer les catégories d'associations x
+		// gérer upload image : changement de droits x
+		// gérer heure event x
+		// droits user et admins
+		if(!empty($_POST['table']) && !empty($_POST['submit'])){
+			// Secures XSS attacks
+			$inputs = $this->_secure_xss($_POST);
+
+			$table = $inputs['table'];
+			$action = $inputs['submit'];
+
+			/*
+			*
+			*		USERS
+			*
+			*/
+
+			if($table == 'user' && $admin){
+		
+				$name = !empty($inputs['name']) ? $inputs['name'] : null;
+				$first_name = !empty($inputs['first_name']) ? $inputs['first_name'] : null;
+				$birthdate = !empty($inputs['birthdate']) ? $inputs['birthdate'] : null;
+				$email = !empty($inputs['email']) ? $inputs['email'] : null;
+				$login = $inputs['login'];
+				$pwd = '';
+				$confirm_pwd = '';
+				if(!empty($inputs['pwd']) && !empty($inputs['pwd-confirm'])){
+					$pwd = $inputs['pwd'];
+					$confirm_pwd = $inputs['pwd-confirm'];
 				}
-			}
-			// NOTE: Updates elements in db
-			if(isset($_POST['edit_lines'])){
-				foreach ($_POST['edit_lines'] as $value) {
-					$edit_table = $_POST['edit' . $value];
-					if($table == 'user') Db::getInstance()->update_user($edit_table[0], $edit_table[1], $edit_table[2], $edit_table[3], $edit_table[4], $edit_table[5], $edit_table[6]);
-					if($table == 'association') Db::getInstance()->update_association($edit_table[0], $edit_table[1], $edit_table[2], $edit_table[3], $edit_table[4], $edit_table[5], $edit_table[6], $edit_table[7], $edit_table[8]);
-					if($table == 'event') Db::getInstance()->update_event($edit_table[0], $edit_table[1], $edit_table[2], $edit_table[3], $edit_table[4], $edit_table[5]);
-				}
-			}
-		}
-		// NOTE: Deletes elements in db
-		if(isset($_POST['delete_submit']) && isset($_POST['delete'])){
-			// NOTE: Gets the current table
-			$table = $_POST['table'];
 
-			$delete_table = $_POST['delete'];
-			foreach ($delete_table as $value) {
-				if($table == 'user') Db::getInstance()->delete_user($value);
-				if($table == 'association') Db::getInstance()->delete_association($value);
-				if($table == 'event') Db::getInstance()->delete_event($value);
+				if($action == 'add'){ // ADD USER
+					if(!empty($pwd) && !empty($confirm_pwd) && $pwd == $confirm_pwd){
+						Db::getInstance()->insert_user($name, $first_name, $birthdate, $email, $login, $pwd);
+					}
+				} elseif ($action == 'edit') { // ADD EDIT
+					$id = $inputs['id'];
+					if(!empty($pwd) && !empty($confirm_pwd) && $pwd == $confirm_pwd){
+						Db::getInstance()->update_user_with_pwd($id, $name, $first_name, $birthdate, $email, $login, $pwd);
+					} else {
+						Db::getInstance()->update_user($id, $name, $first_name, $birthdate, $email, $login);
+					}
+				}
+
+			/*
+			*
+			*		ASSOCIATIONS
+			*
+			*/
+
+			}else if($table == 'association'){
+
+				$latitude = $inputs['latitude'];
+				$longitude = $inputs['longitude'];
+
+				if($longitude>4.22 && $longitude<4.5 && $latitude>50.75 && $latitude<50.92){
+
+					$name = $inputs['name'];
+					$description = !empty($inputs['description']) ? $inputs['description'] : null;
+					$phone = !empty($inputs['phone']) ? $inputs['phone'] : null;
+					$website = !empty($inputs['website']) ? $inputs['website'] : null;
+					$theme = $inputs['theme'];
+
+					$street = $inputs['street'];
+					$number = $inputs['number'];
+					$town = substr($inputs['town'], 0, 4);
+					$post_box = !empty($inputs['post_box']) ? $inputs['post_box'] : null;
+
+					// ADD ASSOCIATION
+					if($action == 'add'){ 
+						Db::getInstance()->insert_address($street, $number, $town, $post_box);
+						Db::getInstance()->insert_association($name, $description, $phone, $website, $latitude, $longitude, $theme);
+
+					// EDIT ASSOCIATION
+					} elseif ($action == 'edit') { 
+						$id = $inputs['id'];
+						$address_id = $inputs['address_id'];
+						Db::getInstance()->update_address($address_id, $street, $number, $town, $post_box);
+						Db::getInstance()->update_association($id, $name, $description, $address_id, $phone, $website, $latitude, $longitude, $theme);
+					}
+				} else {
+					$error = "Problème d'adresse, latitude et/ou longitude incorrecte(s)\n";
+				}
+
+			/*
+			*
+			*		EVENTS
+			*
+			*/
+
+			}else if($table == 'event'){ 
+
+				// Manage the file upload for event's image
+				$uploadOk = 0;
+				if(isset($_FILES["image"]) && $_FILES["image"]['error'] != 4){
+					$target_dir = VIEWS . "Images/event/";
+					$target_file = $target_dir . basename($_FILES["image"]["name"]);
+					$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+
+					// Check if image file is a actual image or fake image
+					$check = getimagesize($_FILES["image"]["tmp_name"]);
+					if($check !== false) {
+						$uploadOk = 1;
+					} else {
+						$uploadOk = 0;
+					}
+					// Check if file already exists
+					if (file_exists($target_file)) {
+					    echo "Sorry, file already exists.";
+					    $uploadOk = 0;
+					}
+					// Check file size
+					if ($_FILES["image"]["size"] > 500000) {
+					    echo "Sorry, your file is too large.";
+					    $uploadOk = 0;
+					}
+					// Allow certain file formats
+					if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+					&& $imageFileType != "gif" ) {
+					    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+					    $uploadOk = 0;
+					}
+				}
+
+				$name = $inputs['name'];
+				$date = $inputs['date'] . ' ' . $inputs['time'];
+				$description = !empty($inputs['description']) ? $inputs['description'] : null;
+				$priority = isset($inputs['priority']) ? 1 : 0;
+				$street = $inputs['street'];
+				$number = $inputs['number'];
+				$town = substr($inputs['town'], 0, 4);
+				$post_box = !empty($inputs['post_box']) ? $inputs['post_box'] : null;
+
+				// ADD EVENT
+				if($action == 'add'){
+
+					if($_FILES['image']['error'] !== 4){
+						// if everything is ok, try to upload file
+						if ($uploadOk == 1 && move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+					      //echo "The file ". basename( $_FILES["image"]["name"]). " has been uploaded.";
+							Db::getInstance()->insert_address($street, $number, $town, $post_box);
+							Db::getInstance()->insert_event_with_image($name, $date, $description, $target_file, $priority);
+						} else {
+				      	//echo "Sorry, there was an error uploading your file.";
+					   }
+					} else {
+						Db::getInstance()->insert_address($street, $number, $town, $post_box);
+						Db::getInstance()->insert_event($name, $date, $description, $priority);
+					}
+				// EDIT EVENT
+				} elseif ($action == 'edit') { 
+					$id = $inputs['id'];
+					$address_id = $inputs['address_id'];
+
+					if($_FILES['image']['error'] !== 4){
+						// if everything is ok, try to upload file
+						if ($uploadOk == 1 && move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+					      //echo "The file ". basename( $_FILES["image"]["name"]). " has been uploaded.";
+							Db::getInstance()->update_address($address_id, $street, $number, $town, $post_box);
+							Db::getInstance()->update_event_with_image($id, $name, $date, $description, $target_file, $priority, $address_id);
+						} else {
+				      	echo "Sorry, there was an error uploading your file.";
+					   }
+					} else {
+						Db::getInstance()->update_address($address_id, $street, $number, $town, $post_box);
+						Db::getInstance()->update_event($id, $name, $date, $description, $priority, $address_id);
+					}
+				}
 			}
 		}
 
@@ -65,13 +197,27 @@ class AdministrationController{
 		// NOTE: Selects all the events and stocks them in an array
 		$tab_events = Db::getInstance()->select_all_events();
 
+		
+
+		if($table == 'initial'){
+			$view_admin = CONTROLLER . 'AjaxControllers/AddAssociationController.php';
+		} else {
+			if($id >= 0){
+				$view_admin = CONTROLLER . 'AjaxControllers/Edit' . ucfirst($table) . 'Controller.php';
+			} else {
+				$view_admin = CONTROLLER . 'AjaxControllers/Add' . ucfirst($table) . 'Controller.php';
+			}
+		}
 
 		require_once VIEWS . 'administration.php';
-		require_once VIEWS . 'admin_users.php';
-		require_once VIEWS . 'admin_associations.php';
-		require_once VIEWS . 'admin_events.php';
-
+		
 	}
-
+	
+	private function _secure_xss($array_inputs){
+		foreach ($array_inputs as $key => $value) {
+			$array_inputs[$key] = htmlspecialchars($value);
+		}
+		return $array_inputs;
+	}
 }
 ?>
