@@ -5,25 +5,34 @@ function loadClass($class){
 	require_once ('../../Models/' . $class . '.class.php');
 }
 spl_autoload_register('loadClass');
-$tab_selected_associations = Db::getInstance()->search_assoc_by_towns_themes($_POST["towns"], array());
+$towns = !empty($_POST["towns"])?$_POST["towns"]:array();
+$themes = !empty($_POST["themes"])?$_POST["themes"]:array();
+$tab_selected_associations = Db::getInstance()->search_assoc_by_towns_themes($towns, $themes);
 
-$file = file_get_contents("associations.json");
-$json = json_decode($file, true);
 
-$json["coordinates"] = [];
-$json["name"] = [];
 
-echo "<pre>";
+
+
+$json = [];
+
+
+/*echo "<pre>";
 print_r ($tab_selected_associations);
-echo "</pre>";
+echo "</pre>";*/
 
 foreach ($tab_selected_associations as $i => $association) {
-	array_push($json["coordinates"], array("latitude"=>$association->latitude(), "longitude"=>$association->longitude()));
-	array_push($json["name"], $association->name());
+	array_push($json, array("name"=>$association->name(), "latitude"=>$association->latitude(), "longitude"=>$association->longitude()));
 }
 
 
-file_put_contents("associations.json", json_encode($json));
+//setcookie("associations", serialize($json), time()+3600, "");
+echo json_encode($json);
+/*echo "<pre>";
+print_r ($tab_selected_associations);
+echo "</pre>";*/
 
+/*echo "<pre>";
+print_r ($_COOKIE["associations"]);
+echo "</pre>";*/
 
 ?>
