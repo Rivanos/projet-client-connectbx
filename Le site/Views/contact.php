@@ -1,4 +1,4 @@
-<div id ="container" class="content">
+<div id ="container" class="contenu">
 <div class="content-inside">
   <div class="row">
     <div class="col-md-2 col-md-offset-2 " id="sectionTitle">
@@ -46,15 +46,14 @@
       type="text" class="insideInput"
       placeholder="Email" name="email"
       pattern="[a-z0-9+.%_-]+@[a-z0-9+.%_-]+\.[a-z{2,3}$]"
-      title="Votre adresse mail doit etre sous la forme : johndoe@site.domain" 
+      title="Votre adresse mail doit etre sous la forme : johndoe@site.domain"
       value="">
     </div>
     <div class="arroundInput">
       <input type="text" class="insideInput" placeholder="Sujet" name="sujet" value="">
     </div>
     <div class="arroundInput">
-      <textarea class="insideInput" name="message" placeholder="Message" id="comments" rows="5">
-      </textarea>
+      <textarea class="insideInput" name="message" placeholder="Message" id="comments" rows="5"></textarea>
     </div>
     <div class="arroundInput" id="btnPosition">
       <button type="submit" name="envoyer" class="btnStyle">Envoyer</button>

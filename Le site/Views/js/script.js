@@ -10,80 +10,88 @@ function getUrlVars() { //simulate $_GET in js
 
 var search = getUrlVars()["search"]; //define $_GET
 
-if (typeof search == "undefined") {
-  search = 0;
-}
-
 
 function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 11,
         center: {
             lat: 50.8503463,
-            lng: 4.351721099999963
+            lng: 4.351
         }
     });
-    var geocoder = new google.maps.Geocoder();
+    //var geocoder = new google.maps.Geocoder();
 
-    
 
-    window.onload = geocodeAddress(geocoder, map);
-      
-    
 
-    document.getElementById('submit').addEventListener('click', function() {
-        geocodeAddress(geocoder, map);
+    //window.onload = geocodeAddress(geocoder, map);
+
+
+
+    document.getElementById('submit').addEventListener('click', function(event) {
+        event.preventDefault();
+        //geocodeAddress(geocoder, map);
+        addMarker(map);
     });
 }
 
-
-
-
-function geocodeAddress(geocoder, resultsMap) {
-
-
-
-    var myArray = [];
-    var add = 1;
-    var commune = "commune" + add;
-
-    while (add <= 3) {
-        var commune = "commune" + add;
-        if (document.getElementById(commune).checked) {
-            var address = document.getElementById(commune).value;
-            myArray.push(address);
-        } else if (!document.getElementById(commune).checked) {
-            var index = myArray.indexOf(document.getElementById(commune).value);
-            if (index > -1) {
-                myArray.splice(index, 1);
-            }
+function addMarker(map){
+  var check = document.getElementsByName("communeCheckbox[]");
+  var selected_towns = [];
+  var i;
+  for (i=0; i < check.length; i++) {
+      if (check[i].checked) {
+          selected_towns.push(check[i].value);
         }
+  }
 
-        add++;
-    }
+  selected_towns.push(search);
 
-    console.log(search);
-    myArray.push(search);
+  if (selected_towns.length > 1) {
 
-    console.log(myArray);
+      $.post({
+          data: {towns:selected_towns},
+          url: "Views/ajax/search_assoc_by_towns_themes.php",
+          success: function (associations) {
+            //console.log("Success");
+            //$("#test").html(associations);
+          }
+      });
 
-    var iteration = 0;
-
-    while (iteration < myArray.length) {
-
-        geocoder.geocode({
-            'address': myArray[iteration]
-        }, function(results, status) {
-            if (status === 'OK') {
-                resultsMap.setCenter(results[0].geometry.location);
-                var marker = new google.maps.Marker({
-                    map: resultsMap,
-                    position: results[0].geometry.location
-                });
-            } else {
-                alert('Geocode was not successful for the following reason: ' + status);
+      $(document).ajaxSuccess(function (event, xhr, settings) {
+            if(settings.url == "Views/ajax/search_assoc_by_towns_themes.php") {
+                $.getJSON("Views/ajax/associations.json", function (output) {
+                    var iteration = 0;
+                    while (iteration < output["coordinates"].length) {
+                      console.log(iteration);
+                        var string = output["name"][iteration];
+                        var infowindow = new google.maps.InfoWindow({
+                            content: string
+                        });
+                        var lat = parseFloat(output["coordinates"][iteration]["latitude"]);
+                        var long = parseFloat(output["coordinates"][iteration]["longitude"]);
+                            //if (status === 'OK') {
+                                //resultsMap.setCenter(output["coordinates"][iteration]);
+                                //console.log(output["coordinates"][iteration]["latitude"]);
+                                var marker = new google.maps.Marker({
+                                    map: map,
+                                    position: {lat: lat, lng: long},
+                                    //title: string,
+                                    infowindow: infowindow,
+                                });
+                                marker.addListener('mouseover', function () {
+                                    this.infowindow.open(map, this);
+                                });
+                                marker.addListener('mouseout', function () {
+                                    this.infowindow.close(map, this);
+                                });
+                            /*} else {
+                                alert('Geocode was not successful for the following reason: ' + status);
+                            }
+                        ;*/
+                        iteration++;
+                    }
+                })
             }
         });
-        iteration++;
     }
-}
+  }

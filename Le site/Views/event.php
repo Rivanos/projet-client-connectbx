@@ -1,6 +1,8 @@
 
+
 <div class="content" >
   <div class="content-inside" >
+
 <div class="container-fluid">
   <br/><br/><br/>
   <ul class="nav nav-tabs">
@@ -15,6 +17,7 @@
 
       <br/><br/><br/>
       <div id="id_container_fluid" class="container-fluid divEventToCome">
+
         <div class="row" id="row-events">
 <!--       <div style="width:340px; height:200px" class="jumbotron"></div> -->
 
@@ -154,8 +157,6 @@
 
               <?php } ?> <!-- Fermeture du foreach -->
 
-
-
             </div> <!-- row -->
         </div> <!-- Container -->
 
@@ -164,4 +165,4 @@
     </div> <!-- DIV tab-content -->
 </div> <!-- DIV container-fluid -->
 </div>
-</div>
+</div><!-- DIV peut etre de trop-->

@@ -1,5 +1,7 @@
 
 <section id="aPropos">
+<div class="content">
+<div class="content-inside">
 
   <!-- <div id="resume-aPropos">
     <h1 class="title-page" id="aPropos-title">A Propos</h1>
@@ -25,22 +27,23 @@
         <p>S’engager a permis à un tas de jeunes d'acquérir de l'expérience, de se rendre utile, de se
           construire un réseaux personnel et professionnel, de se découvrir autrement. Autant de
           raisons pour, au moins, essayer. Un tas d’associations existent qui pourraient parfaitement
-          vous convenir,.. il suffit simplement de les trouver. <a href="#">lien vers la page cartographie</a>
-        </p>
+          vous convenir,.. il suffit simplement de les trouver.</p>
+          <a href="index.php?action=map">Accéder à la carte</a>
       </div>
     </div>
   </div>
 
 
 
-  <h2 id="title-first-article">Le commencement d’un monde plein de possibilités.</h2>
+  <h2 class="title-first-article">Le commencement d’un monde plein de possibilités.</h2>
 
-  <div id="box-first-article">
-    <div id="box-title-aPropos">
-      <p id="title-article-aPropos">Entretiens ta flamme, pas ta flemme.</p>
+  <div class="box-first-article">
+  
+    <div class="box-title-aPropos">
+      <p class="title-article-aPropos">Entretiens ta flamme, pas ta flemme.</p>
     </div>
 
-    <div id="article-aPropos">
+    <div class="article-aPropos">
 
     <p>Dans ce monde, en tant que jeune, l’on nous conseil souvent d‘être qui on est vraiment, de
       trouver notre passion et en faire notre métier. Mais ces conseils m’ont souvent troublé, car
@@ -77,6 +80,7 @@
 </div>
 
 
-
+</div>
+</div>
 
 </section>

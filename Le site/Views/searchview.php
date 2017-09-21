@@ -1,5 +1,6 @@
 
 
+
 <div class="resultat" id="resultat">
 
 
@@ -22,3 +23,7 @@
 
 
 </div>
+
+  <!-- echo '<a class="result" target="_blank" href="../Le site/index.php?action=map&search='.$value.'"><p class="resultp">'.$value.
+  '</p></a>'; -->
+

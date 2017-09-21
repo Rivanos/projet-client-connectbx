@@ -12,7 +12,10 @@ RewriteRule ^contact$ index.php?action=contact [L]
 RewriteRule ^event$ index.php?action=event [L]
 RewriteRule ^aPropos$ index.php?action=aPropos [L]
 RewriteRule ^map$ index.php?action=map [L]
+
+RewriteRule ^activities$ index.php?action=activities [L]
 RewriteRule ^logout$ index.php?action=logout [L]
+
 
 # L'erreur 404 signifie que le fichier auquel le visiteur a tenté d'accéder n'existe pas.
 # 404 : Not Found (Ressource non trouvée)

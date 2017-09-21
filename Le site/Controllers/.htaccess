@@ -1,2 +1,2 @@
 #Empêcher complètement l'accès à un répertoire de votre site Web par le protocole HTTP - Apache renverra une erreur de type 403 Forbidden.
-deny from all
+#deny from all

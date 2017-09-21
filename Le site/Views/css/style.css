@@ -7,7 +7,7 @@
 #input-newsletter {
   width: 200px;
   float: left;
-  margin-left: 30px;
+  margin-left: 45px;
 }
 
 #btn-newsletter {
@@ -16,6 +16,14 @@
   float: left;
 }
 
+#footer {
+  background-color: #272727;
+  height: 200px;
+  width: 100%;
+  color: #17202a;
+  padding-top: 10px;
+  margin-top: -50px;
+}
 }
 
 /*  VUE MOBILE EVENT */
@@ -40,7 +48,7 @@
 /* CORPS DU SITE */
 
 html {
-	height: 100%;
+  height: 100%;
 }
 
 body {
@@ -55,10 +63,13 @@ body {
 }
 
 .content-inside {
-  padding: 20px;
+  padding: 0px;
   padding-bottom: 50px;
 }
-
+.navbar{
+  height: 50px;
+  margin-bottom: 0;
+}
 .navbar-default {
   background-color: #2DAF37;
   border: #91D73C;
@@ -85,7 +96,7 @@ body {
 /*  background-position: center;*/
   background-repeat: no-repeat;
   background-size: cover;
-  height: 90vh;
+  height: calc(100vh - 50px);
   padding-top: 150px;
 }
 
@@ -107,17 +118,27 @@ body {
 #title-jumbotron {
   font-size: 45px;
   font-style: italic;
+  /*color: #FFF;*/
 }
 
 section {
+/*  text-align: center;
+*/  margin-top: 20px;
+
+#cartePage {
   text-align: center;
-  margin-top: 20px;
 }
 
 /* HOME */
+/* home select search*/
+.select-home{
+  margin-top: calc(100vh - 86vh);
+  padding: 10px 80px;
 
+}
 #big-btn-map {
   border-radius: 50px;
+  background-color: #4CC254;
 }
 
 /* CONTACT */
@@ -228,7 +249,15 @@ ul.socialNetworkContactBody img {
 textarea.insideInput {
   height: auto;
 }
-
+.contenu {
+  height: calc(100vh - 250px);
+}
+#recherche{
+  border-color: green;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(45, 175, 55, .6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(45, 175, 55, .6);
+}
 .insideInput:focus {
   border-color: #2daf37;
   outline: 0;
@@ -251,18 +280,74 @@ input:invalid {
   color: transparent;
 }
 
-/* MAP */ 
+/* MAP */
+/*Map affichage des associations (resultat div)*/
+.affichage_resultat_recherche {
+  height: calc(100vh - 50px);
+  z-index: 998;
+  position: absolute;
+  width: 25%;
+  text-align: left;
+  background-color: white;
+  height: calc(100vh - 50px);
+}
+.resultat_map{
+  border-bottom: 3px solid #e6e6e6;
+  padding-bottom: 100px;
+}
+.open{
+  left:0;
+}
+.close{
+  right:100%;
+}
+.glyphicon{
+  float: left;
+}
+.affichage_association {
+  overflow: auto;
+  height: 100vh;
+  border-bottom: 2px solid #e6e6e6;
+}
+.nom_association{
+  color: #2daf37;
+}
+.description {
+  font-size: 16px;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 5px 8px #2daf37;
+  padding : 10px 10px;
+  margin-bottom: 30px;
+}
+.adresse,  .commune, .website {
+  float: left;
+}
+.adresse {
+  padding-right: 10px
+}
+.numero_phone{
+  float: right;
+}
+.zone_affichage_association_revealed{
+  position: absolute;
+  margin-top: 10px;
+  padding : 0 10px;
+  left: 100%;
+}
+/*fin affichage_resultat_recherche*/
 
 .menuLeft {
-  border: 1px solid black;
+  height: 100vh;
+  z-index: 997;
+  position: absolute;
   text-align: left;
-  background-color: #E9E9E9;
+  background-color: #abdfaf;
+  padding-top: 30px;
 }
 
 #map {
-  border:1px solid black;
-  width: 74%;
-  height: 95vh;
+  width: 100%;
+  height: 100vh;
 }
 
 .associationBox {
@@ -278,9 +363,23 @@ input:invalid {
   color: #1E8449;
 }
 
+#commune_list {
+  height: calc(35vh - 50px);
+  overflow: auto;
+}
+.category {
+  padding-top: 10px;
+}
+
+/*infowindow*/
+.gm-style .gm-style-iw {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
 /* A PROPOS */
 
-#box-first-article {
+.box-first-article {
   /*margin-top: 70px;*/
 /*  position: relative;*/
   width: 900px;
@@ -288,11 +387,11 @@ input:invalid {
   margin-left: auto;
 }
 
-#title-article-aPropos {
+.title-article-aPropos {
   font-size: 20px;
 }
 
-#resume-aPropos {
+.resume-aPropos {
   /*width: 800px;
   margin-left: auto;
   margin-right: auto;*/
@@ -300,7 +399,7 @@ input:invalid {
   color: #707B7C;
 }
 
-#box-title-aPropos {
+.box-title-aPropos {
   background-color: #F3F3F3;
   width: 600px;
   height: 125px;
@@ -312,7 +411,7 @@ input:invalid {
   padding: 10px 10px 10px 25px;
 }
 
-#article-aPropos {
+.article-aPropos {
   text-align: left;
   width: 700px;
   margin-left: auto;
@@ -354,6 +453,37 @@ input:invalid {
 
 .modal-body {
   text-align: left;
+}
+
+/*  ADMIN  */
+
+
+#administration .input-group[class*=col-]{
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+#administration .delete{
+  color: red;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#administration .delete:hover{
+  color: black;
+}
+
+#administration #priority{
+  width: auto;
+  margin: 0;
+}
+
+#administration .list-group-item{
+  cursor: pointer;
+}
+
+#administration .list-group-item:hover{
+  background-color: #eee;
 }
 
 /* FOOTER */
@@ -417,7 +547,7 @@ footer {
   border-color: #2DAF37;
 }
 
-#copyright {
+.copyright {
   text-align: center;
   margin-top: 20px;
   padding-top: 10px;
@@ -433,5 +563,103 @@ footer {
   margin-left: auto;
   margin-right: auto;
 
+/* ACTIVITES */
+
+.subscribe-newsletter {
+  font-size: 16px;
 }
 
+.resume-center-box {
+  text-align: left;
+  color: #707B7C;
+}
+/*  VUE MOBILE A PROPOS */
+
+@media screen and (max-width: 480px) {
+
+  /* A PROPOS */
+
+.box-first-article {
+  width: auto;
+
+}
+
+.title-article-aPropos {
+  font-size: 20px;
+}
+
+.resume-aPropos {
+  text-align: left;
+  color: #707B7C;
+}
+
+.box-title-aPropos {
+  width: 335px;
+  height: 40px;
+  text-align: left;
+  padding: 0px;
+  background-color: initial;/*#F3F3F3*/
+  margin-left: -80px;
+  margin-bottom: 30px;
+}
+
+.article-aPropos {
+  text-align: left;
+  width: auto;
+  background-color: initial;/*#E8E0EF*/
+  position: initial;
+
+}
+
+
+/* FOOTER */
+
+#input-newsletter {
+  width: 200px;
+  float: left;
+  margin-left: 45px;
+}
+
+#btn-newsletter {
+  border-radius: 0px 4px 4px 0px;
+  margin-left: -5px;
+  float: left;
+}
+
+footer {
+  background-color: #272727;
+  height: 200px;
+  width: 100%;
+  color: #17202a;
+  padding-top: 10px;
+  margin-top: -50px;
+}
+
+}
+  
+/*css search nav*/
+
+.resultat {
+	position: absolute;
+	background: #2DAF37;
+	border-radius: 10px 10px 10px 10px;
+	width: 228px;
+	padding: 10px 10px;
+}
+.result:hover, .result:focus {
+	color: white;
+	text-decoration: none;
+	background-color: #91D73C;
+}
+.resultp:hover{
+	color: #2DAF37;
+	background-color: white;
+}
+.result {
+	color: white;
+	text-decoration: none;
+}
+.resultp {
+	border-bottom: 1px white solid;
+	padding: 5px 5px;
+}

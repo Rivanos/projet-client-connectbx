@@ -66,6 +66,10 @@ if(isset($_SESSION['authentifie'])){
 			require_once (CONTROLLER . 'aProposController.php');
 			$controller = new aProposController();
 			break;
+    case 'activities' :
+			require_once (CONTROLLER . 'activitiesController.php');
+			$controller = new activitiesController();
+			break;			
       /*
 		case '(le nom que vous avez donné à votre lien dans le header)' :
 			require_once (CONTROLLER . '(le nom de votre fichier controller)');

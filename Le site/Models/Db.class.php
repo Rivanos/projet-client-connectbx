@@ -93,6 +93,13 @@ class Db {
 		$qp->execute();
 	}
 
+	// SELECT USER WITH ID
+	public function select_user_with_id($id){
+		$query = "SELECT * FROM users WHERE user_id=$id";
+		$result = $this->_db->query($query)->fetch();
+		return new User($result->user_id, $result->user_name, $result->user_firstname, $result->user_birthdate, $result->user_email, $result->user_login, $result->user_pwd);
+	}
+
 	// SELECT ALL USERS
 	public function select_all_users(){
 		$query = 'SELECT user_id, user_name, user_firstname, user_birthdate, user_email, user_login, user_pwd FROM users';
@@ -106,21 +113,28 @@ class Db {
 		return $tab;
 	}
 
-	// UPDATE USER
+	// UPDATE USER without pwd
 	public function update_user($id, $name, $first_name, $birthdate, $email, $login){
 		$query = 'UPDATE users SET user_name=' . $this->_db->quote($name) . ', user_firstname=' . $this->_db->quote($first_name) . ', user_birthdate=' . $this->_db->quote($birthdate) . ', user_email=' . $this->_db->quote($email) . ', user_login=' . $this->_db->quote($login) . ' WHERE user_id=' . $this->_db->quote($id);
 		$this->_db->prepare($query)->execute();
 	}
 
+	// UPDATE USER with pwd
+	public function update_user_with_pwd($id, $name, $first_name, $birthdate, $email, $login, $pwd){
+		$query = 'UPDATE users SET user_name=' . $this->_db->quote($name) . ', user_firstname=' . $this->_db->quote($first_name) . ', user_birthdate=' . $this->_db->quote($birthdate) . ', user_email=' . $this->_db->quote($email) . ', user_login=' . $this->_db->quote($login) . ', user_pwd=' . $this->_db->quote(sha1($pwd)) . ' WHERE user_id=' . $this->_db->quote($id);
+		$this->_db->prepare($query)->execute();
+	}
+
 	// DELETE USER
 	public function delete_user($id){
-		$query = 'DELETE FROM users WHERE user_id=' . $this->_db->quote($id);
+		$query = 'DELETE FROM users WHERE user_id=' . $id;
 		$this->_db->prepare($query)->execute();
 	}
 
 	// NOTE: INSERT ASSOCIATION
-	public function insert_association($name, $description, $address, $phone, $website, $latitude, $longitude, $theme){
-		$query='INSERT INTO associations(`assoc_name`, `assoc_descri`, `assoc_address`, `assoc_phone`, `assoc_website`, `assoc_local`, `assoc_theme`) VALUES (:name, :description, :address, :phone, :website, :latitude, :longitude, :theme)';
+	public function insert_association($name, $description, $phone, $website, $latitude, $longitude, $theme){
+		$address = $this->_db->lastInsertId();
+		$query='INSERT INTO associations(`assoc_name`, `assoc_descri`, `assoc_address`, `assoc_phone`, `assoc_website`, `assoc_latitude`, `assoc_longitude`, `assoc_theme`) VALUES (:name, :description, :address, :phone, :website, :latitude, :longitude, :theme)';
 		$qp = $this->_db->prepare($query);
 		$qp->bindValue(':name', $name);
 		$qp->bindValue(':description', $description);
@@ -131,6 +145,14 @@ class Db {
 		$qp->bindValue(':longitude', $longitude);
 		$qp->bindValue(':theme', $theme);
 		$qp->execute();
+	}
+
+	// NOTE: SELECT ASSOCIATION WITH ID
+	public function select_association_with_id($id){
+		$query = "SELECT * FROM associations WHERE assoc_id = $id";
+		$result = $this->_db->query($query)->fetch();
+		$address = Db::getInstance()->select_address_with_id($result->assoc_address);
+		return new Association($result->assoc_id, $result->assoc_name, $result->assoc_descri, $address, $result->assoc_phone, $result->assoc_website, $result->assoc_latitude, $result->assoc_longitude, $result->assoc_theme);
 	}
 
 	// NOTE: SELECT ALL ASSOCIATIONS
@@ -159,16 +181,39 @@ class Db {
 		$this->_db->prepare($query)->execute();
 	}
 
-	// NOTE: INSERT EVENT
-	public function insert_event($name, $event_date, $description, $image, $priority){
-		$query = 'INSERT INTO events(`event_name`, `event_date`, `event_descri`, `event_image`, `event_priority`) VALUES (:name, :event_date, :description, :image, :priority)';
+	// NOTE: INSERT EVENT without image
+	public function insert_event($name, $event_date, $description, $priority){
+		$address = $this->_db->lastInsertId();
+		$query = 'INSERT INTO events(`event_name`, `event_date`, `event_descri`, `event_priority`, `event_address`) VALUES (:name, :event_date, :description, :priority, :address)';
+		$qp = $this->_db->prepare($query);
+		$qp->bindValue(':name', $name);
+		$qp->bindValue(':event_date', $event_date);
+		$qp->bindValue(':description', $description);
+		$qp->bindValue(':priority', $priority);
+		$qp->bindValue(':address', $address);
+		$qp->execute();
+	}
+
+	// NOTE: INSERT EVENT with image
+	public function insert_event_with_image($name, $event_date, $description, $image, $priority){
+		$address = $this->_db->lastInsertId();
+		$query = 'INSERT INTO events(`event_name`, `event_date`, `event_descri`, `event_image`, `event_priority`, `event_address`) VALUES (:name, :event_date, :description, :image, :priority, :address)';
 		$qp = $this->_db->prepare($query);
 		$qp->bindValue(':name', $name);
 		$qp->bindValue(':event_date', $event_date);
 		$qp->bindValue(':description', $description);
 		$qp->bindValue(':image', $image);
 		$qp->bindValue(':priority', $priority);
+		$qp->bindValue(':address', $address);
 		$qp->execute();
+	}
+
+	// NOTE: SELECT EVENT WITH ID
+	public function select_event_with_id($id){
+		$query = "SELECT * FROM events WHERE event_id = $id";
+		$result = $this->_db->query($query)->fetch();
+		$address = Db::getInstance()->select_address_with_id($result->event_address);
+		return new Event($result->event_id, $result->event_name, $result->event_date, $result->event_descri, $result->event_image, $result->event_priority, $address);
 	}
 
 	// NOTE: SELECT ALL EVENTS
@@ -197,6 +242,18 @@ class Db {
 			}
 		}
 		return $tab;
+	}
+
+	// NOTE: UPDATE EVENT
+	public function update_event($id, $name, $date, $description, $priority, $address){
+		$query = 'UPDATE events SET event_name=' . $this->_db->quote($name) . ', event_date=' . $this->_db->quote($date) . ', event_descri=' . $this->_db->quote($description) . ', event_priority=' . $this->_db->quote($priority) . ', event_address=' . $address . ' WHERE event_id=' . $id;
+		$this->_db->prepare($query)->execute();
+	}
+
+	// NOTE: UPDATE EVENT 
+	public function update_event_with_image($id, $name, $date, $description, $image, $priority, $address){
+		$query = 'UPDATE events SET event_name=' . $this->_db->quote($name) . ', event_date=' . $this->_db->quote($date) . ', event_descri=' . $this->_db->quote($description) . ', event_image=' . $this->_db->quote($image) . ', event_priority=' . $this->_db->quote($priority) . ', event_address=' . $address . ' WHERE event_id=' . $id;
+		$this->_db->prepare($query)->execute();
 	}
 
 	// NOTE: Select only 3 events with the priority egal to 1
@@ -245,7 +302,7 @@ class Db {
 		return $tab;
 	}
 
-	// NOTE: Select an address 
+	// NOTE: Select an address
 	private function select_address_by_id($id){
 		$query = 'SELECT * FROM address WHERE  event_address='.$this->$id;
 		$result = $this->_db->query($query);
@@ -266,15 +323,10 @@ class Db {
 
 	// NOTE: SELECT PRIMARY EVENTS
 	public function select_primary_events(){
-	
-	}
-
-	// NOTE: UPDATE EVENT
-	public function update_event($id, $name, $date, $description, $image, $priority){
-		$query = 'UPDATE events SET event_name=' . $this->_db->quote($name) . ', event_date=' . $this->_db->quote($date) . ', event_descri=' . $this->_db->quote($description) . ', event_image=' . $this->_db->quote($image) . ', event_priority=' . $this->_db->quote($priority) . ' WHERE event_id=' . $this->_db->quote($id);
-		$this->_db->prepare($query)->execute();
 
 	}
+
+
 
 	// NOTE: DELETE EVENT
 	public function delete_event($id){
@@ -283,13 +335,13 @@ class Db {
 	}
 
 	// NOTE: INSERT ADDRESS
-	private function insert_address($street, $number, $post_code, $post_box){
+	public function insert_address($street, $number, $post_code, $post_box){
 		$query = 'INSERT INTO address(address_street, address_number, address_post_code, address_post_box) VALUES (:street, :numb, :post_code, :post_box)';
-		$qp->$this->_db->prepare($query);
+		$qp = $this->_db->prepare($query);
 		$qp->bindValue(':street', $street);
 		$qp->bindValue(':numb', $number);
 		$qp->bindValue(':post_code', $post_code);
-		$qp->bindValue(':post_box', $post_box);
+		$qp->bindValue(':post_box', $post_box, PDO::PARAM_INT);
 		$qp->execute();
 	}
 
@@ -302,52 +354,64 @@ class Db {
 	private function select_address_with_id($id){
 		$query = 'SELECT * FROM address WHERE address_id=' . $id;
 		$result = $this->_db->query($query)->fetch();
-		$address = Db::getInstance()->select_town_with_post_code($result->address_post_code);
-		return new Address($result->address_id, $result->address_street, $result->address_number, $address, $result->address_post_box);
+		$town = Db::getInstance()->select_town_with_post_code($result->address_post_code);
+		return new Address($result->address_id, $result->address_street, $result->address_number, $town, $result->address_post_box);
+	}
+
+	public function update_address($id, $street, $number, $post_code, $post_box){
+		$query = 'UPDATE address SET address_street=:street, address_number=:numb, address_post_code=:post_code, address_post_box=:post_box WHERE address_id=:id';
+		$qp = $this->_db->prepare($query);
+		$qp->bindValue(':id', $id);
+		$qp->bindValue(':street', $street);
+		$qp->bindValue(':numb', $number);
+		$qp->bindValue(':post_code', $post_code);
+		$qp->bindValue(':post_box', $post_box, PDO::PARAM_INT);
+		$qp->execute();
 	}
 
 	// NOTE: SELECT ASSOCIATION AND ADDRESS WITH CHECKED
 	public function search_assoc_by_towns_themes($tab_towns, $tab_themes){
-		$where_town = where_table($tab_towns, 't.town_name'); // clause
-		$where_theme = where_table($tab_themes, 'ass.assoc_theme');
+		$where_town = Db::getInstance()->where_table($tab_towns, 't.town_post_code'); // clause
+		$where_theme = Db::getInstance()->where_table($tab_themes, 'ass.assoc_theme');
 		$juncture = 'ass.assoc_address=ad.address_id AND ad.address_post_code=t.town_post_code';
-		$query = '	SELECT ass.*, ad.*, t.* FROM associations ass, adress ad, towns t
-						WHERE ' . $juncture . ' AND ' . $where_town . ' AND ' . $where_theme;
-		$result = $this->_db->prepare($query)->execute();
+		$query = '	SELECT DISTINCT ass.*, ad.*, t.* FROM associations ass, address ad, towns t
+						WHERE ' . $juncture . ' AND ' . $where_town /*. ' AND ' . $where_theme*/;
+		$result = $this->_db->query($query);
 		$tab = array();
 		if($result->rowcount()!=0){
 			while($row = $result->fetch()){
-				$address = select_address_with_id($result->assoc_address);
-				$tab[] = new Association($result->assoc_id, $result->assoc_name, $result->assoc_descri, $address, $result->assoc_phone, $result->assoc_website, $result->assoc_latitude, $result->assoc_longitude, $result->assoc_theme);
+				print_r($row->assoc_address);
+				$address = Db::getInstance()->select_address_with_id($row->assoc_address);
+				$tab[] = new Association($row->assoc_id, $row->assoc_name, $row->assoc_descri, $address, $row->assoc_phone, $row->assoc_website, $row->assoc_latitude, $row->assoc_longitude, $row->assoc_theme);
 			}
 		}
 		return $tab;
 	}
 
 	// SELECT ALL COMMUNE FROM TOWN
-	public function select_all_commune(){
+	public function select_all_towns(){
 		$query = 'SELECT * FROM towns';
 		$result = $this->_db->query($query);
 		$tab = array();
-			if ($result->rowcount() != 0) {
-				while ($row = $result->fetch()) {
-					$tab[] = ($row->town_name);
-				}
+		if ($result->rowcount() != 0) {
+			while ($row = $result->fetch()) {
+				$tab[] = new Town($row->town_name, $row->town_post_code);
 			}
-			return $tab;
+		}
+		return $tab;
 	}
 
 	// SELECT ALL COMMUNE FROM TOWN
-	public function select_all_theme(){
-		$query = 'SELECT * FROM associations';
+	public function select_all_themes(){
+		$query = 'SELECT assoc_theme FROM associations';
 		$result = $this->_db->query($query);
 		$tab = array();
-			if ($result->rowcount() != 0) {
-				while ($row = $result->fetch()) {
-					$tab[] = ($row->assoc_theme);
-				}
+		if ($result->rowcount() != 0) {
+			while ($row = $result->fetch()) {
+				$tab[] = ($row->assoc_theme);
 			}
-			return $tab;
+		}
+		return $tab;
 	}
 
 	private function where_table($content_table, $table_column){
@@ -364,7 +428,7 @@ class Db {
 	}
 
 
-	private function select_town_with_post_code($post_code){
+	public function select_town_with_post_code($post_code){
 		$query = 'SELECT * FROM towns WHERE town_post_code=' . $post_code;
 		$result = $this->_db->query($query)->fetch();
 		return new Town($result->town_name, $result->town_post_code);
