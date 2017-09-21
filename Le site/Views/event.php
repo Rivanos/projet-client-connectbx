@@ -1,4 +1,6 @@
 
+<div class="content" >
+  <div class="content-inside" >
 <div class="container-fluid">
   <br/><br/><br/>
   <ul class="nav nav-tabs">
@@ -9,10 +11,10 @@
   <div class="tab-content">
     <div id="aVenir" class="tab-pane fade in active">
 
-      <div class="container-fluid text-center">
+      <div class="container-fluid ">
 
       <br/><br/><br/>
-      <div class="container-fluid">
+      <div id="id_container_fluid" class="container-fluid divEventToCome">
         <div class="row" id="row-events">
 <!--       <div style="width:340px; height:200px" class="jumbotron"></div> -->
 
@@ -21,12 +23,14 @@
               echo "<p>"."Actuellement, il n'y a pas d'événements à venir.."."</p>";
             }
 
-            $clef;  
+            $clef;
+            $compteurPassageLigne=0;
             foreach ($tableauEvenementsToComed as $key => $value){
-            $clef = $key;
+              $compteurPassageLigne++;
+              $clef = $key;
           ?>
               <div class="col-xs-3 col-md-3 offset-md-1 thumbnail event-box">
-                <img src="<?= $value->image(); ?>" class="img-events" height="42px" width="42px"/>
+                <img id="id_image_event" style= "height:auto; width:300px" src="<?= $value->image(); ?>" class="img-events" height="42px" width="42px"/>
                 <h3> <?=$value->name()?> </h3>
                 <p><strong><?php 
                         $dateEvenement = $value->date();
@@ -45,7 +49,6 @@
                 <!-- <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">Lire plus</button>-->
                 <a style="text-align:center" name="lien" data-toggle="modal" href="#<?php echo $tableauEvenementsToComed[$key]->id()?>">Lire plus</a>
               </div>
-
 
               <!-- Modal -->
               <div class="modal fade" id="<?php echo $tableauEvenementsToComed[$key]->id() ?>" role="dialog" >
@@ -69,7 +72,10 @@
                 </div>
               </div>
 
-          <?php } ?> <!-- Fin Foreach -->
+          <?php
+            if($compteurPassageLigne == 3){ echo "</div>"; $compteurPassageLigne = 0; echo "<div class='row' id='row-events'>"; } //je ferme ma div Row
+
+        } ?> <!-- Fin Foreach -->
 
         </div> <!-- ROW -->
     </div>
@@ -77,7 +83,7 @@
 </div>
 
 
-    </div>
+    </div> <!-- DIV à venir -->
 
     <div id="passee" class="tab-pane fade">
       <?php
@@ -93,18 +99,16 @@
           <div class="row">
 
               <?php
-
-                  $clef;
                   foreach ($tableauEvenementsPassed as $key => $value) { 
-                    $clef = $key;
                   ?>
 
                   <div class="col-xs-3 col-md-3 thumbnail event-box"> <!-- col-xs-3 col-lg-6  -->
-                  <img src=<?= $value->image() ?> class="img-events" height="42" width="42"/>   <!-- $value->image() -->
+                  <img style= "height:auto; width:300px" src=<?= $value->image() ?> class="img-events" height="42" width="42"/>   <!-- $value->image() -->
 
                   <h1> <?=$value->name()?> </h1>
                   <p style="text-align:left"><strong>
                     <?php 
+
                         $dateEvenement = $value->date();
 
                         $date = explode("-", $dateEvenement);
@@ -113,9 +117,9 @@
                         $jour = $date[2];
 
                         $date = $jour."/".$mois."/".$annee;
-                        
+
                         echo $date;
-                         //echo "ici ".Db::getInstance()->select_address_event($key);
+                         //echo "ici ".Db::getInstance()->select_address_event($key);  
                         ?>
                   </strong><?php echo $value->address()->to_string() ;?></p>
                   <p><strong>Description de l'événement:</strong><br/><br/>
@@ -146,14 +150,18 @@
                   </div>
 
                 </div>
-              </div>
+              </div> <!-- DIV modal -->
 
               <?php } ?> <!-- Fermeture du foreach -->
 
-                  </p>
-            </div>
-        </div>
-        </div>
-    </div>
 
+
+            </div> <!-- row -->
+        </div> <!-- Container -->
+
+        </div> <!-- DIV passee -->
+
+    </div> <!-- DIV tab-content -->
+</div> <!-- DIV container-fluid -->
+</div>
 </div>

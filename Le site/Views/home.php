@@ -51,7 +51,7 @@ vers le monde associatif.</span></div>
 
 
 <div class="container text-center container-event">
-  <h1>Events</h1>
+  <h1>Evénements à venir</h1>
   <div class="row">
 
   <?php
@@ -63,14 +63,20 @@ vers le monde associatif.</span></div>
     <?php
       break;
       case 1:
-        foreach ($tableauEvenementsPrioritaire as $key => $value){  
+        //foreach ($tableauEvenementsPrioritaire as $key => $value){  
+
     ?>
           <div class="col-xs-3 col-md-3 offset-md-1 thumbnail event-box event">
-            <h1> <?=$value->name()?> </h1>
-            <img src="<?= $value->image(); ?>" class="img-events" height="42px" width="42px"/>
-            <p><br/> <?= substr($value->description(),0, 140)."...";?> </p>
+            <h1 style="font-size:24px; color:green"> <?=$tableauEvenementsPrioritaire[0]->name()?> </h1>
+            <img src="<?= $tableauEvenementsPrioritaire[0]->image(); ?>" class="img-events" height="42px" width="42px"/>
           </div>   
-    <?php }
+
+          <div class="col-xs-3 col-md-3 offset-md-1 thumbnail event-box event">
+              
+            <p><br/><br/><br/> <?= $tableauEvenementsPrioritaire[0]->description();?> </p>
+          </div> 
+
+    <?php //}
       break;
       case 2:
         foreach ($tableauEvenementsPrioritaire as $key => $value){  

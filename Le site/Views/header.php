@@ -49,16 +49,16 @@
           </div>
         </form>
         <ul class="nav navbar-nav navbar-right">
-					<li><a href="/public/projet-client-connectbx/Le%20site/home">Accueil</a></li> <!-- index.php?action=home -->
-					<li><a href="/public/projet-client-connectbx/Le%20site/admin">Administration</a></li> <!-- index.php?action=admin -->
-          <li><a href="/public/projet-client-connectbx/Le%20site/contact">Contact</a></li> <!-- index.php?action=contact -->
-          <li><a href="/public/projet-client-connectbx/Le%20site/event">Evenement</a></li>
-          <li><a href="/public/projet-client-connectbx/Le%20site/aPropos">A propos</a></li> <!-- index.php?action=aPropos -->
-          <li><a href="/public/projet-client-connectbx/Le%20site/map">Map</a></li> <!-- index.php?action=map -->
+					<li><a href="home">Accueil</a></li> <!-- index.php?action=home -->
+					<li><a href="admin">Administration</a></li> <!-- index.php?action=admin -->
+          <li><a href="contact">Contact</a></li> <!-- index.php?action=contact -->
+          <li><a href="event">Evenement</a></li>
+          <li><a href="aPropos">A propos</a></li> <!-- index.php?action=aPropos -->
+          <li><a href="map">Map</a></li> <!-- index.php?action=map -->
 					<!-- Rajouter le lien vers votre page ici -->
 					<!-- ex: <li><a href="index.php?action=(le nom que vous voulez)">(Le contenu de la balise a)</a></li> -->
 					<?php if(!empty($_SESSION['authentifie'])){?>
-					<li><a href="/public/projet-client-connectbx/Le%20site/home">Déconnexion</a></li>
+					<li><a href="/public/projet-client-connectbx/Le%20site/logout">Déconnexion</a></li>
 					<?php }?>
 				</ul>
       </div><!-- /.navbar-collapse -->

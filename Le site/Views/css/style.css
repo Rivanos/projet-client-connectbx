@@ -18,6 +18,25 @@
 
 }
 
+/*  VUE MOBILE EVENT */
+@media screen and (max-width: 480px) {
+/* FOOTER */
+
+  #id_image_event{
+    width: 42px;
+    height: 42px;
+    border:1px solid red;
+  }
+
+  #id_container_fluid{
+    
+  }
+
+}
+
+
+
+
 /* CORPS DU SITE */
 
 html {
@@ -409,5 +428,10 @@ footer {
 }
 
 
+.divEventToCome{
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 
+}
 

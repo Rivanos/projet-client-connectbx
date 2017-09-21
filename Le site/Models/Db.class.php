@@ -6,10 +6,44 @@ class Db {
 	private static $instance = null;
 	private $_db;
 
+
+	/*
+	private $_database = 'connectbzcadmin';
+	private $_login = 'connectbzcadmin';
+	private $_password = 'Connect152';
+	private $_host='connectbzcadmin.mysql.db'; */
+
+
+	/*private $_database = 'connectbzcadmin';
+	private $_login = 'connectbzcadmin';
+	private $_password = 'Connect152';
+	private $_host='connectbzcadmin.mysql.db';
+
+	private $_SERVER; 
+
+	// constructeur
+	private function __construct(){
+		try{
+
+			$this->_db = new PDO(
+				'mysql:host='. $this->_host.';dbname='. $this->_database.';charset=utf8',
+				$this->_login,
+				$this->_password
+			);
+			$this->_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$this->_db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+		} catch(PDOException $e) {
+			die('Erreur : ' . $e->getMessage());
+		}
+	}*/
+
+
+
 	// constructeur
 	private function __construct(){
 		try{
 			$this->_db = new PDO('mysql:host=localhost;dbname=connectbx;charset=utf8', 'root', 'user');
+
 			$this->_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			$this->_db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 		} catch(PDOException $e) {
@@ -172,7 +206,7 @@ class Db {
 				  WHERE event_priority = 1
 				  AND event_date >= NOW()
 				  ORDER BY event_date
-				  LIMIT 3';
+				  LIMIT 1';
 		$result = $this->_db->query($query);
 		$tab = array();
 		if($result->rowcount()!=0){
