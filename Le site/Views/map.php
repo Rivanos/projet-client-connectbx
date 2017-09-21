@@ -1,4 +1,12 @@
 <section id="cartePage">
+
+  <div id="test">
+    <!-- Here comes the ajax request -->
+  </div>
+  <!-- if query from home => gets the response in input -->
+  <?php if(isset($_GET['search']) || isset($_POST['town']) || isset($_POST['theme'])){ ?>
+    <input type="hidden" id="json" value="<?=$json?>">
+  <?php } ?>
   <div class="content">
     <div class="content-inside">
       <div id='association' class="affichage_resultat_recherche">
@@ -19,8 +27,13 @@
                   foreach ($tab_towns as $town) {
                     $i++;
 
-                    echo  "<div class='checkbox'><label><input type='checkbox' name='check' value='".$town->name()."' id='commune".$i."'> ".$town->name()."</label></div>";
-
+                    ?>
+                <div class='checkbox'>
+                  <label>
+                    <input type='checkbox' name='communeCheckbox' value='<?= $town->post_code()?>' id='commune".$i."' <?php if(!empty($_GET['town']) && $town->post_code()==$_GET["town"]){ echo "checked";} ?>> <?=$town->name()?>
+                  </label>
+                </div>
+                <?php 
                   }
                   ?>
                 </div>
@@ -40,6 +53,7 @@
                 <!-- <input type="submit" id="submit" value="Rechercher"> -->
                 <button type="submit" name="envoyer" class="btnStyle">Rechercher</button>              </form>
               </div>
+
             </div>
             <?php
             $tableau_association = array();
@@ -64,10 +78,12 @@
 
                 <?php } ?>
 
+
               </div>
             </div>
 
             <div id="map" class="hidden-sm-down"></div>
+
           </div>
         </div>
       </section>

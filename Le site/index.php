@@ -5,7 +5,7 @@ session_start();
 
 // déclaration de variables globales
 define('ROOT', dirname(__FILE__));
-define ('VIEWS', 'Views/');
+define ('VIEWS', './Views/');
 define ('CONTROLLER', 'Controllers/');
 define ('SESSION_ID', session_id());
 
@@ -22,7 +22,7 @@ $action = (isset($_GET['action'])) ? htmlentities($_GET['action']) : 'default';
 
 
 // si authentifié => charge le controleur de la page demandée (admin)
-if(isset($_SESSION['authentifie'])){
+if(isset($_SESSION['logged'])){
 	// quelle action ?
 	switch($action){
 		case 'admin' :

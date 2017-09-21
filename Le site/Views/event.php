@@ -4,6 +4,7 @@
   <div class="content-inside" >
 
 <div class="container-fluid">
+  <h1 class="title-page">Evenements</h1>
   <br/><br/><br/>
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#aVenir">Evénements à venir</a></li>

@@ -26,6 +26,7 @@ ErrorDocument 403 http://localhost/public/projet-client-connectbx/Le%20site/View
 
 # Gestion des pages dynamiques
 
-RewriteRule ^search=([A-Za-z\ ]+[0-9_-]?)$ index.php?action=map&search=$1 [QSA,L]
+RewriteRule ^search=([0-9_-]?)$ index.php?action=map&search=$1 [QSA,L]
+RewriteRule ^town=([A-Za-z\]+[0-9_-]?)&themes=([A-Za-z\ ]+[0-9_-]?)$ index.php?action=map&town=$1&themes=$2 [QSA,L]
 
 </ifModule>

@@ -8,6 +8,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
+  <!-- Newsletter MailChimp -->
+  <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/facdb990651a80ea47a373e93/bd9198f17e0d25266fb53acd7.js");</script>
+
 </head>
 <body>
   <header id="header">
@@ -28,7 +32,7 @@
             <span class="icon-bar"></span>
           </button>
           <div class="navbar-header">
-            <a class="navbar-brand" href="/public/projet-client-connectbx/Le%20site/home">
+            <a class="navbar-brand" href="home">
               <img alt="logo" src="<?php echo VIEWS;?>Images/logo-01.png" height="35px" id="logo-navbar">
             </a>
           </div>
@@ -62,7 +66,7 @@
             <li><a href="admin">Administration</a></li>
             <!-- index.php?action=admin -->
 
-            <?php if(!empty($_SESSION['authentifie'])){?>
+            <?php if(!empty($_SESSION['logged'])){?>
               <li><a href="logout">Déconnexion</a></li>
               <?php }?>
 
