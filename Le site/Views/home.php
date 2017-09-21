@@ -3,9 +3,9 @@
   <div class="container">
     <span class="title-jumbotron">La Porte principale des jeunes
       vers le monde associatif.</span></div>
-      <form class="recherche_on_map_of_assoc" action="map" method="get">
+      <form class="recherche_on_map_of_assoc" action="map" method="post">
         <select class="custom-dropdown__select custom-dropdown__select--white select-home" name="town">
-          <option class="disable">Choisissez votre Commune</option>
+          <option class="disable" disabled selected>Choisissez votre Commune</option>
           <?php
             foreach ($tab_towns as $town) {
             echo  "<option value='".$town->post_code()."'>".$town->name()."</option>";
@@ -13,8 +13,8 @@
           ?>
         </select>
 
-        <select class="custom-dropdown__select custom-dropdown__select--white select-home" name="themes">
-          <option class="disable">Choisissez votre Thème</option>
+        <select class="custom-dropdown__select custom-dropdown__select--white select-home" name="theme">
+          <option class="disable" disabled selected>Choisissez votre Thème</option>
 
           <?php
 

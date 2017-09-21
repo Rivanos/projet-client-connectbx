@@ -26,7 +26,7 @@
             <span class="icon-bar"></span>
           </button>
           <div class="navbar-header">
-            <a class="navbar-brand" href="/public/projet-client-connectbx/Le%20site/home">
+            <a class="navbar-brand" href="home">
               <img alt="logo" src="<?php echo VIEWS;?>Images/logo-01.png" height="35px" id="logo-navbar">
             </a>
           </div>
@@ -62,7 +62,7 @@
             <li><a href="admin">Administration</a></li>
             <!-- index.php?action=admin -->
 
-            <?php if(!empty($_SESSION['authentifie'])){?>
+            <?php if(!empty($_SESSION['logged'])){?>
               <li><a href="logout">Déconnexion</a></li>
               <?php }?>
 

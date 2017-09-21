@@ -22,7 +22,7 @@ $action = (isset($_GET['action'])) ? htmlentities($_GET['action']) : 'default';
 
 
 // si authentifié => charge le controleur de la page demandée (admin)
-if(isset($_SESSION['authentifie'])){
+if(isset($_SESSION['logged'])){
 	// quelle action ?
 	switch($action){
 		case 'admin' :

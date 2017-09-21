@@ -1,14 +1,11 @@
 <section id="cartePage">
   <div id="test">
-      <?php
-
-      //print_r($_GET);
-
-       ?>
+    <!-- Here comes the ajax request -->
   </div>
-  <?php if(isset($_GET['search'])){ ?>
-  <div id="json"><?=$json?></div>
-<?php } ?>
+  <!-- if query from home => gets the response in input -->
+  <?php if(isset($_GET['search']) || isset($_POST['town']) || isset($_POST['theme'])){ ?>
+    <input type="hidden" id="json" value="<?=$json?>">
+  <?php } ?>
   <div class="content">
     <div class="content-inside">
       <div id='association' class="affichage_resultat_recherche close">

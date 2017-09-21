@@ -21,7 +21,23 @@ class MapController{ // le nom de votre controller
 
 		}
 
-		$json = json_encode($json);
+		if(!empty($_POST)){
+			$towns = isset($_POST['town']) ? array($_POST['town']) : array();
+			$themes = isset($_POST['theme']) ? array($_POST['theme']) : array();
+			$searched_assoc = Db::getInstance()->search_assoc_by_towns_themes($towns, $themes);
+
+			
+			foreach ($searched_assoc as $i => $association) {
+				array_push($json, array("name"=>$association->name(), "latitude"=>$association->latitude(), "longitude"=>$association->longitude()));
+			}
+		}
+
+		$json = htmlspecialchars(json_encode($json));
+
+		$town_select = false;
+		if(isset($_GET['town'])){
+			$town_select = $_GET['town'];
+		}
 
 		require_once VIEWS . 'map.php'; // affiche la vue (votre page html)
 	}
