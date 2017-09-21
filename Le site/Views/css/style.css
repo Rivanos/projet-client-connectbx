@@ -4,26 +4,26 @@
 
 /* FOOTER */
 
-#input-newsletter {
-  width: 200px;
-  float: left;
-  margin-left: 45px;
-}
+  #input-newsletter {
+    width: 200px;
+    float: left;
+    margin-left: 45px;
+  }
 
-#btn-newsletter {
-  border-radius: 0px 4px 4px 0px;
-  margin-left: -5px;
-  float: left;
-}
+  #btn-newsletter {
+    border-radius: 0px 4px 4px 0px;
+    margin-left: -5px;
+    float: left;
+  }
 
-#footer {
-  background-color: #272727;
-  height: 200px;
-  width: 100%;
-  color: #17202a;
-  padding-top: 10px;
-  margin-top: -50px;
-}
+  #footer {
+    background-color: #272727;
+    height: 200px;
+    width: 100%;
+    color: #17202a;
+    padding-top: 10px;
+    margin-top: -50px;
+  }
 }
 
 /*  VUE MOBILE EVENT */
@@ -124,7 +124,7 @@ body {
 section {
 /*  text-align: center;
 */  margin-top: 20px;
-
+}
 #cartePage {
   text-align: center;
 }
@@ -144,7 +144,7 @@ section {
 /* CONTACT */
 
 .contactpInfoStyle {
-  font-family: helvetiva, helvetica-w01-light, helvetica-w02-light, sans-serif;
+  font-family: Helvetica, helvetica-w01-light, helvetica-w02-light, sans-serif;
   font-size: 1.4rem;
   font-weight: lighter;
   margin-top: .2rem;
@@ -153,7 +153,7 @@ section {
 }
 
 div#sectionTitle h2 {
-  font-family: helvetiva, helvetica-w01-light, helvetica-w02-light, sans-serif;
+  font-family: Helvetica, helvetica-w01-light, helvetica-w02-light, sans-serif;
   font-size: 4rem;
   margin-top: 10rem;
   margin-bottom: 2.5rem;
@@ -173,12 +173,11 @@ div#sectionTitle h2 {
 }
 
 #contactWelcomeMsg {
-  font-family: helvetiva, helvetica-w01-light, helvetica-w02-light, sans-serif;
+  font-family: helvetica, helvetica-w01-light, helvetica-w02-light, sans-serif;
   font-size: 1.5rem;
   font-weight: lighter;
   margin-top: .7rem;
   color: #494949;
-  ;
 }
 
 span#assosEmail {
@@ -559,7 +558,7 @@ footer {
   width: 1000px;
   margin-left: auto;
   margin-right: auto;
-
+}
 /* ACTIVITES */
 
 .subscribe-newsletter {
