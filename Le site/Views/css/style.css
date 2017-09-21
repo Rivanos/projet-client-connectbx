@@ -37,7 +37,7 @@
   }
 
   #id_container_fluid{
-    
+
   }
 
 }
@@ -125,9 +125,6 @@ section {
 /*  text-align: center;
 */  margin-top: 20px;
 }
-#cartePage {
-  text-align: center;
-}
 
 /* HOME */
 /* home select search*/
@@ -145,6 +142,7 @@ section {
 
 .contactpInfoStyle {
   font-family: Helvetica, helvetica-w01-light, helvetica-w02-light, sans-serif;
+
   font-size: 1.4rem;
   font-weight: lighter;
   margin-top: .2rem;
@@ -173,7 +171,7 @@ div#sectionTitle h2 {
 }
 
 #contactWelcomeMsg {
-  font-family: helvetica, helvetica-w01-light, helvetica-w02-light, sans-serif;
+  font-family: Helvetica, helvetica-w01-light, helvetica-w02-light, sans-serif;
   font-size: 1.5rem;
   font-weight: lighter;
   margin-top: .7rem;
@@ -559,6 +557,8 @@ footer {
   margin-left: auto;
   margin-right: auto;
 }
+
+
 /* ACTIVITES */
 
 .subscribe-newsletter {
@@ -632,7 +632,7 @@ footer {
 }
 
 }
-  
+
 /*css search nav*/
 
 .resultat {

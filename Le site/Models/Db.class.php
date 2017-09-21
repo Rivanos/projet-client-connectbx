@@ -19,7 +19,7 @@ class Db {
 	private $_password = 'Connect152';
 	private $_host='connectbzcadmin.mysql.db';
 
-	private $_SERVER; 
+	private $_SERVER;
 
 	// constructeur
 	private function __construct(){
@@ -250,7 +250,7 @@ class Db {
 		$this->_db->prepare($query)->execute();
 	}
 
-	// NOTE: UPDATE EVENT 
+	// NOTE: UPDATE EVENT
 	public function update_event_with_image($id, $name, $date, $description, $image, $priority, $address){
 		$query = 'UPDATE events SET event_name=' . $this->_db->quote($name) . ', event_date=' . $this->_db->quote($date) . ', event_descri=' . $this->_db->quote($description) . ', event_image=' . $this->_db->quote($image) . ', event_priority=' . $this->_db->quote($priority) . ', event_address=' . $address . ' WHERE event_id=' . $id;
 		$this->_db->prepare($query)->execute();
