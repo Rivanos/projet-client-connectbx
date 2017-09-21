@@ -4,16 +4,17 @@ class Event{
 	private $_id;
 	private $_name;
 	private $_date;
+	private $_time;
 	private $_description;
 	private $_image;
 	private $_priority;
-
 	private $_address;
 
-	public function __construct($id, $name, $date, $description, $image, $priority, $address){
+	public function __construct($id, $name, $datetime, $description, $image, $priority, $address){
 		$this->_id=$id;
 		$this->_name=$name;
-		$this->_date=$date;
+		$this->_date = date('Y-m-d',strtotime($datetime));
+		$this->_time = date('H:i:s',strtotime($datetime));
 		$this->_description=$description;
 		$this->_image=$image;
 		$this->_priority=$priority;
@@ -32,6 +33,10 @@ class Event{
 		return $this->_date;
 	}
 
+	public function time(){
+		return $this->_time;
+	}
+
 	public function description(){
 		return $this->_description;
 	}
@@ -44,7 +49,6 @@ class Event{
 		return $this->_priority;
 	}
 
-	//getter address
 	public function address(){
 		return $this->_address;
 	}

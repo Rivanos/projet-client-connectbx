@@ -1,21 +1,12 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+
   <title>ConnectBX</title>
   <link rel="stylesheet" type="text/css" href="<?php echo VIEWS;?>bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="<?php echo VIEWS;?>css/style.css">
-  <link rel="stylesheet" type="text/css" href="<?php echo VIEWS;?>css/select.css">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script type="text/javascript" src="<?php echo VIEWS;?>js/jquery-2.2.4.js"></script>
-  <script type="text/javascript" src="<?php echo VIEWS;?>js/select.js"></script>
-  <script type="text/javascript" src="<?php echo VIEWS;?>bootstrap/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="<?php echo VIEWS;?>js/script.js"></script>
-  <script type="text/javascript" src="<?php echo VIEWS;?>js/admin.js"></script>
-  <script type="text/javascript" src="<?php echo VIEWS;?>js/search.js"></script>
-  <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPuNlEkwhQVdbWWZ12PyfUubvQ6ABcClg&callback=initMap">
-  </script>
 
 </head>
 <body>
@@ -51,17 +42,26 @@
             </div>
           </form>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/public/projet-client-connectbx/Le%20site/home">Accueil</a></li> <!-- index.php?action=home -->
-            <li><a href="/public/projet-client-connectbx/Le%20site/admin">Administration</a></li> <!-- index.php?action=admin -->
-            <li><a href="/public/projet-client-connectbx/Le%20site/contact">Contact</a></li> <!-- index.php?action=contact -->
-            <li><a href="/public/projet-client-connectbx/Le%20site/event">Evenement</a></li>
-            <li><a href="/public/projet-client-connectbx/Le%20site/aPropos">A propos</a></li> <!-- index.php?action=aPropos -->
-            <li><a href="/public/projet-client-connectbx/Le%20site/map">Map</a></li> <!-- index.php?action=map -->
-            <!-- Rajouter le lien vers votre page ici -->
-            <!-- ex: <li><a href="index.php?action=(le nom que vous voulez)">(Le contenu de la balise a)</a></li> -->
+
+            <li><a href="home">Accueil</a></li>
+            <!-- index.php?action=home -->
+            <li><a href="map">Map</a></li>
+            <!-- index.php?action=map -->
+            <li><a href="event">Evenement</a></li>
+            <!-- index.php?action=event -->
+            <li><a href="activities">Organisation</a></li>
+            <!-- index.php?action=activities -->
+            <li><a href="aPropos">A propos</a></li>
+            <!-- index.php?action=aPropos -->
+            <li><a href="contact">Contact</a></li>
+            <!-- index.php?action=contact -->
+            <li><a href="admin">Administration</a></li>
+            <!-- index.php?action=admin -->
+
             <?php if(!empty($_SESSION['authentifie'])){?>
-              <li><a href="/public/projet-client-connectbx/Le%20site/home">Déconnexion</a></li>
+              <li><a href="logout">Déconnexion</a></li>
               <?php }?>
+
             </ul>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->

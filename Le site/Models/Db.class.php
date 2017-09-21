@@ -6,10 +6,44 @@ class Db {
 	private static $instance = null;
 	private $_db;
 
+
+	/*
+	private $_database = 'connectbzcadmin';
+	private $_login = 'connectbzcadmin';
+	private $_password = 'Connect152';
+	private $_host='connectbzcadmin.mysql.db'; */
+
+
+	/*private $_database = 'connectbzcadmin';
+	private $_login = 'connectbzcadmin';
+	private $_password = 'Connect152';
+	private $_host='connectbzcadmin.mysql.db';
+
+	private $_SERVER; 
+
 	// constructeur
 	private function __construct(){
 		try{
-			$this->_db = new PDO('mysql:host=localhost;dbname=connectbx;charset=utf8', 'root', 'root');
+
+			$this->_db = new PDO(
+				'mysql:host='. $this->_host.';dbname='. $this->_database.';charset=utf8',
+				$this->_login,
+				$this->_password
+			);
+			$this->_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$this->_db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+		} catch(PDOException $e) {
+			die('Erreur : ' . $e->getMessage());
+		}
+	}*/
+
+
+
+	// constructeur
+	private function __construct(){
+		try{
+			$this->_db = new PDO('mysql:host=localhost;dbname=connectbx;charset=utf8', 'root', 'user');
+
 			$this->_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			$this->_db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 		} catch(PDOException $e) {
@@ -79,9 +113,15 @@ class Db {
 		return $tab;
 	}
 
-	// UPDATE USER
+	// UPDATE USER without pwd
 	public function update_user($id, $name, $first_name, $birthdate, $email, $login){
 		$query = 'UPDATE users SET user_name=' . $this->_db->quote($name) . ', user_firstname=' . $this->_db->quote($first_name) . ', user_birthdate=' . $this->_db->quote($birthdate) . ', user_email=' . $this->_db->quote($email) . ', user_login=' . $this->_db->quote($login) . ' WHERE user_id=' . $this->_db->quote($id);
+		$this->_db->prepare($query)->execute();
+	}
+
+	// UPDATE USER with pwd
+	public function update_user_with_pwd($id, $name, $first_name, $birthdate, $email, $login, $pwd){
+		$query = 'UPDATE users SET user_name=' . $this->_db->quote($name) . ', user_firstname=' . $this->_db->quote($first_name) . ', user_birthdate=' . $this->_db->quote($birthdate) . ', user_email=' . $this->_db->quote($email) . ', user_login=' . $this->_db->quote($login) . ', user_pwd=' . $this->_db->quote(sha1($pwd)) . ' WHERE user_id=' . $this->_db->quote($id);
 		$this->_db->prepare($query)->execute();
 	}
 
@@ -141,8 +181,21 @@ class Db {
 		$this->_db->prepare($query)->execute();
 	}
 
-	// NOTE: INSERT EVENT
-	public function insert_event($name, $event_date, $description, $image, $priority){
+	// NOTE: INSERT EVENT without image
+	public function insert_event($name, $event_date, $description, $priority){
+		$address = $this->_db->lastInsertId();
+		$query = 'INSERT INTO events(`event_name`, `event_date`, `event_descri`, `event_priority`, `event_address`) VALUES (:name, :event_date, :description, :priority, :address)';
+		$qp = $this->_db->prepare($query);
+		$qp->bindValue(':name', $name);
+		$qp->bindValue(':event_date', $event_date);
+		$qp->bindValue(':description', $description);
+		$qp->bindValue(':priority', $priority);
+		$qp->bindValue(':address', $address);
+		$qp->execute();
+	}
+
+	// NOTE: INSERT EVENT with image
+	public function insert_event_with_image($name, $event_date, $description, $image, $priority){
 		$address = $this->_db->lastInsertId();
 		$query = 'INSERT INTO events(`event_name`, `event_date`, `event_descri`, `event_image`, `event_priority`, `event_address`) VALUES (:name, :event_date, :description, :image, :priority, :address)';
 		$qp = $this->_db->prepare($query);
@@ -192,7 +245,13 @@ class Db {
 	}
 
 	// NOTE: UPDATE EVENT
-	public function update_event($id, $name, $date, $description, $image, $priority, $address){
+	public function update_event($id, $name, $date, $description, $priority, $address){
+		$query = 'UPDATE events SET event_name=' . $this->_db->quote($name) . ', event_date=' . $this->_db->quote($date) . ', event_descri=' . $this->_db->quote($description) . ', event_priority=' . $this->_db->quote($priority) . ', event_address=' . $address . ' WHERE event_id=' . $id;
+		$this->_db->prepare($query)->execute();
+	}
+
+	// NOTE: UPDATE EVENT 
+	public function update_event_with_image($id, $name, $date, $description, $image, $priority, $address){
 		$query = 'UPDATE events SET event_name=' . $this->_db->quote($name) . ', event_date=' . $this->_db->quote($date) . ', event_descri=' . $this->_db->quote($description) . ', event_image=' . $this->_db->quote($image) . ', event_priority=' . $this->_db->quote($priority) . ', event_address=' . $address . ' WHERE event_id=' . $id;
 		$this->_db->prepare($query)->execute();
 	}
@@ -204,7 +263,7 @@ class Db {
 				  WHERE event_priority = 1
 				  AND event_date >= NOW()
 				  ORDER BY event_date
-				  LIMIT 3';
+				  LIMIT 1';
 		$result = $this->_db->query($query);
 		$tab = array();
 		if($result->rowcount()!=0){
@@ -312,7 +371,7 @@ class Db {
 
 	// NOTE: SELECT ASSOCIATION AND ADDRESS WITH CHECKED
 	public function search_assoc_by_towns_themes($tab_towns, $tab_themes){
-		$where_town = Db::getInstance()->where_table($tab_towns, 't.town_name'); // clause
+		$where_town = Db::getInstance()->where_table($tab_towns, 't.town_post_code'); // clause
 		$where_theme = Db::getInstance()->where_table($tab_themes, 'ass.assoc_theme');
 		$juncture = 'ass.assoc_address=ad.address_id AND ad.address_post_code=t.town_post_code';
 		$query = '	SELECT DISTINCT ass.*, ad.*, t.* FROM associations ass, address ad, towns t
