@@ -4,6 +4,7 @@
 session_start();
 
 // déclaration de variables globales
+define('ROOT', dirname(__FILE__));
 define ('VIEWS', 'Views/');
 define ('CONTROLLER', 'Controllers/');
 define ('SESSION_ID', session_id());
@@ -18,6 +19,7 @@ spl_autoload_register('loadClass');
 require_once VIEWS . 'header.php';
 
 $action = (isset($_GET['action'])) ? htmlentities($_GET['action']) : 'default';
+
 
 // si authentifié => charge le controleur de la page demandée (admin)
 if(isset($_SESSION['authentifie'])){
