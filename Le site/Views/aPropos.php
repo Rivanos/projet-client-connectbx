@@ -3,19 +3,6 @@
 <div class="content">
 <div class="content-inside">
 
-  <!-- <div id="resume-aPropos">
-    <h1 class="title-page" id="aPropos-title">A Propos</h1>
-    <p>
-      ConnectBX est, tout simplement, la porte principale des jeunes vers le monde associatif
-      bruxellois. Cartographie, formations, Ambassadeurs, toutes nos actions n’ont qu’un seul
-      objectif : Faciliter les démarches vers l’engagement.</p>
-    <p>S’engager a permis à un tas de jeunes d'acquérir de l'expérience, de se rendre utile, de se
-      construire un réseaux personnel et professionnel, de se découvrir autrement. Autant de
-      raisons pour, au moins, essayer. Un tas d’associations existent qui pourraient parfaitement
-      vous convenir,.. il suffit simplement de les trouver. <a href="#">lien vers la page cartographie</a>
-    </p>
-  </div> -->
-
   <div class="container">
     <div class="row">
       <div class="col-md-offset-2 col-md-8" id="resume-aPropos">
@@ -28,7 +15,9 @@
           construire un réseaux personnel et professionnel, de se découvrir autrement. Autant de
           raisons pour, au moins, essayer. Un tas d’associations existent qui pourraient parfaitement
           vous convenir,.. il suffit simplement de les trouver.</p>
-          <a href="index.php?action=map">Accéder à la carte</a>
+          <div class="aPropos-btn-box">
+           <a href="index.php?action=map"><button type="button" class="btn btn-default btn-lg" name="carte" id="btn-map-aPropos">Accéder à la carte</button></a>
+         </div>
       </div>
     </div>
   </div>

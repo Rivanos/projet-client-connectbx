@@ -8,6 +8,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
+  <!-- Newsletter MailChimp -->
+  <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/facdb990651a80ea47a373e93/bd9198f17e0d25266fb53acd7.js");</script>
+
 </head>
 <body>
   <header id="header">
