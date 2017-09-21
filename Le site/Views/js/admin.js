@@ -58,6 +58,7 @@ $(document).ready(function () {
 			var entity = parameters[0][0].toUpperCase() + parameters[0].substring(1);
 			var id = parameters[1];
 			deleteEntity(entity, id);
+			location.reload(true);
 		});
 
 		function addEntity(entity) {

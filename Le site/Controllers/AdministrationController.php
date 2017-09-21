@@ -10,9 +10,6 @@ class AdministrationController{
 		$id = -1;
 		$admin = isset($_SESSION['admin']) && $_SESSION['admin'] ? true : false;
 		$towns = Db::getInstance()->select_all_towns();
-		
-
-
 
 		// A FAIRE :
 		// quand edit -> affiche l'entité modifiée x
@@ -23,6 +20,7 @@ class AdministrationController{
 		// gérer upload image : changement de droits x
 		// gérer heure event x
 		// droits user et admins
+
 		if(!empty($_POST['table']) && !empty($_POST['submit'])){
 			// Secures XSS attacks
 			$inputs = $this->_secure_xss($_POST);
@@ -52,14 +50,26 @@ class AdministrationController{
 
 				if($action == 'add'){ // ADD USER
 					if(!empty($pwd) && !empty($confirm_pwd) && $pwd == $confirm_pwd){
-						Db::getInstance()->insert_user($name, $first_name, $birthdate, $email, $login, $pwd);
+						if(Db::getInstance()->insert_user($name, $first_name, $birthdate, $email, $login, $pwd)){
+							$success = "L'utilisateur a correctement été ajouté";
+						} else {
+							$error = "Une erreur est survenue lors de l'ajout d'un utilisateur";
+						}
 					}
-				} elseif ($action == 'edit') { // ADD EDIT
+				} elseif ($action == 'edit') { // EDIT USER
 					$id = $inputs['id'];
 					if(!empty($pwd) && !empty($confirm_pwd) && $pwd == $confirm_pwd){
-						Db::getInstance()->update_user_with_pwd($id, $name, $first_name, $birthdate, $email, $login, $pwd);
+						if(Db::getInstance()->update_user_with_pwd($id, $name, $first_name, $birthdate, $email, $login, $pwd)){
+							$success = "L'utilisateur a correctement été modifié";
+						} else {
+							$error = "Une erreur est survenue lors de la modification d'un utilisateur";
+						}
 					} else {
-						Db::getInstance()->update_user($id, $name, $first_name, $birthdate, $email, $login);
+						if(Db::getInstance()->update_user($id, $name, $first_name, $birthdate, $email, $login)){
+							$success = "L'utilisateur a correctement été modifié";
+						} else {
+							$error = "Une erreur est survenue lors de la modification d'un utilisateur";
+						}
 					}
 				}
 
@@ -89,18 +99,33 @@ class AdministrationController{
 
 					// ADD ASSOCIATION
 					if($action == 'add'){ 
-						Db::getInstance()->insert_address($street, $number, $town, $post_box);
-						Db::getInstance()->insert_association($name, $description, $phone, $website, $latitude, $longitude, $theme);
+						if(Db::getInstance()->insert_address($street, $number, $town, $post_box)){
+							if(Db::getInstance()->insert_association($name, $description, $phone, $website, $latitude, $longitude, $theme)){
+								$success = "L'association a correctement été ajoutée";
+							} else {
+								$error = "Une erreur est survenue lors de l'ajout d'une association";
+							}
+						} else {
+							$error = "Une erreur est survenue lors de l'ajout de l'adresse de l'association";
+						}
+						
 
 					// EDIT ASSOCIATION
 					} elseif ($action == 'edit') { 
 						$id = $inputs['id'];
 						$address_id = $inputs['address_id'];
-						Db::getInstance()->update_address($address_id, $street, $number, $town, $post_box);
-						Db::getInstance()->update_association($id, $name, $description, $address_id, $phone, $website, $latitude, $longitude, $theme);
+						if(Db::getInstance()->update_address($address_id, $street, $number, $town, $post_box)){
+							if(Db::getInstance()->update_association($id, $name, $description, $address_id, $phone, $website, $latitude, $longitude, $theme)){
+								$success = "L'association a correctement été modifiée";
+							} else {
+								$error = "Une erreur est survenue lors de la modification d'une association";
+							}
+						} else {
+							$error = "Une erreur est survenue lors de la modification de l'adresse de l'association";
+						}
 					}
 				} else {
-					$error = "Problème d'adresse, latitude et/ou longitude incorrecte(s)\n";
+					$error = "Problème d'adresse : latitude et/ou longitude incorrecte(s)";
 				}
 
 			/*
@@ -127,18 +152,17 @@ class AdministrationController{
 					}
 					// Check if file already exists
 					if (file_exists($target_file)) {
-					    echo "Sorry, file already exists.";
+					    $error = "Une image de ce nom existe déjà";
 					    $uploadOk = 0;
 					}
 					// Check file size
 					if ($_FILES["image"]["size"] > 1000000) {
-					    echo "Sorry, your file is too large.";
+					    $error = "Votre image est trop lourde : 1Mo maximum";
 					    $uploadOk = 0;
 					}
 					// Allow certain file formats
-					if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-					&& $imageFileType != "gif" ) {
-					    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+					if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
+					    $error = "Seules les images au format JPG, JPEG & PNG sont autorisées";
 					    $uploadOk = 0;
 					}
 				}
@@ -155,36 +179,55 @@ class AdministrationController{
 				// ADD EVENT
 				if($action == 'add'){
 
-					if($_FILES['image']['error'] !== 4){
+					if($_FILES['image']['error'] !== 4 && $uploadOk == 1 && move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)){
 						// if everything is ok, try to upload file
-						if ($uploadOk == 1 && move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
 					      //echo "The file ". basename( $_FILES["image"]["name"]). " has been uploaded.";
-							Db::getInstance()->insert_address($street, $number, $town, $post_box);
-							Db::getInstance()->insert_event_with_image($name, $date, $description, $target_file, $priority);
-						} else {
-				      	//echo "Sorry, there was an error uploading your file.";
-					   }
+							if(Db::getInstance()->insert_address($street, $number, $town, $post_box)){
+								if(Db::getInstance()->insert_event_with_image($name, $date, $description, $target_file, $priority)){
+									$success = "L'événement a correctement été ajouté";
+								} else {
+									$error = "Une erreur est survenue lors de l'ajout d'un événement";
+								}
+							} else {
+								$error = "Une erreur est survenue lors de l'ajout de l'adresse d'un événement";
+							}
 					} else {
-						Db::getInstance()->insert_address($street, $number, $town, $post_box);
-						Db::getInstance()->insert_event($name, $date, $description, $priority);
+						if(Db::getInstance()->insert_address($street, $number, $town, $post_box)){
+							if(Db::getInstance()->insert_event($name, $date, $description, $priority)){
+								$success = "L'événement a correctement été ajouté";
+							} else {
+								$error = "Une erreur est survenue lors de l'ajout d'un événement";
+							}
+						} else {
+							$error = "Une erreur est survenue lors de l'ajout de l'adresse d'un événement";
+						}
 					}
 				// EDIT EVENT
 				} elseif ($action == 'edit') { 
 					$id = $inputs['id'];
 					$address_id = $inputs['address_id'];
 
-					if($_FILES['image']['error'] !== 4){
-						// if everything is ok, try to upload file
-						if ($uploadOk == 1 && move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+					if($_FILES['image']['error'] !== 4 && $uploadOk == 1 && move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)){
 					      //echo "The file ". basename( $_FILES["image"]["name"]). " has been uploaded.";
-							Db::getInstance()->update_address($address_id, $street, $number, $town, $post_box);
-							Db::getInstance()->update_event_with_image($id, $name, $date, $description, $target_file, $priority, $address_id);
+						if(Db::getInstance()->update_address($address_id, $street, $number, $town, $post_box)){
+							if(Db::getInstance()->update_event_with_image($id, $name, $date, $description, $target_file, $priority, $address_id)){
+								$success = "L'événement a correctement été modifié";
+							} else {
+								$error = "Une erreur est survenue lors de la modification d'un événement";
+							}
 						} else {
-				      	echo "Sorry, there was an error uploading your file.";
-					   }
+							$error = "Une erreur est survenue lors de la modification de l'adresse d'un événement";
+						}
 					} else {
-						Db::getInstance()->update_address($address_id, $street, $number, $town, $post_box);
-						Db::getInstance()->update_event($id, $name, $date, $description, $priority, $address_id);
+						if(Db::getInstance()->update_address($address_id, $street, $number, $town, $post_box)){
+							if(Db::getInstance()->update_event($id, $name, $date, $description, $priority, $address_id)){
+								$success = "L'événement a correctement été modifié";
+							} else {
+								$error = "Une erreur est survenue lors de la modification d'un événement";
+							}
+						} else {
+							$error = "Une erreur est survenue lors de la modification de l'adresse d'un événement";
+						}
 					}
 				}
 			}
