@@ -53,7 +53,6 @@
                   <button type="submit" name="envoyer" id="submitMap" class="btnStyle">Rechercher</button>
                 </form>
               </div>
-              </div>
             </div>
             <?php
             $tableau_association = array();
