@@ -17,7 +17,6 @@
         <select class="custom-dropdown__select custom-dropdown__select--white select-home" name="theme">
           <option class="disable" disabled selected>Choisissez votre Thème</option>
 
-
           <?php
 
 
@@ -31,7 +30,6 @@
         </select>
         <input class="custom-dropdown__select custom-dropdown__select--white select-home" type="submit" value="Rechercher" />
       </form>
-      
     </div>
     <div class="content">
       <div class="content-inside">
@@ -42,7 +40,7 @@
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </div>
               <div class="panel-body">
-                <a href="index.php?action=map"><button type="button" class="btn btn-default btn-lg" name="carte" id="big-btn-map">Accéder à la carte</button></a>
+                <a href="map"><button type="button" class="btn btn-default btn-lg" name="carte" id="big-btn-map">Accéder à la carte</button></a>
               </div>
             </div>
           </div>
@@ -65,35 +63,44 @@
         //foreach ($tableauEvenementsPrioritaire as $key => $value){
 
     ?>
-          <div class="col-xs-3 col-md-3 offset-md-1 thumbnail event-box event">
+          <div class="col-xs-3 col-md-3 offset-md-1 thumbnail event-box event shadow">
             <h1 style="font-size:24px; color:green"> <?=$tableauEvenementsPrioritaire[0]->name()?> </h1>
             <img src="<?= $tableauEvenementsPrioritaire[0]->image(); ?>" class="img-events" height="42px" width="42px"/>
           </div>
 
-          <div class="col-xs-3 col-md-3 offset-md-1 thumbnail event-box event">
-
+          <div class="col-xs-3 col-md-3 offset-md-1 thumbnail event-box event img-responsive">
+              
             <p><br/><br/><br/> <?= $tableauEvenementsPrioritaire[0]->description();?> </p>
-          </div>
+            <a href="event" data-target="#myModal">Lire plus</a>
+
+
+
+
+
+          </div> 
 
     <?php //}
       break;
       case 2:
         foreach ($tableauEvenementsPrioritaire as $key => $value){
     ?>
-          <div class="col-xs-4  offset-md-4 col-md-4 thumbnail event-box event">
-            <h3> <?=$value->name()?> </h3>
-            <img src="<?= $value->image(); ?>" class="img-events"/>
+          <div class="col-xs-4  offset-md-4 col-md-4 thumbnail event-box event shadow">
+            <h1 style="font-size:24px; color:green"> <?=$value->name()?> </h1>
+            <img src="<?= $value->image(); ?>" class="img-events img-responsive" height="42px" width="42px"/>
             <p><br/> <?= substr($value->description(),0, 140)."...";?> </p>
-          </div>
+            <a href="event">Lien</a>
+            <a name="lien" data-toggle="modal" href="#<?php echo $tableauEvenementsPrioritaire[$key]->id()?>">Lire plus</a>
+          </div>   
     <?php }
         break;
       case 3:
         foreach ($tableauEvenementsPrioritaire as $key => $value){
     ?>
           <div class="col-xs-3 col-md-3 offset-md-1 thumbnail event-box event">
-            <h3> <?=$value->name()?> </h3>
-            <img src="<?= $value->image(); ?>" class="img-events"/>
+            <h1 style="font-size:24px; color:green"> <?=$value->name()?> </h1>
+            <img src="<?= $value->image(); ?>" class="img-events img-responsive shadow" height="42px" width="42px"/>
             <p><br/> <?= substr($value->description(),0, 140)."...";?> </p>
+            <a href="event">Lien</a>
           </div>
     <?php } ?>
         </div> <!-- Fin div row -->
@@ -102,4 +109,5 @@
     }?> <!-- Fin case -->
               </div>
             </div>
+          </div>
 </div>

@@ -14,7 +14,6 @@
                 <span id="arrow" class="glyphicon glyphicon-search"></span>Filtre
               </button>
             </div>
-
             <div id="filtre" class="collapse">
               <div class="menuLeft" >
                 <form id="recherche_on_map" action="index.php?action=map" method="post">
@@ -26,6 +25,7 @@
                     $i=0;
                     foreach ($tab_towns as $town) {
                       $i++;
+
 
                       ?>
                       <div class='checkbox'>
@@ -40,7 +40,6 @@
                   <div id="category_list" class="col-md-6">
                     <h3 class='category'>Catégories</h3>
                     <?php
-
                     $tab_themes = Db::getInstance()->select_all_themes();
                     $i = 0;
                     foreach ($tab_themes as $key => $theme) {
@@ -54,6 +53,12 @@
                   <button type="submit" name="envoyer" id="submitMap" class="btnStyle">Rechercher</button>
                 </form>
                 </div>
+                <!-- <input type="submit" id="submit" value="Rechercher"> -->
+                <button type="submit" name="envoyer" id="submitMap" class="btnStyle">Rechercher</button>              
+              </form>
+              </div>
+
+          
 
               </div>
               <?php
