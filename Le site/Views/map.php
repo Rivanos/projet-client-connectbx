@@ -53,38 +53,38 @@
                   <!-- <input type="submit" id="submit" value="Rechercher"> -->
                   <button type="submit" name="envoyer" id="submitMap" class="btnStyle">Rechercher</button>
                 </form>
-                </div>
-
               </div>
-              <?php
-              $tableau_association = array();
-              $tableau_association = Db::getInstance()->select_all_associations();
 
-              foreach ($tableau_association as $key => $association) { ?>
-                <a class="website" href="<?= $association->website(); ?>">
-                  <div class="offer offer-danger">
-                    <div class="shape">
-                      <div class="shape-text">
-                        <span class="glyphicon glyphicon glyphicon-eye-open"></span>
-                      </div>
-                    </div>
-                    <div class="offer-content">
-                      <h1 class="nom_association"><?= $association->name(); ?></h1>
-                      <p class="description"><?= $association->description(); ?></p>
-                      <p class="numero_phone"><?= $association->phone(); ?></p>
-                      <p class="adresse"><?= $association->address()->to_string(); ?></p>
+            </div>
+            <?php
+            $tableau_association = array();
+            $tableau_association = Db::getInstance()->select_all_associations();
+
+            foreach ($tableau_association as $key => $association) { ?>
+              <a class="website" href="<?= $association->website(); ?>">
+                <div class="offer offer-danger">
+                  <div class="shape">
+                    <div class="shape-text">
+                      <span class="glyphicon glyphicon glyphicon-eye-open"></span>
                     </div>
                   </div>
-                </a>
+                  <div class="offer-content">
+                    <h1 class="nom_association"><?= $association->name(); ?></h1>
+                    <p class="description"><?= $association->description(); ?></p>
+                    <p class="numero_phone"><?= $association->phone(); ?></p>
+                    <p class="adresse"><?= $association->address()->to_string(); ?></p>
+                  </div>
+                </div>
+              </a>
 
-                <?php } ?>
+              <?php } ?>
 
 
-              </div>
             </div>
-
-            <div id="map" class="hidden-sm-down"></div>
-
           </div>
+
+          <div id="map" class="hidden-sm-down"></div>
+
         </div>
-      </section>
+      </div>
+    </section>
