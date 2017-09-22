@@ -1,22 +1,24 @@
 <div id="jumbotron" class="jumbotron fond text-center">
 
   <div class="container">
-    <span id="title-jumbotron">La Porte principale des jeunes
+    <span class="title-jumbotron">La Porte principale des jeunes
       vers le monde associatif.</span></div>
-      <form class="recherche_on_map_of_assoc" action="map" method="get"> <!-- index.php?action= -->  
-        <select name="commune" class="custom-dropdown__select custom-dropdown__select--white select-home">
-          <option name="com" class="disable">Choisissez votre Commune</option>
-          <?php
 
-      foreach ($tab_towns as $town) {
-        echo  "<option value='".$town->post_code()."'>".$town->name()."</option>";
-      }
+      <form class="recherche_on_map_of_assoc" action="map" method="post">
+        <select class="custom-dropdown__select custom-dropdown__select--white select-home" name="town">
+          <option class="disable" disabled selected>Choisissez votre Commune</option>
+          <?php
+            foreach ($tab_towns as $town) {
+            echo  "<option value='".$town->post_code()."'>".$town->name()."</option>";
+            }
           ?>
         </select>
-        <select name="themes" class="custom-dropdown__select custom-dropdown__select--white select-home">
-          <option class="disable">Choisissez votre Thème</option>
+
+        <select class="custom-dropdown__select custom-dropdown__select--white select-home" name="theme">
+          <option class="disable" disabled selected>Choisissez votre Thème</option>
 
           <?php
+
 
 
         foreach ($tab_themes as $key => $value) {
@@ -26,9 +28,8 @@
 
           ?>
         </select>
-        <input class="custom-dropdown__select custom-dropdown__select--white select-home" type="submit" name="button" value="Rechercher" />
+        <input class="custom-dropdown__select custom-dropdown__select--white select-home" type="submit" value="Rechercher" />
       </form>
-      <a href="commune=kykuhykiuy&themes=refer">oskjfposjrpoif</a>
     </div>
     <div class="content">
       <div class="content-inside">
@@ -55,17 +56,17 @@
 
     switch ($nombreDEvenementPrioritaires) {
       case 0: ?>
-        <p>Actuellement, il n'y a pas d'événements prioritaires!</p> 
+        <p>Actuellement, il n'y a pas d'événements prioritaires!</p>
     <?php
       break;
       case 1:
-        //foreach ($tableauEvenementsPrioritaire as $key => $value){  
+        //foreach ($tableauEvenementsPrioritaire as $key => $value){
 
     ?>
           <div class="col-xs-3 col-md-3 offset-md-1 thumbnail event-box event shadow">
             <h1 style="font-size:24px; color:green"> <?=$tableauEvenementsPrioritaire[0]->name()?> </h1>
             <img src="<?= $tableauEvenementsPrioritaire[0]->image(); ?>" class="img-events" height="42px" width="42px"/>
-          </div>   
+          </div>
 
           <div class="col-xs-3 col-md-3 offset-md-1 thumbnail event-box event img-responsive">
               
@@ -81,7 +82,7 @@
     <?php //}
       break;
       case 2:
-        foreach ($tableauEvenementsPrioritaire as $key => $value){  
+        foreach ($tableauEvenementsPrioritaire as $key => $value){
     ?>
           <div class="col-xs-4  offset-md-4 col-md-4 thumbnail event-box event shadow">
             <h1 style="font-size:24px; color:green"> <?=$value->name()?> </h1>
@@ -109,3 +110,4 @@
               </div>
             </div>
           </div>
+</div>

@@ -42,6 +42,16 @@
 		</div>
 		<div class="col-md-8">
 			<h2>Bienvenue sur la page d'administration</h2>
+			<?php if(!empty($error)){ ?>
+				<div class="alert alert-danger">
+					<strong>Erreur !</strong> <?= $error ?>
+				</div>
+			<?php } ?>
+			<?php if(!empty($success)){ ?>
+				<div class="alert alert-success">
+					<strong>Succès !</strong> <?= $success ?>
+				</div>
+			<?php } ?>
 			<div id="admin_form">
 				<?php require_once $view_admin; ?>
 			</div>

@@ -2,10 +2,10 @@
 -- version 4.5.4.1deb2ubuntu2
 -- http://www.phpmyadmin.net
 --
--- Client :  localhost
--- Généré le :  Mar 19 Septembre 2017 à 13:42
--- Version du serveur :  5.7.19-0ubuntu0.16.04.1
--- Version de PHP :  7.0.22-0ubuntu0.16.04.1
+-- Host: localhost
+-- Generation Time: Sep 22, 2017 at 11:35 AM
+-- Server version: 5.7.19-0ubuntu0.16.04.1
+-- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `connectbx`
+-- Database: `connectbx`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `address`
+-- Table structure for table `address`
 --
 
 CREATE TABLE `address` (
@@ -35,7 +35,7 @@ CREATE TABLE `address` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `address`
+-- Dumping data for table `address`
 --
 
 INSERT INTO `address` (`address_id`, `address_street`, `address_number`, `address_post_code`, `address_post_box`) VALUES
@@ -52,7 +52,7 @@ INSERT INTO `address` (`address_id`, `address_street`, `address_number`, `addres
 -- --------------------------------------------------------
 
 --
--- Structure de la table `associations`
+-- Table structure for table `associations`
 --
 
 CREATE TABLE `associations` (
@@ -68,7 +68,7 @@ CREATE TABLE `associations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `associations`
+-- Dumping data for table `associations`
 --
 
 INSERT INTO `associations` (`assoc_id`, `assoc_name`, `assoc_descri`, `assoc_address`, `assoc_phone`, `assoc_website`, `assoc_latitude`, `assoc_longitude`, `assoc_theme`) VALUES
@@ -82,7 +82,7 @@ INSERT INTO `associations` (`assoc_id`, `assoc_name`, `assoc_descri`, `assoc_add
 -- --------------------------------------------------------
 
 --
--- Structure de la table `events`
+-- Table structure for table `events`
 --
 
 CREATE TABLE `events` (
@@ -96,21 +96,21 @@ CREATE TABLE `events` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `events`
+-- Dumping data for table `events`
 --
 
 INSERT INTO `events` (`event_id`, `event_name`, `event_date`, `event_descri`, `event_image`, `event_priority`, `event_address`) VALUES
-(1, 'Jeunesse', '2017-03-03 00:00:00', 'la description de l\'evenement', 'image.png', 0, 1),
-(2, 'Fin de site web (j\'espère)', '2017-05-02 18:00:00', 'la description de l\'evenement', 'image1.png', 1, 5),
-(3, 'Lancement de site web', '2017-09-03 00:00:00', 'la description de l\'evenement', 'imag2e.png', 1, 3),
-(4, 'Celebrations de site', '2017-11-03 00:00:00', 'la description de l\'evenement', 'image3.png', 1, 4),
-(5, 'bouh', '0001-01-01 00:00:00', 'djk', 'sdkljlds', 0, 14),
-(6, 'Nadia\'s party', '2017-09-30 22:00:00', '', 'Views/Images/event/Db-works-fine.png', 1, 15);
+(1, 'Jeunesse', '2017-03-03 13:15:00', 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\\\'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Oui oui', 'Views/Images/event/evenement_jeunesse.jpg', 0, 1),
+(2, 'Fin de site web (j\'espère)', '2017-05-02 18:00:00', 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\\\'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Oui oui', 'Views/Images/event/evenement_social.jpg', 1, 5),
+(3, 'Lancement de site web', '2017-09-03 16:44:00', 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\\\'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Oui oui', 'Views/Images/event/evenement_festival.jpg', 1, 3),
+(4, 'Celebrations de site', '2017-11-03 11:25:00', 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\\\'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Oui oui', 'Views/Images/event/evenement_enfant.jpg', 1, 4),
+(5, 'bouh', '2017-01-09 00:00:00', 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\\\'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Oui oui', 'Views/Images/event/evenement_fete_de_fin_d_annee.jpg', 0, 14),
+(6, 'Nadia\'s party', '2017-09-30 22:00:00', 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\\\'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Oui oui', 'Views/Images/event/evenement_nadia.jpg', 1, 15);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `towns`
+-- Table structure for table `towns`
 --
 
 CREATE TABLE `towns` (
@@ -119,7 +119,7 @@ CREATE TABLE `towns` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `towns`
+-- Dumping data for table `towns`
 --
 
 INSERT INTO `towns` (`town_name`, `town_post_code`) VALUES
@@ -146,7 +146,7 @@ INSERT INTO `towns` (`town_name`, `town_post_code`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -161,7 +161,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`user_id`, `user_name`, `user_firstname`, `user_birthdate`, `user_email`, `user_login`, `user_pwd`, `commentaires`) VALUES
@@ -170,54 +170,54 @@ INSERT INTO `users` (`user_id`, `user_name`, `user_firstname`, `user_birthdate`,
 (14, 'User', 'User', '1999-12-02 00:00:00.0', 'user@root.be', 'user', '12dea96fec20593566ab75692c9949596833adc9', NULL);
 
 --
--- Index pour les tables exportées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `address`
+-- Indexes for table `address`
 --
 ALTER TABLE `address`
   ADD PRIMARY KEY (`address_id`);
 
 --
--- Index pour la table `associations`
+-- Indexes for table `associations`
 --
 ALTER TABLE `associations`
   ADD PRIMARY KEY (`assoc_id`);
 
 --
--- Index pour la table `events`
+-- Indexes for table `events`
 --
 ALTER TABLE `events`
   ADD PRIMARY KEY (`event_id`);
 
 --
--- Index pour la table `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- AUTO_INCREMENT pour les tables exportées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `address`
+-- AUTO_INCREMENT for table `address`
 --
 ALTER TABLE `address`
   MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
--- AUTO_INCREMENT pour la table `associations`
+-- AUTO_INCREMENT for table `associations`
 --
 ALTER TABLE `associations`
   MODIFY `assoc_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
--- AUTO_INCREMENT pour la table `events`
+-- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
   MODIFY `event_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
--- AUTO_INCREMENT pour la table `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `user_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
