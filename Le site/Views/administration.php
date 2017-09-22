@@ -1,6 +1,6 @@
 
 <!-- Navigation tabs -->
-<div class="container-fluid" id="administration">
+<div class="container-fluid administration" id="administration">
 	<div class="row">
 		<div class="col-md-4">
 			<ul class="nav nav-tabs">
@@ -58,6 +58,3 @@
 		</div>
 	</div>
 </div>
-
-			
-		
