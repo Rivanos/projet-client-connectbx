@@ -30,6 +30,27 @@
         </div>
         <div class="menuLeft" >
           <h3>Communes</h3>
+          <?php 
+
+            echo "coucou: ".$_GET['search'];
+            
+            echo "autre: ".$_GET['commune'];
+            echo "<br>";
+            echo $_GET['themes']; 
+
+
+            if(isset($_GET['com'])){
+              echo $_GET['com'];
+              var_dump($_GET['com']);
+            }
+            var_dump($_GET['com']);
+            if(empty($_GET['themes'])){
+              echo $_GET['themes']; 
+              var_dump($_GET['themes']);
+            } 
+
+          ?>  
+
           <form action="index.php?action=map" method="post">
             <div id="commune_list">
               <?php

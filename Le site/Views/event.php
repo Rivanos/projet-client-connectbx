@@ -13,10 +13,10 @@
   <div class="tab-content">
     <div id="aVenir" class="tab-pane fade in active">
 
-      <div class="container-fluid ">
+      <div class="container-fluid">
 
       <br/><br/><br/>
-      <div id="id_container_fluid" class="container-fluid divEventToCome">
+      <div id="id_container_fluid" class="container divEventToCome">
 
         <div class="row" id="row-events">
 <!--       <div style="width:340px; height:200px" class="jumbotron"></div> -->
@@ -32,9 +32,9 @@
               $compteurPassageLigne++;
               $clef = $key;
           ?>
-              <div class="col-xs-3 col-md-3 offset-md-1 thumbnail event-box">
+              <div class="col-xs-3 col-md-3 offset-md-1 thumbnail event-box shadow">
                 <img id="id_image_event" style= "height:auto; width:300px" src="<?= $value->image(); ?>" class="img-events" height="42px" width="42px"/>
-                <h3> <?=$value->name()?> </h3>
+                <h3 style="font-size: 28px; color:green"> <?=$value->name()?> </h3>
                 <p><strong><?php 
                         $dateEvenement = $value->date();
 
@@ -45,7 +45,13 @@
 
                         $date = $jour."/".$mois."/".$annee;
 
-                         echo $date." - "?>
+                        $heureEvent = explode(":", $value->time());
+
+                        $heure = $heureEvent[0];
+                        $minute = $heureEvent[1]; 
+
+
+                        echo $date." à " .$heureEvent[0].'h'.$heureEvent[1]." - "; ?> <!-- $value->time() -->
 
                 </strong><?=$value->address()->to_string()?></p>
                 <p><strong><p>Description de l'événement:</strong><br/><br/><?= substr($value->description(),0, 140)."...";?><br/></p>
@@ -64,7 +70,7 @@
                       <h4 class="modal-title"><?php echo $tableauEvenementsToComed[$key]->name() ?></h4> <!-- <?php //echo $tableauEvenements[$key]["event_name"]?> -->
                     </div>  
                     <div class="modal-body">
-                      <img src="<?= $tableauEvenementsToComed[$key]->image(); ?>" style="background-color:silver;" width="550px" height="300px"><br/><br/>
+                      <img class="shadow" src="<?= $tableauEvenementsToComed[$key]->image(); ?>" style="background-color:silver;" width="550px" height="300px"><br/><br/>
                       <p><u><strong>Description de l'event:</strong></u><br/><br/> <?php echo $tableauEvenementsToComed[$key]->description() ?> </p>
                     </div>
                     <div class="modal-footer">
@@ -98,17 +104,17 @@
         } ?>
         
         <br/><br/><br/>
-        <div class="container-fluid">
+        <div class="container">
           <div class="row">
 
               <?php
                   foreach ($tableauEvenementsPassed as $key => $value) { 
                   ?>
 
-                  <div class="col-xs-3 col-md-3 thumbnail event-box"> <!-- col-xs-3 col-lg-6  -->
+                  <div style="padding-right:5px; padding-left:5px" class="col-xs-3 col-md-3 thumbnail event-box shadow"> <!-- col-xs-3 col-lg-6  -->
                   <img style= "height:auto; width:300px" src=<?= $value->image() ?> class="img-events" height="42" width="42"/>   <!-- $value->image() -->
 
-                  <h1> <?=$value->name()?> </h1>
+                  <h1 style="font-size: 28px; color:green"> <?=$value->name()?> </h1>
                   <p style="text-align:left"><strong>
                     <?php 
 
@@ -121,7 +127,13 @@
 
                         $date = $jour."/".$mois."/".$annee;
 
-                        echo $date;
+
+                        $heureEvent = explode(":", $value->time());
+                        $heure = $heureEvent[0];
+                        $minute = $heureEvent[1]; 
+
+                        echo $date." à " .$heureEvent[0].'h'.$heureEvent[1]." - ";  //$value->time()
+
                          //echo "ici ".Db::getInstance()->select_address_event($key);  
                         ?>
                   </strong><?php echo $value->address()->to_string() ;?></p>

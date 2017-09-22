@@ -5,7 +5,7 @@ session_start();
 
 // déclaration de variables globales
 define('ROOT', dirname(__FILE__));
-define ('VIEWS', 'Views/');
+define ('VIEWS', './Views/');
 define ('CONTROLLER', 'Controllers/');
 define ('SESSION_ID', session_id());
 

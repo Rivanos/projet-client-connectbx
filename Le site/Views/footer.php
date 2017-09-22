@@ -23,7 +23,7 @@
 </div>
 <div class="container-fluid">
 	<div class="row">
-		<div id="copyright">
+		<div class="copyright">
 				Copyright © <a href="#">BeCode</a> 2017, tous droits réservés
 		</div>
 	</div>

@@ -37,7 +37,9 @@
   }
 
   #id_container_fluid{
-    
+    width: 42px;
+    height: 42px;
+    border:1px solid green;
   }
 
 }
@@ -124,6 +126,7 @@ body {
 section {
 /*  text-align: center;
 */  margin-top: 20px;
+}
 
 #cartePage {
   text-align: center;
@@ -173,12 +176,11 @@ div#sectionTitle h2 {
 }
 
 #contactWelcomeMsg {
-  font-family: helvetiva, helvetica-w01-light, helvetica-w02-light, sans-serif;
+  font-family: helvetica, helvetica-w01-light, helvetica-w02-light, sans-serif;
   font-size: 1.5rem;
   font-weight: lighter;
   margin-top: .7rem;
   color: #494949;
-  ;
 }
 
 span#assosEmail {
@@ -422,9 +424,12 @@ input:invalid {
 }
 
 
-
-
 /* EVENT */
+
+
+.shadow{
+  box-shadow: 5px 5px 10px #888888;
+} 
 
 .img-events {
   width: 340px;
@@ -434,7 +439,7 @@ input:invalid {
 
 .event-box {
   width: 350px;
-  margin-right: 30px;
+  margin-right: 25px;
   text-align: left;
 }
 
@@ -559,7 +564,7 @@ footer {
   width: 1000px;
   margin-left: auto;
   margin-right: auto;
-
+}
 /* ACTIVITES */
 
 .subscribe-newsletter {
@@ -637,26 +642,26 @@ footer {
 /*css search nav*/
 
 .resultat {
-	position: absolute;
-	background: #2DAF37;
-	border-radius: 10px 10px 10px 10px;
-	width: 228px;
-	padding: 10px 10px;
+  position: absolute;
+  background: #2DAF37;
+  border-radius: 10px 10px 10px 10px;
+  width: 228px;
+  padding: 10px 10px;
 }
 .result:hover, .result:focus {
-	color: white;
-	text-decoration: none;
-	background-color: #91D73C;
+  color: white;
+  text-decoration: none;
+  background-color: #91D73C;
 }
 .resultp:hover{
-	color: #2DAF37;
-	background-color: white;
+  color: #2DAF37;
+  background-color: white;
 }
 .result {
-	color: white;
-	text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 .resultp {
-	border-bottom: 1px white solid;
-	padding: 5px 5px;
+  border-bottom: 1px white solid;
+  padding: 5px 5px;
 }
