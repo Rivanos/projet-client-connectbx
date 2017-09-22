@@ -554,7 +554,9 @@ textarea.insideInput {
 
 /*  ADMIN  */
 
-
+.administration{
+  height: calc(100vh - 90px);
+}
 #administration .input-group[class*=col-]{
   padding-right: 15px;
   padding-left: 15px;

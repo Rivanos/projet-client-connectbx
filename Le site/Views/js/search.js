@@ -20,6 +20,6 @@ $(document).ready(function(){
   $("#recherche").focusout(function(){
     setTimeout(function(){
     $("#resultat").empty();
-    $("#resultat").removeClass('resultat'); }, 100);
+    $("#resultat").removeClass('resultat'); }, 500);
   });
 });

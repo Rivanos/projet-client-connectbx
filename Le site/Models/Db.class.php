@@ -168,6 +168,19 @@ class Db {
 		}
 		return $tab;
 	}
+	// NOTE: SELECT ALL ASSOCIATIONS EN FONCTION DE LA RECHERCHE MAP
+	public function select_all_associations_en_fonction_de_la_recherche_map($recherche){
+		$query = 'SELECT * FROM associations';
+		$result = $this->_db->query($query);
+		$tab = array();
+		if($result->rowcount()!=0){
+			while ($row = $result->fetch()){
+				$address = Db::getInstance()->select_address_with_id($row->assoc_address);
+				$tab[] = new Association($row->assoc_id, $row->assoc_name, $row->assoc_descri, $address, $row->assoc_phone, $row->assoc_website, $row->assoc_latitude, $row->assoc_longitude, $row->assoc_theme);
+			}
+		}
+		return $tab;
+	}
 
 	// NOTE: UPDATE ASSOCIATION
 	public function update_association($id, $name, $description, $address, $phone, $website, $latitude, $longitude, $theme){
